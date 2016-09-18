@@ -6,19 +6,22 @@ const client = new Dropbox({ accessToken: 'cOE9hfHzuGYAAAAAAAAVgJXmZqSqDCE-1U-3N
 import SearchBar from './components/SearchBar'
 import ProjectList from './components/ProjectList'
 
-const test = '/projects';
 
-
-class App extends Component {
+class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this.state = { projects: [] };
+    this.state = {
+      projects: [],
+      selectedProject: null
+    };
 
     // Load Dropbox API Content
-    client.filesListFolder({path: test})
-      .then(projects => {
-        projects = projects.entries;
-        this.setState({projects});
+    client.filesListFolder({path: '/projects'})
+      .then(FolderContent => {
+        this.setState({
+          projects: FolderContent.entries,
+          selectedProject: FolderContent.entries[0]
+        });
       }
     );
   }
@@ -27,11 +30,13 @@ class App extends Component {
     return (
         <div>
           <SearchBar />
-          <ProjectList projects={this.state.projects} />
+          <ProjectList
+            onProjectSelect={selectedProject => this.setState({selectedProject}) }
+            projects={this.state.projects} />
         </div>
     );
   }
 }
 
 
-export default App;
+export default Dashboard;

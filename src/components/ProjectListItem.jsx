@@ -1,8 +1,8 @@
 import React from 'react';
 
-const ProjectListItem = ({project}) => {
+const ProjectListItem = ({project, onProjectSelect}) => {
   return (
-    <div>{project.name}</div>
+    <li onClick={() => onProjectSelect(project)}>{project.name}</li>
   );
 }
 
