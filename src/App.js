@@ -2,18 +2,26 @@ import React, { Component } from 'react';
 
 // Import Components
 import Dashboard from './Dashboard'
+import ProjectDetail from './ProjectDetail'
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {selectedProject: null};
   }
 
   render() {
+    //Load Dashboard by checking selectedProject state
+    if(!this.state.selectedProject){
+      return (
+          <div>
+            <Dashboard onProjectSelect={selectedProject => this.setState({selectedProject}) } />
+          </div>
+      );
+    }
+    // Load Project
     return (
-        <div>
-          <Dashboard />
-        </div>
+        <ProjectDetail name={this.state.selectedProject.name} />
     );
   }
 }

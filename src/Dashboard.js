@@ -3,16 +3,16 @@ import Dropbox from 'dropbox';
 const client = new Dropbox({ accessToken: 'cOE9hfHzuGYAAAAAAAAVgJXmZqSqDCE-1U-3NX7YxciSVg6gccmF1HVL93qXQXdA' });
 
 // Import Components
-import SearchBar from './components/SearchBar'
 import ProjectList from './components/ProjectList'
+import Headline from './components/Headline'
 
 
 class Dashboard extends Component {
   constructor(props) {
-    super(props);
+   super(props);
     this.state = {
       projects: [],
-      selectedProject: null
+      name: 'Projects'
     };
 
     // Load Dropbox API Content
@@ -25,12 +25,12 @@ class Dashboard extends Component {
 
   render() {
     return (
-        <div>
-          <SearchBar />
-          <ProjectList
-            onProjectSelect={selectedProject => this.setState({selectedProject}) }
-            projects={this.state.projects} />
-        </div>
+      <div>
+        <Headline name={this.state.name} />
+        <ProjectList
+          onProjectSelect={this.props.onProjectSelect}
+          projects={this.state.projects} />
+      </div>
     );
   }
 }

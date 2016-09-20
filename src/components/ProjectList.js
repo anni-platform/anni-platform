@@ -1,13 +1,9 @@
 import React from 'react';
-import ProjectListItem from './ProjectListItem'
 
-const ProjectList = (props) => {
-  const projectItems = props.projects.map((project) => {
+const ProjectList = ({projects, onProjectSelect}) => {
+  const projectItems = projects.map((project) => {
     return(
-      <ProjectListItem
-        onProjectSelect={props.onProjectSelect}
-        key={project.name}
-        project={project} />
+      <li key={project.name} onClick={() => onProjectSelect(project)}>{project.name}</li>
       );
   });
 
