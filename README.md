@@ -1,2 +1,2 @@
 ## Anni Beta
-An open source project management tool for animators built with React.
+An open source project management platform for animators.
