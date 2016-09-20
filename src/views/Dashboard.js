@@ -3,8 +3,8 @@ import Dropbox from 'dropbox';
 const client = new Dropbox({ accessToken: 'cOE9hfHzuGYAAAAAAAAVgJXmZqSqDCE-1U-3NX7YxciSVg6gccmF1HVL93qXQXdA' });
 
 // Import Components
-import ProjectList from './components/ProjectList'
-import Headline from './components/Headline'
+import ProjectList from '../components/ProjectList'
+import Headline from '../components/Headline'
 
 
 class Dashboard extends Component {

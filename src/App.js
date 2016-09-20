@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 // Import Components
-import Dashboard from './Dashboard'
-import ProjectDetail from './ProjectDetail'
+import Dashboard from './views/Dashboard'
+import ProjectDetail from './views/ProjectDetail'
 
 class App extends Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class App extends Component {
     }
     // Load Project
     return (
-        <ProjectDetail name={this.state.selectedProject.name} />
+        <ProjectDetail selectedProject={this.state.selectedProject} />
     );
   }
 }
