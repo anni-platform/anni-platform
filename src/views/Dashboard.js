@@ -15,10 +15,11 @@ class Dashboard extends Component {
       name: 'Projects'
     };
 
-    // Load Dropbox API Content
+    // Call Dropbox API for content and assign to state
     client.filesListFolder({path: '/projects'})
       .then(FolderContent => {
-        this.setState({projects: FolderContent.entries})});
+        this.setState({projects: FolderContent.entries})}
+      );
   }
 
   render() {

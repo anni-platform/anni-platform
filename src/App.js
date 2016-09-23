@@ -14,14 +14,16 @@ class App extends Component {
     //Load Dashboard by checking selectedProject state
     if(!this.state.selectedProject){
       return (
-          <div>
-            <Dashboard onProjectSelect={selectedProject => this.setState({selectedProject}) } />
-          </div>
+        <div>
+          <Dashboard onProjectSelect={selectedProject => this.setState({selectedProject}) } />
+        </div>
       );
     }
     // Load Project
     return (
+      <div>
         <ProjectDetail selectedProject={this.state.selectedProject} />
+      </div>
     );
   }
 }

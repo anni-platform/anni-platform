@@ -3,3 +3,28 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 21px;
+  padding: 10px;
+}
+
+li {
+  cursor: pointer;
+  padding: 10px 0;
+  text-align: center;
+  list-style: none;
+  font-weight: bold;
+  color: gray;
+}
+
+ul {
+  padding: 0;
+}
+
+img {
+  width: 33.33%;
+  height: auto;
+}

@@ -11,6 +11,7 @@ class MoodboardViewer extends Component {
       MoodboardItems: []
     };
 
+    // Call Dropbox API for content and assign to state
     client.filesListFolder({path: props.projectPath + '/References'})
       .then(result => result.entries)
       .then(entries => entries.map(entry =>
@@ -29,6 +30,7 @@ class MoodboardViewer extends Component {
   render() {
     return (
       <div>
+        <h1>Moodboard</h1>
         <ImageList content={this.state.MoodboardItems} />
       </div>
     );
