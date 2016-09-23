@@ -9,7 +9,7 @@ class MoodboardViewer extends Component {
    super(props);
     this.state = {
       MoodboardItems: []
-    };
+    }
 
     // Call Dropbox API for content and assign to state
     client.filesListFolder({path: props.projectPath + '/References'})

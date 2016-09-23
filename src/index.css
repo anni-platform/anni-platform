@@ -20,6 +20,10 @@ li {
   color: gray;
 }
 
+li:hover{
+  color: black;
+}
+
 ul {
   padding: 0;
 }
