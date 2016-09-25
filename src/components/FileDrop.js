@@ -6,7 +6,7 @@ const fileUpload = {
   drop(props, monitor) {
     console.log(monitor.getItem().files);
   }
-};
+}
 
 class FileDrop extends Component {
   constructor(props) {
@@ -18,11 +18,11 @@ class FileDrop extends Component {
   render() {
     const { connectDropTarget, isOver, canDrop } = this.props;
     return connectDropTarget(
-      <h3>
+      <div className='dropArea'>
         {!isOver && !canDrop && 'Drag files from the hard drive'}
         {!isOver && canDrop && 'Drag the files here'}
         {isOver && 'Drop the files'}
-      </h3>
+      </div>
     );
   }
 }

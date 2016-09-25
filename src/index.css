@@ -11,6 +11,10 @@ h1 {
   padding: 10px;
 }
 
+h2 {
+  text-align: center;
+}
+
 li {
   cursor: pointer;
   padding: 10px 0;
@@ -31,4 +35,12 @@ ul {
 img {
   width: 33.33%;
   height: auto;
+}
+
+.dropArea {
+  text-align: center;
+  width: 100%;
+  background: #FAFAFA;
+  padding: 40px 0;
+  margin: 0;
 }

@@ -5,7 +5,7 @@ import HTML5Backend from 'react-dnd-html5-backend'
 
 let client = new Dropbox({ accessToken: 'cOE9hfHzuGYAAAAAAAAVgJXmZqSqDCE-1U-3NX7YxciSVg6gccmF1HVL93qXQXdA' });
 
-// import ImageList from './ImageList'
+import ImageList from './ImageList'
 import FileDrop from './FileDrop'
 
 class MoodboardViewer extends Component {
@@ -13,9 +13,7 @@ class MoodboardViewer extends Component {
    super(props);
     this.state = {
       path: this.props.projectPath + '/References',
-      moodboardItems: [],
-      uploads: []
-
+      moodboardItems: []
     }
 
     // Call Dropbox API for content and assign to state
@@ -37,9 +35,9 @@ class MoodboardViewer extends Component {
   render() {
     return (
       <div>
-        <h1>Moodboard</h1>
-        {/* <ImageList content={this.state.moodboardItems} /> */}
-        <FileDrop path={this.state.path} uploads={this.state.uploads} />
+        <h2>Moodboard</h2>
+        <ImageList content={this.state.moodboardItems} />
+        <FileDrop path={this.state.path} />
       </div>
     );
   }
