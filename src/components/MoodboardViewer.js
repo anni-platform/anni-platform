@@ -1,18 +1,25 @@
 import React, { Component } from 'react';
 import Dropbox from 'dropbox';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend'
+
 let client = new Dropbox({ accessToken: 'cOE9hfHzuGYAAAAAAAAVgJXmZqSqDCE-1U-3NX7YxciSVg6gccmF1HVL93qXQXdA' });
 
-import ImageList from './ImageList'
+// import ImageList from './ImageList'
+import FileDrop from './FileDrop'
 
 class MoodboardViewer extends Component {
   constructor(props) {
    super(props);
     this.state = {
-      MoodboardItems: []
+      path: this.props.projectPath + '/References',
+      moodboardItems: [],
+      uploads: []
+
     }
 
     // Call Dropbox API for content and assign to state
-    client.filesListFolder({path: props.projectPath + '/References'})
+    client.filesListFolder({path: this.state.path})
       .then(result => result.entries)
       .then(entries => entries.map(entry =>
           client.filesGetTemporaryLink({ path: entry.path_lower })))
@@ -22,7 +29,7 @@ class MoodboardViewer extends Component {
           link: result.link
       })))
       .then(assign => {
-        this.setState({MoodboardItems:assign})
+        this.setState({moodboardItems:assign})
       })
       .catch(console.log)
   }
@@ -31,10 +38,11 @@ class MoodboardViewer extends Component {
     return (
       <div>
         <h1>Moodboard</h1>
-        <ImageList content={this.state.MoodboardItems} />
+        {/* <ImageList content={this.state.moodboardItems} /> */}
+        <FileDrop path={this.state.path} uploads={this.state.uploads} />
       </div>
     );
   }
 }
 
-export default MoodboardViewer;
+export default DragDropContext(HTML5Backend)(MoodboardViewer);
