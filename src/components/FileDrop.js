@@ -10,8 +10,10 @@ class FileDrop extends Component {
     }
   }
  
-  handleDroppedFile(props, monitor) {
-    console.log(monitor.getItem().files);
+  dropHandler: {
+    drop(props, monitor) {
+      console.log(monitor.getItem().files);
+    }
   }
  
   render() {
@@ -26,7 +28,7 @@ class FileDrop extends Component {
   }
 }
 
-export default DropTarget(NativeTypes.FILE, FileDrop.handleDroppedFile, (connect, monitor) => ({
+export default DropTarget(NativeTypes.FILE, FileDrop.dropHandler, (connect, monitor) => ({
   connectDropTarget: connect.dropTarget(),
   isOver: monitor.isOver(),
   canDrop: monitor.canDrop()
