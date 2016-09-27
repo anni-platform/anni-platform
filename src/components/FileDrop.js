@@ -2,12 +2,6 @@ import React, { Component } from 'react';
 import { NativeTypes } from 'react-dnd-html5-backend';
 import { DropTarget } from 'react-dnd';
 
-const fileUpload = {
-  drop(props, monitor) {
-    console.log(monitor.getItem().files);
-  }
-}
-
 class FileDrop extends Component {
   constructor(props) {
    super(props);
@@ -15,6 +9,11 @@ class FileDrop extends Component {
       path: this.props.path
     }
   }
+ 
+  handleDroppedFile(props, monitor) {
+    console.log(monitor.getItem().files);
+  }
+ 
   render() {
     const { connectDropTarget, isOver, canDrop } = this.props;
     return connectDropTarget(
@@ -27,7 +26,7 @@ class FileDrop extends Component {
   }
 }
 
-export default DropTarget(NativeTypes.FILE, fileUpload, (connect, monitor) => ({
+export default DropTarget(NativeTypes.FILE, FileDrop.handleDroppedFile, (connect, monitor) => ({
   connectDropTarget: connect.dropTarget(),
   isOver: monitor.isOver(),
   canDrop: monitor.canDrop()
