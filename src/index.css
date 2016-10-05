@@ -3,44 +3,37 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
-
 h1 {
   text-align: center;
   text-transform: uppercase;
   font-size: 21px;
   padding: 10px;
 }
-
 h2 {
   text-align: center;
 }
-
 li {
   cursor: pointer;
   padding: 10px 0;
   text-align: center;
   list-style: none;
   font-weight: bold;
-  color: gray;
+  color: #808080;
 }
-
-li:hover{
-  color: black;
+li:hover {
+  color: #000;
 }
-
 ul {
   padding: 0;
 }
-
 img {
   width: 33.33%;
   height: auto;
 }
-
 .dropArea {
   text-align: center;
   width: 100%;
-  background: #FAFAFA;
+  background: #fafafa;
   padding: 40px 0;
   margin: 0;
 }

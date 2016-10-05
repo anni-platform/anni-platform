@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "react-scripts": "0.4.1"
+    "npm-run-all": "^3.1.0",
+    "react-scripts": "0.4.1",
+    "stylus": "^0.54.5"
   },
   "dependencies": {
     "dropbox": "^2.1.0",
@@ -13,7 +15,9 @@
     "react-dom": "^15.3.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm-run-all --parallel dev stylus",
+    "dev": "react-scripts start",
+    "stylus": "stylus src/stylus/*.styl -w -o src",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
