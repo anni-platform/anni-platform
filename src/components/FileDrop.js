@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { NativeTypes } from 'react-dnd-html5-backend';
 import { DropTarget } from 'react-dnd';
+const DROPPED_FILES_EVENT = 'DROPPED_FILE';
+const fileTarget = {
+  drop(props, monitor) {
+    window.dispatchEvent(new CustomEvent(DROPPED_FILES_EVENT, { 'files': monitor.getItem().files }));
+  }
+};
 
 class FileDrop extends Component {
   constructor(props) {
@@ -9,13 +15,13 @@ class FileDrop extends Component {
       path: this.props.path
     }
   }
- 
-  dropHandler: {
-    drop(props, monitor) {
-      console.log(monitor.getItem().files);
-    }
+
+  componentDidMount() {
+    window.addEventListener(DROPPED_FILES_EVENT, (files) => {
+      console.log("component received files", files);
+    });
   }
- 
+
   render() {
     const { connectDropTarget, isOver, canDrop } = this.props;
     return connectDropTarget(
@@ -28,7 +34,7 @@ class FileDrop extends Component {
   }
 }
 
-export default DropTarget(NativeTypes.FILE, FileDrop.dropHandler, (connect, monitor) => ({
+export default DropTarget(NativeTypes.FILE, fileTarget, (connect, monitor) => ({
   connectDropTarget: connect.dropTarget(),
   isOver: monitor.isOver(),
   canDrop: monitor.canDrop()
