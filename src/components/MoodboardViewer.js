@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import { DragDropContext } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend'
 import { getFilesInFolder } from '../adapters';
-
 import ImageList from './ImageList'
 import FileDrop from './FileDrop'
 import Loader from './Loader';
 
-class MoodboardViewer extends Component {
+export default class MoodboardViewer extends Component {
   constructor(props) {
    super(props);
     this.state = {
@@ -16,7 +13,9 @@ class MoodboardViewer extends Component {
       loading: true
     }
     this.addFile = this.addFile.bind(this);
-    // Call Dropbox API for content and assign to state
+  }
+
+  componentDidMount() {
     getFilesInFolder(`/${this.props.projectPath}`)
       .then(moodboardItems => this.setState({ moodboardItems, loading: false }));
   }
@@ -40,5 +39,3 @@ class MoodboardViewer extends Component {
     );
   }
 }
-
-export default DragDropContext(HTML5Backend)(MoodboardViewer);
