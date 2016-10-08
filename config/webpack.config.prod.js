@@ -1,6 +1,9 @@
 var path = require('path');
 var autoprefixer = require('autoprefixer');
+<<<<<<< fc7b5374aca0a65b4caa84bcfb0fad63b724b4fc
 var poststylus = require('poststylus');
+=======
+>>>>>>> Ejected
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');

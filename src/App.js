@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './stylus/index.styl';
 import { Link } from 'react-router';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';

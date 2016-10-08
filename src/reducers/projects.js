@@ -1,5 +1,5 @@
 import constants from '../constants';
-const { ADD_PROJECT } from 'constants.project;
+const { ADD_PROJECT } = constants.project;
 
 const projects = (state = [], action) => {
   switch (action.type) {
