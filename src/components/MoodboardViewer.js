@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import Dropbox from 'dropbox';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend'
-
-let client = new Dropbox({ accessToken: 'cOE9hfHzuGYAAAAAAAAVgJXmZqSqDCE-1U-3NX7YxciSVg6gccmF1HVL93qXQXdA' });
+let client = new Dropbox({ accessToken: process.env.CONFIG.DROPBOX_TOKEN });
 
 import ImageList from './ImageList'
 import FileDrop from './FileDrop'
