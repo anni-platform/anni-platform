@@ -60,7 +60,6 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
-    "dotenv": "^2.0.0",
     "dropbox": "^2.1.0",
     "react": "^15.3.1",
     "react-dnd": "^2.1.4",
@@ -68,7 +67,8 @@
     "react-dom": "^15.3.1",
     "react-dropzone": "^3.6.0",
     "react-redux": "^4.4.5",
-    "react-router": "^2.8.1"
+    "react-router": "^2.8.1",
+    "react-dropzone": "^3.6.0"
   },
   "scripts": {
     "start": "npm-run-all --parallel dev",
