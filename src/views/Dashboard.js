@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import Dropbox from 'dropbox';
-let client = new Dropbox({ accessToken: 'cOE9hfHzuGYAAAAAAAAVgJXmZqSqDCE-1U-3NX7YxciSVg6gccmF1HVL93qXQXdA' });
-
+import { getFolder } from '../adapters';
 // Import Components
-import ProjectList from '../components/ProjectList'
-import Headline from '../components/Headline'
+import ProjectList from '../components/ProjectList';
+import Headline from '../components/Headline';
 
 
 class Dashboard extends Component {
@@ -14,11 +12,13 @@ class Dashboard extends Component {
       projects: [],
       name: 'Projects'
     };
+  }
 
-    // Call Dropbox API for content and assign to state
-    client.filesListFolder({path: '/projects'})
-      .then(FolderContent => {
-        this.setState({projects: FolderContent.entries})}
+  componentDidMount() {
+    getFolder('')
+      .then(({ entries }) => {
+        console.log(entries)
+        this.setState({projects: entries})}
       );
   }
 
