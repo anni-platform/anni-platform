@@ -20,7 +20,7 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div>
+      <div className='Dashboard'>
         <h1>Your Projects</h1>
         <ProjectList
           projects={this.state.projects} />

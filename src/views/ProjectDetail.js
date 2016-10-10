@@ -6,9 +6,8 @@ class ProjectDetail extends Component {
   render() {
     const { id } = this.props.params;
     return (
-      <div>
-        <MoodboardViewer
-          projectPath={id}/>
+      <div className='ProjectDetail'>
+        <MoodboardViewer projectPath={id}/>
       </div>
     );
   }

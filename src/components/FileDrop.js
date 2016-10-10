@@ -35,10 +35,6 @@ export default class FileDrop extends Component {
   reUpload() {
     this.setState({
       state: STATES.EMPTY
-<<<<<<< 92a80737d2f26b3e6ac0e8302bc54ab6dd59d8c8
-=======
->>>>>>> Updated FileDrop Component
->>>>>>> Updated FileDrop Component
     });
   }
 
@@ -61,12 +57,8 @@ export default class FileDrop extends Component {
           getLink(response.path_display)
             .then((metadata) => {
               const src = metadata.url.replace(/.$/,"1");
-<<<<<<< 92a80737d2f26b3e6ac0e8302bc54ab6dd59d8c8
               this.props.addFile(src);
-              this.setState({ src, state: STATES.EMPTY });
-=======
               this.setState({ src, state: STATES.DONE });
->>>>>>> Updated FileDrop Component
             });
         })
         .catch(error => {
@@ -95,7 +87,6 @@ export default class FileDrop extends Component {
         <div>
           {image}
           {(preview && !src ? <button onClick={ this.save }>Save</button> : null)}
-          {(preview ? <button onClick={ this.save }>Save</button> : null)}
           <button onClick={ this.reUpload }>Replace</button>
         </div>
       );
