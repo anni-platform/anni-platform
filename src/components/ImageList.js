@@ -3,7 +3,7 @@ import React from 'react';
 const ImageList = ({content}) => {
   const folderItems = content.map((content) => {
     return(
-      <img src={content.link} alt={content.name} key={content.name} />
+      <img src={(content.src ? content.src : content.link)} alt={content.name} key={content.name} />
     )
   });
 

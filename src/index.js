@@ -1,9 +1,22 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import App from './App';
-import './index.css';
+import Dashboard from './views/Dashboard';
+import Project from './views/Project';
+import ProjectDetail from './views/ProjectDetail';
+import { render } from 'react-dom';
+import { Router, Route, browserHistory, IndexRoute } from 'react-router';
+const NoMatch = null;
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+// Declarative route configuration (could also load this config lazily
+// instead, all you really need is a single root route, you don't need to
+// colocate the entire config).
+render((
+  <Router history={browserHistory}>
+    <Route path="/" component={App}>
+      <IndexRoute component={Dashboard} />
+      <Route path="/edit/projects/:action" component={Project} />
+      <Route path="/project/:id" component={ProjectDetail}/>
+      <Route path="*" component={NoMatch}/>
+    </Route>
+  </Router>
+), document.getElementById('root'));

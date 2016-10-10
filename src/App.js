@@ -1,28 +1,15 @@
 import React, { Component } from 'react';
-
-// Import Components
-import Dashboard from './views/Dashboard'
-import ProjectDetail from './views/ProjectDetail'
+import style from './stylus/index.styl';
+import { Link } from 'react-router';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {selectedProject: null};
-  }
-
   render() {
-    //Load Dashboard by checking selectedProject state
-    if(!this.state.selectedProject){
-      return (
-        <div>
-          <Dashboard onProjectSelect={selectedProject => this.setState({selectedProject}) } />
-        </div>
-      );
-    }
-    // Load Project
-    return (
+    return(
       <div>
-        <ProjectDetail selectedProject={this.state.selectedProject} />
+        <nav>
+          <Link to="/">Dashboard</Link>
+        </nav>
+        {this.props.children}
       </div>
     );
   }

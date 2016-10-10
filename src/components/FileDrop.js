@@ -57,7 +57,8 @@ export default class FileDrop extends Component {
           getLink(response.path_display)
             .then((metadata) => {
               const src = metadata.url.replace(/.$/,"1");
-              this.setState({ src, state: STATES.DONE });
+              this.props.addFile(src);
+              this.setState({ src, state: STATES.EMPTY });
             });
         })
         .catch(error => {
@@ -66,7 +67,7 @@ export default class FileDrop extends Component {
   }
 
   render() {
-    const { state, src, preview } = this.state;
+    const { state, src, preview, file } = this.state;
     const { EMPTY, PREVIEW } = STATES;
     const dropzone = (
       <Dropzone onDrop={this.onDrop} multiple={false}>
@@ -74,7 +75,7 @@ export default class FileDrop extends Component {
       </Dropzone>
     );
     const imageSource = state === PREVIEW ? preview : src;
-    const image = <img src={ imageSource } alt='' />;
+    const image = <img src={ imageSource } alt={( file ? file.name : '')} />;
     if (state === EMPTY) {
       return (
         <div>
@@ -85,7 +86,7 @@ export default class FileDrop extends Component {
       return (
         <div>
           {image}
-          {(preview ? <button onClick={ this.save }>Save</button> : null)}
+          {(preview && !src ? <button onClick={ this.save }>Save</button> : null)}
           <button onClick={ this.reUpload }>Replace</button>
         </div>
       );
