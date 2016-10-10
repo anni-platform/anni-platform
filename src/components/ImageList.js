@@ -3,14 +3,14 @@ import React from 'react';
 const ImageList = ({content}) => {
   const folderItems = content.map((content) => {
     return(
-      <img src={(content.src ? content.src : content.link)} alt={content.name} key={content.name} />
+      <li key={content.name} ><img src={content.link} alt={content.name} /></li>
     )
   });
 
   return (
-    <div>
+    <ul className='ImageList'>
       {folderItems}
-    </div>
+    </ul>
   );
 }
 

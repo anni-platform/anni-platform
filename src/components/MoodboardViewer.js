@@ -31,7 +31,7 @@ export default class MoodboardViewer extends Component {
   render() {
     return (
       <div>
-        <h2>{this.props.projectPath} Moodboard</h2>
+        <h1>{this.props.projectPath} Moodboard</h1>
         <ImageList content={this.state.moodboardItems} />
         <Loader show={this.state.loading} />
         <FileDrop path={this.state.path} addFile={this.addFile}/>

@@ -1,0 +1,53 @@
+/*
+ * Stylus Boilerplate
+ *
+ * @author  Ivan Cruz
+ * @date    03.27.15
+ *
+ */
+
+
+// Colors
+$slate    = #000
+$concrete = #FAFAFA
+$copper   = #d29069
+
+
+// Fonts
+$display-font  = 'Playfair Display', sans-serif
+$headline-font = 'Reglo-Bold', serif
+$body-font     = 'Roboto Mono', sans-serif
+
+
+// Margin & Padding
+$global-padding = 80px
+
+$sm-padding = 5px
+$md-padding = 15px
+$lg-padding = 30px
+
+
+// Min-Width Media Query
+above(width)
+  @media screen and (min-width: width)
+    {block}
+
+below(width)
+  @media screen and (max-width: width)
+    {block}
+
+
+/*  Imports
+ * -------------------------------------------------------- */
+
+@import 'https://fonts.googleapis.com/css?family=Playfair+Display|Roboto+Mono'
+
+@import '_Reset'
+@import '_Typography'
+@import '_Base'
+
+// Components
+@import '_Dashboard'
+@import '_ProjectDetail'
+@import '_ProjectList'
+@import '_ImageList'
