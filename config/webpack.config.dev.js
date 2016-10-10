@@ -1,5 +1,6 @@
 var path = require('path');
 var autoprefixer = require('autoprefixer');
+var poststylus = require('poststylus');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
@@ -66,7 +67,7 @@ module.exports = {
     // We also include JSX as a common component filename extension to support
     // some tools, although we do not recommend using it, see:
     // https://github.com/facebookincubator/create-react-app/issues/290
-    extensions: ['.js', '.json', '.jsx', ''],
+    extensions: ['.js', '.json', '.jsx', '', '.styl'],
     alias: {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
@@ -106,6 +107,11 @@ module.exports = {
       {
         test: /\.css$/,
         loader: 'style!css!postcss'
+      },
+      {
+        key: 'styl',
+        test:   /\.styl$/,
+        loader: "style!css!stylus"
       },
       // JSON is not enabled by default in Webpack but both Node and Browserify
       // allow it implicitly so we also enable it.
@@ -171,6 +177,11 @@ module.exports = {
         ]
       }),
     ];
+  },
+  stylus: {
+    use: [
+      poststylus([ 'autoprefixer' ])
+    ]
   },
   plugins: [
     // Generates an `index.html` file with the <script> injected.
