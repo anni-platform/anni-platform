@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import style from './stylus/index.styl';
+import './stylus/index.styl';
 import { Link } from 'react-router';
 
 class App extends Component {
