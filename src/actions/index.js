@@ -1,8 +1,9 @@
 import constants from '../constants';
+const { ADD_PROJECT } from 'constants.project;
 
 export const addProject = (project) => {
   return {
-    type: constants.project.ADD_PROJECT,
+    type: ADD_PROJECT,
     project
   };
 }
