@@ -23,7 +23,7 @@ class ProjectForm extends Component {
   render() {
     return (
       <form onSubmit={this.submit}>
-        <input onChange={({ target }) => this.setState({ name: target.value })}/>
+        <input autoFocus={true} onChange={({ target }) => this.setState({ name: target.value })}/>
         <button>Create</button>
       </form>
     )
@@ -35,7 +35,6 @@ const ConnectedProjectForm = withRouter(ProjectForm);
 
 export default class Project extends Component {
   render() {
-    console.log(this.context.router);
     const { action } = this.props.params;
     switch(action) {
       case constants.project.newProject:

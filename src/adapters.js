@@ -16,6 +16,14 @@ export function createFolder(path) {
   return client.filesCreateFolder({ path });
 }
 
+export function createProjectScaffold(path) {
+  const mainFolderPath = `/${path}`;
+  createFolder(mainFolderPath);
+  ["References", "Storyboards", "Styleframes", "Videos", "Scripts"].map((name) => {
+    return createFolder(`${`/${path}`}/${name}`)
+  });
+}
+
 export function getFilesInFolder(path) {
   return new Promise((resolve, reject) => {
     client.filesListFolder({ path })
@@ -30,7 +38,6 @@ export function getFilesInFolder(path) {
               });
           });
         });
-        console.log(getLinks);
         Promise.all(getLinks).then(() => resolve(response.entries)).catch(reject);
       });
   });

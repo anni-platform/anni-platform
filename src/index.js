@@ -1,7 +1,7 @@
 import React from 'react';
 import App from './App';
-import Dashboard from './views/Dashboard';
-import Project from './views/Project';
+import Projects from './containers/Projects';
+import Project from './components/Project';
 import ProjectDetail from './views/ProjectDetail';
 import { render } from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
@@ -13,7 +13,7 @@ const NoMatch = null;
 render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
-      <IndexRoute component={Dashboard} />
+      <IndexRoute component={Projects} />
       <Route path="/edit/projects/:action" component={Project} />
       <Route path="/project/:id" component={ProjectDetail}/>
       <Route path="*" component={NoMatch}/>

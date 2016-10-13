@@ -39,6 +39,7 @@
     "http-proxy-middleware": "0.17.1",
     "jest": "15.1.1",
     "json-loader": "0.5.4",
+    "lodash.filter": "^4.6.0",
     "npm-run-all": "^3.1.0",
     "object-assign": "4.1.0",
     "opn": "4.0.2",
@@ -47,6 +48,7 @@
     "poststylus": "^0.2.3",
     "promise": "7.1.1",
     "recursive-readdir": "2.0.0",
+    "redux-devtools": "^3.3.1",
     "rimraf": "2.5.4",
     "strip-ansi": "3.0.1",
     "style-loader": "0.13.1",
@@ -64,6 +66,7 @@
     "react-dnd-html5-backend": "^2.1.2",
     "react-dom": "^15.3.1",
     "react-dropzone": "^3.6.0",
+    "react-redux": "^4.4.5",
     "react-router": "^2.8.1"
   },
   "scripts": {
