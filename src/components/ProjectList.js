@@ -42,13 +42,6 @@ class ProjectList extends Component {
       </ul>
     );
 
-    const empty = (
-      <div>
-        <strong>No Projects..</strong>
-        {newProjectLink}
-      </div>
-    )
-
     const renderProjects = (projects.length ? projectsList : empty);
 
     return (

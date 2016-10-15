@@ -22,8 +22,7 @@ class Dashboard extends Component {
     return (
       <div className='Dashboard'>
         <h1>Your Projects</h1>
-        <ProjectList
-          projects={this.state.projects} />
+        <ProjectList projects={this.state.projects} />
       </div>
     );
   }

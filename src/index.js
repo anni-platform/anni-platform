@@ -2,11 +2,11 @@ import React from 'react';
 import App from './App';
 import Projects from './containers/Projects';
 import Project from './components/Project';
+import './stylus/Main.styl';
 import ProjectDetail from './views/ProjectDetail';
 import { render } from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 const NoMatch = null;
-import './stylus/Main.styl';
 
 // Declarative route configuration (could also load this config lazily
 // instead, all you really need is a single root route, you don't need to

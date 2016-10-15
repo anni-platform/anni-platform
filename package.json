@@ -68,10 +68,12 @@
     "react-dropzone": "^3.6.0",
     "react-redux": "^4.4.5",
     "react-router": "^2.8.1",
-    "react-dropzone": "^3.6.0"
+    "react-dropzone": "^3.6.0",
+    "react-router": "^2.8.1",
+    "resolve-url-loader": "^1.6.0"
   },
   "scripts": {
-    "start": "npm-run-all --parallel dev",
+    "start": "npm run dev",
     "dev": "node scripts/start.js",
     "stylus": "stylus src/stylus/*.styl -w -o src",
     "build": "node scripts/build.js",
