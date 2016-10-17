@@ -8,13 +8,10 @@ import Loader from './Loader';
 import filter from 'lodash.filter';
 
 class ProjectList extends Component {
-  constructor() {
-    super();
-    this.state = {
-      loading: true
-    };
-  }
   componentDidMount() {
+    if (!this.props.auth.isAuthenticated) {
+      return;
+    }
     getFolder('')
       .then(({ entries }) => {
         entries.forEach((entry, i) => {
@@ -26,8 +23,8 @@ class ProjectList extends Component {
       });
   }
   render() {
-    const { loading } = this.state;
-    const { projects } = this.props;
+    const { projects, auth } = this.props;
+    const loading = !auth.isAuthenticated;
     const newProjectLink = <Link to={`/edit/projects/${constants.project.newProject}`}>Create a Project</Link>;
     const projectItems = projects.map((project) => {
       return(
@@ -42,12 +39,19 @@ class ProjectList extends Component {
       </ul>
     );
 
+    const empty = (
+      <div>
+        <strong>No Projects..</strong>
+        {newProjectLink}
+      </div>
+    );
+
     const renderProjects = (projects.length ? projectsList : empty);
 
     return (
       <div>
         <h1>Projects</h1>
-        {(loading ? <Loader show={true} /> : renderProjects)}
+        {(loading ? <Loader show={loading} /> : renderProjects)}
 
       </div>
     );

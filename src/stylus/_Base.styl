@@ -6,10 +6,7 @@
  */
 
 
-*
-  -moz-box-sizing: border-box
-  -webkit-box-sizing: border-box
-  box-sizing: border-box
+
 
 
 html
@@ -17,6 +14,15 @@ html
   -webkit-font-smoothing: antialiased
 
 body
+  box-sizing border-box
+
+  *
+    box-sizing inherit
+
+
+a
+  color $copper
+  text-decoration none
 
 h1, h2, h3, h4, h5
   font-family $headline-font

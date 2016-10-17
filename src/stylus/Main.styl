@@ -27,6 +27,8 @@ $md-padding = 15px
 $lg-padding = 30px
 
 
+md = 1000px
+
 // Min-Width Media Query
 above(width)
   @media screen and (min-width: width)
@@ -36,11 +38,16 @@ below(width)
   @media screen and (max-width: width)
     {block}
 
+// Equalize Height
+html, body, #root, #root > div
+  height 100%
+
+#root
+  padding $md-padding
 
 /*  Imports
  * -------------------------------------------------------- */
 
-@import '_Reset'
 @import '_Typography'
 @import '_Base'
 
@@ -49,3 +56,5 @@ below(width)
 @import '_ProjectDetail'
 @import '_ProjectList'
 @import '_ImageList'
+
+@import 'shared/*'

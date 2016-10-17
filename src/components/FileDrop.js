@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
 import { uploadFile, getLink } from '../adapters';
+import '../stylus/components/FileDrop.styl';
 
 const STATES = {
   EMPTY: 1,
@@ -78,13 +79,13 @@ export default class FileDrop extends Component {
     const image = <img src={ imageSource } alt={( file ? file.name : '')} />;
     if (state === EMPTY) {
       return (
-        <div>
+        <div className="FileDrop">
           {dropzone}
           {(preview || src ? <button onClick={ this.undo }>Undo</button>: null)}
         </div>);
     } else {
       return (
-        <div>
+        <div className="FileDrop">
           {image}
           {(preview && !src ? <button onClick={ this.save }>Save</button> : null)}
           <button onClick={ this.reUpload }>Replace</button>

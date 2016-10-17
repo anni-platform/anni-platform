@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import Navigation from './components/Navigation';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers';
+import './stylus/components/Navigation';
+const store = createStore(reducer);
 
-const store = createStore(reducer)
 
 class App extends Component {
   render() {
     return(
       <Provider store={store}>
         <div>
-          <nav>
-          <Link to="/">Dashboard</Link>
-          </nav>
+          <Navigation />
           {this.props.children}
         </div>
       </Provider>

@@ -1,4 +1,15 @@
 .ImageList
-  img
-    width 33.333%
-    float left
+  margin 0
+  padding 0
+  +above(md)
+    display flex
+    flex-wrap wrap
+
+.ImageList__Item
+  flex 0 0 (100 / 3)%
+  position relative
+  padding $md-padding
+
+  & > img
+    max-width 100%
+    height auto
