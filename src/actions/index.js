@@ -1,5 +1,5 @@
 import constants from '../constants';
-const { ADD_PROJECT, RESET_PROJECT } = constants.project;
+const { ADD_PROJECT } = constants.project;
 const { ADD_AUTH_TOKEN, ADD_USER_INFO, LOG_OUT } = constants.auth;
 
 // Project Actions

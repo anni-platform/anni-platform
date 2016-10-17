@@ -12,6 +12,7 @@ An open source project management platform for animators.
     "CLIENT_ID" : "<YOUR CLIENT ID>"
   }
   ```
+3. Add `http://localhost:3000/auth` to your Dropbox App's *Redirect URIs*
 
 
 ### Run Dev Tasks
