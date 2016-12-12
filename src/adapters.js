@@ -11,7 +11,7 @@ export function createClient(token) {
 export function login() {
   return new Promise((resolve, reject) => {
     resolve(getAccessTokenFromSessionStorage());
-  });
+  }).catch(e => console.log(e));
 }
 
 export function logoutSession() {
@@ -32,7 +32,7 @@ export function storeSessionToken(token ) {
 }
 
 export function getAccountInfo() {
-  return client.usersGetAccount();
+  return client.usersGetAccount().catch(e => console.log(e));
 }
 
 export function getAccessTokenFromUrl() {
@@ -40,23 +40,28 @@ export function getAccessTokenFromUrl() {
 }
 
 export function uploadFile(path, file) {
-  return client.filesUpload({ path: '/' + path + '/' + file.name, contents: file });
+  return client.filesUpload({ path: '/' + path + '/' + file.name, contents: file })
+  .catch(e => console.log(e));
 }
 
 export function getFolder(path) {
-  return client.filesListFolder({ path });
+  return client.filesListFolder({ path })
+  .catch(e => console.log(e));
 }
 
 export function getLink(path) {
-  return client.sharingCreateSharedLink({ path });
+  return client.sharingCreateSharedLink({ path })
+  .catch(e => console.log(e));
 }
 
 export function createFolder(path) {
-  return client.filesCreateFolder({ path });
+  return client.filesCreateFolder({ path })
+  .catch(e => console.log(e));
 }
 
 export function removeFolder(path) {
-  return client.filesDelete({ path });
+  return client.filesDelete({ path })
+  .catch(e => console.log(e));
 }
 
 export function getAuthUrl() {
@@ -68,7 +73,7 @@ export function createProjectScaffold(path) {
   const mainFolderPath = `/${path}`;
   createFolder(mainFolderPath);
   ["References", "Storyboards", "Styleframes", "Videos", "Scripts"].map((name) => {
-    return createFolder(`${`/${path}`}/${name}`)
+    return createFolder(`${`/${path}`}/${name}`).catch(e => console.log(e));
   });
 }
 
