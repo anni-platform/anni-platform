@@ -1,41 +1,64 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { getFilesInFolder } from '../adapters';
 import ImageList from './ImageList'
-import FileDrop from './FileDrop'
+import FileUploader from './FileUploader';
 import Loader from './Loader';
+import { updateProject } from '../actions';
+import { makeCancelable } from '../utils';
+import constants from '../constants';
+const { MOODBOARD } = constants.content;
 
-export default class MoodboardViewer extends Component {
+class MoodboardViewer extends Component {
   constructor(props) {
    super(props);
     this.state = {
-      path: this.props.projectPath,
-      moodboardItems: [],
       loading: true
     }
-    this.addFile = this.addFile.bind(this);
   }
 
   componentDidMount() {
-    getFilesInFolder(`/${this.props.projectPath}`)
-      .then(moodboardItems => this.setState({ moodboardItems, loading: false }));
+    const project = this.props.project;
+    if (project) {
+      this.getFiles = makeCancelable(new Promise(r => {
+        getFilesInFolder(`/${this.props.projectPath}`)
+        .then(moodboardItems => {
+          this.getFiles.resolved = true;
+          this.props.dispatch(updateProject({ id: project.id, images: moodboardItems }));
+        });
+      }));
+      this.getFiles
+      .promise
+      .then(() => this.setState({ loading: false }));
+    }
   }
 
-  addFile(src) {
-    let items =  this.state.moodboardItems.slice();
-    items.push({ src });
-    this.setState({
-      moodboardItems: items
-    });
+  componentWillUnmount() {
+    this.getFiles.cancel();
   }
 
   render() {
+    const project = this.props.project;
+    if (!project) {
+      return null;
+    }
+    const { id } = project;
+    // TODO: make helper for getting collection key
+    const images = this.props.files.collections[`${this.props.projectPath}_${MOODBOARD}`];
     return (
       <div>
         <h1>{this.props.projectPath} Moodboard</h1>
-        <ImageList content={this.state.moodboardItems} />
-        <Loader show={this.state.loading} />
-        <FileDrop path={this.state.path} addFile={this.addFile}/>
+        <FileUploader
+          path={this.props.projectPath}
+          collection="moodboard"
+          onUpload={(images) => this.props.dispatch(updateProject({ id, images }))}>
+          <ImageList content={(!images ? null : images)} />
+          <Loader show={!project} />
+        </FileUploader>
       </div>
     );
   }
 }
+
+const Board = connect((state) => state)(MoodboardViewer);
+export default Board;

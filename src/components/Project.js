@@ -2,27 +2,47 @@ import React, { Component } from 'react';
 import constants from '../constants';
 import { createFolder } from '../adapters';
 import { withRouter } from 'react-router';
+import ProjectManager from '../containers/ProjectManager';
+import { addProject, removeProject } from '../actions';
+import MoodboardViewer from '../components/MoodboardViewer';
+import { removeFolder } from '../adapters';
 
 class ProjectForm extends Component {
   constructor() {
     super();
     this.state = {
-      name: ''
+      name: '',
+      validationMessage: ''
     }
     this.submit = this.submit.bind(this);
   }
   submit(e) {
     e.preventDefault();
-    console.log(this.props);
+    const { name } = this.state;
+    this.setState({ validationMessage: '' });
+    if (!this.validateForm()) {
+      this.setState({ validationMessage: `Sorry, "${name}" is already in use` });
+      return;
+    }
     createFolder(`/${this.state.name}`)
-      .then(({ path_display }) => {
+      .then(project => {
+        const { path_display } = project;
+        this.props.dispatch(addProject(project));
         this.props.router.push(`/project${path_display}`);
       })
       .catch(err => console.log(err));
   }
+  validateForm() {
+    if (this.props.getProjectByName(this.state.name)) {
+      return false;
+    }
+    return true;
+  }
   render() {
+    const { validationMessage } = this.state;
     return (
       <form onSubmit={this.submit}>
+        {(validationMessage ? <p className="ValidationErrorMessage">{validationMessage}</p> : null)}
         <input autoFocus={true} onChange={({ target }) => this.setState({ name: target.value })}/>
         <button>Create</button>
       </form>
@@ -30,17 +50,40 @@ class ProjectForm extends Component {
   }
 }
 
-const ConnectedProjectForm = withRouter(ProjectForm);
+class ProjectDetail extends Component {
+  componentDidMount() {
+    this.props.refreshProjects();
+  }
+  render() {
+    const { id } = this.props.params;
+    const project = this.props.getProjectByName(id);
+    return (
+      <div className='ProjectDetail'>
+        <MoodboardViewer projectPath={id} project={project} />
+        <div>
+          <button onClick={() => {
+            removeFolder(project.path_display).then(() => {
+              this.props.dispatch(removeProject(project.id, id));
+              this.props.refreshProjects();
+              this.props.router.push("/dashboard");
+            })
+          }}>Delete Project</button>
+        </div>
+      </div>
+    );
+  }
+}
 
-
-export default class Project extends Component {
+class Project extends Component {
   render() {
     const { action } = this.props.params;
     switch(action) {
       case constants.project.newProject:
-        return <ConnectedProjectForm {...this.props} />
+        return <ProjectForm {...this.props} />
       default:
-        return null;
+        return <ProjectDetail {...this.props} />;
     }
   }
 }
+
+export default ProjectManager(withRouter(Project));

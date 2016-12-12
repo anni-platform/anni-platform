@@ -1,11 +1,26 @@
 import constants from '../constants';
-const { ADD_PROJECT } = constants.project;
+const { ADD_PROJECT, REMOVE_PROJECT, UPDATE_PROJECT } = constants.project;
 const { ADD_AUTH_TOKEN, ADD_USER_INFO, LOG_OUT } = constants.auth;
+const { ADD_FILE } = constants.file;
 
 // Project Actions
 export const addProject = (project) => {
   return {
     type: ADD_PROJECT,
+    project
+  };
+}
+export const removeProject = (id, path) => {
+  return {
+    type: REMOVE_PROJECT,
+    id,
+    path
+  };
+}
+
+export const updateProject = (project) => {
+  return {
+    type: UPDATE_PROJECT,
     project
   };
 }
@@ -28,5 +43,15 @@ export const addUserInfo = (info) => {
 export const logout = () => {
   return {
     type: LOG_OUT
+  };
+}
+
+// File Actions
+export const addFile = (file, path, collectionId) => {
+  return {
+    type: ADD_FILE,
+    file,
+    path,
+    collectionId
   };
 }

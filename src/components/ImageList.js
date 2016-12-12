@@ -1,12 +1,14 @@
 import React from 'react';
 
 const ImageList = ({content}) => {
+  if (!content) {
+    return null;
+  }
   const folderItems = content.map((content) => {
     return(
-      <div className="ImageList__Item" key={content.name}><img src={(content.src ? content.src : content.link)} alt={content.name} /></div>
+      <div className="ImageList__Item" key={content.id}><img src={content.url} alt={content.name} /></div>
     )
   });
-
   return (
     <ul className="ImageList">
       {folderItems}

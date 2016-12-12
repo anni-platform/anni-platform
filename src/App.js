@@ -4,8 +4,14 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers';
 import './stylus/components/Navigation';
-const store = createStore(reducer);
 
+
+
+import { saveState, loadState } from './utils/localStorage';
+const store = createStore(reducer, loadState());
+store.subscribe(() => {
+  saveState(store.getState());
+});
 
 class App extends Component {
   render() {

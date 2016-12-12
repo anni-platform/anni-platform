@@ -7,15 +7,17 @@ import { addAuthToken, logout } from '../actions';
 
 class Navigation extends Component {
   componentDidMount() {
-    const { dispatch } = this.props;
-    login().then(token => {
-      if (!token) {
-        this.props.router.push("/");
-        return;
-      }
-      dispatch(addAuthToken(token));
-      this.props.router.push("/dashboard");
-    }, (err) => console.log(err) );
+    const { dispatch, isAuthenticated } = this.props;
+    if (!isAuthenticated) {
+      login().then(token => {
+        if (!token) {
+          this.props.router.push("/");
+          return;
+        }
+        dispatch(addAuthToken(token));
+      }, (err) => console.log(err) );
+    }
+
   }
   logout() {
     logoutSession();
@@ -30,7 +32,7 @@ class Navigation extends Component {
     );
     const loggedInNav = (
       <nav>
-        <Link to="/">Dashboard</Link>
+        <Link to="/dashboard">Dashboard</Link>
         <button className="buttonLink" onClick={this.logout.bind(this)}>Logout</button>
       </nav>
     )

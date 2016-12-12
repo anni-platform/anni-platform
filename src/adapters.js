@@ -55,6 +55,10 @@ export function createFolder(path) {
   return client.filesCreateFolder({ path });
 }
 
+export function removeFolder(path) {
+  return client.filesDelete({ path });
+}
+
 export function getAuthUrl() {
   var dbx = new Dropbox({ clientId: env.CLIENT_ID });
   return dbx.getAuthenticationUrl(`${window.location.origin}/auth`);

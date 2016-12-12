@@ -1,3 +1,31 @@
+export function getProjectByName(_name, projects) {
+  if (!projects) {
+    return;
+  }
+  const _projects = Object.keys(projects).map(k => projects[k]).slice();
+  return _projects.find(({ name }) => name === _name);
+}
+
+export const makeCancelable = (promise) => {
+  let hasCanceled_ = false;
+
+  const wrappedPromise = new Promise((resolve, reject) => {
+    promise.then((val) =>
+      hasCanceled_ ? reject({isCanceled: true}) : resolve(val)
+    );
+    promise.catch((error) =>
+      hasCanceled_ ? reject({isCanceled: true}) : reject(error)
+    );
+  });
+
+  return {
+    promise: wrappedPromise,
+    cancel() {
+      hasCanceled_ = true;
+    },
+  };
+};
+
 export function parseQueryString(str) {
       var ret = Object.create(null);
 
