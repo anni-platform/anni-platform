@@ -3,7 +3,7 @@ import Navigation from './components/Navigation';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers';
-import './stylus/components/Navigation';
+import 'styles/components/Navigation';
 
 
 

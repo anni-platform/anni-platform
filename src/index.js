@@ -1,12 +1,14 @@
 import React from 'react';
-import Projects from './components/ProjectList';
-import Project from './components/Project';
-import Landing from './components/Landing';
-import Auth from './components/Auth';
-import 'normalize.css';
-import './stylus/Main';
 import { render } from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
+import Projects from 'components/ProjectList';
+import Project from 'components/Project';
+import Landing from 'components/Landing';
+import Patterns from 'routes/patterns';
+import Auth from 'components/Auth';
+import 'normalize.css';
+import 'styles/Main';
+
 const NoMatch = null;
 
 let App;
@@ -27,6 +29,7 @@ render((
       <Route path="/auth" component={Auth} />
       <Route path="/edit/projects/:action" component={Project} />
       <Route path="/project/:id" component={Project}/>
+      <Route path="/patterns" component={Patterns}/>
       <Route path="*" component={NoMatch}/>
     </Route>
   </Router>

@@ -24,13 +24,11 @@ import Navigation from './components/Navigation';
 import { createStore, compose } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers';
-import './stylus/components/Navigation';
+import './styles/components/Navigation';
 
 const enhancer = compose(
   DevTools.instrument()
 )
-
-
 
 import { saveState, loadState } from './utils/localStorage';
 const store = createStore(reducer, loadState(), enhancer);

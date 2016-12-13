@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
-import '../stylus/components/FileDrop.styl';
+import '../styles/components/FileDrop.styl';
 import FileManager from '../containers/FileManager';
 
 class FileDrop extends Component {

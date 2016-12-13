@@ -33,6 +33,7 @@ class Navigation extends Component {
     const loggedInNav = (
       <nav>
         <Link to="/dashboard">Dashboard</Link>
+        <Link to="/patterns">Patterns</Link>
         <button className="buttonLink" onClick={this.logout.bind(this)}>Logout</button>
       </nav>
     )

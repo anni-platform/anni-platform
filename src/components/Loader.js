@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../stylus/modules/loader';
+import '../styles/modules/loader';
 export default class extends Component {
   render() {
     if (!this.props.show) {
