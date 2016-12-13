@@ -11,7 +11,7 @@ export default function AuthManager(Component) {
     }
     render() {
       const validateAuthentication = this.validateAuthentication.bind(this);
-      return <Component {...this.props} {...{validateAughentication}} />;
+      return <Component {...this.props} {...{validateAuthentication}} />;
     }
   }
   return connect(({ auth }) => auth)(withRouter(Manager));
