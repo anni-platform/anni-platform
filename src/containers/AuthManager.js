@@ -10,8 +10,8 @@ export default function AuthManager(Component) {
       }
     }
     render() {
-      const isAuthenticated = this.isAuthenticated.bind(this);
-      return <Component {...this.props} {...{isAuthenticated}} />;
+      const validateAuthentication = this.validateAuthentication.bind(this);
+      return <Component {...this.props} {...{validateAughentication}} />;
     }
   }
   return connect(({ auth }) => auth)(withRouter(Manager));
