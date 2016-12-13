@@ -4,7 +4,7 @@ import Project from './components/Project';
 import Landing from './components/Landing';
 import Auth from './components/Auth';
 import 'normalize.css';
-import './stylus/Main.styl';
+import './stylus/Main';
 import { render } from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 const NoMatch = null;

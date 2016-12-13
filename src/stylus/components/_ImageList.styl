@@ -1,18 +1,13 @@
 .ImageList
-  margin 0
+  column-count 3
+  column-gap 0
   padding 0
 
-  +above(md)
-    display flex
-    flex-wrap wrap
-
 .ImageListItem
-  flex 0 0 (100 / 3)%
+  break-inside avoid
   position relative
-  height 56%
-  overflow hidden
+  padding $smPadding*.5 $smPadding
 
   & > img
     max-width 100%
     height auto
-    margin sdf
