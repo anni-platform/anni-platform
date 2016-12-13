@@ -14,22 +14,20 @@ $copper   = #d29069
 
 
 // Fonts
-$display-font  = 'Playfair Display', sans-serif
-$headline-font = 'Reglo-Bold', serif
-$body-font     = 'Roboto Mono', sans-serif
+$displayFont  = 'Playfair Display', sans-serif
+$headlineFont = 'Reglo-Bold', serif
+$bodyFont     = 'Roboto Mono', sans-serif
 
 
 // Margin & Padding
-$global-padding = 80px
+$smPadding = 5px
+$mdPadding = 15px
+$lgPadding = 30px
 
-$sm-padding = 5px
-$md-padding = 15px
-$lg-padding = 30px
-
+// Min-Width Media Query
 
 md = 1000px
 
-// Min-Width Media Query
 above(width)
   @media screen and (min-width: width)
     {block}
@@ -43,7 +41,7 @@ html, body, #root, #root > div
   height 100%
 
 #root
-  padding $md-padding
+  padding $mdPadding
 
 /*  Imports
  * -------------------------------------------------------- */
@@ -52,9 +50,5 @@ html, body, #root, #root > div
 @import '_Base'
 
 // Components
-@import '_Dashboard'
-@import '_ProjectDetail'
-@import '_ProjectList'
-@import '_ImageList'
-
+@import 'components/*'
 @import 'shared/*'

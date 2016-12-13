@@ -1,15 +1,18 @@
 .ImageList
   margin 0
   padding 0
+
   +above(md)
     display flex
     flex-wrap wrap
 
-.ImageList__Item
+.ImageListItem
   flex 0 0 (100 / 3)%
   position relative
-  padding $md-padding
+  height 56%
+  overflow hidden
 
   & > img
     max-width 100%
     height auto
+    margin sdf

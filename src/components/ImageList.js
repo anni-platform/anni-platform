@@ -6,7 +6,7 @@ const ImageList = ({content}) => {
   }
   const folderItems = content.map((content) => {
     return(
-      <div className="ImageList__Item" key={content.id}><img src={content.url} alt={content.name} /></div>
+      <div className="ImageListItem" key={content.id}><img src={content.url} alt={content.name} /></div>
     )
   });
   return (
