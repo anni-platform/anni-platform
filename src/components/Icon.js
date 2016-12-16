@@ -5,7 +5,7 @@ const Icon = (props) => {
   const {name, size} = props;
   let pathArray;
 
-  // Extract svg paths per icon into an array and provide  a unique name
+  // Extract svg paths per icon into an array and provide a unique name
   switch (name) {
     case 'logo':
       pathArray = [

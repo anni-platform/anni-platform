@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getFilesInFolder } from '../adapters';
+import { getFilesInFolder } from 'adapters';
+import constants from 'constants';
+import { updateProject } from 'actions';
+import { makeCancelable } from 'utils';
+import FileUploader from 'components/FileUploader';
+import Loader from 'components/Loader';
 import ImageList from './ImageList'
-import FileUploader from './FileUploader';
-import Loader from './Loader';
-import { updateProject } from '../actions';
-import { makeCancelable } from '../utils';
-import constants from '../constants';
+
+
 const { MOODBOARD } = constants.content;
 
 class MoodboardViewer extends Component {

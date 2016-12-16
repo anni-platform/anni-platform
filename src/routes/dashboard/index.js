@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import constants from '../constants';
-import Loader from './Loader';
-import ProjectManager from '../containers/ProjectManager';
+import constants from 'constants';
+import Loader from 'components/Loader';
+import ProjectManager from 'containers/ProjectManager';
 
 class ProjectList extends Component {
   componentWillReceiveProps() {
@@ -15,6 +15,7 @@ class ProjectList extends Component {
     const { projects, auth } = this.props;
     const loading = !auth.isAuthenticated;
     const newProjectLink = <Link to={`/edit/projects/${constants.project.newProject}`}>Create a Project</Link>;
+
     const projectItems = Object.keys(projects).map(id => {
       const project = projects[id];
       return(

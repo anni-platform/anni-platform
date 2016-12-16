@@ -1,13 +1,15 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
-import Projects from 'components/ProjectList';
-import Project from 'components/Project';
-import Landing from 'components/Landing';
+import Auth from 'routes/auth';
+import Dashboard from 'routes/dashboard';
+import Project from 'routes/project';
+import Login from 'routes/login';
 import Patterns from 'routes/patterns';
-import Auth from 'components/Auth';
+
 import 'normalize.css';
 import 'styles/Main';
+
 
 const NoMatch = null;
 
@@ -24,8 +26,8 @@ if (process.env.NODE_ENV) {
 render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
-      <IndexRoute component={Landing} />
-      <Route path="/dashboard" component={Projects} />
+      <IndexRoute component={Login} />
+      <Route path="/dashboard" component={Dashboard} />
       <Route path="/auth" component={Auth} />
       <Route path="/edit/projects/:action" component={Project} />
       <Route path="/project/:id" component={Project}/>

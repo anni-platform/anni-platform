@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import constants from '../constants';
-import { createFolder } from '../adapters';
 import { withRouter } from 'react-router';
-import ProjectManager from '../containers/ProjectManager';
-import { addProject, removeProject } from '../actions';
-import MoodboardViewer from '../components/MoodboardViewer';
-import { removeFolder } from '../adapters';
+import constants from 'constants';
+import { createFolder, removeFolder } from 'adapters';
+import ProjectManager from 'containers/ProjectManager';
+import { addProject, removeProject } from 'actions';
+import MoodboardViewer from './components/Moodboard';
+
 
 class ProjectForm extends Component {
   constructor() {
