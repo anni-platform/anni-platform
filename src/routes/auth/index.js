@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { getAccessTokenFromUrl, storeSessionToken } from '../adapters';
-import { addAuthToken } from '../actions';
+import { getAccessTokenFromUrl, storeSessionToken } from 'adapters';
+import { addAuthToken } from 'actions';
 
 class Auth extends Component {
   componentDidMount() {

@@ -1,13 +1,11 @@
 import React from 'react';
-import Icon from './components/Icon'
-import ProjectList from './components/ProjectList'
+import Icon from 'components/Icon'
 
 const Patterns = () => {
   return (
     <div className="Patterns">
       <div className='projectList'>
         <h3>Project List</h3>
-        <ProjectList />
       </div>
       <div>
         <h3>Icons</h3>
