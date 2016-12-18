@@ -1,5 +1,4 @@
 import React, {PropTypes} from 'react';
-import 'styles/components/Icon'
 
 const Icon = (props) => {
   const {name, size} = props;
