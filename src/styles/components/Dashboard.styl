@@ -1,2 +1,35 @@
-.Dashboard
-  //
+.dashboard
+  align-items center
+  display flex
+  height 100%
+  justify-content center
+
+.projectList
+  @extend h1
+  display flex
+  flex-direction column
+  flex-grow 0
+  list-style none
+  position relative
+
+  li > a
+    display inline-block
+    padding $smPadding 0
+    position relative
+
+    &:link, &:visited
+      text-decoration none
+
+    &:after
+      background $copper
+      bottom 5px
+      content ''
+      height 4px
+      left 0
+      position absolute
+      transition all 800ms $expo
+      width 0
+
+    &:hover
+      &:after
+        width 100%

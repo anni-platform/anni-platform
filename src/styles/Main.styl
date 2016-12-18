@@ -7,44 +7,7 @@
  */
 
 
-// Colors
-$copper   = #d29069
-$slate    = #000
-$concrete = #DDD
-
-
-// Fonts
-$headlineFont = 'Reglo-Bold', serif
-$bodyFont     = 'Work Sans', sans-serif
-
-
-// Margin & Padding
-$smPadding = 5px
-$mdPadding = 15px
-$lgPadding = 30px
-
-// Min-Width Media Query
-
-$md = 1000px
-
-above(width)
-  @media screen and (min-width: width)
-    {block}
-
-below(width)
-  @media screen and (max-width: width)
-    {block}
-
-// Equalize Height
-html, body, #root, #root > div
-  height 100%
-
-#root
-  padding $mdPadding
-
-/*  Imports
- * -------------------------------------------------------- */
-
+// Imports
 @import 'global/*'
 @import 'shared/*'
 @import 'components/*'

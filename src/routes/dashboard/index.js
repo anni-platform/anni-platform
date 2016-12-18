@@ -24,27 +24,29 @@ class ProjectList extends Component {
     });
 
     const projectsList = (
-      <ul>
+      <ul className='projectList'>
         {projectItems}
         <li>{newProjectLink}</li>
       </ul>
     );
 
     const empty = (
-      <div>
-        <strong>No Projects..</strong>
-        {newProjectLink}
+      <div className='dashboard'>
+        <div>
+          <strong>No Projects..</strong>
+          {newProjectLink}
+        </div>
       </div>
     );
 
     const renderProjects = (projectItems.length ? projectsList : empty);
-
     return (
-      <div>
-        <h1>Projects</h1>
-        {(loading ? <Loader show={loading} /> : renderProjects)}
-
-      </div>
+      <div className='dashboard'>
+        <div>
+          <h3>Projects</h3>
+          {(loading ? <Loader show={loading} /> : renderProjects)}
+        </div>
+    </div>
     );
   }
 }

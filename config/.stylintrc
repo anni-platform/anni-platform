@@ -25,7 +25,7 @@
     "none": "never",
     "noImportant": true,
     "parenSpace": false,
-    "placeholders": "always",
+    "placeholders": "never",
     "prefixVarsWithDollar": "always",
     "quotePref": false,
     "reporterOptions": {
