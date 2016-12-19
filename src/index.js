@@ -6,7 +6,6 @@ import Dashboard from 'routes/dashboard';
 import Project from 'routes/project';
 import Login from 'routes/login';
 import Patterns from 'routes/patterns';
-
 import 'normalize.css';
 import 'styles/Main';
 

@@ -4,6 +4,8 @@
  * --------------------------------------------------------
  */
 
+// Equalize Height
+
 
 html
   font-smoothing antialiased
@@ -11,9 +13,19 @@ html
 
 body
   box-sizing border-box
+  margin 0
+  padding 0
 
   *
     box-sizing inherit
+
+html, body, #root, #root > div
+  height 100%
+
+#root
+  margin 0
+  padding 0
+
 
 a
   color $slate
