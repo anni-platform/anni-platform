@@ -1,4 +1,4 @@
-import constants from '../constants';
+import constants from 'constants';
 const { ADD_AUTH_TOKEN, LOG_OUT } = constants.auth;
 
 const auth = (state = { authToken: '', isAuthenticated: false }, action) => {

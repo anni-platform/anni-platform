@@ -16,6 +16,7 @@ class ProjectForm extends Component {
     }
     this.submit = this.submit.bind(this);
   }
+
   submit(e) {
     e.preventDefault();
     const { name } = this.state;

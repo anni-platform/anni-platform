@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addProject, removeProject } from '../actions';
-import { getFolder } from '../adapters';
+import { addProject, removeProject } from 'actions';
+import { getFolder } from 'adapters';
 import filter from 'lodash.filter';
 
 export default function ProjectManager(Component) {

@@ -1,4 +1,4 @@
-import constants from '../constants';
+import constants from 'constants';
 const { ADD_PROJECT, REMOVE_PROJECT, UPDATE_PROJECT } = constants.project;
 const { LOG_OUT } = constants.auth;
 
