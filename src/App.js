@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Navigation from './components/Navigation';
+import Navigation from 'components/Navigation';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from './reducers';
+import reducer from 'reducers';
 
 
-import { saveState, loadState } from './utils/localStorage';
+import { saveState, loadState } from 'utils/localStorage';
 const store = createStore(reducer, loadState());
 store.subscribe(() => {
   saveState(store.getState());

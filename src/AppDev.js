@@ -15,16 +15,15 @@ const DevTools = createDevTools(
   // Note: DockMonitor is visible by default.
   <DockMonitor toggleVisibilityKey='ctrl-h'
                changePositionKey='ctrl-q'
-               defaultIsVisible={true}>
+               defaultIsVisible={false}>
     <LogMonitor theme='tomorrow' />
   </DockMonitor>
 );
 
-import Navigation from './components/Navigation';
+import Navigation from 'components/Navigation';
 import { createStore, compose } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from './reducers';
-import './styles/components/Navigation';
+import reducer from 'reducers';
 
 const enhancer = compose(
   DevTools.instrument()
