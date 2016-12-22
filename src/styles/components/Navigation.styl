@@ -1,2 +1,61 @@
-.Navigation
+.navigation
+  align-items center
   border-bottom 1px solid $concrete
+  display flex
+  justify-content flex-end
+  padding 16px $lgPadding
+  position relative
+
+  :first-child
+    flex-grow 2
+
+  a.icon
+    margin 0 $mdPadding*1.4 0 $mdPadding*.75
+    transition all 400ms $expo
+
+    &:hover
+      fill $copper
+      transform: scale(1.1)
+
+  a.link
+    display inline-block
+    font-family $headlineFont
+    margin 0 $mdPadding
+    padding $smPadding*1.5 0
+    position relative
+    text-transform uppercase
+
+    &:link, &:visited
+      text-decoration none
+
+    &:after
+      background $copper
+      bottom 7px
+      content ''
+      height 3px
+      left 0
+      position absolute
+      transition all 800ms $expo
+      width 0
+
+    &:hover
+      &:after
+        width 100%
+
+  a.selected
+    &:after
+      background $copper
+      bottom 7px
+      content ''
+      height 3px
+      left 0
+      position absolute
+      transition all 800ms $expo
+      width 100%
+
+  .profile
+    @extend button.circle
+    background $copper
+    color $paper
+    font-size 18px
+    font-weight 800

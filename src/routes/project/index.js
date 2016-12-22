@@ -16,6 +16,7 @@ class ProjectForm extends Component {
     }
     this.submit = this.submit.bind(this);
   }
+
   submit(e) {
     e.preventDefault();
     const { name } = this.state;
@@ -61,7 +62,9 @@ class ProjectDetail extends Component {
       <div className='ProjectDetail'>
         <MoodboardViewer projectPath={id} project={project} />
         <div>
-          <button onClick={() => {
+          <button
+            className='secondary'
+            onClick={() => {
             removeFolder(project.path_display).then(() => {
               this.props.dispatch(removeProject(project.id, id));
               this.props.refreshProjects();

@@ -1,4 +1,4 @@
-import constants from '../constants';
+import constants from 'constants';
 const { ADD_FILE } = constants.file;
 const { REMOVE_PROJECT } = constants.project;
 

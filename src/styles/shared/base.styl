@@ -4,6 +4,8 @@
  * --------------------------------------------------------
  */
 
+// Equalize Height
+
 
 html
   font-smoothing antialiased
@@ -11,9 +13,19 @@ html
 
 body
   box-sizing border-box
+  margin 0
+  padding 0
 
   *
     box-sizing inherit
+
+html, body, #root, #root > div
+  height 100%
+
+#root
+  margin 0
+  padding 0
+
 
 a
   color $slate
@@ -31,8 +43,11 @@ h1, h2, h3, h4, h5
 
 h1
   color $slate
-  font-size 42px
+  font-size 32px
   letter-spacing 5px
+
+  +above($phone)
+    font-size 42px
 
 h2
   color $copper
@@ -47,7 +62,45 @@ p, ol, ul
   font-size 1rem
   font-weight 400
 
-img
+button
+  background $copper
+  border 0
+  border-radius 100px
+  color $paper
+  cursor pointer
+  transition all 600ms $expo
+
+  &:hover
+    transform: scale(1.05)
+
+button.circle
+  background none
+  border 3px solid $copper
+  height 40px
+  position relative
+  width 40px
+
+  a
+    color $slate
+    font-family $bodyFont
+    font-size 28px
+    font-weight 400
+    left 25%
+    position absolute
+    text-align center
+    top 0
+
+button.secondary
+  appearance none
+  background none
+  border 3px solid $copper
+  border-radius 48px
+  color $slate
+  font-family $headlineFont
+  font-size 16px
+  letter-spacing 1px
+  padding 16px 32px 12px
+  text-transform uppercase
 
 ol
 

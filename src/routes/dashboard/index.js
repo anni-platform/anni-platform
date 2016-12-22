@@ -14,7 +14,7 @@ class ProjectList extends Component {
   render() {
     const { projects, auth } = this.props;
     const loading = !auth.isAuthenticated;
-    const newProjectLink = <Link to={`/edit/projects/${constants.project.newProject}`}>Create a Project</Link>;
+    const newProjectLink = <button className='circle'><Link to={`/edit/projects/${constants.project.newProject}`}>&#43;</Link></button>
 
     const projectItems = Object.keys(projects).map(id => {
       const project = projects[id];

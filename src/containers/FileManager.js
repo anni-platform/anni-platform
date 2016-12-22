@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { uploadFile, getLink } from '../adapters';
-import { addFile } from '../actions';
+import { uploadFile, getLink } from 'adapters';
+import { addFile } from 'actions';
 import AuthManager from './AuthManager';
 // import filter from 'lodash.filter';
 

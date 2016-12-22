@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router';
 import { getAuthUrl } from 'adapters';
 import { login, logoutSession } from 'adapters';
 import { addAuthToken, logout } from 'actions';
+import Icon from 'components/Icon'
 
 class Navigation extends Component {
   componentDidMount() {
@@ -30,9 +31,12 @@ class Navigation extends Component {
       </div>
     );
     const loggedInNav = (
-      <nav>
-        <Link to="/dashboard">Dashboard</Link>
-        <button className="buttonLink" onClick={this.logout.bind(this)}>Logout</button>
+      <nav className='navigation'>
+        <Link to="/dashboard"><Icon name='logo' width='50' height='50' className='svgOutline'/></Link>
+        <Link to="/dashboard" className='link'>Projects</Link>
+        <Link to="/activity" className='link'>Activity</Link>
+        <Link to="/dashboard" className='icon'><Icon name='notification' width='32' height='32' className='svgFill'/></Link>
+        <button className="profile" onClick={this.logout.bind(this)}>IC</button>
       </nav>
     )
     return (

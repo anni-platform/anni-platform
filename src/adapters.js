@@ -1,6 +1,6 @@
 import Dropbox from 'dropbox';
 import env from '../.env.json';
-import { parseQueryString } from './utils';
+import { parseQueryString } from 'utils';
 
 let client = null;
 
