@@ -32,7 +32,7 @@ class Navigation extends Component {
     );
     const loggedInNav = (
       <nav className='navigation'>
-        <Link to="/dashboard"><Icon name='logo' width='60' height='60' className='svgOutline'/></Link>
+        <Link to="/dashboard"><Icon name='logo' width='50' height='50' className='svgOutline'/></Link>
         <Link to="/dashboard" className='link'>Projects</Link>
         <Link to="/activity" className='link'>Activity</Link>
         <Link to="/dashboard" className='icon'><Icon name='notification' width='32' height='32' className='svgFill'/></Link>

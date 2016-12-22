@@ -10,7 +10,12 @@
     flex-grow 2
 
   a.icon
-    margin 0 $mdPadding
+    margin 0 $mdPadding*1.4 0 $mdPadding*.75
+    transition all 400ms $expo
+
+    &:hover
+      fill $copper
+      transform: scale(1.1)
 
   a.link
     display inline-block
@@ -25,9 +30,9 @@
 
     &:after
       background $copper
-      bottom 5px
+      bottom 7px
       content ''
-      height 4px
+      height 3px
       left 0
       position absolute
       transition all 800ms $expo
@@ -37,12 +42,20 @@
       &:after
         width 100%
 
+  a.selected
+    &:after
+      background $copper
+      bottom 7px
+      content ''
+      height 3px
+      left 0
+      position absolute
+      transition all 800ms $expo
+      width 100%
+
   .profile
-    border-radius 100px
+    @extend button.circle
+    background $copper
     color $paper
-    font-family $bodyFont
     font-size 18px
     font-weight 800
-    height 40px
-    text-align center
-    width 40px
