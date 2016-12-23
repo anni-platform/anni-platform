@@ -4,7 +4,9 @@ import constants from 'constants';
 import { createFolder, removeFolder } from 'adapters';
 import ProjectManager from 'containers/ProjectManager';
 import { addProject, removeProject } from 'actions';
-import MoodboardViewer from './components/Moodboard';
+import Headline from './components/Headline'
+import Script from './components/Script'
+import Moodboard from './components/Moodboard';
 
 
 class ProjectForm extends Component {
@@ -60,7 +62,9 @@ class ProjectDetail extends Component {
     const project = this.props.getProjectByName(id);
     return (
       <div className='ProjectDetail'>
-        <MoodboardViewer projectPath={id} project={project} />
+        <Headline name={project.name} />
+        <Script />
+        <Moodboard projectPath={id} project={project} />
         <div>
           <button
             className='secondary'

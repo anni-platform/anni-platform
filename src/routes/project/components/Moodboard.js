@@ -49,7 +49,7 @@ class MoodboardViewer extends Component {
     const images = this.props.files.collections[`${this.props.projectPath}_${MOODBOARD}`];
     return (
       <div>
-        <h1>{this.props.projectPath} Moodboard</h1>
+        <h1>Moodboard</h1>
         <FileUploader
           path={this.props.projectPath}
           collection="moodboard"

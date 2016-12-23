@@ -3,15 +3,21 @@
   border-bottom 1px solid $concrete
   display flex
   justify-content flex-end
-  padding 16px $lgPadding
+  padding $smPadding $mdPadding
   position relative
+
+  +above($phone)
+    padding $mdPadding $lgPadding
 
   :first-child
     flex-grow 2
 
   a.icon
-    margin 0 $mdPadding*1.4 0 $mdPadding*.75
+    margin 0 $mdPadding*.7 0 $mdPadding*.35
     transition all 400ms $expo
+
+    +above($phone)
+      margin 0 $mdPadding*1.4 0 $mdPadding*.75
 
     &:hover
       fill $copper
@@ -21,10 +27,14 @@
     display inline-block
     font-family $headlineFont
     letter-spacing 1px
-    margin 0 $mdPadding
-    padding $smPadding*1.5 0
+    margin 0 $mdPadding*.5
+    padding $smPadding 0
     position relative
     text-transform uppercase
+
+    +above($phone)
+      margin 0 $mdPadding
+      padding $smPadding*1.5 0
 
     &:link, &:visited
       text-decoration none

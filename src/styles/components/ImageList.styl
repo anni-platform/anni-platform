@@ -1,12 +1,15 @@
 .ImageList
-  column-count 3
+  column-count 2
   column-gap 0
   padding 0
 
+  +above($phone)
+    column-count 3
+
 .ImageListItem
   break-inside avoid
-  position relative
   padding $smPadding*.5 $smPadding
+  position relative
 
   & > img
     height auto
