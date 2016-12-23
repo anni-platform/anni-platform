@@ -69,25 +69,27 @@ button
   color $paper
   cursor pointer
   transition all 600ms $expo
+  transform: translateZ(0) scale(1)
 
   &:hover
     transform: scale(1.05)
 
 button.circle
   background none
-  border 3px solid $copper
-  height 40px
+  border 2px solid $copper
+  height 32px
   position relative
-  width 40px
+  width 32px
 
   a
     color $slate
     font-family $bodyFont
-    font-size 28px
+    font-size 24px
     font-weight 400
-    left 25%
+    left 7px
     position absolute
     text-align center
+    transform: translateZ(0)
     top 0
 
 button.secondary
