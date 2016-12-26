@@ -6,6 +6,10 @@ export function getProjectByName(_name, projects) {
   return _projects.find(({ name }) => name === _name);
 }
 
+export function getCollectionKey(action) {
+  return `${action.path}_${action.collectionId}`;
+}
+
 export const makeCancelable = (promise) => {
   let hasCanceled_ = false;
 

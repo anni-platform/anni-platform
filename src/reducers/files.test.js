@@ -1,4 +1,5 @@
-import reducer, { initialState, getCollectionKey } from './files';
+import reducer, { initialState } from './files';
+import { getCollectionKey } from 'utils';
 import constants from 'constants';
 const { ADD_FILE, ADD_FILE_TO_COLLECTION } = constants.file;
 
@@ -52,7 +53,7 @@ describe('files reducer', () => {
       }));
   });
 
-  it('should add a file to a collection', () => {
+  it('should add a unique file to a collection', () => {
     const fileKey = 'a';
     const state = Object.assign({}, initialState, {
       archive: {
@@ -64,18 +65,24 @@ describe('files reducer', () => {
     let path = 'project';
     let collectionId = 'moodboard';
     let collectionKey = getCollectionKey({path, collectionId});
-    expect(
-      reducer(state,
-      {
-        type: ADD_FILE_TO_COLLECTION,
-        id: fileKey,
-        path,
-        collectionId
-      }
-    )).toEqual(Object.assign({}, state, {
+    let afterFirstFile;
+    const addFileAction = {
+      type: ADD_FILE_TO_COLLECTION,
+      id: fileKey,
+      path,
+      collectionId
+    };
+    const expected = Object.assign({}, state, {
       collections: {
         [collectionKey] : [{ id: fileKey }]
       }
-    }))
+    });
+    expect(
+      afterFirstFile = reducer(state, addFileAction)
+    ).toEqual(expected);
+    // Try adding file again and expect it won't be added a second time
+    expect(
+      reducer(afterFirstFile, addFileAction)
+    ).toEqual(expected);
   });
 });
