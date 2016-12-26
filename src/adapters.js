@@ -21,17 +21,17 @@ export function login() {
 }
 
 export function logoutSession() {
-  if (!sessionStorage) {
+  if (!localStorage) {
     return;
   }
-  return sessionStorage.removeItem('DROPBOX_ACCESS_TOKEN');
+  return localStorage.removeItem('DROPBOX_ACCESS_TOKEN');
 }
 
 export function getAccessTokenFromSessionStorage() {
-  if (!sessionStorage) {
+  if (!localStorage) {
     return null;
   }
-  const token = sessionStorage.getItem('DROPBOX_ACCESS_TOKEN');
+  const token = localStorage.getItem('DROPBOX_ACCESS_TOKEN');
   if (token) {
     createClient(token);
     return token;
@@ -40,10 +40,10 @@ export function getAccessTokenFromSessionStorage() {
 
 export function storeSessionToken(token) {
   createClient(token);
-  if (!sessionStorage) {
+  if (!localStorage) {
     return;
   }
-  return sessionStorage.setItem('DROPBOX_ACCESS_TOKEN', token);
+  return localStorage.setItem('DROPBOX_ACCESS_TOKEN', token);
 }
 
 export function getAccountInfo() {
