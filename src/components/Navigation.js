@@ -28,21 +28,20 @@ class Navigation extends Component {
   }
   render() {
     const login = (
-      <div>
+      <nav className="NavigationItems">
         <a href={getAuthUrl()}>Login To Dropbox</a>
-      </div>
-    );
+      </nav>);
     const loggedInNav = (
-      <nav className='navigation'>
-        <Link to="/dashboard"><Icon name='logo' width='50' height='50' className='svgOutline'/></Link>
+      <nav className="NavigationItems">
         <Link to="/dashboard" className='link'>Projects</Link>
         <Link to="/activity" className='link'>Activity</Link>
         <Link to="/dashboard" className='icon'><Icon name='notification' width='32' height='32' className='svgFill'/></Link>
         <button className="profile" onClick={this.logout.bind(this)}>IC</button>
       </nav>
-    )
+    );
     return (
       <div className="Navigation">
+        <Link to="/"><Icon name='logo' width='50' height='50' className='svgOutline' /></Link>
         {(this.props.auth.isAuthenticated ? loggedInNav : login)}
       </div>
     );

@@ -1,16 +1,14 @@
-.navigation
+.Navigation
   align-items center
   border-bottom 1px solid $concrete
   display flex
-  justify-content flex-end
+  justify-content space-between
   padding $smPadding $mdPadding
   position relative
 
   +above($phone)
     padding $mdPadding $lgPadding
 
-  :first-child
-    flex-grow 2
 
   a.icon
     margin 0 $mdPadding*.7 0 $mdPadding*.35
@@ -72,3 +70,7 @@
     font-weight 800
     height 40px
     width 40px
+
+.NavigationItems
+  display flex
+  align-items center
