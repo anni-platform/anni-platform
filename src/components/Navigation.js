@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router';
-import { getAuthUrl } from 'adapters';
-import { login, logoutSession } from 'adapters';
+import { getAuthUrl, login, logoutSession } from 'adapters';
 import { addAuthToken, logout } from 'actions';
 import Icon from 'components/Icon'
 
 class Navigation extends Component {
   componentDidMount() {
     const { dispatch, isAuthenticated } = this.props;
+    if (!window.sessionStorage) {
+      return;
+    }
     if (!isAuthenticated) {
       login().then(token => {
         if (!token) {

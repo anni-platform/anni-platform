@@ -1,0 +1,22 @@
+exports[`Navigation Component renders without crashing 1`] = `
+<div>
+  <div
+    className="Navigation">
+    <div>
+      <a
+        href="https://www.dropbox.com/oauth2/authorize?response_type=token&client_id=swbiv6r9kwfs4os&redirect_uri=null/auth">
+        Login To Dropbox
+      </a>
+    </div>
+  </div>
+  <div
+    className="Navigation">
+    <div>
+      <a
+        href="https://www.dropbox.com/oauth2/authorize?response_type=token&client_id=swbiv6r9kwfs4os&redirect_uri=null/auth">
+        Login To Dropbox
+      </a>
+    </div>
+  </div>
+</div>
+`;

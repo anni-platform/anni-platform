@@ -3,22 +3,34 @@ import env from '../.env.json';
 import { parseQueryString } from 'utils';
 
 let client = null;
+let _token = null;
 
-export function createClient(token) {
+export function createClient(token = _token) {
   client = new Dropbox({ accessToken: token });
 }
 
 export function login() {
   return new Promise((resolve, reject) => {
-    resolve(getAccessTokenFromSessionStorage());
+    const token = getAccessTokenFromSessionStorage();
+    if (token) {
+      resolve(token);
+    } else {
+      reject();
+    }
   }).catch(e => console.log(e));
 }
 
 export function logoutSession() {
+  if (!sessionStorage) {
+    return;
+  }
   return sessionStorage.removeItem('DROPBOX_ACCESS_TOKEN');
 }
 
 export function getAccessTokenFromSessionStorage() {
+  if (!sessionStorage) {
+    return null;
+  }
   const token = sessionStorage.getItem('DROPBOX_ACCESS_TOKEN');
   if (token) {
     createClient(token);
@@ -26,8 +38,11 @@ export function getAccessTokenFromSessionStorage() {
   }
 }
 
-export function storeSessionToken(token ) {
+export function storeSessionToken(token) {
   createClient(token);
+  if (!sessionStorage) {
+    return;
+  }
   return sessionStorage.setItem('DROPBOX_ACCESS_TOKEN', token);
 }
 
