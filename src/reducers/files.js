@@ -1,35 +1,47 @@
 import constants from 'constants';
-const { ADD_FILE } = constants.file;
+const { ADD_FILE, ADD_FILE_TO_COLLECTION } = constants.file;
 const { REMOVE_PROJECT } = constants.project;
 
-const initialState = {
-  archive: [],
+export function getCollectionKey(action) {
+  return `${action.path}_${action.collectionId}`;
+}
+
+export const initialState = {
+  archive: {},
   collections: {}
 }
 
 const archive = (state = initialState.archive, action) => {
   switch (action.type) {
     case ADD_FILE:
-      return [...state, action.file];
+      // merge with an already existing file or add the new one
+      return {...state, [action.file.name]: state[action.file.name] ? Object.assign(
+        {}, state[action.file.name], action.file) : action.file};
     default:
       return state
   }
 }
 
+const collection = (state = [], action) => {
+  switch (action.type) {
+    case ADD_FILE_TO_COLLECTION:
+      return [ ...state, { id: action.id } ];
+    default:
+      return state;
+  }
+}
+
 const collections = (state = initialState.collection, action) => {
-  const { path, collectionId } = action;
-  const collectionKey = `${path}_${collectionId}`;
-  const collection = state[collectionKey] ? [...state[collectionKey], action.file] : [action.file];
+  const collectionKey = getCollectionKey(action);
   const _collections = Object.assign({}, state);
   switch (action.type) {
-    case ADD_FILE:
+    case ADD_FILE_TO_COLLECTION:
       return {
         ...state,
-        [collectionKey]: collection
-      };
+        [collectionKey]: collection(state[collectionKey], action)
+      }
     case REMOVE_PROJECT:
-      const collectionKeys = Object.keys(state);
-      collectionKeys.forEach(k => {
+      Object.keys(state).forEach(k => {
         if (k.indexOf(action.path) > -1) {
           delete _collections[k];
         }
