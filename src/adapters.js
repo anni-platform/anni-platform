@@ -1,6 +1,7 @@
 import Dropbox from 'dropbox';
 import env from '../.env.json';
 import { parseQueryString } from 'utils';
+import { homepage } from '../package.json';
 
 let client = null;
 let _token = null;
@@ -81,7 +82,11 @@ export function removeFolder(path) {
 
 export function getAuthUrl() {
   var dbx = new Dropbox({ clientId: env.CLIENT_ID });
-  return dbx.getAuthenticationUrl(`${window.location.origin}/auth`);
+  let authUrl = `${window.location.origin}/auth`;
+  if (process.env.NODE_ENV === 'production') {
+    authUrl = `${homepage}/auth`;
+  }
+  return dbx.getAuthenticationUrl(authUrl);
 }
 
 export function createProjectScaffold(path) {

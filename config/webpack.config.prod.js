@@ -1,4 +1,5 @@
 var path = require('path');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 var poststylus = require('poststylus');
 var webpack = require('webpack');
@@ -240,6 +241,9 @@ module.exports = {
       }
     }),
     // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
-    new ExtractTextPlugin('static/css/[name].[contenthash:8].css')
+    new ExtractTextPlugin('static/css/[name].[contenthash:8].css'),
+    new CopyWebpackPlugin([
+            { from: paths.errorHtml, to: paths.appBuild },
+          ])
   ]
 };

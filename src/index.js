@@ -13,7 +13,7 @@ import 'styles/Main';
 const NoMatch = null;
 
 let App;
-if (process.env.NODE_ENV) {
+if (process.env.NODE_ENV === 'development') {
   App = require('./AppDev').default;
 } else {
   App = require('./App').default;

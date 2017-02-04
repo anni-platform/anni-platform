@@ -24,6 +24,8 @@ function resolveApp(relativePath) {
 module.exports = {
   appBuild: resolveApp('build'),
   appHtml: resolveApp('index.html'),
+  errorHtml: resolveApp('404.html'),
+  appHtaccess: resolveApp('.htaccess'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
   testsSetup: resolveApp('src/setupTests.js'),
