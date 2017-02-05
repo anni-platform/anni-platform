@@ -31,7 +31,7 @@ class ProjectForm extends Component {
       .then(project => {
         const { path_display } = project;
         this.props.dispatch(addProject(project));
-        this.props.router.push(`/project${path_display}`);
+        this.props.router.push(`project${path_display}`);
       })
       .catch(err => console.log(err));
   }
@@ -58,7 +58,7 @@ class ProjectDetail extends Component {
     const { id } = this.props.params;
     const project = this.props.getProjectByName(id);
     if (!project) {
-        this.props.router.push("/dashboard");
+        this.props.router.push("dashboard");
     }
   }
   render() {

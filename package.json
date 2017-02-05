@@ -1,6 +1,6 @@
 {
   "name": "AnniBeta",
-  "homepage": "https://hudakdidit.github.io/anni-platform",
+  "homepage": "https://shiftsave.github.io/anni-platform",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
@@ -66,6 +66,7 @@
   },
   "dependencies": {
     "dropbox": "^2.1.0",
+    "history": "^4.5.1",
     "normalize.css": "^5.0.0",
     "react": "^15.3.1",
     "react-dnd": "^2.1.4",
