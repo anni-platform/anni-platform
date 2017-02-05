@@ -9,7 +9,7 @@ class Auth extends Component {
     const token = getAccessTokenFromUrl();
     storeSessionToken(token);
     this.props.dispatch(addAuthToken(token));
-    this.props.router.push('dashboard');
+    this.props.router.push('/dashboard');
   }
   render() {
     return (

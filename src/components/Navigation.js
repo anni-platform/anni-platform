@@ -14,7 +14,7 @@ class Navigation extends Component {
     if (!isAuthenticated) {
       login().then(token => {
         if (!token) {
-          this.props.router.push("");
+          this.props.router.push("/");
           return;
         }
         dispatch(addAuthToken(token));
@@ -24,7 +24,7 @@ class Navigation extends Component {
   logout() {
     logoutSession();
     this.props.dispatch(logout());
-    this.props.router.push("");
+    this.props.router.push("/");
   }
   render() {
     const login = (
