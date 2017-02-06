@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, IndexRoute } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import Auth from 'routes/auth';
 import Dashboard from 'routes/dashboard';
 import Project from 'routes/project';
@@ -8,21 +8,21 @@ import Login from 'routes/login';
 import Patterns from 'routes/patterns';
 import 'normalize.css';
 import 'styles/Main';
-import createHistory from 'history/lib/createBrowserHistory';
+import createHistory from 'history/createBrowserHistory';
 import { useRouterHistory } from 'react-router';
 
 // TODO: Add 404 component to replace this null
 const NoMatch = null;
 
 let App;
-let history = useRouterHistory(createHistory)({
-  basename: '/anni-platform'
-});
+let history = browserHistory;
 
 if (process.env.NODE_ENV === 'development') {
   App = require('./AppDev').default;
 } else {
-
+  history = useRouterHistory(createHistory)({
+    basename: '/anni-platform'
+  });
   App = require('./App').default;
 }
 
