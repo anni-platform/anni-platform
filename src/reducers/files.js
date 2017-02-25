@@ -1,73 +1,69 @@
 import constants from 'constants';
-const { ADD_FILE, ADD_FILE_TO_COLLECTION, DELETE_FILE } = constants.file;
+import Immutable, { List, Map } from 'immutable';
+const { ADD_FILE, ADD_FILE_TO_COLLECTION, DELETE_FILE, REMOVE_FILE_FROM_COLLECTION } = constants.file;
 const { REMOVE_PROJECT } = constants.project;
-// import filter from 'lodash.filter';
 
 import { getCollectionKey } from 'utils';
 
-export const initialState = {
-  archive: {},
-  collections: {}
-}
+export const initialState = Map({
+  archive: Map({}),
+  collections: Map({})
+});
 
-const archive = (state = initialState.archive, action) => {
-  let archive = Object.assign({}, state);
+const archive = (state = initialState.get("archive"), action) => {
   switch (action.type) {
     case ADD_FILE:
-      // merge with an already existing file or add the new one
-      return {...state, [action.file.name]: state[action.file.name] ? Object.assign(
-        {}, state[action.file.name], action.file) : action.file};
+      return state.update(action.file.name, (value) => value = action.file);
     case DELETE_FILE:
-      delete archive[action.name];
-      return archive;
+      return state.delete(action.name);
     default:
       return state
   }
 }
 
-const collection = (state = [], action) => {
-  const index = state.findIndex(item => item.id === action.id);
+const collection = (state = List([]), action) => {
+  const { id } = action;
+  const collectionEntry = { id };
   switch (action.type) {
     case ADD_FILE_TO_COLLECTION:
-      if (index > -1) {
+      if (state.filter(item => item.id === id).size > 0) {
         // file is a duplicate
         return state;
       }
-      return [ ...state, { id: action.id } ];
+      return state.push(collectionEntry);
+    case REMOVE_FILE_FROM_COLLECTION:
+      return state.filter(item => item.id !== action.id);
     default:
       return state;
   }
 }
 
-const collections = (state = initialState.collection, action) => {
+const collections = (state = initialState.get("collections" ), action) => {
   const collectionKey = getCollectionKey(action);
-  const _collections = Object.assign({}, state);
-  const collectionKeys = Object.keys(state);
   switch (action.type) {
     case ADD_FILE_TO_COLLECTION:
-      return {
-        ...state,
-        [collectionKey]: collection(state[collectionKey], action)
-      }
+      return state.setIn([collectionKey], collection(state.get(collectionKey), action));
+    case REMOVE_FILE_FROM_COLLECTION:
+      return state.setIn([action.collectionKey], collection(state.get(action.collectionKey), action));
     case REMOVE_PROJECT:
-      collectionKeys.forEach(k => {
-        if (k.indexOf(action.path) > -1) {
-          delete _collections[k];
-        }
+      return state.filter((v, k) => {
+        return k.indexOf(action.path) === -1;
       });
-      return _collections;
     default:
       return state
   }
 }
 
 const files = (state = initialState, action) => {
+  if (!state.isMap || !state.isMap()) {
+    state = Immutable.fromJS(state);
+  }
   switch (action.type) {
     default:
-      return {
-        archive: archive(state.archive, action),
-        collections: collections(state.collections, action)
-      }
+      return Map({
+        archive: archive(state.get("archive"), action),
+        collections: collections(state.get("collections"), action)
+      });
   }
 }
 

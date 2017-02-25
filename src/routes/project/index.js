@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import constants from 'constants';
-import { createFolder, removeFolder } from 'adapters';
+import { createFolder } from 'adapters';
 import ProjectManager from 'containers/ProjectManager';
-import { addProject, removeProject, deleteFile } from 'actions';
+import { addProject } from 'actions';
 import Headline from './components/Headline'
 import Script from './components/Script'
 import Moodboard from './components/Moodboard';
-import filter from 'lodash.filter';
 
 class ProjectForm extends Component {
   constructor() {
@@ -54,13 +53,29 @@ class ProjectForm extends Component {
 }
 
 class ProjectDetail extends Component {
+
+  constructor() {
+    super();
+    this._checkProjectStatus = this._checkProjectStatus.bind(this);
+  }
+
   componentDidMount() {
-    const { id } = this.props.params;
-    const project = this.props.getProjectByName(id);
+    this.props.refreshProjects();
+    this._checkProjectStatus();
+  }
+
+  componentWillUpdate(nextProps) {
+    // this._checkProjectStatus(nextProps);
+  }
+
+  _checkProjectStatus(props = this.props) {
+    const { id } = props.params;
+    const project = props.getProjectByName(id);
     if (!project) {
-        this.props.router.push("/dashboard");
+        props.router.push("/dashboard");
     }
   }
+
   render() {
     const { id } = this.props.params;
     const project = this.props.getProjectByName(id);
@@ -75,9 +90,8 @@ class ProjectDetail extends Component {
         <div>
           <button
             className='secondary'
-            onClick={() => {
-            removeFolder(project.path_display).then(this._removeProject.bind(this));
-          }}>Delete Project</button>
+            onClick={this._removeProject.bind(this)}>
+            Delete Project</button>
         </div>
       </div>
     );
@@ -85,17 +99,9 @@ class ProjectDetail extends Component {
 
   _removeProject() {
     const { id } = this.props.params;
-    const project = this.props.getProjectByName(id);
-    this.props.dispatch(removeProject(project.id, id));
-    const collectionKeys = Object.keys(this.props.files.collections);
-    // remove all unused files from store
-    Object.keys(this.props.files.archive).forEach(file => {
-      const fileUsed = collectionKeys.map(collection => collection.indexOf(file));
-      if (!filter(fileUsed, i => i > -1).length) {
-        this.props.dispatch(deleteFile(file));
-      }
+    this.props.removeProject(id).then(() => {
+      this.props.router.push("/dashboard");
     });
-    this.props.router.push("/dashboard");
   }
 }
 

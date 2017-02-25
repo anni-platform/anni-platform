@@ -1,5 +1,5 @@
-import { uploadFile } from 'adapters';
-import { stateToJsonFile } from 'utils/fileStorage';
+// import { uploadFile } from 'adapters';
+// import { stateToJsonFile } from 'utils/fileStorage';
 import deepEqual from 'deep-equal';
 
 // See Abramov tutorial: https://egghead.io/lessons/javascript-redux-persisting-the-state-to-the-local-storage
@@ -22,7 +22,7 @@ export const saveState = (state) => {
     const _state = localStorage.getItem(STATE);
     if (!state || !deepEqual(_state, state)) {
       localStorage.setItem(STATE, serializedState);
-      uploadFile(`db/state-${new Date().getTime()}`, stateToJsonFile(state));
+      // uploadFile(`db/state-${new Date().getTime()}`, stateToJsonFile(state));
     }
   } catch (err) {
     console.log(err);

@@ -18,6 +18,9 @@ class ProjectList extends Component {
 
     const projectItems = Object.keys(projects).map(id => {
       const project = projects[id];
+      if (project.name === "db") {
+        return null;
+      }
       return(
         <li key={`linkto${project.name}`}><Link to={`/project/${project.name}`}>{project.name}</Link></li>
       );

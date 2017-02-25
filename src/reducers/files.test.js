@@ -2,6 +2,8 @@ import reducer, { initialState } from './files';
 import { getCollectionKey } from 'utils';
 import constants from 'constants';
 const { ADD_FILE, ADD_FILE_TO_COLLECTION } = constants.file;
+const { REMOVE_PROJECT } = constants.project;
+import{ Map, List } from 'immutable';
 
 describe('files reducer', () => {
   let path = 'test';
@@ -22,10 +24,10 @@ describe('files reducer', () => {
         type: ADD_FILE,
         file,
         path
-      })).toEqual(Object.assign({}, initialState, {
-        archive: { [file.name]: file }
-      })
-    )
+      }).get("archive").toJS()).toEqual({
+        [file.name]: file
+      }
+    );
   });
 
   it('should handle ADD_FILE with preview and then update the preview file with url', () => {
@@ -33,14 +35,13 @@ describe('files reducer', () => {
       name: 'test.jpg',
       preview: 'localhost'
     };
-    let state = Object.assign({}, initialState, {
-      archive: { [preview.name]: preview }
-    });
+    let state = initialState.setIn(["archive", preview.name], preview);
+
     expect(
       reducer(initialState, {
         type: ADD_FILE,
         file: preview,
-      })).toEqual(state);
+      }).toJS()).toEqual(state.toJS());
     let savedToDropbox = {
       url: 'remotehost'
     }
@@ -48,41 +49,48 @@ describe('files reducer', () => {
       reducer(state, {
         type: ADD_FILE,
         file: Object.assign({}, preview, savedToDropbox)
-      })).toEqual(Object.assign({}, state, {
-        archive: { [preview.name]: Object.assign({}, preview, savedToDropbox) }
-      }));
+      }).getIn(["archive", preview.name])).toEqual(
+        Object.assign({}, preview, savedToDropbox));
   });
 
   it('should add a unique file to a collection', () => {
     const fileKey = 'a';
-    const state = Object.assign({}, initialState, {
-      archive: {
-        [fileKey]: {
-          url: 'remoteurl'
-        }
-      }
-    });
     let path = 'project';
     let collectionId = 'moodboard';
     let collectionKey = getCollectionKey({path, collectionId});
-    let afterFirstFile;
+    let uniqueFileState = initialState.setIn(["collections", collectionKey], List([ { id: fileKey} ]));
     const addFileAction = {
       type: ADD_FILE_TO_COLLECTION,
       id: fileKey,
       path,
       collectionId
     };
-    const expected = Object.assign({}, state, {
-      collections: {
-        [collectionKey] : [{ id: fileKey }]
-      }
-    });
     expect(
-      afterFirstFile = reducer(state, addFileAction)
-    ).toEqual(expected);
-    // Try adding file again and expect it won't be added a second time
+      reducer(uniqueFileState, addFileAction)
+      .getIn(["collections", collectionKey])
+      .filter(item => item.id === fileKey).size
+    ).toEqual(1);
+  });
+
+  it('should clean up collections when a project is deleted', () => {
+    let path = 'project';
+    let collectionId = 'bert';
+    let bert = getCollectionKey({path, collectionId});
+    collectionId = 'ernie';
+    let ernie = getCollectionKey({path, collectionId});
+    let collectionsToRemove = initialState.setIn(["collections"], Map({
+      [bert]: List(),
+      [ernie]: List()
+    }));
     expect(
-      reducer(afterFirstFile, addFileAction)
-    ).toEqual(expected);
+      reducer(collectionsToRemove, {
+        type: REMOVE_PROJECT,
+        path
+      })
+      .get("collections")
+      .filter((v, k) => {
+        return k.indexOf(path) > -1;
+      }).size
+    ).toEqual(0);
   });
 });
