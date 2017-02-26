@@ -11,11 +11,10 @@ export const addProject = (project) => {
     project
   };
 }
-export const removeProject = (id, path) => {
+export const removeProject = (id) => {
   return {
     type: REMOVE_PROJECT,
-    id,
-    path
+    id
   };
 }
 
