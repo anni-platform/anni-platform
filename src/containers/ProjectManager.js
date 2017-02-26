@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { addProject, removeProject, deleteFile, removeFileFromCollection } from 'actions';
 import { getFolder, removeFolder } from 'adapters';
 import filter from 'lodash.filter';
+import { FILE_DATABASE_DIRECTORY } from 'constants/file';
 
 export default function ProjectManager(Component) {
   class Manager extends Component {
@@ -11,7 +12,7 @@ export default function ProjectManager(Component) {
         getFolder('')
           .then(({ entries }) => {
             entries.forEach((entry, i) => {
-              if (entry.name === "db") {
+              if (entry.name === FILE_DATABASE_DIRECTORY) {
                 return;
               }
               const isNewProject = !filter(this.props.projects, (p) => p.id === entry.id).length;

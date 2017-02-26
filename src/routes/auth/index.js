@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { getAccessTokenFromUrl, storeSessionToken } from 'adapters';
+import { getAccessTokenFromUrl, storeSessionToken, getAccessTokenFromSessionStorage } from 'adapters';
 import { addAuthToken } from 'actions';
 
 class Auth extends Component {
@@ -9,6 +9,7 @@ class Auth extends Component {
     const token = getAccessTokenFromUrl();
     storeSessionToken(token);
     this.props.dispatch(addAuthToken(token));
+    getAccessTokenFromSessionStorage();
     this.props.router.push('/dashboard');
   }
   render() {

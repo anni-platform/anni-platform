@@ -2,6 +2,7 @@ import Dropbox from 'dropbox';
 import env from '../.env.json';
 import { parseQueryString } from 'utils';
 import { homepage } from '../package.json';
+const DROPBOX_ACCESS_TOKEN = 'DROPBOX_ACCESS_TOKEN';
 
 let client = null;
 let _token = null;
@@ -25,14 +26,14 @@ export function logoutSession() {
   if (!localStorage) {
     return;
   }
-  return localStorage.removeItem('DROPBOX_ACCESS_TOKEN');
+  return localStorage.removeItem(DROPBOX_ACCESS_TOKEN);
 }
 
 export function getAccessTokenFromSessionStorage() {
   if (!localStorage) {
     return null;
   }
-  const token = localStorage.getItem('DROPBOX_ACCESS_TOKEN');
+  const token = localStorage.getItem(DROPBOX_ACCESS_TOKEN);
   if (token) {
     createClient(token);
     return token;
@@ -44,7 +45,7 @@ export function storeSessionToken(token) {
   if (!localStorage) {
     return;
   }
-  return localStorage.setItem('DROPBOX_ACCESS_TOKEN', token);
+  return localStorage.setItem(DROPBOX_ACCESS_TOKEN, token);
 }
 
 export function getAccountInfo() {
@@ -61,6 +62,9 @@ export function uploadFile(path, file) {
 }
 
 export function getFolder(path) {
+  if (!getAccessTokenFromSessionStorage()) {
+    return;
+  }
   return client.filesListFolder({ path })
   .catch(e => console.log(e));
 }
@@ -98,6 +102,9 @@ export function createProjectScaffold(path) {
 }
 
 export function getFilesInFolder(path) {
+  if (!getAccessTokenFromSessionStorage()) {
+    return;
+  }
   return new Promise((resolve, reject) => {
     client.filesListFolder({ path })
       .then(response => {

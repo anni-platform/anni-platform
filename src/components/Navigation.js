@@ -7,11 +7,11 @@ import Icon from 'components/Icon'
 
 class Navigation extends Component {
   componentDidMount() {
-    const { dispatch, isAuthenticated } = this.props;
+    const { dispatch, auth } = this.props;
     if (!window.sessionStorage) {
       return;
     }
-    if (!isAuthenticated) {
+    if (!auth.toJS().isAuthenticated) {
       login().then(token => {
         if (!token) {
           this.props.router.push("/");
@@ -42,7 +42,7 @@ class Navigation extends Component {
     return (
       <div className="Navigation">
         <Link to="/"><Icon name='logo' width='50' height='50' className='svgOutline' /></Link>
-        {(this.props.auth.isAuthenticated ? loggedInNav : login)}
+        {(this.props.auth.toJS().isAuthenticated ? loggedInNav : login)}
       </div>
     );
   }

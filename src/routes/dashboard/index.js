@@ -5,7 +5,7 @@ import Loader from 'components/Loader';
 import ProjectManager from 'containers/ProjectManager';
 
 class ProjectList extends Component {
-  componentWillReceiveProps() {
+  componentDidMount() {
     if (!this.props.refreshProjects) {
       return;
     }
@@ -13,7 +13,7 @@ class ProjectList extends Component {
   }
   render() {
     const { projects, auth } = this.props;
-    const loading = !auth.isAuthenticated;
+    const loading = !auth.toJS().isAuthenticated;
     const newProjectLink = <button className='circle'><Link to={`/edit/projects/${constants.project.newProject}`}>&#43;</Link></button>
 
     const projectItems = Object.keys(projects).map(id => {
