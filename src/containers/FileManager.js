@@ -26,8 +26,8 @@ export default function FileManager(Component) {
       });
     }
     addFile(file, path, collectionId) {
-      if (Object.keys(this.props.projects).filter(k => {
-        return  this.props.projects[k].name === path;
+      if (Object.keys(this.props.projects.toJS()).filter(k => {
+        return  this.props.projects.toJS()[k].name === path;
       }).length === 0) {
         console.log('gotta delete the folder agian');
         return;

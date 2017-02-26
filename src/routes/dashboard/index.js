@@ -16,11 +16,8 @@ class ProjectList extends Component {
     const loading = !auth.toJS().isAuthenticated;
     const newProjectLink = <button className='circle'><Link to={`/edit/projects/${constants.project.newProject}`}>&#43;</Link></button>
 
-    const projectItems = Object.keys(projects).map(id => {
-      const project = projects[id];
-      if (project.name === "db") {
-        return null;
-      }
+    const projectItems = Object.keys(projects.toJS()).map(id => {
+      const project = projects.toJS()[id];
       return(
         <li key={`linkto${project.name}`}><Link to={`/project/${project.name}`}>{project.name}</Link></li>
       );

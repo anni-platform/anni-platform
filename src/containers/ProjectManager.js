@@ -15,13 +15,13 @@ export default function ProjectManager(Component) {
               if (entry.name === FILE_DATABASE_DIRECTORY) {
                 return;
               }
-              const isNewProject = !filter(this.props.projects, (p) => p.id === entry.id).length;
+              const isNewProject = !filter(this.props.projects.toJS(), (p) => p.id === entry.id).length;
               if (isNewProject) {
                 this.props.dispatch(addProject(entry));
               }
             });
             const ids = entries.map(e => e.id);
-            Object.keys(this.props.projects).forEach(id => {
+            Object.keys(this.props.projects.toJS()).forEach(id => {
               if (ids.indexOf(id) === -1) {
                 this.props.dispatch(removeProject(id));
               }
@@ -31,7 +31,7 @@ export default function ProjectManager(Component) {
       });
     }
     getProjectByName(name) {
-      const projects = Object.keys(this.props.projects).map(k => this.props.projects[k]).slice();
+      const projects = Object.keys(this.props.projects.toJS()).map(k => this.props.projects.toJS()[k]).slice();
       return projects.find(project => project.name === name);
     }
     removeProject(id) {
