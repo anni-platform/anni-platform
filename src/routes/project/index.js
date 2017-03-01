@@ -3,11 +3,11 @@ import { withRouter } from 'react-router';
 import constants from 'constants';
 import { createFolder, removeFolder } from 'adapters';
 import ProjectManager from 'containers/ProjectManager';
-import { addProject, removeProject } from 'actions';
+import { addProject, removeProject, deleteFile } from 'actions';
 import Headline from './components/Headline'
 import Script from './components/Script'
 import Moodboard from './components/Moodboard';
-
+import filter from 'lodash.filter';
 
 class ProjectForm extends Component {
   constructor() {
@@ -55,11 +55,18 @@ class ProjectForm extends Component {
 
 class ProjectDetail extends Component {
   componentDidMount() {
-    this.props.refreshProjects();
+    const { id } = this.props.params;
+    const project = this.props.getProjectByName(id);
+    if (!project) {
+        this.props.router.push("/dashboard");
+    }
   }
   render() {
     const { id } = this.props.params;
     const project = this.props.getProjectByName(id);
+    if (!project) {
+      return null;
+    }
     return (
       <div className='ProjectDetail'>
         <Headline name={project.name} />
@@ -69,15 +76,26 @@ class ProjectDetail extends Component {
           <button
             className='secondary'
             onClick={() => {
-            removeFolder(project.path_display).then(() => {
-              this.props.dispatch(removeProject(project.id, id));
-              this.props.refreshProjects();
-              this.props.router.push("/dashboard");
-            })
+            removeFolder(project.path_display).then(this._removeProject.bind(this));
           }}>Delete Project</button>
         </div>
       </div>
     );
+  }
+
+  _removeProject() {
+    const { id } = this.props.params;
+    const project = this.props.getProjectByName(id);
+    this.props.dispatch(removeProject(project.id, id));
+    const collectionKeys = Object.keys(this.props.files.collections);
+    // remove all unused files from store
+    Object.keys(this.props.files.archive).forEach(file => {
+      const fileUsed = collectionKeys.map(collection => collection.indexOf(file));
+      if (!filter(fileUsed, i => i > -1).length) {
+        this.props.dispatch(deleteFile(file));
+      }
+    });
+    this.props.router.push("/dashboard");
   }
 }
 

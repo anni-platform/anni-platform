@@ -1,22 +1,20 @@
-.navigation
+.Navigation
   align-items center
   border-bottom 1px solid $concrete
   display flex
-  justify-content flex-end
+  justify-content space-between
   padding $smPadding $mdPadding
   position relative
 
-  +above($phone)
+  +above($small)
     padding $mdPadding $lgPadding
 
-  :first-child
-    flex-grow 2
 
   a.icon
     margin 0 $mdPadding*.7 0 $mdPadding*.35
     transition all 400ms $expo
 
-    +above($phone)
+    +above($small)
       margin 0 $mdPadding*1.4 0 $mdPadding*.75
 
     &:hover
@@ -32,7 +30,7 @@
     position relative
     text-transform uppercase
 
-    +above($phone)
+    +above($small)
       margin 0 $mdPadding
       padding $smPadding*1.5 0
 
@@ -72,3 +70,7 @@
     font-weight 800
     height 40px
     width 40px
+
+.NavigationItems
+  align-items center
+  display flex

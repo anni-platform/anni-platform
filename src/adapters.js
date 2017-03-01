@@ -1,34 +1,50 @@
 import Dropbox from 'dropbox';
 import env from '../.env.json';
 import { parseQueryString } from 'utils';
+import { homepage } from '../package.json';
 
 let client = null;
+let _token = null;
 
-export function createClient(token) {
+export function createClient(token = _token) {
   client = new Dropbox({ accessToken: token });
 }
 
 export function login() {
   return new Promise((resolve, reject) => {
-    resolve(getAccessTokenFromSessionStorage());
+    const token = getAccessTokenFromSessionStorage();
+    if (token) {
+      resolve(token);
+    } else {
+      reject();
+    }
   }).catch(e => console.log(e));
 }
 
 export function logoutSession() {
-  return sessionStorage.removeItem('DROPBOX_ACCESS_TOKEN');
+  if (!localStorage) {
+    return;
+  }
+  return localStorage.removeItem('DROPBOX_ACCESS_TOKEN');
 }
 
 export function getAccessTokenFromSessionStorage() {
-  const token = sessionStorage.getItem('DROPBOX_ACCESS_TOKEN');
+  if (!localStorage) {
+    return null;
+  }
+  const token = localStorage.getItem('DROPBOX_ACCESS_TOKEN');
   if (token) {
     createClient(token);
     return token;
   }
 }
 
-export function storeSessionToken(token ) {
+export function storeSessionToken(token) {
   createClient(token);
-  return sessionStorage.setItem('DROPBOX_ACCESS_TOKEN', token);
+  if (!localStorage) {
+    return;
+  }
+  return localStorage.setItem('DROPBOX_ACCESS_TOKEN', token);
 }
 
 export function getAccountInfo() {
@@ -66,7 +82,11 @@ export function removeFolder(path) {
 
 export function getAuthUrl() {
   var dbx = new Dropbox({ clientId: env.CLIENT_ID });
-  return dbx.getAuthenticationUrl(`${window.location.origin}/auth`);
+  let authUrl = `${window.location.origin}/auth`;
+  if (process.env.NODE_ENV === 'production') {
+    authUrl = `${homepage}/auth`;
+  }
+  return dbx.getAuthenticationUrl(authUrl);
 }
 
 export function createProjectScaffold(path) {

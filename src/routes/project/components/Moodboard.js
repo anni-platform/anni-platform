@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { getFilesInFolder } from 'adapters';
 import constants from 'constants';
 import { updateProject } from 'actions';
 import { makeCancelable } from 'utils';
 import FileUploader from 'components/FileUploader';
 import Loader from 'components/Loader';
-import ImageList from './ImageList'
-
+import ImageList from './ImageList';
+import FileManager from 'containers/FileManager';
 
 const { MOODBOARD } = constants.content;
 
@@ -45,8 +44,10 @@ class MoodboardViewer extends Component {
       return null;
     }
     const { id } = project;
-    // TODO: make helper for getting collection key
-    const images = this.props.files.collections[`${this.props.projectPath}_${MOODBOARD}`];
+    const path = this.props.projectPath;
+    const collectionId = MOODBOARD;
+    const images = this.props.getCollectionFiles({ path, collectionId });
+    const list = images && images.length ? <ImageList content={images} />: null;
     return (
       <div>
         <h1>Moodboard</h1>
@@ -54,7 +55,7 @@ class MoodboardViewer extends Component {
           path={this.props.projectPath}
           collection="moodboard"
           onUpload={(images) => this.props.dispatch(updateProject({ id, images }))}>
-          <ImageList content={(!images ? null : images)} />
+          {list}
           <Loader show={!project} />
         </FileUploader>
       </div>
@@ -62,5 +63,4 @@ class MoodboardViewer extends Component {
   }
 }
 
-const Board = connect((state) => state)(MoodboardViewer);
-export default Board;
+export default FileManager(MoodboardViewer);

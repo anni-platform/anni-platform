@@ -5,8 +5,9 @@ const ImageList = ({content}) => {
     return null;
   }
   const folderItems = content.map((content) => {
+    const src = !content.url ? content.preview : content.url;
     return(
-      <div className="ImageListItem" key={content.id}><img src={content.url} alt={content.name} /></div>
+      <div className="ImageListItem" key={content.name}><img src={src} alt={content.name} /></div>
     )
   });
   return (
