@@ -6,7 +6,7 @@
   padding $smPadding $mdPadding
   position relative
 
-  +above($phone)
+  +above($small)
     padding $mdPadding $lgPadding
 
 
@@ -14,7 +14,7 @@
     margin 0 $mdPadding*.7 0 $mdPadding*.35
     transition all 400ms $expo
 
-    +above($phone)
+    +above($small)
       margin 0 $mdPadding*1.4 0 $mdPadding*.75
 
     &:hover
@@ -30,7 +30,7 @@
     position relative
     text-transform uppercase
 
-    +above($phone)
+    +above($small)
       margin 0 $mdPadding
       padding $smPadding*1.5 0
 
@@ -72,5 +72,5 @@
     width 40px
 
 .NavigationItems
-  display flex
   align-items center
+  display flex
