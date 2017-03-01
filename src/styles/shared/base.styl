@@ -38,7 +38,7 @@ h1, h2, h3, h4, h5
   text-transform uppercase
   letter-spacing 2px
   margin 0
-  padding $smPadding
+  padding $smPadding 0
   text-align center
 
 h1
@@ -59,6 +59,8 @@ h3
 
 p
   line-height 1.6
+  margin 0
+  padding $smPadding 0
 
 p, ol, ul
   font-family $bodyFont
@@ -68,9 +70,10 @@ p, ol, ul
 button
   background $copper
   border 0
-  border-radius 100px
+  border-radius 300px
   color $paper
   cursor pointer
+  margin $smPadding 0
   transition all 600ms $expo
   transform: translateZ(0) scale(1)
 
