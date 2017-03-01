@@ -36,7 +36,7 @@ class ProjectList extends Component {
     const empty = (
       <div className='dashboard'>
         <h1>Add a project!</h1>
-        <p>Click the button below to add your first project!</p>
+        <p>Click the + button below to get started!</p>
         {newProjectLink}
       </div>
     );

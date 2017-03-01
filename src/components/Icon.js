@@ -35,7 +35,7 @@ const Icon = (props) => {
 
   // Return the mapped path elements into a <svg /> element
   return (
-    <svg viewBox='0 0 100 100' width={size} height={size} {...props}>
+    <svg viewBox='0 0 100 100' id={name} width={size} height={size} {...props}>
       <title>{iconTitle}</title>
       {paths}
     </svg>
