@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import constants from 'constants';
 import Loader from 'components/Loader';
 import ProjectManager from 'containers/ProjectManager';
+import Icon from 'components/Icon';
 
 class ProjectList extends Component {
   componentWillReceiveProps() {
@@ -14,7 +15,7 @@ class ProjectList extends Component {
   render() {
     const { projects, auth } = this.props;
     const loading = !auth.isAuthenticated;
-    const newProjectLink = <button className='circle'><Link to={`/edit/projects/${constants.project.newProject}`}>&#43;</Link></button>
+    const newProjectLink = <Link to={`/edit/projects/${constants.project.newProject}`}><Icon name='more' width={48} height={48}/></Link>
 
     const projectItems = Object.keys(projects).map(id => {
       const project = projects[id];

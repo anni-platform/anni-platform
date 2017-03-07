@@ -35,13 +35,13 @@ class Navigation extends Component {
       <nav className="NavigationItems">
         <Link to="/dashboard" className='link'>Projects</Link>
         <Link to="/activity" className='link'>Activity</Link>
-        <Link to="/dashboard" className='icon'><Icon name='notification' width='32' height='32' className='svgFill'/></Link>
+        <Link to="/dashboard" className='icon'><Icon name='notification'/></Link>
         <button className="profile" onClick={this.logout.bind(this)}>IC</button>
       </nav>
     );
     return (
       <div className="Navigation">
-        <Link to="/"><Icon name='logo' width='50' height='50' className='svgOutline' /></Link>
+        <Link to="/"><Icon name='logo' width='60' height='60' /></Link>
         {(this.props.auth.isAuthenticated ? loggedInNav : login)}
       </div>
     );

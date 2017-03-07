@@ -70,7 +70,7 @@ p, ol, ul
 button
   background $copper
   border 0
-  border-radius 300px
+  border-radius 360px
   color $paper
   cursor pointer
   margin $mdPadding 0
@@ -83,20 +83,21 @@ button
 button.circle
   background none
   border 2px solid $copper
-  height 32px
+  font-size 18px
+  font-weight 800
+  height 36px
   position relative
-  width 32px
+  width 36px
 
   a
     color $slate
     font-family $bodyFont
     font-size 24px
     font-weight 400
-    left 7px
+    left 9px
     position absolute
     text-align center
-    transform: translateZ(0)
-    top 0
+    top 1px
 
 button.secondary
   appearance none
@@ -110,8 +111,6 @@ button.secondary
   padding 16px 32px 12px
   text-transform uppercase
 
-ol
-
 ul
   padding 0
 
@@ -123,5 +122,5 @@ em
 .border
   background $tan
   height 1px
-  margin $lgPadding*3 auto
+  margin $xlPadding auto
   width 640px
