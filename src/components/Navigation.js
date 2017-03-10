@@ -29,7 +29,8 @@ class Navigation extends Component {
   render() {
     const login = (
       <nav className="NavigationItems">
-        <a href={getAuthUrl()}>Login To Dropbox</a>
+        <a href={getAuthUrl()}>Login</a>
+        <button className='secondary'><a href={getAuthUrl()}>Sign up</a></button>
       </nav>);
     const loggedInNav = (
       <nav className="NavigationItems">
@@ -41,7 +42,7 @@ class Navigation extends Component {
     );
     return (
       <div className="Navigation">
-        <Link to="/"><Icon name='logo' width='60' height='60' /></Link>
+        <Link to="/"><Icon name='logo' width={60} height={60} /></Link>
         {(this.props.auth.isAuthenticated ? loggedInNav : login)}
       </div>
     );

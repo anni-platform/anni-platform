@@ -30,6 +30,7 @@ html, body, #root, #root > div
 a
   color $slate
   font-weight 400
+  letter-spacing 1px
   text-decoration none
 
 h1, h2, h3, h4, h5
@@ -46,7 +47,7 @@ h1
   font-size 32px
   letter-spacing 5px
 
-  +above($small)
+  +above($mqSmall)
     font-size 42px
 
 h2
@@ -67,50 +68,6 @@ p, ol, ul
   font-size 1rem
   font-weight 400
 
-button
-  background $copper
-  border 0
-  border-radius 360px
-  color $paper
-  cursor pointer
-  margin $mdPadding 0
-  transition all 600ms $expo
-  transform: translateZ(0) scale(1)
-
-  &:hover
-    transform: scale(1.05)
-
-button.circle
-  background none
-  border 2px solid $copper
-  font-size 18px
-  font-weight 800
-  height 36px
-  position relative
-  width 36px
-
-  a
-    color $slate
-    font-family $bodyFont
-    font-size 24px
-    font-weight 400
-    left 9px
-    position absolute
-    text-align center
-    top 1px
-
-button.secondary
-  appearance none
-  background none
-  border 3px solid $copper
-  border-radius 48px
-  color $slate
-  font-family $headlineFont
-  font-size 16px
-  letter-spacing 1px
-  padding 16px 32px 12px
-  text-transform uppercase
-
 ul
   padding 0
 
@@ -122,5 +79,5 @@ em
 .border
   background $tan
   height 1px
-  margin $xlPadding auto
+  margin $xxlarge auto
   width 640px
