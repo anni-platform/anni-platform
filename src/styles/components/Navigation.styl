@@ -3,19 +3,24 @@
   border-bottom 1px solid $concrete
   display flex
   justify-content space-between
-  padding $smPadding $mdPadding
+  padding $small $medium
   position relative
 
-  +above($small)
-    padding $mdPadding $lgPadding
+  +above($mqMedium)
+    padding $medium $large
 
+  a
+    font-family $headlineFont
+    letter-spacing 1px
+    text-transform uppercase
+    padding 0 $medium
 
   a.icon
-    margin 0 $mdPadding*.7 0 $mdPadding*.35
+    margin 0 $small
     transition all 400ms $expo
 
-    +above($small)
-      margin 0 $mdPadding*1.4 0 $mdPadding*.75
+    +above($mqMedium)
+      margin 0 $medium 0 $tiny
 
     &:hover
       fill $copper
@@ -25,14 +30,14 @@
     display inline-block
     font-family $headlineFont
     letter-spacing 1px
-    margin 0 $mdPadding*.5
-    padding $smPadding 0
+    margin 0 $medium
+    padding $small 0
     position relative
     text-transform uppercase
 
-    +above($small)
-      margin 0 $mdPadding
-      padding $smPadding*1.5 0
+    +above($mqMedium)
+      margin 0 $medium
+      padding $medium 0
 
     &:link, &:visited
       text-decoration none
@@ -44,7 +49,7 @@
       height 3px
       left 0
       position absolute
-      transition all 800ms $expo
+      transition all 400ms $expo
       width 0
 
     &:hover
@@ -66,8 +71,6 @@
     @extend button.circle
     background $copper
     color $paper
-    font-size 18px
-    font-weight 800
     height 40px
     width 40px
 

@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import constants from 'constants';
 import Loader from 'components/Loader';
 import ProjectManager from 'containers/ProjectManager';
+import Icon from 'components/Icon';
 
 class ProjectList extends Component {
   componentWillReceiveProps() {
@@ -14,7 +15,7 @@ class ProjectList extends Component {
   render() {
     const { projects, auth } = this.props;
     const loading = !auth.isAuthenticated;
-    const newProjectLink = <button className='circle'><Link to={`/edit/projects/${constants.project.newProject}`}>&#43;</Link></button>
+    const newProjectLink = <Link to={`/edit/projects/${constants.project.newProject}`}><Icon name='more' width={48} height={48}/></Link>
 
     const projectItems = Object.keys(projects).map(id => {
       const project = projects[id];
@@ -24,28 +25,27 @@ class ProjectList extends Component {
     });
 
     const projectsList = (
-      <ul className='projectList'>
-        {projectItems}
-        <li>{newProjectLink}</li>
-      </ul>
+      <div className='dashboard'>
+        <h3>Projects</h3>
+        <ul className='projectList'>
+          {projectItems}
+          <li>{newProjectLink}</li>
+        </ul>
+      </div>
     );
 
     const empty = (
       <div className='dashboard'>
-        <div>
-          <strong>No Projects..</strong>
-          {newProjectLink}
-        </div>
+        <h1>Add a project!</h1>
+        <p>Click the + button below to get started!</p>
+        {newProjectLink}
       </div>
     );
 
     const renderProjects = (projectItems.length ? projectsList : empty);
     return (
       <div className='dashboard'>
-        <div>
-          <h3>Projects</h3>
-          {(loading ? <Loader show={loading} /> : renderProjects)}
-        </div>
+        {(loading ? <Loader show={loading} /> : renderProjects)}
     </div>
     );
   }
