@@ -6,10 +6,37 @@
 
 
 // Media Queries
-above(width)
-  @media screen and (min-width: width)
+above($width)
+  @media screen and (min-width: pxToEm($width))
     {block}
 
-below(width)
-  @media screen and (max-width: width)
+below($width)
+
+  @media screen and (max-width: pxToEm($width))
     {block}
+
+
+/*
+ * Transform pixel values to REM/EM
+ */
+
+pxTo($px, $unit)
+  ($px / 16)rem
+
+// Exports REM values
+pxToRem($px)
+  pxTo($px, rem)
+
+// Exports EM values
+pxToEm($px)
+  pxTo($px, em)
+
+
+/*
+ * Text Overflow
+ */
+
+textOverflow()
+  overflow hidden
+  text-overflow ellipsis
+  white-space nowrap
