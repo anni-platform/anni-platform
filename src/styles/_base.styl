@@ -1,0 +1,75 @@
+/*
+ * --------------------------------------------------------
+ *  Base styles
+ * --------------------------------------------------------
+ */
+
+// Equalize Height
+
+html
+  font-smoothing: antialiased
+  text-size-adjust: 100%
+
+body
+  box-sizing: border-box
+  font-family: $bodyFont
+  font-size: pxToRem(16)
+  font-weight: 400
+  margin: 0
+  padding: 0
+
+  *
+    box-sizing: inherit
+
+a
+  color: $slate
+  font-weight: 400
+  letter-spacing: 1px
+  text-decoration: none
+
+h1, h2, h3, h4, h5
+  font-family: $headlineFont
+  font-weight: normal
+  text-transform: uppercase
+  letter-spacing: 2px
+  margin: 0
+  padding: $smPadding 0
+  text-align: center
+
+h1
+  color: $slate
+  font-size: 32px
+  letter-spacing: 5px
+
+  +above($break-sm)
+    font-size: 42px
+
+h2
+  color: $copper
+  font-size: 18px
+
+h3
+  color: $copper
+  font-size: 18px
+
+p
+  line-height: 1.6
+  margin: 0
+  padding: $smPadding
+
+p.large
+  font-size: pxToRem(18)
+
+ul
+  padding: 0
+
+strong
+  font-weight: 600
+em
+  font-style: italic
+
+.border
+  background $tan
+  height 1px
+  margin $x$xl auto
+  width 640px
