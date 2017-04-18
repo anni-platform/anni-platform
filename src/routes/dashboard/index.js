@@ -3,7 +3,8 @@ import { Link } from 'react-router';
 import constants from 'constants';
 import Loader from 'components/Loader';
 import ProjectManager from 'containers/ProjectManager';
-import { Icon } from 'components/UI';
+
+import { Icon } from 'components/baseline';
 
 class ProjectList extends Component {
   componentWillReceiveProps() {

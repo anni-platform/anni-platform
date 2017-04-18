@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router';
 import { getAuthUrl, login, logoutSession } from 'adapters';
 import { addAuthToken, logout } from 'actions';
 
-import { Icon } from 'components/UI';
+import { Icon } from 'components/baseline';
 
 class Navigation extends Component {
   componentDidMount() {

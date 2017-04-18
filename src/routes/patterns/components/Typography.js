@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card } from 'components/UI';
+
+import { Card } from 'components/baseline';
 
 const Typography = () => (
   <Card>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Card from 'components/Card';
+import { Card } from 'components/baseline';
 
 export default class Alerts extends Component {
   state = {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Card, Icon } from 'components/UI';
+import { Card, Icon } from 'components/baseline';
 
 const Icons = () => (
   <Card>
