@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 
-const Icon = (props) => {
+export const Icon = (props) => {
   const {name, size} = props;
   let pathArray;
 
@@ -44,7 +44,7 @@ const Icon = (props) => {
         "M10.058 45.013 45.013 10.058 37.942 2.987 2.987 37.942z"
       ];
       break;
-      
+
     default:
       break;
   }
@@ -79,5 +79,3 @@ Icon.defaultProps = {
   name: '',
   size: 32
 };
-
-export default Icon;

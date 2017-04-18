@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router';
 import { getAuthUrl, login, logoutSession } from 'adapters';
 import { addAuthToken, logout } from 'actions';
-import Icon from 'components/Icon'
+
+import { Icon } from 'components/UI';
 
 class Navigation extends Component {
   componentDidMount() {

@@ -1,0 +1,44 @@
+.PatternLibrary
+  padding: $md
+
+  +above($break-md)
+    padding: $xl
+
+  .legend
+    color: lighten($slate, 60)
+    min-width: pxToRem(100)
+    font-size: pxToRem(10)
+    padding: 0 $lg $sm 0
+    text-align: left
+
+  .section
+    padding-bottom: $md
+
+  // Typograpy Area
+
+  .typography
+    li
+      align-items:baseline
+      display: flex
+      padding: 0 0 $lg 0
+    :last-child
+      padding: 0
+
+// Icon Area
+
+.iconGrid
+  display: flex
+  flex-wrap: wrap
+  margin: 0
+  padding: 0
+
+  li
+    list-style: none
+    text-align: center
+    padding: $lg 0
+    width: 25%
+
+  .icon
+    height: $lg
+    margin-bottom: $md
+    width: $lg
