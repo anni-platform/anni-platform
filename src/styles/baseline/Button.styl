@@ -1,44 +1,76 @@
-button
-  background $copper
-  border 0
+.Button
+  align-items: center;
+  box-sizing: border-box
+  background: none
+  border $xs solid $copper
   border-radius 360px
-  color $paper
+  color: $slate
   cursor pointer
-  margin $md 0
-  padding 16px 32px 12px
-  transition all 600ms $expo
-  transform: translateZ(0) scale(1)
+  display: inline-flex
+  font-size: pxToRem(14)
+  letter-spacing: pxToRem(.5)
+  line-height: 1
+  padding: pxToRem(10) $md
+  transition: all 400ms $expo
+
+  svg
+    fill: $slate
+    margin-right: $sm
+
+  &:focus
+    outline: none
 
   &:hover
-    transform: scale(1.01)
+    transform: scale(1.02)
 
-button.circle
-  background none
-  border 2px solid $copper
-  font-size 18px
-  font-weight 800
-  height 36px
-  padding 0
-  position relative
-  width 36px
 
-  a
-    color $slate
-    font-family $bodyFont
-    font-size 24px
-    font-weight 400
-    left 9px
-    position absolute
-    text-align center
-    top 1px
+  // Styles based on Component props
 
-button.secondary
-  appearance none
-  background none
-  border 3px solid $copper
-  border-radius 48px
-  color $slate
-  font-family $headlineFont
-  font-size 16px
-  letter-spacing 1px
-  text-transform uppercase
+  &.primary
+    background: $copper
+    color: $paper
+
+  &.link
+    border-color: transparent
+
+  &.navigation
+    border: none
+    font-family: $headlineFont
+    font-size: pxToRem(16)
+    letter-spacing: 1px
+    margin: 0 $md
+    padding: $sm 0
+    text-transform: uppercase
+
+    &:after
+      background: $copper
+      bottom: $xs
+      content: ''
+      height: 3px
+      left: 0
+      position: absolute
+      transition: all 400ms $expo
+      width: 0
+
+    &:hover
+      transform: scale(1)
+
+      &:after
+        width 100%
+
+  &.full
+    border: none
+    padding: 0
+
+    svg
+      width: pxToRem(32)
+      height: pxToRem(32)
+
+  &.noLabel
+    padding: pxToRem(10)
+
+    svg
+      margin: 0
+
+  &.large
+    padding: $md

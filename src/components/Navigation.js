@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router';
 import { getAuthUrl, login, logoutSession } from 'adapters';
 import { addAuthToken, logout } from 'actions';
 
-import { Icon } from 'components/baseline';
+import { Button, Icon } from 'components/baseline';
 
 class Navigation extends Component {
   componentDidMount() {
@@ -35,10 +35,10 @@ class Navigation extends Component {
       </nav>);
     const loggedInNav = (
       <nav className="NavigationItems">
-        <Link to="/dashboard" className='link'>Projects</Link>
-        <Link to="/activity" className='link'>Activity</Link>
-        <Link to="/dashboard" className='icon'><Icon name='notification'/></Link>
-        <button className="profile" onClick={this.logout.bind(this)}>IC</button>
+        <Button to="/dashboard" nav>Projects</Button>
+        <Button to="/activity" nav>Activity</Button>
+        <Button icon="notification" full/>
+        <Button onClick={this.logout.bind(this)} icon="plus" />
       </nav>
     );
     return (

@@ -3,77 +3,9 @@
   border-bottom 1px solid $concrete
   display flex
   justify-content space-between
-  padding $sm $md
+  padding $sm $lg
   position relative
 
-  +above($break-md)
-    padding $md $lg
-
-  a
-    font-family $headlineFont
-    letter-spacing 1px
-    text-transform uppercase
-    padding 0 $md
-
-  a.icon
-    margin 0 $sm
-    transition all 400ms $expo
-
-    +above($break-md)
-      margin 0 $md 0 $xs
-
-    &:hover
-      fill $copper
-      transform: scale(1.1)
-
-  a.link
-    display inline-block
-    font-family $headlineFont
-    letter-spacing 1px
-    margin 0 $md
-    padding $sm 0
-    position relative
-    text-transform uppercase
-
-    +above($break-md)
-      margin 0 $md
-      padding $md 0
-
-    &:link, &:visited
-      text-decoration none
-
-    &:after
-      background $copper
-      bottom 7px
-      content ''
-      height 3px
-      left 0
-      position absolute
-      transition all 400ms $expo
-      width 0
-
-    &:hover
-      &:after
-        width 100%
-
-  a.selected
-    &:after
-      background $copper
-      bottom 7px
-      content ''
-      height 3px
-      left 0
-      position absolute
-      transition all 800ms $expo
-      width 100%
-
-  .profile
-    @extend button.circle
-    background $copper
-    color $paper
-    height 40px
-    width 40px
-
-.NavigationItems
-  align-items center
-  display flex
+  .NavigationItems
+    align-items: center
+    display: flex
