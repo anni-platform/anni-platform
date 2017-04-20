@@ -8,7 +8,7 @@
 
 
 html
-  font-smoothing antialiased
+  font-$smoothing antialiased
   text-size-adjust 100%
 
 body
@@ -39,7 +39,7 @@ h1, h2, h3, h4, h5
   text-transform uppercase
   letter-spacing 2px
   margin 0
-  padding $smPadding 0
+  padding $$smPadding 0
   text-align center
 
 h1
@@ -47,7 +47,7 @@ h1
   font-size 32px
   letter-spacing 5px
 
-  +above($mqSmall)
+  +above($break-sm)
     font-size 42px
 
 h2
@@ -61,7 +61,7 @@ h3
 p
   line-height 1.6
   margin 0
-  padding $smPadding 0
+  padding $$smPadding 0
 
 p, ol, ul
   font-family $bodyFont
@@ -79,5 +79,5 @@ em
 .border
   background $tan
   height 1px
-  margin $xxlarge auto
+  margin $x$xl auto
   width 640px
