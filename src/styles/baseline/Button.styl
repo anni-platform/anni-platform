@@ -2,7 +2,7 @@
   align-items: center;
   box-sizing: border-box
   background: none
-  border $xs solid $copper
+  border pxToRem(3) solid $copper
   border-radius 360px
   color: $slate
   cursor pointer
@@ -12,10 +12,6 @@
   line-height: 1
   padding: pxToRem(10) $md
   transition: all 400ms $expo
-
-  svg
-    fill: $slate
-    margin-right: $sm
 
   &:focus
     outline: none
@@ -58,19 +54,24 @@
       &:after
         width 100%
 
+  &.large
+    @extend h1
+    border: none
+    padding: $sm 0
+
   &.full
     border: none
     padding: 0
 
     svg
-      width: pxToRem(32)
-      height: pxToRem(32)
+      width: pxToRem(40)
+      height: pxToRem(40)
 
   &.noLabel
     padding: pxToRem(10)
 
+    &:after
+      height: 0
+
     svg
       margin: 0
-
-  &.large
-    padding: $md

@@ -13,6 +13,7 @@ export const Button = props => {
     to,
     primary,
     link,
+    large,
     nav,
     full,
     onClick,
@@ -23,6 +24,7 @@ export const Button = props => {
     Button: true,
     primary: primary,
     link: link,
+    large: large,
     navigation: nav,
     full: full,
     noLabel: !children
@@ -40,7 +42,7 @@ export const Button = props => {
   } else if (href) {
     return (
       <a
-        href={href} 
+        href={href}
         className={`${styles} ${className}`}
         onClick={onClick}>
         {icon && <Icon name={icon} size={12} />}{children}

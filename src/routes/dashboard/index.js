@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import constants from 'constants';
 import Loader from 'components/Loader';
 import ProjectManager from 'containers/ProjectManager';
 
-import { Icon } from 'components/baseline';
+import { Button } from 'components/baseline';
 
 class ProjectList extends Component {
   componentWillReceiveProps() {
@@ -16,12 +15,21 @@ class ProjectList extends Component {
   render() {
     const { projects, auth } = this.props;
     const loading = !auth.isAuthenticated;
-    const newProjectLink = <Link to={`/edit/projects/${constants.project.newProject}`}><Icon name='more' width={48} height={48}/></Link>
+    const newProjectLink =
+      <Button
+        full
+        to={`/edit/projects/${constants.project.newProject}`}
+        icon="more">
+      </Button>
 
     const projectItems = Object.keys(projects).map(id => {
       const project = projects[id];
       return(
-        <li key={`linkto${project.name}`}><Link to={`/project/${project.name}`}>{project.name}</Link></li>
+        <li key={`linkto${project.name}`}>
+          <Button large to={`/project/${project.name}`}>
+            {project.name}
+          </Button>
+        </li>
       );
     });
 

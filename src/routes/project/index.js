@@ -9,6 +9,8 @@ import Script from './components/Script'
 import Moodboard from './components/Moodboard';
 import filter from 'lodash.filter';
 
+import { Button } from 'components/baseline';
+
 class ProjectForm extends Component {
   constructor() {
     super();
@@ -73,11 +75,10 @@ class ProjectDetail extends Component {
         <Script />
         <Moodboard projectPath={id} project={project} />
         <div>
-          <button
-            className='secondary'
+          <Button
             onClick={() => {
             removeFolder(project.path_display).then(this._removeProject.bind(this));
-          }}>Delete Project</button>
+          }}>Delete Project</Button>
         </div>
       </div>
     );
