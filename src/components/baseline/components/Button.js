@@ -15,6 +15,7 @@ export const Button = props => {
     link,
     nav,
     full,
+    onClick,
     className
   } = props;
 
@@ -31,16 +32,29 @@ export const Button = props => {
     return (
       <Link
         className={`${styles} ${className}`}
-        to={to}>
+        to={to}
+        onClick={onClick}>
         {icon && <Icon name={icon} size={12} />}{children}
       </Link>
+    )
+  } else if (href) {
+    return (
+      <a
+        href={href} 
+        className={`${styles} ${className}`}
+        onClick={onClick}>
+        {icon && <Icon name={icon} size={12} />}{children}
+      </a>
     )
   }
   else {
     return (
-      <a href={href} className={`${styles} ${className}`}>
+      <button
+        href={href}
+        className={`${styles} ${className}`}
+        onClick={onClick}>
         {icon && <Icon name={icon} size={12} />}{children}
-      </a>
+      </button>
     )
   }
 }

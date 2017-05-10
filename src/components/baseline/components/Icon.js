@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 
 export const Icon = (props) => {
   const {name, size} = props;
@@ -61,7 +61,7 @@ export const Icon = (props) => {
 
   // Return the mapped path elements into a <svg /> element
   return (
-    <svg viewBox='0 0 48 48' id={name} width={size} height={size} {...props}>
+    <svg viewBox='0 0 48 48' id={name} className="Icon" width={size} height={size} {...props}>
       <title>{iconTitle}</title>
       {paths}
     </svg>
