@@ -59,6 +59,24 @@
     border: none
     padding: $sm 0
 
+    &:link, &:visited
+      text-decoration none
+
+    &:after
+      background $copper
+      bottom 5px
+      content ''
+      height 4px
+      left 0
+      position absolute
+      transition all 600ms $expo
+      width 0
+
+    &:hover
+      transform: scale(1)
+      &:after
+        width 100%
+
   &.full
     border: none
     padding: 0

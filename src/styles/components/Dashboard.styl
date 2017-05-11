@@ -2,9 +2,15 @@
   align-items center
   display flex
   flex-direction column
-  height 90%
+  height 90vh
   min-height 500px
   justify-content center
+
+  .content
+    align-items center
+    display flex
+    flex-direction column
+    justify-content center
 
   .projectList
     @extend h1
@@ -13,26 +19,3 @@
     flex-grow 0
     list-style none
     position relative
-
-    li > a.Button.large
-      display inline-block
-      padding $sm 0
-      position relative
-
-      &:link, &:visited
-        text-decoration none
-
-      &:after
-        background $copper
-        bottom 5px
-        content ''
-        height 4px
-        left 0
-        position absolute
-        transition all 600ms $expo
-        width 0
-
-      &:hover
-        transform: scale(1)
-        &:after
-          width 100%
