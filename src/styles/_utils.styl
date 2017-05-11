@@ -33,6 +33,20 @@ pxToEm($px)
 
 
 /*
+ * Align center | center
+ */
+
+center($column=null)
+  align-items: center
+  display: flex
+  flex-direction: column
+  justify-content: center
+
+  if $column == 'column'
+    flex-direction: column
+
+
+/*
  * Text Overflow
  */
 

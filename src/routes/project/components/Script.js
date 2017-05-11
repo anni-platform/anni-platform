@@ -11,13 +11,12 @@ class Script extends Component {
 
   render() {
     return (
-      <div className='script'>
-        <div>
+      <div className='Script'>
+        <div className="content">
           <h1>Script</h1>
           <ReactQuill theme="snow"
-                  value={this.state.text}
-                  onChange={this.onTextChange} />
-          <div className='border' />
+            value={this.state.text}
+            onChange={this.onTextChange} />
         </div>
       </div>
     )

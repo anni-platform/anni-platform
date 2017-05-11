@@ -47,14 +47,16 @@ class ProjectForm extends Component {
     const { validationMessage } = this.state;
     return (
       <div className="ProjectForm">
-        <form onSubmit={this.submit}>
-          {(validationMessage ? <p className="ValidationErrorMessage">{validationMessage}</p> : null)}
+        <form onSubmit={this.submit} className="addProject">
+          <h3>Enter Project Name</h3>
           <input
             autoFocus={true}
+            onFocus={({ target }) => this.setState({ name: '' })}
             onChange={({ target }) => this.setState({ name: target.value })}
             className="large"
           />
-          <Button primary>Create</Button>
+          {(validationMessage ? <p className="ValidationErrorMessage">{validationMessage}</p> : null)}
+          <Button icon='plus'>Add Project</Button>
         </form>
       </div>
     )
@@ -80,12 +82,12 @@ class ProjectDetail extends Component {
         <Headline name={project.name} />
         <Script />
         <Moodboard projectPath={id} project={project} />
-        <div>
+        {/* <div>
           <Button
             onClick={() => {
             removeFolder(project.path_display).then(this._removeProject.bind(this));
           }}>Delete Project</Button>
-        </div>
+        </div> */}
       </div>
     );
   }

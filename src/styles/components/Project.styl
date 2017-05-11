@@ -1,0 +1,26 @@
+.ProjectForm
+  center()
+  height: 100vh
+
+  .addProject
+    center()
+    margin-top: pxToRem(94)
+
+    h3
+      margin-bottom: $sm
+
+    input
+      border: pxToRem(2) solid $pebble
+      min-width: pxToRem(480)
+      display: flex
+      outline: none
+      padding: $sm
+
+      &.large
+        @extends h1
+        text-transform: capitalize
+        line-height: 1
+        padding-top: $md
+
+    .Button
+      margin-top: $md
