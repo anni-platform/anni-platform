@@ -41,7 +41,7 @@ class Navigation extends Component {
         <Button to="/dashboard" nav>Projects</Button>
         <Button to="/activity" nav>Activity</Button>
         <Button icon="notification" full/>
-        <Button onClick={this.logout.bind(this)} icon="plus" />
+        <Button user onClick={this.logout.bind(this)} />
       </nav>
     );
     return (

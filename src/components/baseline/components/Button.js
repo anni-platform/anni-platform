@@ -17,6 +17,7 @@ export const Button = props => {
     nav,
     full,
     onClick,
+    user,
     className
   } = props;
 
@@ -27,6 +28,7 @@ export const Button = props => {
     large: large,
     navigation: nav,
     full: full,
+    user: user,
     noLabel: !children
   });
 

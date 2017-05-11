@@ -6,21 +6,20 @@
     center()
     margin-top: pxToRem(94)
 
-    h3
-      margin-bottom: $sm
+    .Form
+      margin: $md 0 $lg 0
 
-    input
-      border: pxToRem(2) solid $pebble
-      min-width: pxToRem(480)
-      display: flex
-      outline: none
-      padding: $sm
+      input
+        border: pxToRem(2) solid $concrete
+        min-width: pxToRem(400)
+        margin-bottom: $sm
+        display: flex
+        outline: none
+        padding: $md
+        font-size: pxToRem(16)
 
-      &.large
-        @extends h1
-        text-transform: capitalize
-        line-height: 1
-        padding-top: $md
+      input::placeholder
+        color: rgba($slate, .3);
 
-    .Button
-      margin-top: $md
+      :last-child
+        margin-bottom: 0
