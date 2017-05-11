@@ -1,36 +1,30 @@
 import React from 'react';
-import Card from 'components/Card';
-import Icon from 'components/Icon';
 
-const buttons = () => (
-  <div>
-    <h4 className='section'>buttons</h4>
-    <Card>
-      <h4 className='legend'>Regular buttons</h4>
-      <div>
-        <button className='primary'>Primary</button>
-        <button className='default'>Default</button>
-        <button className='info'>Info</button>
-        <button className='link'>Link</button>
-      </div>
+import { Button, Card } from 'components/baseline';
 
-      <h4>Icon buttons</h4>
-      <div>
-        <button className='primary'>
-          <Icon name='plus' />Primary
-        </button>
-        <button className='default'>
-          <Icon name='plus' />Default
-        </button>
-        <button className='info'>
-          <Icon name='plus' />Info
-        </button>
-        <button className='link'>
-          <Icon name='arrow-back' />Link
-        </button>
-      </div>
-    </Card>
-  </div>
+const Buttons = () => (
+  <Card>
+    <h4 className='legend'>Buttons</h4>
+    <div className="ButtonToolbar">
+      <Button>Default Button</Button>
+      <Button primary>Primary Button</Button>
+      <Button link>Link Button</Button>
+    </div>
+
+    <h4 className='legend'>Icon Buttons</h4>
+    <div className="ButtonToolbar">
+      <Button icon="plus">Default Button</Button>
+      <Button icon="plus" primary>Primary Button</Button>
+      <Button icon="arrow-back" link>Link Button</Button>
+    </div>
+
+    <h4 className='legend'>Icon only</h4>
+    <div className="ButtonToolbar">
+      <Button icon="plus" />
+      <Button icon="plus" primary />
+      <Button icon="arrow-back" link />
+    </div>
+  </Card>
 );
 
-export default buttons;
+export default Buttons;

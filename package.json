@@ -66,6 +66,7 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "dropbox": "^2.1.0",
     "history": "^4.5.1",
     "normalize.css": "^5.0.0",

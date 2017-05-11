@@ -1,6 +1,6 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 
-const Icon = (props) => {
+export const Icon = (props) => {
   const {name, size} = props;
   let pathArray;
 
@@ -44,7 +44,7 @@ const Icon = (props) => {
         "M10.058 45.013 45.013 10.058 37.942 2.987 2.987 37.942z"
       ];
       break;
-      
+
     default:
       break;
   }
@@ -61,7 +61,7 @@ const Icon = (props) => {
 
   // Return the mapped path elements into a <svg /> element
   return (
-    <svg viewBox='0 0 48 48' id={name} width={size} height={size} {...props}>
+    <svg viewBox='0 0 48 48' id={name} className="Icon" width={size} height={size} {...props}>
       <title>{iconTitle}</title>
       {paths}
     </svg>
@@ -79,5 +79,3 @@ Icon.defaultProps = {
   name: '',
   size: 32
 };
-
-export default Icon;

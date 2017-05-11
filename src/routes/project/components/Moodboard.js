@@ -49,15 +49,17 @@ class MoodboardViewer extends Component {
     const images = this.props.getCollectionFiles({ path, collectionId });
     const list = images && images.length ? <ImageList content={images} />: null;
     return (
-      <div>
-        <h1>Moodboard</h1>
-        <FileUploader
-          path={this.props.projectPath}
-          collection="moodboard"
-          onUpload={(images) => this.props.dispatch(updateProject({ id, images }))}>
-          {list}
-          <Loader show={!project} />
-        </FileUploader>
+      <div className="Moodboard">
+        <div className="content">
+          <h1>Moodboard</h1>
+          <FileUploader
+            path={this.props.projectPath}
+            collection="moodboard"
+            onUpload={(images) => this.props.dispatch(updateProject({ id, images }))}>
+            {list}
+            <Loader show={!project} />
+          </FileUploader>
+        </div>
       </div>
     );
   }
