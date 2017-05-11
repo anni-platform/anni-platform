@@ -46,11 +46,17 @@ class ProjectForm extends Component {
   render() {
     const { validationMessage } = this.state;
     return (
-      <form onSubmit={this.submit}>
-        {(validationMessage ? <p className="ValidationErrorMessage">{validationMessage}</p> : null)}
-        <input autoFocus={true} onChange={({ target }) => this.setState({ name: target.value })}/>
-        <button>Create</button>
-      </form>
+      <div className="ProjectForm">
+        <form onSubmit={this.submit}>
+          {(validationMessage ? <p className="ValidationErrorMessage">{validationMessage}</p> : null)}
+          <input
+            autoFocus={true}
+            onChange={({ target }) => this.setState({ name: target.value })}
+            className="large"
+          />
+          <Button primary>Create</Button>
+        </form>
+      </div>
     )
   }
 }
