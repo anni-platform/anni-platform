@@ -34,7 +34,7 @@ class ProjectList extends Component {
     });
 
     const projectsList = (
-      <div className='dashboard'>
+      <div className='content'>
         <h3>Projects</h3>
         <ul className='projectList'>
           {projectItems}
@@ -44,7 +44,7 @@ class ProjectList extends Component {
     );
 
     const empty = (
-      <div className='dashboard'>
+      <div className='content'>
         <h1>Add a project!</h1>
         <p>Click the + button below to get started!</p>
         {newProjectLink}
@@ -53,7 +53,7 @@ class ProjectList extends Component {
 
     const renderProjects = (projectItems.length ? projectsList : empty);
     return (
-      <div className='dashboard'>
+      <div className='Dashboard'>
         {(loading ? <Loader show={loading} /> : renderProjects)}
     </div>
     );

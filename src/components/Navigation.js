@@ -48,7 +48,7 @@ class Navigation extends Component {
       <div className="Navigation">
 
         <Link to="/">
-          <Icon name='logo' width={60} height={60} />
+          <Icon name='logo' width={48} height={48} />
         </Link>
         {(this.props.auth.isAuthenticated ? loggedInNav : login)}
       </div>
