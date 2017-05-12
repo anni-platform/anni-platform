@@ -4,5 +4,9 @@
   .content
     margin-top: pxToRem(94)
 
-  .date
-    margin $xl 0 0
+    .date
+      margin $xl 0 0
+
+    for items in 1..3
+      :nth-child({items})
+        animation: slideUp 1400ms forwards
