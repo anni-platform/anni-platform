@@ -1,12 +1,39 @@
 .Headline
   padding $huge 0 0
+  position: relative
 
   .content
     margin-top: pxToRem(94)
+    z-index: 2
+
+    h3
+      color: $paper
 
     .date
       margin $xl 0 0
 
     for items in 1..3
       :nth-child({items})
-        animation: slideUp 1400ms forwards
+        opacity: 0
+        animation: fadeUp 900ms 40ms*items $expo forwards
+
+  .background
+    animation: slideUp 800ms $expo forwards
+    background: $copper
+    height: 100vh
+    position: absolute;
+    width: 100vw
+
+@keyframes fadeUp
+  from
+    opacity: 0
+    transform: translateY(50px);
+  to
+    opacity: 1
+    transform: translateY(0);
+
+@keyframes slideUp
+  from
+    transform: translateY(100vh);
+  to
+    transform: translateY(0);

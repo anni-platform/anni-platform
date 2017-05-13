@@ -5,6 +5,7 @@
 @keyframes pop
   0%
     transform: scale(0)
+    visibility: visible
 
   5%
     transform: scale(.4)
@@ -26,15 +27,17 @@
 
   100%
       transform: scale(1)
+      visibility: visible
 
 
 /*
  * Slide In
  */
 
-@keyframes slideUp
+@keyframes elasticSlideUp
   0%
     transform: translateY(100vh)
+    visibility: visible
 
   19%
     transform: translateY(-6.6vh)
@@ -53,3 +56,4 @@
 
   100%
       transform: translateY(0vh)
+      visibility: visible
