@@ -3,16 +3,19 @@ import { withRouter } from 'react-router';
 import constants from 'constants';
 import { createFolder } from 'adapters';
 import ProjectManager from 'containers/ProjectManager';
-import { addProject } from 'actions';
+import { addProject, removeFolder } from 'actions';
 import Headline from './components/Headline'
 import Script from './components/Script'
 import Moodboard from './components/Moodboard';
+
+import { Button } from 'components/baseline';
 
 class ProjectForm extends Component {
   constructor() {
     super();
     this.state = {
       name: '',
+      client:'',
       validationMessage: ''
     }
     this.submit = this.submit.bind(this);
@@ -43,11 +46,27 @@ class ProjectForm extends Component {
   render() {
     const { validationMessage } = this.state;
     return (
-      <form onSubmit={this.submit}>
-        {(validationMessage ? <p className="ValidationErrorMessage">{validationMessage}</p> : null)}
-        <input autoFocus={true} onChange={({ target }) => this.setState({ name: target.value })}/>
-        <button>Create</button>
-      </form>
+      <div className='ProjectForm'>
+        <form onSubmit={this.submit} className='addProject'>
+          <h3>Add New Project</h3>
+          <div className='Form'>
+            <input
+              placeholder='Enter You Project Name'
+              autoFocus={true}
+              onChange={({ target }) => this.setState({ name: target.value })}
+              className='large'
+            />
+            <input
+              placeholder='Enter your client name'
+              autoFocus={true}
+              onChange={({ target }) => this.setState({ client: target.value })}
+              className='large'
+            />
+          </div>
+          {(validationMessage ? <p className="ValidationErrorMessage">{validationMessage}</p> : null)}
+          <Button icon='plus'>Add Project</Button>
+        </form>
+      </div>
     )
   }
 }
@@ -84,14 +103,14 @@ class ProjectDetail extends Component {
     }
     return (
       <div className='ProjectDetail'>
-        <Headline name={project.name} />
+        <Headline name={project.name} client={project.client} />
         <Script />
         <Moodboard projectPath={id} project={project} />
         <div>
-          <button
-            className='secondary'
-            onClick={this._removeProject.bind(this)}>
-            Delete Project</button>
+          <Button
+            onClick={() => {
+            removeFolder(project.path_display).then(this._removeProject.bind(this));
+          }}>Delete Project</Button>
         </div>
       </div>
     );

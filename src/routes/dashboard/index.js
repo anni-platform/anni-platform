@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import constants from 'constants';
 import Loader from 'components/Loader';
 import ProjectManager from 'containers/ProjectManager';
+
+import { Button } from 'components/baseline';
 
 class ProjectList extends Component {
   componentDidMount() {
@@ -14,38 +15,46 @@ class ProjectList extends Component {
   render() {
     const { projects, auth } = this.props;
     const loading = !auth.toJS().isAuthenticated;
-    const newProjectLink = <button className='circle'><Link to={`/edit/projects/${constants.project.newProject}`}>&#43;</Link></button>
+    const newProjectLink =
+      <Button
+        full
+        to={`/edit/projects/${constants.project.newProject}`}
+        icon="more">
+      </Button>
 
     const projectItems = Object.keys(projects.toJS()).map(id => {
       const project = projects.toJS()[id];
       return(
-        <li key={`linkto${project.name}`}><Link to={`/project/${project.name}`}>{project.name}</Link></li>
+        <li key={`linkto${project.name}`}>
+          <Button large to={`/project/${project.name}`}>
+            {project.name}
+          </Button>
+        </li>
       );
     });
 
     const projectsList = (
-      <ul className='projectList'>
-        {projectItems}
-        <li>{newProjectLink}</li>
-      </ul>
+      <div className='content'>
+        <h3>Projects</h3>
+        <ul className='projectList'>
+          {projectItems}
+          <li>{newProjectLink}</li>
+        </ul>
+      </div>
     );
 
     const empty = (
-      <div className='dashboard'>
-        <div>
-          <strong>No Projects..</strong>
-          {newProjectLink}
-        </div>
+      <div className='content'>
+        <h1>Add a project!</h1>
+        <p>Click the + button below to get started!</p>
+        {newProjectLink}
       </div>
     );
 
     const renderProjects = (projectItems.length ? projectsList : empty);
     return (
-      <div className='dashboard'>
-        <div>
-          <h3>Projects</h3>
-          {(loading ? <Loader show={loading} /> : renderProjects)}
-        </div>
+      <div className='Dashboard'>
+        {(loading ? <Loader show={loading} /> : renderProjects)}
     </div>
     );
   }

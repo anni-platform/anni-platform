@@ -1,0 +1,107 @@
+.Button
+  align-items: center;
+  box-sizing: border-box
+  background: none
+  border pxToRem(3) solid $copper
+  border-radius 360px
+  color: $slate
+  cursor pointer
+  display: inline-flex
+  font-size: pxToRem(14)
+  letter-spacing: pxToRem(.5)
+  line-height: 1
+  padding: pxToRem(10) $md
+  transition: all 400ms $expo
+
+  &:focus
+    outline: none
+
+  &:hover
+    transform: scale(1.02)
+
+  svg
+    margin-right: $sm
+
+
+  // Styles based on Component props
+
+  &.primary
+    background: $copper
+    color: $paper
+
+  &.link
+    border-color: transparent
+
+  &.navigation
+    border: none
+    font-family: $headlineFont
+    font-size: pxToRem(16)
+    letter-spacing: 1px
+    margin: 0 $md
+    padding: $sm 0
+    text-transform: uppercase
+
+    &:after
+      background: $copper
+      bottom: $xs
+      content: ''
+      height: 3px
+      left: 0
+      position: absolute
+      transition: all 400ms $expo
+      width: 0
+
+    &:hover
+      transform: scale(1)
+
+      &:after
+        width 100%
+
+  &.large
+    @extend h1
+    border: none
+    padding: $sm 0
+
+    &:link, &:visited
+      text-decoration none
+
+    &:after
+      background $copper
+      bottom 5px
+      content ''
+      height 4px
+      left 0
+      position absolute
+      transition all 600ms $expo
+      width 0
+
+    &:hover
+      transform: scale(1)
+      &:after
+        width 100%
+
+  &.full
+    border: none
+    padding: 0
+
+    svg
+      width: pxToRem(40)
+      height: pxToRem(40)
+
+  &.noLabel
+    padding: pxToRem(10)
+
+    svg
+      margin: 0
+
+  &.user
+    background: $copper
+    width: pxToRem(40)
+    height: pxToRem(40)
+
+    // Temporary Avatar Area
+    &:before
+      color: $paper
+      content: 'IC'
+      font-family: $bodyFont
+      font-weight: 800

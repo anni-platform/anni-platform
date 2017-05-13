@@ -1,0 +1,25 @@
+.ProjectForm
+  center()
+  height: 100vh
+
+  .addProject
+    center()
+    margin-top: pxToRem(94)
+
+    .Form
+      margin: $md 0 $lg 0
+
+      input
+        border: pxToRem(2) solid $concrete
+        min-width: pxToRem(400)
+        margin-bottom: $sm
+        display: flex
+        outline: none
+        padding: $md
+        font-size: pxToRem(16)
+
+      input::placeholder
+        color: rgba($slate, .3);
+
+      :last-child
+        margin-bottom: 0

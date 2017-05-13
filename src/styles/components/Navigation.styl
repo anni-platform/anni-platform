@@ -3,74 +3,11 @@
   border-bottom 1px solid $concrete
   display flex
   justify-content space-between
-  padding $smPadding $mdPadding
-  position relative
+  padding $md $lg
+  position absolute
+  top: 0
+  width: 100%
 
-  +above($phone)
-    padding $mdPadding $lgPadding
-
-
-  a.icon
-    margin 0 $mdPadding*.7 0 $mdPadding*.35
-    transition all 400ms $expo
-
-    +above($phone)
-      margin 0 $mdPadding*1.4 0 $mdPadding*.75
-
-    &:hover
-      fill $copper
-      transform: scale(1.1)
-
-  a.link
-    display inline-block
-    font-family $headlineFont
-    letter-spacing 1px
-    margin 0 $mdPadding*.5
-    padding $smPadding 0
-    position relative
-    text-transform uppercase
-
-    +above($phone)
-      margin 0 $mdPadding
-      padding $smPadding*1.5 0
-
-    &:link, &:visited
-      text-decoration none
-
-    &:after
-      background $copper
-      bottom 7px
-      content ''
-      height 3px
-      left 0
-      position absolute
-      transition all 800ms $expo
-      width 0
-
-    &:hover
-      &:after
-        width 100%
-
-  a.selected
-    &:after
-      background $copper
-      bottom 7px
-      content ''
-      height 3px
-      left 0
-      position absolute
-      transition all 800ms $expo
-      width 100%
-
-  .profile
-    @extend button.circle
-    background $copper
-    color $paper
-    font-size 18px
-    font-weight 800
-    height 40px
-    width 40px
-
-.NavigationItems
-  display flex
-  align-items center
+  .NavigationItems
+    align-items: center
+    display: flex

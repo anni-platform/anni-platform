@@ -3,14 +3,17 @@ import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router';
 import { getAuthUrl, login, logoutSession } from 'adapters';
 import { addAuthToken, logout } from 'actions';
-import Icon from 'components/Icon'
+
+import { Button, Icon } from 'components/baseline';
 
 class Navigation extends Component {
   componentDidMount() {
     const { dispatch, auth } = this.props;
+
     if (!window.sessionStorage) {
       return;
     }
+
     if (!auth.toJS().isAuthenticated) {
       login().then(token => {
         if (!token) {
@@ -21,27 +24,31 @@ class Navigation extends Component {
       }, (err) => console.log(err) );
     }
   }
+
   logout() {
     logoutSession();
     this.props.dispatch(logout());
     this.props.router.push("/");
   }
+
   render() {
     const login = (
       <nav className="NavigationItems">
-        <a href={getAuthUrl()}>Login To Dropbox</a>
+        <Button primary href={getAuthUrl()}>Sign in</Button>
       </nav>);
     const loggedInNav = (
       <nav className="NavigationItems">
-        <Link to="/dashboard" className='link'>Projects</Link>
-        <Link to="/activity" className='link'>Activity</Link>
-        <Link to="/dashboard" className='icon'><Icon name='notification' width='32' height='32' className='svgFill'/></Link>
-        <button className="profile" onClick={this.logout.bind(this)}>IC</button>
+        <Button to="/dashboard" nav>Projects</Button>
+        <Button to="/activity" nav>Activity</Button>
+        <Button icon="notification" full/>
+        <Button user onClick={this.logout.bind(this)} />
       </nav>
     );
     return (
       <div className="Navigation">
-        <Link to="/"><Icon name='logo' width='50' height='50' className='svgOutline' /></Link>
+        <Link to="/">
+          <Icon name='logo' width={48} height={48} />
+        </Link>
         {(this.props.auth.toJS().isAuthenticated ? loggedInNav : login)}
       </div>
     );

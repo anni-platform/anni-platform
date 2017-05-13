@@ -10,8 +10,9 @@ class Login extends Component {
   }
   render() {
     return (
-      <div>
-        Hey, login to dropbox above.
+      <div className='Login'>
+        <h1>Start your first project</h1>
+        <p>Sign up using Dropbox and start using Anni to track your project's progress!</p>
       </div>
     );
   }
