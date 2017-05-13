@@ -3,7 +3,7 @@ import { withRouter } from 'react-router';
 import constants from 'constants';
 import { createFolder } from 'adapters';
 import ProjectManager from 'containers/ProjectManager';
-import { addProject, removeFolder } from 'actions';
+import { addProject } from 'actions';
 import Headline from './components/Headline'
 import Script from './components/Script'
 import Moodboard from './components/Moodboard';
@@ -108,9 +108,7 @@ class ProjectDetail extends Component {
         <Moodboard projectPath={id} project={project} />
         <div>
           <Button
-            onClick={() => {
-            removeFolder(project.path_display).then(this._removeProject.bind(this));
-          }}>Delete Project</Button>
+            onClick={this._removeProject.bind(this)}>Delete Project</Button>
         </div>
       </div>
     );

@@ -21,9 +21,8 @@ class ProjectList extends Component {
         to={`/edit/projects/${constants.project.newProject}`}
         icon="more">
       </Button>
-
-    const projectItems = Object.keys(projects.toJS()).map(id => {
-      const project = projects.toJS()[id];
+    const filteredProjects = projects.filter(p => p.get("name") !== "db");
+    const projectItems = filteredProjects.valueSeq().toJS().map(project => {
       return(
         <li key={`linkto${project.name}`}>
           <Button large to={`/project/${project.name}`}>

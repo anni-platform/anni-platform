@@ -1,7 +1,7 @@
 // import { uploadFile } from 'adapters';
 // import { stateToJsonFile } from 'utils/fileStorage';
 import deepEqual from 'deep-equal';
-import { FILE_DATABASE_DIRECTORY } from 'constants/file';
+// import { FILE_DATABASE_DIRECTORY } from 'constants/file';
 
 // See Abramov tutorial: https://egghead.io/lessons/javascript-redux-persisting-the-state-to-the-local-storage
 const STATE = 'state';

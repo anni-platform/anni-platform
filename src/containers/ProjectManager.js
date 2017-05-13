@@ -37,7 +37,6 @@ export default function ProjectManager(Component) {
     removeProject(id) {
       const project = this.getProjectByName(id);
       return new Promise(done => {
-        this.props.dispatch(removeProject(project.id, id));
         removeFolder(project.path_display).then(() => {
           const collectionKeys = Object.keys(this.props.files.toJS().collections);
           // remove all unused files from store
@@ -48,7 +47,10 @@ export default function ProjectManager(Component) {
             }
           });
         });
-        this.cleanCollections().then(done);
+        this.cleanCollections().then(() => {
+          this.props.dispatch(removeProject(project.id, id));
+          done();
+        });
       });
       
     }
