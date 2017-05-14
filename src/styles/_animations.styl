@@ -34,7 +34,7 @@
  * Slide In
  */
 
-@keyframes elasticSlideUp
+@keyframes elasticSlide
   0%
     transform: translateY(100vh)
     visibility: visible
@@ -56,4 +56,29 @@
 
   100%
       transform: translateY(0vh)
+      visibility: visible
+
+
+@keyframes borderAnimation
+  0%
+    transform: scaleX(0)
+    visibility: visible
+
+  19%
+    transform: scaleX(1.6)
+
+  34%
+    transform: scaleX(.8)
+
+  45%
+      transform: scaleX(1.2)
+
+  60%
+      transform: scaleX(.95)
+
+  80%
+      transform: scaleX(1.05)
+
+  100%
+      transform: scaleX(1)
       visibility: visible
