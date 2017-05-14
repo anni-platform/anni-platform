@@ -3,7 +3,6 @@ import { TextEditor } from 'components/baseline';
 
 
 const Headline = ({name, client}) => {
-  console.log(TextEditor);
   return (
     <div className='Headline'>
       <div className="content">

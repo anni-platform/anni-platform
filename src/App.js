@@ -5,8 +5,9 @@ import { Provider } from 'react-redux';
 import reducer from 'reducers';
 
 
-import { saveState, loadState } from 'utils/localStorage';
-const store = createStore(reducer, loadState());
+import { saveState } from 'utils/localStorage';
+import StaticJSONFileDatabase from 'utils/fileStorage';
+const store = createStore(reducer, StaticJSONFileDatabase.hydrateStoreFromFileDatabase());
 store.subscribe(() => {
   saveState(store.getState());
 });
