@@ -40,7 +40,7 @@ class App extends Component {
   }
   componentDidMount() {
     StaticJSONFileDatabase.hydrateStoreFromFileDatabase().then(data => {
-      const store = createStore(reducer, data || undefined, enhancer);
+      const store = createStore(reducer, data, enhancer);
       store.subscribe(() => {
         saveState(data, store.getState());
       });

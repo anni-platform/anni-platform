@@ -11,6 +11,10 @@ export function createClient(token = _token) {
   client = new Dropbox({ accessToken: token });
 }
 
+export function getClient() {
+  return !!client;
+}
+
 export function login() {
   return new Promise((resolve, reject) => {
     const token = getAccessTokenFromSessionStorage();
@@ -52,6 +56,10 @@ export function getAccountInfo() {
   return client.usersGetCurrentAccount().catch(e => console.log(e));
 }
 
+export function searchFiles(path, query) {
+  return client.filesSearch({ path, query }).catch(e => console.log(e));
+}
+
 export function getAccessTokenFromUrl() {
   return parseQueryString(window.location.hash).access_token;
 }
@@ -67,9 +75,6 @@ export function downloadFile(path) {
 }
 
 export function getFolder(path) {
-  if (!getAccessTokenFromSessionStorage()) {
-    return;
-  }
   return client.filesListFolder({ path })
   .catch(e => console.log(e));
 }
