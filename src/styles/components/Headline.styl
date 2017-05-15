@@ -1,12 +1,12 @@
 .Headline
-  padding $huge 0 0
+  padding $xxl 0 0
   position: relative
 
   .content
     margin-top: pxToRem(94)
     z-index: 2
 
-    h1, h3, p
+    h1, p
       color: $paper
 
     .date
@@ -19,21 +19,7 @@
 
   .background
     animation: slideUp 800ms $expo forwards
-    background: $copper
-    height: 100vh
-    position: absolute;
-    width: 100vw
-
-@keyframes fadeUp
-  from
-    opacity: 0
-    transform: translateY(50px);
-  to
-    opacity: 1
-    transform: translateY(0);
-
-@keyframes slideUp
-  from
-    transform: translateY(100vh);
-  to
-    transform: translateY(0);
+    background: $charcoal
+    height: 100%
+    position: absolute
+    width: 100%
