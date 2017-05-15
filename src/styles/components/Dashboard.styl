@@ -1,12 +1,10 @@
 .Dashboard
-  center(column)
-  height 100vh
-  min-height 500px
+  max-height: 100vh
+  overflow: hidden;
 
   .content
     center(column)
-    margin-top: pxToRem(94)
-
+    margin: $xxl 0
     opacity: 0
     animation: fadeUp 600ms 60ms $expo forwards
 
@@ -29,10 +27,11 @@
       margin-bottom: $sm
 
   .background
-    animation: slideDown 800ms $expo forwards
+    animation: slideDown 600ms $expo forwards
     background: $charcoal
     height: 100%
     position: absolute
+    top: 0
     width: 100%
 
   .Button.full
