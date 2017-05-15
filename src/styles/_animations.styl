@@ -18,58 +18,31 @@
 
 
 
+@keyframes slideDown
+  from
+    transform: translateY(0);
+  to
+    transform: translateY(100vh);
+
+
+
+
 @keyframes pop
   0%
     transform: scale(0)
     visibility: visible
 
-  5%
-    transform: scale(.4)
-
   18%
-    transform: scale(1.1)
+    transform: scale(1.05)
 
   33%
-    transform: scale(.95)
+    transform: scale(.97)
 
-  45%
-      transform: scale(1.03)
-
-  60%
-      transform: scale(.99)
-
-  80%
-      transform: scale(1.005)
+  50%
+      transform: scale(1.02)
 
   100%
       transform: scale(1)
-      visibility: visible
-
-
-
-
-@keyframes borderAnimation
-  0%
-    transform: scaleX(0)
-    visibility: visible
-
-  19%
-    transform: scaleX(1.6)
-
-  34%
-    transform: scaleX(.8)
-
-  45%
-      transform: scaleX(1.2)
-
-  60%
-      transform: scaleX(.95)
-
-  80%
-      transform: scaleX(1.05)
-
-  100%
-      transform: scaleX(1)
       visibility: visible
 
 
@@ -81,19 +54,19 @@
     visibility: visible
 
   19%
-    transform: translateY(-6.6vh)
+    transform: translateY(-.8vh)
 
   34%
-    transform: translateY(1.2vh)
+    transform: translateY(.4vh)
 
   45%
-      transform: translateY(-.8vh)
+      transform: translateY(-.3vh)
 
   60%
-      transform: translateY(.5vh)
+      transform: translateY(.1vh)
 
   80%
-      transform: translateY(-.3vh)
+      transform: translateY(-.05vh)
 
   100%
       transform: translateY(0vh)

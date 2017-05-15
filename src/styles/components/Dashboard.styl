@@ -7,6 +7,9 @@
     center(column)
     margin-top: pxToRem(94)
 
+    opacity: 0
+    animation: fadeUp 600ms 60ms $expo forwards
+
   .projectList
     @extend h1
     display flex
@@ -14,3 +17,24 @@
     flex-grow 0
     list-style none
     position relative
+
+    for items in 1..99
+      :nth-child({items})
+        opacity: 0
+        animation: fadeUp 600ms 60ms*items $expo forwards
+
+    .Button.link
+      font-size: pxToRem(32)
+      padding-bottom: $sm
+      margin-bottom: $sm
+
+  .background
+    animation: slideDown 800ms $expo forwards
+    background: $charcoal
+    height: 100%
+    position: absolute
+    width: 100%
+
+  .Button.full
+    transform: scale(0)
+    animation: pop 1200ms 200ms forwards

@@ -38,8 +38,8 @@ class Navigation extends Component {
       </nav>);
     const loggedInNav = (
       <nav className="NavigationItems">
-        <Button to="/dashboard" nav>Projects</Button>
-        <Button to="/activity" nav>Activity</Button>
+        <Button to="/dashboard" link>Projects</Button>
+        <Button to="/activity" link>Activity</Button>
         <Button icon="notification" full/>
         <Button user onClick={this.logout.bind(this)} />
       </nav>
