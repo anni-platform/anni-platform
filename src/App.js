@@ -7,21 +7,32 @@ import reducer from 'reducers';
 
 import { saveState } from 'utils/localStorage';
 import StaticJSONFileDatabase from 'utils/fileStorage';
-const store = createStore(reducer, StaticJSONFileDatabase.hydrateStoreFromFileDatabase());
-store.subscribe(() => {
-  saveState(store.getState());
-});
 
 class App extends Component {
-  render() {
-    return(
-      <Provider store={store}>
+  constructor() {
+    super();
+    this.state = { store: null };
+  }
+
+  componentDidMount() {
+    StaticJSONFileDatabase.hydrateStoreFromFileDatabase().then(data => {
+      const store = createStore(reducer, data);
+      store.subscribe(() => {
+        saveState(data, store.getState());
+      });
+      this.setState({ store });
+    });
+  }
+  render() { 
+    const store = this.state.store;
+    return store ? (
+      <Provider store={store || {}}>
         <div>
           <Navigation />
           {this.props.children}
         </div>
       </Provider>
-    );
+    ) : <div className="Loading">Loading...</div>;
   }
 }
 

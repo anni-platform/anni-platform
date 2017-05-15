@@ -49,7 +49,7 @@ export function storeSessionToken(token) {
 }
 
 export function getAccountInfo() {
-  return client.usersGetAccount().catch(e => console.log(e));
+  return client.usersGetCurrentAccount().catch(e => console.log(e));
 }
 
 export function getAccessTokenFromUrl() {
@@ -58,6 +58,11 @@ export function getAccessTokenFromUrl() {
 
 export function uploadFile(path, file) {
   return client.filesUpload({ path: '/' + path + '/' + file.name, contents: file })
+  .catch(e => console.log(e));
+}
+
+export function downloadFile(path) {
+  return client.filesDownload({ path })
   .catch(e => console.log(e));
 }
 

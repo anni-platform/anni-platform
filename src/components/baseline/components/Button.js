@@ -23,12 +23,12 @@ export const Button = props => {
 
   const styles = classNames({
     Button: true,
-    primary: primary,
-    link: link,
-    large: large,
+    primary,
+    link,
+    large,
     navigation: nav,
-    full: full,
-    user: user,
+    full,
+    user,
     noLabel: !children
   });
 

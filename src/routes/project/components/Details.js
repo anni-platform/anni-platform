@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { removeFolder } from 'adapters';
-import { removeProject, deleteFile } from 'actions';
+import { removeProject, deleteFile, updateProject } from 'actions';
 import Headline from './Headline'
 import Script from './Script'
 import Moodboard from './Moodboard';
@@ -23,7 +23,14 @@ export default class ProjectDetail extends Component {
     }
     return (
       <div className='ProjectDetail'>
-        <Headline name={project.name} client={project.client} />
+        <Headline 
+          name={project.name} 
+          client={project.client && project.client.text}
+          date={project.date && project.date.text}
+          save={update => {
+            update.id = project.id;
+            this.props.dispatch(updateProject(update))
+          }} />
         <Script />
         <Moodboard projectPath={id} project={project} />
         <div>

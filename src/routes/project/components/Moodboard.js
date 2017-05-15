@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { getFilesInFolder } from 'adapters';
 import constants from 'constants';
 import { updateProject } from 'actions';
-import { makeCancelable } from 'utils';
 import FileUploader from 'components/FileUploader';
 import Loader from 'components/Loader';
 import ImageList from './ImageList';
@@ -16,26 +14,6 @@ class MoodboardViewer extends Component {
     this.state = {
       loading: true
     }
-  }
-
-  componentDidMount() {
-    const project = this.props.project;
-    if (project) {
-      this.getFiles = makeCancelable(new Promise(r => {
-        getFilesInFolder(`/${this.props.projectPath}`)
-        .then(moodboardItems => {
-          this.getFiles.resolved = true;
-          this.props.dispatch(updateProject({ id: project.id, images: moodboardItems }));
-        });
-      }));
-      this.getFiles
-      .promise
-      .then(() => this.setState({ loading: false }));
-    }
-  }
-
-  componentWillUnmount() {
-    this.getFiles.cancel();
   }
 
   render() {

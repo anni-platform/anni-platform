@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router';
 import constants from 'constants';
 import ProjectManager from 'containers/ProjectManager';
 import ProjectDetails from './components/Details';
 import ProjectForm from './components/CreateForm';
 
-class Project extends Component {
+class Project extends PureComponent {
   render() {
     const { action } = this.props.params;
     switch(action) {

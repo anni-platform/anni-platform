@@ -29,15 +29,27 @@ const enhancer = compose(
   DevTools.instrument()
 )
 
-import { saveState, loadState } from './utils/localStorage';
-const store = createStore(reducer, loadState(), enhancer);
-store.subscribe(() => {
-  saveState(store.getState());
-});
+import { saveState } from './utils/localStorage';
+
+import StaticJSONFileDatabase from 'utils/fileStorage';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = { store: null };
+  }
+  componentDidMount() {
+    StaticJSONFileDatabase.hydrateStoreFromFileDatabase().then(data => {
+      const store = createStore(reducer, data || undefined, enhancer);
+      store.subscribe(() => {
+        saveState(data, store.getState());
+      });
+      this.setState({ store });
+    });
+  }
   render() {
-    return(
+    const store = this.state.store;
+    return store ? (
       <Provider store={store}>
         <div>
           <Navigation />
@@ -45,7 +57,7 @@ class App extends Component {
           <DevTools />
         </div>
       </Provider>
-    );
+    ) : <div className="Loading">Loading...</div>;
   }
 }
 
