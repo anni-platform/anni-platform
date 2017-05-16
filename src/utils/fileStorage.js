@@ -1,5 +1,5 @@
 import pick from 'lodash/pick';
-import { getAccessTokenFromSessionStorage, getClient, getFolder, downloadFile } from 'adapters';
+import { getAccessTokenFromSessionStorage, getClient, getFolder, downloadFile, createFolder } from 'adapters';
 import { FILE_DATABASE_DIRECTORY } from 'constants/file';
 
 export function stateToJsonFile(state, fileName = `state_${new Date().getTime()}.json`) {
@@ -16,9 +16,13 @@ const StaticJSONFileDatabase = {
         if (!getClient()) {
           resolve({ auth: {}, projects: {}, files: {} });
         }
-        this.fetchJSONFromFile(`/${FILE_DATABASE_DIRECTORY}/`).then(data => {
-          resolve(data);
-        }).catch(reject);
+        createFolder(`/${FILE_DATABASE_DIRECTORY}`)
+        .then((r) => {
+          this.fetchJSONFromFile(`/${FILE_DATABASE_DIRECTORY}/`).then(data => {
+            resolve(data);
+          }).catch(reject);
+        })
+        
       });
     },
     fetchJSONFromFile(filePath) {
