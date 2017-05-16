@@ -1,22 +1,37 @@
 .FileUploader
   center()
-  outline $xxs dashed $concrete
   min-height: pxToRem(400)
-  transition: 600ms $expo
   min-width: 100vw
-  padding: $lg
   outline-offset: -($lg)
+  outline $xxs dashed $concrete
+  padding: $xl
+  position: relative
+  transition: 600ms $expo
+  text-align: center
 
-  .activeMessage
+  .instructions
+    color: rgba($charcoal, .3)
+    padding: $xl
+
+  .tooltip
+    @extend h3
+    color: $copper
     display: none
 
   &.active
-    border-color limegreen
-    outline-offset: -($sm)
+    outline-color $copper
+    outline-offset: -($md)
 
-    .activeMessage
-      display: block;
-      position: absolute;
+    .instructions
+      opacity: 0
+
+    .tooltip
+      display: inline-block
+      opacity: 1
+      position: absolute
+      top: 50%
+      transform: translate(-50%, -50%);
+
 
     .ImageList
-      opacity: .5
+      opacity: .3
