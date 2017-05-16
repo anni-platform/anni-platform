@@ -1,0 +1,22 @@
+.FileUploader
+  center()
+  outline $xxs dashed $concrete
+  min-height: pxToRem(400)
+  transition: 600ms $expo
+  min-width: 100vw
+  padding: $lg
+  outline-offset: -($lg)
+
+  .activeMessage
+    display: none
+
+  &.active
+    border-color limegreen
+    outline-offset: -($sm)
+
+    .activeMessage
+      display: block;
+      position: absolute;
+
+    .ImageList
+      opacity: .5

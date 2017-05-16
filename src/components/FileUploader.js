@@ -16,11 +16,15 @@ class FileDrop extends Component {
     return (
       <Dropzone
         onDrop={this.onDrop}
-        className="FileDrop"
+        className="FileUploader"
         activeClassName="active"
         disableClick={true}>
         {this.props.children}
-        <p>Drop files here</p>
+        <div>
+          <span>Drop files here</span>
+          <span className="activeMessage">Hello</span>
+        </div>
+
       </Dropzone>
     );
   }
