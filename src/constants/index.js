@@ -7,5 +7,6 @@ export default {
   project,
   auth,
   file,
-  content
+  content,
+  DEFAULT_STATE: { auth: {}, projects: {}, files: {} }
 };

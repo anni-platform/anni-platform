@@ -23,7 +23,7 @@ export function login() {
     } else {
       reject();
     }
-  }).catch(e => console.log(e));
+  });
 }
 
 export function logoutSession() {
@@ -53,6 +53,9 @@ export function storeSessionToken(token) {
 }
 
 export function getAccountInfo() {
+  if (!client) {
+    return null;
+  }
   return client.usersGetCurrentAccount().catch(e => console.log(e));
 }
 
