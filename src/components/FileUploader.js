@@ -21,8 +21,8 @@ class FileDrop extends Component {
         disableClick={true}>
         {this.props.children}
         <div>
-          <h3 className="instructions">Drag your reference images here to upload</h3>
-          <span className="tooltip">Drag your reference images here to upload</span>
+          <h3 className="instructions">Drag your images here to upload</h3>
+          <span className="tooltip">Drop em while they're hot 🔥 </span>
         </div>
 
       </Dropzone>

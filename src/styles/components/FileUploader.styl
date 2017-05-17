@@ -12,11 +12,17 @@
   .instructions
     color: rgba($charcoal, .3)
     padding: $xl
+    transition: 600ms $expo
 
   .tooltip
     @extend h3
-    color: $copper
-    display: none
+    color: $charcoal
+    display: inline-block
+    opacity: 0
+    position: absolute
+    top: 50%
+    transition: 600ms $expo
+    transform: translate(-50%, -50%);
 
   &.active
     outline-color $copper
@@ -26,12 +32,7 @@
       opacity: 0
 
     .tooltip
-      display: inline-block
       opacity: 1
-      position: absolute
-      top: 50%
-      transform: translate(-50%, -50%);
-
 
     .ImageList
       opacity: .3
