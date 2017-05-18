@@ -26,7 +26,7 @@ class ProjectList extends Component {
       const project = projects[id];
       return(
         <li key={`linkto${project.name}`}>
-          <Button large to={`/project/${project.name}`}>
+          <Button link to={`/project/${project.name}`}>
             {project.name}
           </Button>
         </li>
@@ -38,8 +38,8 @@ class ProjectList extends Component {
         <h3>Projects</h3>
         <ul className='projectList'>
           {projectItems}
-          <li>{newProjectLink}</li>
         </ul>
+        {newProjectLink}
       </div>
     );
 
@@ -54,6 +54,7 @@ class ProjectList extends Component {
     const renderProjects = (projectItems.length ? projectsList : empty);
     return (
       <div className='Dashboard'>
+        <div className='background' />
         {(loading ? <Loader show={loading} /> : renderProjects)}
     </div>
     );

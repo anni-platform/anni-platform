@@ -1,0 +1,38 @@
+.FileUploader
+  center()
+  min-height: pxToRem(400)
+  min-width: 100vw
+  outline-offset: -($lg)
+  outline $xxs dashed $concrete
+  padding: $xl
+  position: relative
+  transition: 600ms $expo
+  text-align: center
+
+  .instructions
+    color: rgba($charcoal, .3)
+    padding: $xl
+    transition: 600ms $expo
+
+  .tooltip
+    @extend h3
+    color: $charcoal
+    display: inline-block
+    opacity: 0
+    position: absolute
+    top: 50%
+    transition: 600ms $expo
+    transform: translate(-50%, -50%);
+
+  &.active
+    outline-color $copper
+    outline-offset: -($md)
+
+    .instructions
+      opacity: 0
+
+    .tooltip
+      opacity: 1
+
+    .ImageList
+      opacity: .3

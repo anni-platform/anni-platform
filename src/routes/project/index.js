@@ -5,7 +5,6 @@ import { createFolder, removeFolder } from 'adapters';
 import ProjectManager from 'containers/ProjectManager';
 import { addProject, removeProject, deleteFile } from 'actions';
 import Headline from './components/Headline'
-import Script from './components/Script'
 import Moodboard from './components/Moodboard';
 import filter from 'lodash.filter';
 
@@ -89,7 +88,6 @@ class ProjectDetail extends Component {
     return (
       <div className='ProjectDetail'>
         <Headline name={project.name} client={project.client} />
-        <Script />
         <Moodboard projectPath={id} project={project} />
         <div>
           <Button

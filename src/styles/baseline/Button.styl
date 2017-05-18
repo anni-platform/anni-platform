@@ -4,7 +4,7 @@
   background: none
   border pxToRem(3) solid $copper
   border-radius 360px
-  color: $slate
+  color: $charcoal
   cursor pointer
   display: inline-flex
   font-size: pxToRem(14)
@@ -30,13 +30,10 @@
     color: $paper
 
   &.link
-    border-color: transparent
-
-  &.navigation
     border: none
     font-family: $headlineFont
     font-size: pxToRem(16)
-    letter-spacing: 1px
+    letter-spacing: pxToRem(1)
     margin: 0 $md
     padding: $sm 0
     text-transform: uppercase
@@ -45,35 +42,11 @@
       background: $copper
       bottom: $xs
       content: ''
-      height: 3px
+      height: pxToRem(3)
       left: 0
       position: absolute
       transition: all 400ms $expo
       width: 0
-
-    &:hover
-      transform: scale(1)
-
-      &:after
-        width 100%
-
-  &.large
-    @extend h1
-    border: none
-    padding: $sm 0
-
-    &:link, &:visited
-      text-decoration none
-
-    &:after
-      background $copper
-      bottom 5px
-      content ''
-      height 4px
-      left 0
-      position absolute
-      transition all 600ms $expo
-      width 0
 
     &:hover
       transform: scale(1)

@@ -1,0 +1,29 @@
+.Moodboard
+  padding: $xl 0
+
+  .ImageList
+    column-count: 1
+    column-gap: 0
+    padding: 0
+
+    +above($break-sm)
+      column-count: 2
+
+    +above($break-md)
+      column-count: 3
+
+    +above($break-lg)
+      column-count: 4
+
+    +above($break-xl)
+      column-count: 5
+
+  .ImageListItem
+    break-inside: avoid
+    position: relative
+    margin-bottom: -($xs)
+
+    & > img
+      height: auto
+      width: 100%
+      padding: $sm
