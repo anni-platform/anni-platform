@@ -1,4 +1,4 @@
-import Dropbox from 'dropbox';
+ import Dropbox from 'dropbox';
 import env from '../.env.json';
 import { parseQueryString } from 'utils';
 import { homepage } from '../package.json';
@@ -53,10 +53,9 @@ export function storeSessionToken(token) {
 }
 
 export function getAccountInfo() {
-  if (!client) {
-    return null;
-  }
-  return client.usersGetCurrentAccount().catch(e => console.log(e));
+  return new Promise((done) => {
+    client.usersGetCurrentAccount().then(done);
+  })
 }
 
 export function searchFiles(path, query) {
@@ -68,7 +67,7 @@ export function getAccessTokenFromUrl() {
 }
 
 export function uploadFile(path, file) {
-  return client.filesUpload({ path: '/' + path + '/' + file.name, contents: file })
+  return client.filesUpload({ path: '/' + path + '/' + file.name, contents: file, mode: 'overwrite' })
   .catch(e => console.log(e));
 }
 
@@ -88,7 +87,7 @@ export function getLink(path) {
 }
 
 export function createFolder(path) {
-  return client.filesCreateFolder({ path })
+  return client.filesCreateFolder({ path, autorename: true })
   .catch(e => console.log(e));
 }
 

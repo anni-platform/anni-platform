@@ -24,6 +24,9 @@ import Navigation from 'components/Navigation';
 import { createStore, compose } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from 'reducers';
+import { getAccountInfo, getAccessTokenFromUrl, storeSessionToken } from 'adapters';
+import { addUserInfo } from 'actions';
+import { withRouter } from 'react-router';
 
 const enhancer = compose(
   DevTools.instrument()
@@ -39,12 +42,21 @@ class App extends Component {
     this.state = { store: null };
   }
   componentDidMount() {
+    const token = getAccessTokenFromUrl();
+    if (token) {
+      storeSessionToken(token);
+    }
     StaticJSONFileDatabase.hydrateStoreFromFileDatabase().then(data => {
       const store = createStore(reducer, data, enhancer);
       store.subscribe(() => {
         saveState(data, store.getState());
       });
-      this.setState({ store });
+      this.setState({ store }, () => {
+        getAccountInfo().then(info => this.props.dispatch(addUserInfo(info)))
+        .catch(() => {
+          this.props.router.push('/');
+        })
+      });
     });
   }
   render() {
@@ -62,4 +74,4 @@ class App extends Component {
 }
 
 
-export default App;
+export default withRouter(App);

@@ -3,15 +3,10 @@ import constants from 'constants';
 import Loader from 'components/Loader';
 import ProjectManager from 'containers/ProjectManager';
 import { FILE_DATABASE_DIRECTORY, FILE_DATABASE_HISTORY_DIRECTORY } from 'constants/file';
-import { getAccountInfo } from 'adapters';
-import { addUserInfo } from 'actions';
 
 import { Button } from 'components/baseline';
 
 class ProjectList extends Component {
-  componentDidMount() {
-    getAccountInfo().then(info => this.props.dispatch(addUserInfo(info)));
-  }
   render() {
     const { projects, auth } = this.props;
     const loading = !auth.toJS().isAuthenticated;

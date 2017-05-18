@@ -1,6 +1,5 @@
 import constants from '../constants';
 const { ADD_PROJECT, REMOVE_PROJECT, UPDATE_PROJECT } = constants.project;
-const { LOG_OUT } = constants.auth;
 import Immutable, { Map } from 'immutable';
 
 export const initialState = Map({});
@@ -32,8 +31,6 @@ const projects = (state = initialState, action) => {
       return state.set(action.project.id, project(state.get(action.project.id), action));
     case REMOVE_PROJECT:
       return state.delete(action.id);
-    case LOG_OUT:
-      return initialState;
     default:
       return state
   }

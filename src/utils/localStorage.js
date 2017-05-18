@@ -1,7 +1,9 @@
-import { uploadFile, removeFolder, searchFiles, createFolder } from 'adapters';
+import { uploadFile } from 'adapters';
 import { stateToJsonFile } from 'utils/fileStorage';
 import deepEqual from 'deep-equal';
 import { FILE_DATABASE_DIRECTORY } from 'constants/file';
+import constants from 'constants';
+const { DEFAULT_STATE } = constants;
 
 // See Abramov tutorial: https://egghead.io/lessons/javascript-redux-persisting-the-state-to-the-local-storage
 const STATE = 'state';
@@ -19,6 +21,9 @@ export const loadState = () => {
 
 let saving = false;
 export const saveState = (oldState, newState) => {
+  if (newState === DEFAULT_STATE) {
+    return;
+  }
   const oldProjects = oldState.projects.toJS ? oldState.projects.toJS() : oldState.projects;
   const newProjects = newState.projects.toJS ? newState.projects.toJS() : newState.projects;
   const oldFiles = oldState.files.toJS ? oldState.files.toJS() : oldState.files;
@@ -31,21 +36,7 @@ export const saveState = (oldState, newState) => {
       localStorage.setItem(STATE, serializedNewState);
       saving = true;
       console.log("uploading new state to file db");
-      const writeStateFile = () => {
-        uploadFile(FILE_DATABASE_DIRECTORY, stateToJsonFile(newState, 'state.json'));
-        saving = false;
-      }
-      // removeFolder(`/${FILE_DATABASE_DIRECTORY}/state.json`).then(writeStateFile);
-      searchFiles('', FILE_DATABASE_DIRECTORY, 'state.json').then(results => {
-        if (results.matches.length) {
-          searchFiles(`/${FILE_DATABASE_DIRECTORY}/`, 'state.json').then(results => {
-            removeFolder(`/${FILE_DATABASE_DIRECTORY}/state.json`).then(writeStateFile);
-            return;
-          });
-        } else {
-          createFolder(`/${FILE_DATABASE_DIRECTORY}`).then(writeStateFile);
-        }
-      });
+      uploadFile(FILE_DATABASE_DIRECTORY, stateToJsonFile(newState, 'state.json')).then(() => { saving = false });
       return;
     }
     
