@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import constants from 'constants';
 import Loader from 'components/Loader';
 import ProjectManager from 'containers/ProjectManager';
+import AuthManager from 'containers/AuthManager';
 import { FILE_DATABASE_DIRECTORY, FILE_DATABASE_HISTORY_DIRECTORY } from 'constants/file';
 
 import { Button } from 'components/baseline';
@@ -54,4 +55,4 @@ class ProjectList extends Component {
   }
 }
 
-export default ProjectManager(ProjectList);
+export default ProjectManager(AuthManager(ProjectList));

@@ -19,7 +19,7 @@ export default class ProjectDetail extends Component {
     const { id } = this.props.params;
     const project = this.props.getProjectByName(id);
     if (!project) {
-      return null;
+      return <div className='Project-deleted'>Project deleted.</div>;
     }
     return (
       <div className='ProjectDetail'>
@@ -29,7 +29,7 @@ export default class ProjectDetail extends Component {
           date={project.date && project.date.text}
           save={update => {
             update.id = project.id;
-            this.props.dispatch(updateProject(update))
+            this.props.dispatch(updateProject(update));
           }} />
         <Script />
         <Moodboard projectPath={id} project={project} />

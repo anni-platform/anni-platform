@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import App from './App';
 import Auth from 'routes/auth';
 import Dashboard from 'routes/dashboard';
 import Project from 'routes/project';
@@ -13,17 +14,12 @@ import { useRouterHistory } from 'react-router';
 
 // TODO: Add 404 component to replace this null
 const NoMatch = null;
-
-let App;
 let history = browserHistory;
 
-if (process.env.NODE_ENV === 'development') {
-  App = require('./AppDev').default;
-} else {
+if (process.env.NODE_ENV !== 'development') {
   history = useRouterHistory(createHistory)({
     basename: '/anni-platform'
   });
-  App = require('./App').default;
 }
 
 // Declarative route configuration (could also load this config lazily
