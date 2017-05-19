@@ -1,19 +1,17 @@
-import React, { Component } from 'react';
-import { createStore, compose } from 'redux';
-import Navigation from 'components/Navigation';
-import { Provider } from 'react-redux';
-import reducer from 'reducers';
-import { getAccessTokenFromUrl, storeSessionToken } from 'adapters';
-import { saveState } from './utils/localStorage';
-import StaticJSONFileDatabase from 'utils/fileStorage';
+import React, { Component } from "react";
+import { createStore, compose } from "redux";
+import Navigation from "components/Navigation";
+import { Provider } from "react-redux";
+import reducer from "reducers";
+import { getAccessTokenFromUrl, storeSessionToken } from "adapters";
+import { saveState } from "./utils/localStorage";
+import StaticJSONFileDatabase from "utils/fileStorage";
 
 let enhancer = null;
 let DevTools = null;
-if (process.env.NODE_ENV === 'development') {
-  DevTools = require('DevTools');
-  enhancer = compose(
-    DevTools.instrument()
-  )
+if (process.env.NODE_ENV === "development") {
+  DevTools = require("DevTools");
+  enhancer = compose(DevTools.instrument());
 }
 
 class App extends Component {
@@ -28,9 +26,9 @@ class App extends Component {
     }
     StaticJSONFileDatabase.hydrateStoreFromFileDatabase().then(data => {
       let store;
-      if (process.env.NODE_ENV === 'development') {
+      if (process.env.NODE_ENV === "development") {
         store = createStore(reducer, data, enhancer);
-      }  else {
+      } else {
         store = createStore(reducer, data);
       }
       store.subscribe(() => {
@@ -41,17 +39,16 @@ class App extends Component {
   }
   render() {
     const store = this.state.store;
-    return store ? (
-      <Provider store={store}>
-        <div>
-          <Navigation />
-          {this.props.children}
-          {DevTools ? <DevTools /> : null}
-        </div>
-      </Provider>
-    ) : <div className="Loading">Loading...</div>;
+    return store
+      ? <Provider store={store}>
+          <div>
+            <Navigation />
+            {this.props.children}
+            {DevTools ? <DevTools /> : null}
+          </div>
+        </Provider>
+      : <div className="Loading">Loading...</div>;
   }
 }
-
 
 export default App;

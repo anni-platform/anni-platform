@@ -1,25 +1,33 @@
-import React, { Component } from 'react';
-import constants from 'constants';
-import Loader from 'components/Loader';
-import ProjectManager from 'containers/ProjectManager';
-import AuthManager from 'containers/AuthManager';
-import { FILE_DATABASE_DIRECTORY, FILE_DATABASE_HISTORY_DIRECTORY } from 'constants/file';
+import React, { Component } from "react";
+import constants from "constants";
+import Loader from "components/Loader";
+import ProjectManager from "containers/ProjectManager";
+import AuthManager from "containers/AuthManager";
+import {
+  FILE_DATABASE_DIRECTORY,
+  FILE_DATABASE_HISTORY_DIRECTORY
+} from "constants/file";
 
-import { Button } from 'components/baseline';
+import { Button } from "components/baseline";
 
 class ProjectList extends Component {
   render() {
     const { projects, auth } = this.props;
     const loading = !auth.toJS().isAuthenticated;
-    const newProjectLink =
+    const newProjectLink = (
       <Button
         full
         to={`/edit/projects/${constants.project.newProject}`}
-        icon="more">
-      </Button>
-    const filteredProjects = projects.filter(p => p.get("name") !== FILE_DATABASE_DIRECTORY && p.get("name") !== FILE_DATABASE_HISTORY_DIRECTORY);
+        icon="more"
+      />
+    );
+    const filteredProjects = projects.filter(
+      p =>
+        p.get("name") !== FILE_DATABASE_DIRECTORY &&
+        p.get("name") !== FILE_DATABASE_HISTORY_DIRECTORY
+    );
     const projectItems = filteredProjects.valueSeq().toJS().map(project => {
-      return(
+      return (
         <li key={`linkto${project.name}`}>
           <Button large to={`/project/${project.name}`}>
             {project.name}
@@ -29,9 +37,9 @@ class ProjectList extends Component {
     });
 
     const projectsList = (
-      <div className='content'>
+      <div className="content">
         <h3>Projects</h3>
-        <ul className='projectList'>
+        <ul className="projectList">
           {projectItems}
           <li>{newProjectLink}</li>
         </ul>
@@ -39,18 +47,18 @@ class ProjectList extends Component {
     );
 
     const empty = (
-      <div className='content'>
+      <div className="content">
         <h1>Add a project!</h1>
         <p>Click the + button below to get started!</p>
         {newProjectLink}
       </div>
     );
 
-    const renderProjects = (projectItems.length ? projectsList : empty);
+    const renderProjects = projectItems.length ? projectsList : empty;
     return (
-      <div className='Dashboard'>
-        {(loading ? <Loader show={loading} /> : renderProjects)}
-    </div>
+      <div className="Dashboard">
+        {loading ? <Loader show={loading} /> : renderProjects}
+      </div>
     );
   }
 }
