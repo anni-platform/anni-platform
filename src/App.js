@@ -32,7 +32,7 @@ class App extends Component {
         store = createStore(reducer, data);
       }
       store.subscribe(() => {
-        saveState(data, store.getState());
+        saveState(store.getState());
       });
       this.setState({ store });
     });

@@ -20,7 +20,11 @@ export const loadState = () => {
 };
 
 let saving = false;
-export const saveState = (oldState, newState) => {
+let oldState = null;
+export const saveState = (newState) => {
+  if (!oldState) {
+    oldState = newState;
+  }
   if (newState === DEFAULT_STATE) {
     return;
   }
@@ -31,7 +35,10 @@ export const saveState = (oldState, newState) => {
   try {
     const projectsChanged = !deepEqual(oldProjects, newProjects);
     const filesChanged = !deepEqual(oldFiles, newFiles);
-    if (!saving && (projectsChanged || filesChanged)) {
+    const stateHasChanged = !saving && (projectsChanged || filesChanged);
+    
+    if (stateHasChanged) {
+      oldState = newState;
       const serializedNewState = JSON.stringify(newState);
       localStorage.setItem(STATE, serializedNewState);
       saving = true;
