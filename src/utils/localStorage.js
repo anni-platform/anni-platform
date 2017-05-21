@@ -33,8 +33,8 @@ export const saveState = (newState) => {
   const oldFiles = oldState.files.toJS ? oldState.files.toJS() : oldState.files;
   const newFiles = newState.files.toJS ? newState.files.toJS() : newState.files;
   try {
-    const projectsChanged = !deepEqual(oldProjects, newProjects);
-    const filesChanged = !deepEqual(oldFiles, newFiles);
+    const projectsChanged = !deepEqual(oldProjects, newProjects) && newState.projects.length > 0;
+    const filesChanged = !deepEqual(oldFiles, newFiles) && newState.files.length > 0;
     const stateHasChanged = !saving && (projectsChanged || filesChanged);
     
     if (stateHasChanged) {
