@@ -67,3 +67,5 @@ export function parseQueryString(str) {
 
       return ret;
     }
+  
+  export const stripTags = (str) => str.replace(/(<([^>]+)>)/ig,"");

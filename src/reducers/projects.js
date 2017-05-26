@@ -1,30 +1,40 @@
 import constants from '../constants';
 const { ADD_PROJECT, REMOVE_PROJECT, UPDATE_PROJECT } = constants.project;
-const { LOG_OUT } = constants.auth;
+import Immutable, { Map } from 'immutable';
 
-const projects = (state = {}, action) => {
-  const projects = Object.assign({}, state);
-  const { project } = action;
+export const initialState = Map({});
+
+const project = (state = Map(), action) => {
+  if (!state.isMap || !state.isMap()) {
+    state = Immutable.fromJS(state);
+  }
+  switch (action.type) {
+    case UPDATE_PROJECT:
+      return state.merge(action.project);
+    default:
+      return state;
+  }
+};
+
+const projects = (state = initialState, action) => {
+  if (!state.isMap || !state.isMap()) {
+    state = Immutable.fromJS(state);
+  }
+
   switch (action.type) {
     case ADD_PROJECT:
-      if (!state[project.id]) {
-        state[project.id] = project;
+      if (!state.has(action.project.id)) {
+        return state.set(action.project.id, project(action.project, action));
       }
       return state;
     case UPDATE_PROJECT:
-      if (project) {
-        return {...state, [project.id]: { ...state[project.id], ...project }};
-      }
-      return state;
+      return state.set(action.project.id, project(state.get(action.project.id), action));
     case REMOVE_PROJECT:
-      delete projects[action.id];
-      return Object.assign({}, projects);
-    case LOG_OUT:
-      return {};
+      return state.delete(action.id);
     default:
       return state
   }
-}
+};
 
 
 

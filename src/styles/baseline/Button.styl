@@ -71,10 +71,13 @@
     background: $copper
     width: pxToRem(40)
     height: pxToRem(40)
+    padding: pxToRem(10) 0
+    text-align center
 
-    // Temporary Avatar Area
-    &:before
+    .userInitials
       color: $paper
-      content: 'IC'
       font-family: $bodyFont
       font-weight: 800
+      display inline-block
+      margin auto
+      letter-spacing pxToRem(1.5)

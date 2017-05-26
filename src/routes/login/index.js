@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
-class Landing extends Component {
+class Login extends Component {
   componentDidMount() {
-    if (this.props.auth.isAuthenticated) {
+    if (this.props.auth.toJS().isAuthenticated) {
       this.props.router.push("/dashboard");
     }
   }
@@ -18,4 +18,4 @@ class Landing extends Component {
   }
 }
 
-export default connect((state) => state)(withRouter(Landing));
+export default connect((state) => state)(withRouter(Login));

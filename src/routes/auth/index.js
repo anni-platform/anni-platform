@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { getAccessTokenFromUrl, storeSessionToken } from 'adapters';
-import { addAuthToken } from 'actions';
+import AuthManager from 'containers/AuthManager';
 
 class Auth extends Component {
   componentDidMount() {
-    const token = getAccessTokenFromUrl();
-    storeSessionToken(token);
-    this.props.dispatch(addAuthToken(token));
     this.props.router.push('/dashboard');
   }
   render() {
@@ -24,4 +20,4 @@ const mapStateToProps = ({ auth }) => ({
   auth
 });
 
-export default connect(mapStateToProps)(withRouter(Auth));
+export default connect(mapStateToProps)(withRouter(AuthManager(Auth)));

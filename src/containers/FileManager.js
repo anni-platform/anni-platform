@@ -26,14 +26,21 @@ export default function FileManager(Component) {
       });
     }
     addFile(file, path, collectionId) {
+      if (Object.keys(this.props.projects.toJS()).filter(k => {
+        return  this.props.projects.toJS()[k].name === path;
+      }).length === 0) {
+        console.log('gotta delete the folder agian');
+        return;
+      }
       this.props.dispatch(addFile(file, path));
       this.props.dispatch(addFileToCollection(file.name, path, collectionId));
     }
     getCollectionFiles(options) {
       const key = getCollectionKey(options);
-      return this.props.files.collections[key] ?
-        this.props.files.collections[key].map(({ id }) => {
-          return this.props.files.archive[id];
+      const files = this.props.files.toJS();
+      return files.collections[key] ?
+        files.collections[key].map(({ id }) => {
+          return files.archive[id];
         }) : [];
     }
     render() {
@@ -42,7 +49,6 @@ export default function FileManager(Component) {
         getCollectionFiles: this.getCollectionFiles.bind(this)
       }} />;
     }
-
   }
   return connect((state) => state)(AuthManager(Manager));
 }
