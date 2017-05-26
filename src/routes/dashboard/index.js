@@ -29,7 +29,7 @@ class ProjectList extends Component {
     const projectItems = filteredProjects.valueSeq().toJS().map(project => {
       return (
         <li key={`linkto${project.name}`}>
-          <Button large to={`/project/${project.name}`}>
+          <Button link to={`/project/${project.name}`}>
             {project.name}
           </Button>
         </li>
@@ -41,8 +41,8 @@ class ProjectList extends Component {
         <h3>Projects</h3>
         <ul className="projectList">
           {projectItems}
-          <li>{newProjectLink}</li>
         </ul>
+        {newProjectLink}
       </div>
     );
 

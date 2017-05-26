@@ -1,0 +1,76 @@
+@keyframes fadeUp
+  from
+    opacity: 0
+    transform: translateY(50px);
+  to
+    opacity: 1
+    transform: translateY(0);
+
+
+
+
+@keyframes slideUp
+  from
+    transform: translateY(100vh);
+  to
+    transform: translateY(0);
+
+
+
+
+@keyframes slideDown
+  0%
+    transform: scaleY(1);
+    transform-origin: bottom
+
+  100%
+    transform: scaleY(0);
+    transform-origin: bottom
+
+
+
+
+@keyframes pop
+  0%
+    transform: scale(0)
+    visibility: visible
+
+  18%
+    transform: scale(1.05)
+
+  33%
+    transform: scale(.97)
+
+  50%
+      transform: scale(1.02)
+
+  100%
+      transform: scale(1)
+      visibility: visible
+
+
+
+
+@keyframes elasticSlide
+  0%
+    transform: translateY(100vh)
+    visibility: visible
+
+  19%
+    transform: translateY(-.8vh)
+
+  34%
+    transform: translateY(.4vh)
+
+  45%
+      transform: translateY(-.3vh)
+
+  60%
+      transform: translateY(.1vh)
+
+  80%
+      transform: translateY(-.05vh)
+
+  100%
+      transform: translateY(0vh)
+      visibility: visible
