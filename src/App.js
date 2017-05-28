@@ -7,6 +7,8 @@ import { getAccessTokenFromUrl, storeSessionToken } from "adapters";
 import { saveState } from "./utils/localStorage";
 import StaticJSONFileDatabase from "utils/fileStorage";
 
+import { Loader } from "components/baseline";
+
 let enhancer = null;
 let DevTools = null;
 if (process.env.NODE_ENV === "development") {
@@ -47,7 +49,7 @@ class App extends Component {
             {DevTools ? <DevTools /> : null}
           </div>
         </Provider>
-      : <div className="Loading">Loading...</div>;
+      : <Loader fullPage />;
   }
 }
 

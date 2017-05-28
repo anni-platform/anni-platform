@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import constants from "constants";
-import Loader from "components/Loader";
 import ProjectManager from "containers/ProjectManager";
 import AuthManager from "containers/AuthManager";
 import {
@@ -8,7 +7,7 @@ import {
   FILE_DATABASE_HISTORY_DIRECTORY
 } from "constants/file";
 
-import { Button } from "components/baseline";
+import { Button, Loader } from "components/baseline";
 
 class ProjectList extends Component {
   render() {
@@ -57,7 +56,7 @@ class ProjectList extends Component {
     const renderProjects = projectItems.length ? projectsList : empty;
     return (
       <div className="Dashboard">
-        {loading ? <Loader show={loading} /> : renderProjects}
+        {loading ? <Loader fullPage /> : renderProjects}
       </div>
     );
   }

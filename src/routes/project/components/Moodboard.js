@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import constants from "constants";
 import { updateProject } from "actions";
 import FileUploader from "components/FileUploader";
-import Loader from "components/Loader";
 import ImageList from "./ImageList";
 import FileManager from "containers/FileManager";
 
@@ -39,7 +38,6 @@ class MoodboardViewer extends Component {
               this.props.dispatch(updateProject({ id, images }))}
           >
             {list}
-            <Loader show={!project} />
           </FileUploader>
         </div>
       </div>
