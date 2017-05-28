@@ -1,0 +1,123 @@
+.TextEditor
+  background: $pebble
+  min-height: 100vh
+  padding: $xxl 0
+  position: relative
+
+  .content
+    span
+      line-height: 1.6
+
+  .DraftEditor
+    &-root
+      background-color: $pebble
+      font-family: $editorFont
+      font-size: pxToRem(18)
+      margin: 0 auto
+      line-height: 1.6
+      padding: 0 $lg
+      position: relative
+
+      +above($break-md)
+        width: pxToRem(720)
+
+    &-editorContainer
+      color: $charcoal
+
+
+  // Styles for the  within the Toolbars
+
+  .InlineStyleControls
+    display: inline-flex
+
+    .toolbarItem
+      color: $slate
+      cursor: pointer
+      font-family: $headlineFont
+      line-height: 1
+      padding: $md 0
+      transition: background 300ms $expo
+
+    .active
+      background: rgba($charcoal, .05)
+      color: $charcoal
+      font-family: $headlineFont
+
+  .ContextualToolbar
+    boxShadow()
+    background: $paper
+    display: none
+    position: absolute
+    opacity: 0
+    transition: opacity 300ms $expo
+    visibility: hidden
+    z-index: 2
+
+    +above($break-md)
+      display: inline-block;
+
+    .InlineStyleControls
+      padding: 0 $sm
+
+      div
+        padding: $md
+
+    .active
+      background: $paper
+      color: $copper
+
+    &:after
+      arrowDown()
+
+  .Toolbar
+    @extend h4
+    align-items: center
+    border: pxToRem(1) solid $concrete
+    color: $slate
+    bottom: 0
+    display: inline-flex
+    font-size: 12px
+    justify-content: space-between
+    padding: 0
+    position: absolute
+    width: 100%
+
+    .InlineStyleControls,
+    .stats
+      align-items: center
+      display: flex
+
+      > :nth-child(n)
+         border-right: pxToRem(1) solid $concrete
+
+    .stats
+      display: none
+      transition: 300ms $expo
+      width: 100%
+
+      +above($break-md)
+        display: flex
+
+      div
+        flex-grow: 1
+        padding: $md
+
+      span
+        line-height: 1
+
+      > :last-child
+        border-right: none
+
+      &:hover
+        color: $charcoal
+
+    .InlineStyleControls
+      width: 100%
+
+      div
+        flex-grow: 1
+
+  .public-DraftEditorPlaceholder-root
+    color: rgba($charcoal, .55)
+    position: absolute
+    top: 0

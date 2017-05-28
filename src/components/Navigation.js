@@ -39,11 +39,11 @@ class Navigation extends Component {
     const userInfo = this.props.auth.toJS().userInfo;
     const firstInitial = userInfo ? userInfo.name.given_name[0] : "I";
     const lastInitial = userInfo ? userInfo.name.surname[0] : "C";
-    
+
     const loggedInNav = (
       <nav className="NavigationItems">
         <Button to="/dashboard" link>Projects</Button>
-        <Button to="/activity" link>Activity</Button>
+        {/* <Button to="/activity" link>Activity</Button> */}
         <Button icon="notification" full/>
         <Button user onClick={this.logout.bind(this)}>
           <span className="userInitials">

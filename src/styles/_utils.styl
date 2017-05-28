@@ -54,3 +54,18 @@ textOverflow()
   overflow hidden
   text-overflow ellipsis
   white-space nowrap
+
+
+boxShadow()
+  box-shadow: pxToRem(2) pxToRem(6) pxToRem(18) rgba($charcoal, .1)
+
+arrowDown($size = 10px, $color = $paper)
+  content: ''
+  width: 0
+  height: 0
+  border-left: $size solid transparent
+  border-right: $size solid transparent
+  border-top: $size solid $color
+  position: absolute
+  bottom: -($size)
+  left: "calc(50% - %s)" % $size

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { removeFolder } from "adapters";
 import { removeProject, deleteFile, updateProject } from "actions";
 import Headline from "./Headline";
-import Script from "./Script";
+import TextEditor from "./TextEditor";
 import Moodboard from "./Moodboard";
 import filter from "lodash.filter";
 import { Button } from "components/baseline";
@@ -27,12 +27,15 @@ export default class ProjectDetail extends Component {
           name={project.name}
           client={project.client && project.client.text}
           date={project.date && project.date.text}
-          save={update => {
-            update.id = project.id;
-            this.props.dispatch(updateProject(update));
-          }}
+          save={update => this.props.dispatch(updateProject({...update, id: project.id}))}
+
         />
-        <Script />
+        <TextEditor
+          content={project.editorContent}
+          save={update => {
+          update.id = project.id;
+          this.props.dispatch(updateProject(update));
+        }} />
         <Moodboard projectPath={id} project={project} />
         <div>
           <Button
