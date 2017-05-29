@@ -13,14 +13,8 @@ import createHistory from "history/createBrowserHistory";
 import { useRouterHistory } from "react-router";
 
 // TODO: Add 404 component to replace this null
-const NoMatch = null;
+const NoMatch = () => <div className="fourOhFour"><h1>404</h1></div>;
 let history = browserHistory;
-
-if (process.env.NODE_ENV !== "development") {
-  history = useRouterHistory(createHistory)({
-    basename: "/anni-platform"
-  });
-}
 
 // Declarative route configuration (could also load this config lazily
 // instead, all you really need is a single root route, you don't need to
