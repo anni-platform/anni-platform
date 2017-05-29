@@ -19,7 +19,7 @@ export default class ProjectDetail extends Component {
     const { id } = this.props.params;
     const project = this.props.getProjectByName(id);
     if (!project) {
-      return <div className="Project-deleted">Project deleted.</div>;
+      this.props.router.push("/dashboard")
     }
     return (
       <div className="ProjectDetail">
