@@ -8,34 +8,38 @@ export const Button = props => {
 
   const {
     children,
+    className,
+    danger,
+    noPadding,
     href,
     icon,
     to,
     primary,
     link,
     large,
-    nav,
-    full,
     onClick,
-    user,
-    className
+    success,
+    user
+
   } = props;
 
   const styles = classNames({
     Button: true,
-    primary,
+    danger,
     link,
     large,
-    navigation: nav,
-    full,
+    noPadding,
+    success,
     user,
-    noLabel: !children
+    primary,
+    noLabel: !children,
+    [className]: className,
   });
 
   if (to) {
     return (
       <Link
-        className={`${styles} ${className}`}
+        className={styles}
         to={to}
         onClick={onClick}>
         {icon && <Icon name={icon} size={12} />}{children}
@@ -45,17 +49,16 @@ export const Button = props => {
     return (
       <a
         href={href}
-        className={`${styles} ${className}`}
+        className={styles}
         onClick={onClick}>
         {icon && <Icon name={icon} size={12} />}{children}
       </a>
     )
-  }
-  else {
+  } else {
     return (
       <button
         href={href}
-        className={`${styles} ${className}`}
+        className={styles}
         onClick={onClick}>
         {icon && <Icon name={icon} size={12} />}{children}
       </button>
@@ -70,7 +73,8 @@ Button.defaultProps = {
   to: null,
   primary: false,
   link: false,
-  nav: false,
+  noPadding: false,
+  large: false,
+  user: false,
   full: false,
-  className: ""
 }

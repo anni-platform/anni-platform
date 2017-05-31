@@ -1,0 +1,36 @@
+.TextArea
+  position: relative
+
+  .content
+    border: pxToRem(2) solid transparent
+    padding: $md
+    transition: 400ms $expo
+
+    &:hover
+      border-color: $flint
+
+    &:focus
+      outline: none
+
+  .ButtonGroup
+    padding: $md 0
+    position: relative
+    text-align: center
+
+    +above($break-md)
+      position: absolute;
+      right: -($xxl)
+      top: 50%
+      transform: translateY(-50%);
+
+  // Custom styles mapped to props
+
+  &.active > .content
+    border-color: $concrete
+
+  &.subheading > .content
+    @extend h2
+    padding: pxToRem(14) $md $sm
+
+  &.center
+    text-align: center

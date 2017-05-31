@@ -60,7 +60,7 @@ export default class ProjectForm extends Component {
           {validationMessage
             ? <p className="ValidationErrorMessage">{validationMessage}</p>
             : null}
-          <Button icon="plus">Add Project</Button>
+          <Button icon="add">Add Project</Button>
         </form>
       </div>
     );
