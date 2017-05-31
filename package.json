@@ -74,6 +74,7 @@
     "draft-js-plugins-editor": "^2.0.0-beta11",
     "dropbox": "^2.1.0",
     "history": "^4.5.1",
+    "moment": "^2.18.1",
     "normalize.css": "^5.0.0",
     "prop-types": "^15.5.10",
     "react": "^15.3.1",

@@ -1,29 +1,39 @@
-.Icon
+/*
+ * Mixins
+ */
+
+Stroke($color=$charcoal, $width=8)
   fill: none
-  stroke: $copper
-  stroke-width: 3
+  stroke: $color
+  stroke-width: $width
+
+Fill($color=$charcoal)
+  fill: $copper
+  stroke: none
+
 
 /*
  * Specific Icon Styles
  */
 
-#logo
-  stroke-width: 1
+.logo
+  Stroke($copper, 1)
 
   :nth-child(4),
   :nth-child(5)
-    fill: $copper
-    stroke: none
+    Fill($copper)
 
-#more
-  :nth-child(3)
-    fill: $charcoal
-    stroke: none
+.add
+  Stroke()
 
-#notification
-  fill: $copper
-  stroke: none
+.notification
+  Fill($copper)
 
-#plus
-  fill: $charcoal
-  stroke: none
+.plus
+  Stroke()
+
+.cancel
+  Stroke()
+
+.confirm
+  Stroke()

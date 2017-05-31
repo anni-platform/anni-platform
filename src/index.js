@@ -9,8 +9,6 @@ import Login from "routes/login";
 import Patterns from "routes/patterns";
 import "normalize.css";
 import "styles/Main";
-import createHistory from "history/createBrowserHistory";
-import { useRouterHistory } from "react-router";
 
 // TODO: Add 404 component to replace this null
 const NoMatch = () => <div className="fourOhFour"><h1>404</h1></div>;

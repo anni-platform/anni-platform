@@ -20,14 +20,25 @@
     transform: scale(1.02)
 
   svg
+    height: pxToRem(14)
     margin-right: $sm
+    width: $md
 
 
   // Styles based on Component props
 
   &.primary
     background: $copper
+    border: none
     color: $paper
+
+  &.success
+    &:hover
+      border-color: $copper
+
+  &.danger
+    &:hover
+      border-color: $carmine
 
   &.link
     border: none
@@ -53,19 +64,22 @@
       &:after
         width 100%
 
-  &.full
+  &.noLabel
+    border-color: $flint
+    padding: $sm
+
+    svg
+      height: pxToRem(16)
+      margin: 0
+      width: pxToRem(16)
+
+  &.noPadding
     border: none
     padding: 0
 
     svg
       width: pxToRem(40)
       height: pxToRem(40)
-
-  &.noLabel
-    padding: pxToRem(10)
-
-    svg
-      margin: 0
 
   &.user
     background: $copper

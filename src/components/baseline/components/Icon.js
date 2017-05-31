@@ -4,9 +4,22 @@ import PropTypes from 'prop-types';
 export const Icon = (props) => {
   const {name, size} = props;
   let pathArray;
+  let polylinePoints;
 
   // Extract svg paths per icon into an array and provide a unique name
   switch (name) {
+    case "add":
+      pathArray = [
+        "M24.5 8L24.5 40M8 24.5L40 24.5"
+      ];
+      break;
+
+    case "arrow-back":
+      pathArray = [
+        "M14.3479659,20 L28.8934222,4.76190299 L23.1065778,-0.761902987 L-0.529784118,24 L23.1065778,48.761903 L28.8934222,43.238097 L14.3479659,28 L48,28 L48,20 L14.3479659,20 Z"
+      ];
+      break;
+
     case 'logo':
       pathArray = [
         'M4.84502033,26.511738 C4.62705793,26.511738 4.45,26.3231855 4.45,26.091073 L4.45,19.020665 C4.45,18.7885525 4.62705793,18.6 4.84502033,18.6 L6.35497967,18.6 C6.57294207,18.6 6.75,18.7885525 6.75,19.020665 L6.75,26.091073 C6.75,26.3231855 6.57294207,26.511738 6.35497967,26.511738 L4.84502033,26.511738 Z M43.1549797,26.511738 L41.6450203,26.511738 C41.4270579,26.511738 41.25,26.3238078 41.25,26.091073 L41.25,19.020665 C41.25,18.7885525 41.4270579,18.6 41.6450203,18.6 L43.1549797,18.6 C43.3729421,18.6 43.55,18.7885525 43.55,19.020665 L43.55,26.091073 C43.55,26.3238078 43.3729421,26.511738 43.1549797,26.511738 Z',
@@ -27,22 +40,15 @@ export const Icon = (props) => {
       ]
       break;
 
-    case "arrow-back":
+    case "cancel":
       pathArray = [
-        "M14.3479659,20 L28.8934222,4.76190299 L23.1065778,-0.761902987 L-0.529784118,24 L23.1065778,48.761903 L28.8934222,43.238097 L14.3479659,28 L48,28 L48,20 L14.3479659,20 Z"
-      ];
+        "M9 9L39.7461162 39.7461162M39.7461162 9L9 39.7461162"
+      ]
       break;
 
-    case "plus":
-      pathArray = [
-        "M28.8 28.8 28.8 48 19.2 48 19.2 28.8 0 28.8 0 19.2 19.2 19.2 19.2 8.137 19.2 0 28.8 0 28.8 19.2 48 19.2 48 28.8z"
-      ];
-      break;
-
-    case "cross":
-      pathArray = [
-        "M2.987 10.058 37.942 45.013 45.013 37.942 10.058 2.987z",
-        "M10.058 45.013 45.013 10.058 37.942 2.987 2.987 37.942z"
+    case "confirm":
+      polylinePoints = [
+        "44 12 17.286 36 4 21.818"
       ];
       break;
 
@@ -51,10 +57,12 @@ export const Icon = (props) => {
   }
 
   // Map the paths of the selected svg into a readable SVG path element
-  const paths = pathArray.map((path) => {
-    return(
-      <path d={path} key={path.length} />
-    )
+  const paths = pathArray && pathArray.map((path) => {
+    return <path d={path} key={path.length} />
+  });
+
+  const polyline = polylinePoints && polylinePoints.map((path) => {
+    return <polyline points={path} key={path.length} />
   });
 
   // Turn names into readable titles
@@ -62,9 +70,10 @@ export const Icon = (props) => {
 
   // Return the mapped path elements into a <svg /> element
   return (
-    <svg viewBox='0 0 48 48' id={name} className="Icon" width={size} height={size} {...props}>
+    <svg viewBox='0 0 48 48' id={name} className={`Icon ${name}`} width={size} height={size} {...props}>
       <title>{iconTitle}</title>
       {paths}
+      {polyline}
     </svg>
   );
 };

@@ -15,9 +15,8 @@ class ProjectList extends Component {
     const loading = !auth.toJS().isAuthenticated;
     const newProjectLink = (
       <Button
-        full
         to={`/edit/projects/${constants.project.newProject}`}
-        icon="more"
+        icon="add"
       />
     );
     const filteredProjects = projects.filter(

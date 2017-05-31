@@ -44,7 +44,7 @@ class Navigation extends Component {
       <nav className="NavigationItems">
         <Button to="/dashboard" link>Projects</Button>
         {/* <Button to="/activity" link>Activity</Button> */}
-        <Button icon="notification" full/>
+        <Button icon="notification" noPadding />
         <Button user onClick={this.logout.bind(this)}>
           <span className="userInitials">
             {firstInitial + lastInitial}

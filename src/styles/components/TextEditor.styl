@@ -39,7 +39,7 @@
       transition: background 300ms $expo
 
     .active
-      background: rgba($charcoal, .05)
+      background: $flint
       color: $charcoal
       font-family: $headlineFont
 
@@ -72,8 +72,8 @@
   .Toolbar
     @extend h4
     align-items: center
-    border: pxToRem(1) solid $concrete
-    color: $slate
+    border: pxToRem(1) solid $flint
+    color: $concrete
     bottom: 0
     display: inline-flex
     font-size: 12px
@@ -88,7 +88,7 @@
       display: flex
 
       > :nth-child(n)
-         border-right: pxToRem(1) solid $concrete
+         border-right: pxToRem(1) solid $flint
 
     .stats
       display: none
