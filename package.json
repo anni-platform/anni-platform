@@ -1,6 +1,6 @@
 {
   "name": "AnniBeta",
-  "homepage": "http://dev.anni.io/",
+  "homepage": "https://anni-platform.github.io",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
@@ -94,7 +94,7 @@
     "build": "node scripts/build.js",
     "test": "jest --watch --env=jsdom",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build -b master -o production"
   },
   "eslintConfig": {
     "extends": "./config/eslint.js"
