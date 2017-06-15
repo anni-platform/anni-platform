@@ -1,3 +1,5 @@
+import { Enum } from 'enumify';
+
 export function getProjectByName(_name, projects) {
   if (!projects) {
     return;
@@ -68,4 +70,16 @@ export function parseQueryString(str) {
       return ret;
     }
   
-  export const stripTags = (str) => str.replace(/(<([^>]+)>)/ig,"");
+export const stripTags = (str) => str.replace(/(<([^>]+)>)/ig,"");
+
+
+export const preloadImage = src =>
+  new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = resolve;
+    img.onerror = reject;
+    img.src = src;
+  });
+
+export class ImageAspectRatio extends Enum {}
+ImageAspectRatio.initEnum(['full', 'long', 'tall', 'base']);

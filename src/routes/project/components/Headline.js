@@ -20,7 +20,6 @@ const Headline = ({ name, client, date, save }) => {
           className="date"
           html={date ? date : currentDate}
           save={date => save({ date })}
-          center
         />
       </div>
     </div>

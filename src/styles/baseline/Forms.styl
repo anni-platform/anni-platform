@@ -1,0 +1,60 @@
+/*
+ * Text Area
+ */
+
+.TextArea
+  background: $paper
+  display: flex
+  justify-content: space-between
+  min-height: pxToRem(50)
+  max-height: pxToRem(50)
+  position: relative
+  transition: min-height 200ms $bounce
+  transform: translate3d(0,0,0)
+
+  &:focus,
+  &:hover
+    min-height: pxToRem(74)
+
+    &:after
+      height: 0
+
+  &:after
+    background: $paper
+    bottom: 0
+    content: ""
+    height: $md
+    left: 0
+    position: absolute
+    width: 100%
+
+
+  textarea
+    border: none
+    display block
+    line-height: 1.6
+    padding: pxToRem(12) $md
+    outline: none
+    width: 100%
+
+  .Icon
+    margin: pxToRem(12) 0 0 $md
+    stroke: $copper
+
+/*
+  // Custom styles mapped to props
+
+  &.active > .content
+    border-color: $concrete
+
+  &.heading > .content
+    @extend h1
+    padding: pxToRem(14) $md $sm
+
+  &.subheading > .content
+    @extend h3
+    padding: pxToRem(14) $md $sm
+
+  &.center
+    text-align: center
+*/

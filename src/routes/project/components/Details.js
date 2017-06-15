@@ -3,9 +3,15 @@ import { removeFolder } from "adapters";
 import { removeProject, deleteFile, updateProject } from "actions";
 import Headline from "./Headline";
 import TextEditor from "./TextEditor";
-import Moodboard from "./Moodboard";
 import filter from "lodash.filter";
-import { Button } from "components/baseline";
+import { Button, FileCollection } from "components/baseline";
+import constants from "constants";
+import classNames from "classnames";
+const {
+  MOODBOARD,
+  STORYBOARD,
+  STYLEFRAMES
+} = constants.content;
 
 export default class ProjectDetail extends Component {
   componentDidMount() {
@@ -21,6 +27,9 @@ export default class ProjectDetail extends Component {
     if (!project) {
       this.props.router.push("/dashboard")
     }
+   const sectionClass = classNames({
+      "Project-section": true
+   });
     return (
       <div className="ProjectDetail">
         <Headline
@@ -36,7 +45,31 @@ export default class ProjectDetail extends Component {
           update.id = project.id;
           this.props.dispatch(updateProject(update));
         }} />
-        <Moodboard projectPath={id} project={project} />
+        <FileCollection
+          className={`MoodBoard ${sectionClass}`}
+          projectPath={id}
+          project={project}
+          collectionId={MOODBOARD}
+          title="Moodboard"
+          references
+         />
+        <FileCollection
+          className={`StoryBoard ${sectionClass}`}
+          projectPath={id}
+          project={project}
+          collectionId={STORYBOARD}
+          title="Storyboard"
+          storyboards
+         />
+
+        <FileCollection
+          className={`StyleFrames ${sectionClass}`}
+          projectPath={id}
+          project={project}
+          collectionId={STYLEFRAMES}
+          title="Style Frames"
+          styleframes
+         />
         <div>
           <Button
             onClick={() => {

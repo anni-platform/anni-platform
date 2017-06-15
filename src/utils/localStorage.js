@@ -36,17 +36,16 @@ export const saveState = (newState) => {
     const projectsChanged = !deepEqual(oldProjects, newProjects);
     const filesChanged = !deepEqual(oldFiles, newFiles);
     const stateHasChanged = !saving && (projectsChanged || filesChanged);
-    
+
     if (stateHasChanged) {
       oldState = newState;
       const serializedNewState = JSON.stringify(newState);
       localStorage.setItem(STATE, serializedNewState);
       saving = true;
-      console.log("uploading new state to file db");
       uploadFile(FILE_DATABASE_DIRECTORY, stateToJsonFile(newState, 'state.json')).then(() => { saving = false });
       return;
     }
-    
+
   } catch (err) {
     console.log(err);
     // Ignore write errors.

@@ -12,6 +12,7 @@
   line-height: 1
   padding: pxToRem(10) $md
   transition: all 400ms $expo
+  font-weight: 800
 
   &:focus
     outline: none
@@ -42,7 +43,7 @@
 
   &.link
     border: none
-    font-family: $headlineFont
+    font-family: $bodyFont
     font-size: pxToRem(16)
     letter-spacing: pxToRem(1)
     margin: 0 $md
@@ -60,7 +61,6 @@
       width: 0
 
     &:hover
-      transform: scale(1)
       &:after
         width 100%
 

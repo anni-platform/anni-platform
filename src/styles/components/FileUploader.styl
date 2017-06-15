@@ -14,7 +14,7 @@
     padding: $xl
     transition: 600ms $expo
 
-  .tooltip
+  &-tooltip
     @extend h3
     color: $charcoal
     display: inline-block
@@ -23,6 +23,10 @@
     top: 50%
     transition: 600ms $expo
     transform: translate(-50%, -50%);
+    pointer-events none
+  
+  &:hover
+    pointer-events all
 
   &.active
     outline-color $copper

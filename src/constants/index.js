@@ -8,5 +8,6 @@ export default {
   auth,
   file,
   content,
+  REORDER_ITEM: 'REORDER_ITEM',
   DEFAULT_STATE: { auth: {}, projects: {}, files: {} }
 };

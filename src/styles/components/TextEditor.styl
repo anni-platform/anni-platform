@@ -1,25 +1,20 @@
 .TextEditor
-  background: $pebble
   min-height: 100vh
-  padding: $xxl 0
   position: relative
 
   .content
+    padding: pxToRem(180) pxToRem(120)
+
     span
       line-height: 1.6
 
   .DraftEditor
     &-root
-      background-color: $pebble
       font-family: $editorFont
       font-size: pxToRem(18)
       margin: 0 auto
       line-height: 1.6
-      padding: 0 $lg
       position: relative
-
-      +above($break-md)
-        width: pxToRem(720)
 
     &-editorContainer
       color: $charcoal
@@ -33,7 +28,7 @@
     .toolbarItem
       color: $slate
       cursor: pointer
-      font-family: $headlineFont
+      font-family: $bodyFont
       line-height: 1
       padding: $md 0
       transition: background 300ms $expo
@@ -41,7 +36,7 @@
     .active
       background: $flint
       color: $charcoal
-      font-family: $headlineFont
+      font-family: $bodyFont
 
   .ContextualToolbar
     boxShadow()
@@ -80,6 +75,7 @@
     justify-content: space-between
     padding: 0
     position: absolute
+    text-align: center
     width: 100%
 
     .InlineStyleControls,

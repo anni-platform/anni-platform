@@ -36,7 +36,7 @@ class ProjectList extends Component {
 
     const projectsList = (
       <div className="content">
-        <h3>Projects</h3>
+        <h4>Projects</h4>
         <ul className="projectList">
           {projectItems}
         </ul>

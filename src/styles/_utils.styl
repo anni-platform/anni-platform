@@ -36,15 +36,28 @@ pxToEm($px)
  * Align center | center
  */
 
-center($column=null)
+center($column=null, $horizontalOnly=null)
   align-items: center
   display: flex
   flex-direction: column
   justify-content: center
 
+  if $horizontalOnly == 'horizontalOnly'
+    align-items: flex-start
+
   if $column == 'column'
     flex-direction: column
 
+
+/*
+ * Box Shadow
+ */
+
+boxShadow($color=rgba($charcoal, .08))
+  box-shadow: 0 pxToRem(4) pxToRem(24) 0 $color
+
+hoverShadow($color=rgba($charcoal, .08))
+  box-shadow: 0 pxToRem(16) pxToRem(24) 0 $color
 
 /*
  * Text Overflow
@@ -56,8 +69,10 @@ textOverflow()
   white-space nowrap
 
 
-boxShadow()
-  box-shadow: pxToRem(2) pxToRem(6) pxToRem(18) rgba($charcoal, .1)
+/*
+ * Arrow Down
+ */
+
 
 arrowDown($size = 10px, $color = $paper)
   content: ''

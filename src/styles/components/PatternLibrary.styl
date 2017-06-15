@@ -1,14 +1,20 @@
 .PatternLibrary
+  background: rgba($flint, .4)
   padding: $md
-  margin-top: pxToRem(94)
+  margin-top: pxToRem(85)
 
-  +above($break-md)
+  +above($break-sm)
     padding: $xl
+
+  .Card
+    > :last-child
+      margin-bottom:0
+      padding-bottom: 0
 
   .legend
     color: lighten($charcoal, 60)
     min-width: pxToRem(100)
-    font-size: pxToRem(10)
+    font-size: pxToRem(12)
     padding: 0 $lg $sm 0
     text-align: left
 
@@ -16,8 +22,7 @@
     padding-bottom: $md
 
   // Typograpy Area
-
-  .typography
+  .Typography
     li
       align-items:baseline
       display: flex
@@ -25,27 +30,30 @@
     :last-child
       padding: 0
 
-// Icon Area
-
-.iconGrid
-  display: flex
-  flex-wrap: wrap
-  margin: 0
-  padding: 0
-
-  h4
-    font-size: pxToRem(10)
-
-  li
-    list-style: none
-    text-align: center
-    padding: $lg 0
-    width: 25%
-
-  svg
-    height: $xl
+  // Button Area
+  .Buttons > .ButtonGroup
     margin-bottom: $lg
-    width: $xl
 
-.ButtonToolbar > a
-  margin: 0 $md $lg 0
+  // Icon Area
+  .Icons > ul
+    display: flex
+    flex-wrap: wrap
+    margin: 0
+    padding: 0
+
+    h4
+      font-size: pxToRem(10)
+
+    li
+      list-style: none
+      text-align: center
+      padding: $lg 0
+      width: 25%
+
+    svg
+      margin-bottom: $lg
+
+  // Loader Area
+  .Loaders
+    h4
+      font-size: pxToRem(10)

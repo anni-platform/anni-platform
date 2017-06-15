@@ -2,38 +2,61 @@
  * Mixins
  */
 
-Stroke($color=$charcoal, $width=8)
+Stroke($color=$charcoal, $width=3)
   fill: none
   stroke: $color
   stroke-width: $width
+  transition: 400ms $expo
 
 Fill($color=$charcoal)
   fill: $copper
   stroke: none
+  transition: 400ms $expo
 
 
 /*
  * Specific Icon Styles
  */
 
-.logo
-  Stroke($copper, 1)
+.Icon
 
-  :nth-child(4),
-  :nth-child(5)
+  &.logo
+    Stroke($copper, 1)
+
+    :nth-child(4),
+    :nth-child(5)
+      Fill($copper)
+
+  &.add
+    Stroke($charcoal, 6)
+
+  &.audio
+    Stroke($copper)
+
+  &.notification
     Fill($copper)
 
-.add
-  Stroke()
+  &.plus
+    Stroke($charcoal, 6)
 
-.notification
-  Fill($copper)
+  &.cancel
+    Stroke($charcoal, 6)
 
-.plus
-  Stroke()
+  &.confirm
+    Stroke($charcoal, 6)
 
-.cancel
-  Stroke()
+  &.delete
+    Stroke()
 
-.confirm
-  Stroke()
+  &.popout
+    Stroke()
+
+  &.resize
+    Stroke()
+
+    :nth-child(1),
+    :nth-child(4)
+      Stroke()
+
+  &.video
+    Stroke($copper)

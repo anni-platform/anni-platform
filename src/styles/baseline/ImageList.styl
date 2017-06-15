@@ -1,0 +1,175 @@
+.ImageListWrapper
+  width: 100%
+
+.ImageList
+  display: grid
+  grid-gap: $lg
+  grid-auto-flow: row dense
+  grid-auto-rows: pxToRem(320)
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))
+
+.ImageListItem
+  background: $paper
+  
+  .content
+    display: flex
+    flex-direction: column
+    height: 100%
+    transform: scale(1)
+    transition: transform 400ms $expo
+    overflow: hidden
+    width: 100%
+
+    &:hover
+      hoverShadow()
+      transform: scale(1.025)
+
+      .panelControls
+        opacity: 1
+        transform: scale(1)
+
+  .image
+    border-bottom: pxToRem(1) solid rgba($flint, .25)
+    height: 100%
+    overflow: hidden
+    width: 100%
+    display flex
+    flex-direction column
+    justify-content center
+
+    img
+      height: 100%
+      object-fit: cover
+      width: 100%
+
+
+// References / Moodboard
+.ImageList.references
+  .ImageListItem
+    grid-column-end: auto
+
+    &.long
+      +above($break-md)
+        grid-column-end: span 2
+
+    &.tall
+      +above($break-md)
+        grid-row-end: span 2
+
+    &.full
+      +above($break-md)
+        grid-column-end: span 2
+        grid-row-end: span 2
+
+
+// Storyboard styles
+.ImageList.storyboards
+  grid-auto-rows: pxToRem(400)
+
+  +above($break-sm)
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr))
+
+
+// Drag Helper
+.dragHelper
+  .content
+    hoverShadow()
+    transform: scale(1.025)
+
+
+// Panel Controls
+.panelControls
+  background: $paper
+  border-radius: $xl
+  opacity: .1
+  padding: $xs $sm
+  position: absolute
+  right: $md
+  top: $md
+  transform: scale(.9)
+  transition: 300ms $expo 50ms
+
+  .Button
+    border: pxToRem(3) solid transparent
+    svg
+      height: $lg
+      width: $lg
+
+    &:hover
+      svg
+        stroke: $copper
+
+  +below($break-md)
+    display: none
+
+
+// Resize Button
+.resizeButton
+  align-items: center
+  display: inline-block
+  height: $md
+  margin: 0 pxToRem(12) pxToRem(6) $sm
+  position: relative
+  width: $md
+
+  $borderSize = 2
+  $buttonSize = 10 - $borderSize
+  $buttonSize2x = $buttonSize * 2
+
+  &.hasSize
+    &::after
+      position absolute
+      border pxToRem(2) solid $charcoal
+      background $paper
+      width pxToRem($buttonSize)
+      height pxToRem($buttonSize)
+      display block
+      content ''
+      z-index 6
+    &.base::after
+      //
+    &.long::after
+      width pxToRem($buttonSize2x)
+
+    &.tall::after
+      height pxToRem($buttonSize2x)
+
+    &.full::after
+      width pxToRem($buttonSize2x)
+      height pxToRem($buttonSize2x)
+
+    &:hover::after
+      display none
+
+
+  div
+    border: pxToRem($borderSize) solid $concrete
+    left: 0
+    position: absolute
+    top: 0
+
+    &:hover
+      background: $paper
+      border-color: $charcoal
+      z-index: 2
+
+  .base
+    width: pxToRem(11)
+    height: pxToRem(11)
+    border-color: $charcoal
+
+  .long
+    width: pxToRem(20)
+    height: pxToRem(11)
+
+  .tall
+    width: pxToRem(11)
+    height: pxToRem(20)
+
+  .full
+    width: pxToRem(20)
+    height: pxToRem(20)
+
+  &.active
+    background: $paper
+    border-color: pxToRem(2) solid $pebble

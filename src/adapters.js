@@ -1,7 +1,6 @@
 import Dropbox from "dropbox";
 import env from "../.env.json";
 import { parseQueryString } from "utils";
-import { homepage } from "../package.json";
 const DROPBOX_ACCESS_TOKEN = "DROPBOX_ACCESS_TOKEN";
 
 let client = null;

@@ -1,11 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router';
-import classNames from 'classnames'
+import React from "react";
+import { Link } from "react-router";
+import classNames from "classnames";
 
-import { Icon } from 'components/baseline'
+import { Icon } from "components/baseline";
 
 export const Button = props => {
-
   const {
     children,
     className,
@@ -20,11 +19,11 @@ export const Button = props => {
     onClick,
     success,
     user
-
   } = props;
 
   const styles = classNames({
     Button: true,
+    [className]: className,
     danger,
     link,
     large,
@@ -32,39 +31,29 @@ export const Button = props => {
     success,
     user,
     primary,
-    noLabel: !children,
-    [className]: className,
+    noLabel: !children
   });
 
   if (to) {
     return (
-      <Link
-        className={styles}
-        to={to}
-        onClick={onClick}>
+      <Link className={styles} to={to} onClick={onClick}>
         {icon && <Icon name={icon} size={12} />}{children}
       </Link>
-    )
+    );
   } else if (href) {
     return (
-      <a
-        href={href}
-        className={styles}
-        onClick={onClick}>
+      <a href={href} className={styles} onClick={onClick}>
         {icon && <Icon name={icon} size={12} />}{children}
       </a>
-    )
+    );
   } else {
     return (
-      <button
-        href={href}
-        className={styles}
-        onClick={onClick}>
+      <button href={href} className={styles} onClick={onClick}>
         {icon && <Icon name={icon} size={12} />}{children}
       </button>
-    )
+    );
   }
-}
+};
 
 Button.defaultProps = {
   children: null,
@@ -76,5 +65,5 @@ Button.defaultProps = {
   noPadding: false,
   large: false,
   user: false,
-  full: false,
-}
+  full: false
+};

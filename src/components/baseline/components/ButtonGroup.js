@@ -6,7 +6,7 @@ export const ButtonGroup = props => {
 
   const styles = classNames({
     ButtonGroup: true,
-    [className]: className
+    className
   });
 
   return (
