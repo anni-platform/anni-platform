@@ -1,26 +1,31 @@
 import React from "react";
+import classNames from "classnames";
 import { TextArea } from "components/baseline";
-import moment from 'moment';
 
-const currentDate = moment().format('MMMM Do YYYY');
+const Headline = ({ className, name, client, date, save }) => {
+  const styles = classNames({
+    Headline: true,
+    [className]: className
+  });
 
-const Headline = ({ name, client, date, save }) => {
   return (
-    <div className="Headline">
+    <div className={styles}>
       <div className="content">
-        <h1>{name}</h1>
+        <div>
+          <TextArea
+            value={name}
+            placeholder="Enter client name"
+            save={client => save({ client })}
+            heading
+          />
 
-        <TextArea
-          html={client ? client : "Client Name"}
-          save={client => save({ client })}
-          subheading
-        />
-
-        <TextArea
-          className="date"
-          html={date ? date : currentDate}
-          save={date => save({ date })}
-        />
+          <TextArea
+            value={client}
+            placeholder="Enter client name"
+            save={client => save({ client })}
+            subheading
+          />
+        </div>
       </div>
     </div>
   );

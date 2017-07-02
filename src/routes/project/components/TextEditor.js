@@ -66,13 +66,10 @@ export default class TextEditor extends Component {
     super(props);
 
     const { content } = this.props;
-    if (content === undefined) {
-      this.state = { editorState: EditorState.createEmpty() };
-    } else {
-      const editorContent = convertFromRaw(content);
-      this.state = {
-        editorState: EditorState.createWithContent(editorContent)
-      };
+    this.state = {
+      editorState: content 
+        ? EditorState.createWithContent(convertFromRaw(content))
+        : EditorState.createEmpty()
     }
   }
 
@@ -80,7 +77,6 @@ export default class TextEditor extends Component {
 
   onChange = editorState => {
     this.setState({ editorState });
-
     // export data to a raw format and save to database
     const contentState = editorState.getCurrentContent();
     const editorContentRaw = convertToRaw(contentState);
@@ -144,8 +140,13 @@ export default class TextEditor extends Component {
   render() {
     const { editorState, styles } = this.state;
 
+    const Editorstyles = classNames({
+      TextEditor: true,
+      [this.props.className]: this.props.className
+    });
+
     return (
-      <div className="TextEditor" ref="toolbarParent">
+      <div className={Editorstyles} ref="toolbarParent">
         <div className="ContextualToolbar" style={styles} ref="toolbar">
           <InlineStyleControls
             condensed

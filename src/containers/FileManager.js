@@ -60,15 +60,6 @@ export default function FileManager(WrappedComponent) {
     }
     addFile = (file, path, collectionId) => {
       if (
-        Object.keys(this.props.projects.toJS()).filter(k => {
-          return this.props.projects.toJS()[k].name === path;
-        }).length === 0
-      ) {
-        console.log("gotta delete the folder agian");
-        return;
-      }
-
-      if (
         this.props.files.get("archive").has(file.name) &&
         this.props.files.get("archive").get(file.name).url
       ) {

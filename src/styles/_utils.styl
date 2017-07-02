@@ -32,17 +32,40 @@ pxToEm($px)
   pxTo($px, em)
 
 
+
+
+/*
+ * Full-screen helper
+ */
+
+fullscreen()
+  padding: $lg
+  min-height: 100vh
+
+  width: calc(100vw - 80px)
+
+  +above($break-sm)
+    padding: $xl
+    width: calc(100vw - 120px)
+
+  +above($break-lg)
+    padding: pxToRem(120)
+    width: calc(100vw - 300px)
+
+
+
+
 /*
  * Align center | center
  */
 
-center($column=null, $horizontalOnly=null)
+center($column=null, $horizontal=null)
   align-items: center
   display: flex
   flex-direction: column
   justify-content: center
 
-  if $horizontalOnly == 'horizontalOnly'
+  if $horizontal == 'horizontal'
     align-items: flex-start
 
   if $column == 'column'

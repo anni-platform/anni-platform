@@ -5,15 +5,21 @@ import { Icon } from "components/baseline";
 export const TextArea = props => {
   const {
     className,
+    heading,
+    imageItem,
+    icon,
     onChange,
     placeholder,
-    value,
-    icon
+    subheading,
+    value
   } = props;
 
   const styles = classNames({
     TextArea: true,
-    [className]: className
+    [className]: className,
+    heading,
+    subheading,
+    imageItem
   });
 
   return (

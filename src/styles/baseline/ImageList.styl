@@ -2,15 +2,15 @@
   width: 100%
 
 .ImageList
-  display: grid
-  grid-gap: $lg
-  grid-auto-flow: row dense
-  grid-auto-rows: pxToRem(320)
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))
+  +above($break-sm)
+    display: grid
+    grid-gap: $lg
+    grid-auto-flow: row dense
+    grid-auto-rows: pxToRem(320)
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))
 
 .ImageListItem
   background: $paper
-  
   .content
     display: flex
     flex-direction: column

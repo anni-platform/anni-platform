@@ -60,6 +60,7 @@ export const ImageListItem = SortableElement(({
             onChange={({ target }) =>
               onCaptionUpdate({ caption: target.value })}
             value={caption}
+            imageItem
           />}
 
         {storyboard &&
@@ -70,6 +71,7 @@ export const ImageListItem = SortableElement(({
               onChange={({ target }) =>
                 onCaptionUpdate({ audio: target.value })}
               value={audio}
+              imageItem
             />
             <TextArea
               icon="video"
@@ -77,6 +79,7 @@ export const ImageListItem = SortableElement(({
               onChange={({ target }) =>
                 onCaptionUpdate({ video: target.value })}
               value={video}
+              imageItem
             />
           </div>}
 
