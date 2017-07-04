@@ -33,17 +33,21 @@
     "rimraf": "2.5.4"
   },
   "scripts": {
-    "start": "yarn dev",
+    "start": "npm-run-all compile-stylus dev",
     "build": "react-scripts build",
     "dev": "react-scripts start",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build -b master -o production"
+    "deploy": "gh-pages -d build -b master -o production",
+    "compile-stylus": "stylus -l src/styles/Main.styl",
+    "watch-stylus": "stylus -w -l src/styles/Main.styl",
+    "dev-stylus": "npm-run-all --parallel start watch-stylus"
   },
   "dependencies": {
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-scripts": "^1.0.10"
+    "react-scripts": "^1.0.10",
+    "stylus": "^0.54.5"
   }
 }
