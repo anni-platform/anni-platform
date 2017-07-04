@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { withRouter } from "react-router";
-import constants from "constants";
+import constants from "constants/index";
 import ProjectManager from "containers/ProjectManager";
 import ProjectDetails from "./components/Details";
 import ProjectForm from "./components/CreateForm";

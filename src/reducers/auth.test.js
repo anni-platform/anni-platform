@@ -1,5 +1,5 @@
 import reducer, { initialState } from './auth';
-import constants from 'constants';
+import constants from 'constants/index';
 const { ADD_AUTH_TOKEN, LOG_OUT } = constants.auth;
 
 describe('auth reducer', () => {

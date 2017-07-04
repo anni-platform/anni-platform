@@ -1,6 +1,7 @@
 import constants from '../constants';
-const { ADD_PROJECT, REMOVE_PROJECT, UPDATE_PROJECT } = constants.project;
 import Immutable, { Map } from 'immutable';
+
+const { ADD_PROJECT, REMOVE_PROJECT, UPDATE_PROJECT } = constants.project;
 
 export const initialState = Map({});
 

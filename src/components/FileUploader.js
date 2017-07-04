@@ -18,7 +18,10 @@ class FileDrop extends Component {
         {this.props.children}
         <div>
           <h3 className="instructions">Drag your images here to upload</h3>
-          <span className="FileUploader-tooltip">Drop em while they're hot 🔥 </span>
+          <div className="FileUploader-tooltip">
+            Drop em while they're hot 
+            <span role="img" aria-label="hot">🔥</span>
+          </div>
         </div>
 
       </Dropzone>

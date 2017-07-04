@@ -9,7 +9,7 @@ import {
   uploadFile
 } from "adapters";
 import { FILE_DATABASE_DIRECTORY } from "constants/file";
-import constants from "constants";
+import constants from "constants/index";
 const { DEFAULT_STATE } = constants;
 
 export function stateToJsonFile(

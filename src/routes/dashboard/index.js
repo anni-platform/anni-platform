@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import constants from "constants";
+import constants from "constants/index";
 import ProjectManager from "containers/ProjectManager";
 import AuthManager from "containers/AuthManager";
 import {
-  FILE_DATABASE_DIRECTORY,
-  FILE_DATABASE_HISTORY_DIRECTORY
+  FILE_DATABASE_DIRECTORY
 } from "constants/file";
 
 import { Button, Loader } from "components/baseline";
@@ -21,8 +20,7 @@ class ProjectList extends Component {
     );
     const filteredProjects = projects.filter(
       p =>
-        p.get("name") !== FILE_DATABASE_DIRECTORY &&
-        p.get("name") !== FILE_DATABASE_HISTORY_DIRECTORY
+        p.get("name") !== FILE_DATABASE_DIRECTORY
     );
     const projectItems = filteredProjects.valueSeq().toJS().map(project => {
       return (

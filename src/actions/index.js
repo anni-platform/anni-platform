@@ -1,4 +1,4 @@
-import constants from "constants";
+import constants from "constants/index";
 
 const { ADD_PROJECT, REMOVE_PROJECT, UPDATE_PROJECT } = constants.project;
 const { ADD_AUTH_TOKEN, ADD_USER_INFO, LOG_OUT } = constants.auth;

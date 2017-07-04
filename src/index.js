@@ -2,13 +2,13 @@ import React from "react";
 import { render } from "react-dom";
 import { Router, Route, IndexRoute, browserHistory } from "react-router";
 import App from "./App";
-import Auth from "routes/auth";
+import Auth from "./routes/auth";
 import Dashboard from "routes/dashboard";
 import Project from "routes/project";
 import Login from "routes/login";
 import Patterns from "routes/patterns";
 import "normalize.css";
-import "styles/Main";
+import "styles/Main.css";
 
 // TODO: Add 404 component to replace this null
 const NoMatch = () => <div className="fourOhFour"><h1>404</h1></div>;
