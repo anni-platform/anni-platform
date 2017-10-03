@@ -1,7 +1,20 @@
 import React, { Component } from "react";
 import classNames from "classnames";
 import { ImageViewer } from "./ImageViewer";
-import { Button, ImageElement, TextArea } from "components/baseline";
+import { ImageElement } from "./Image";
+import {
+  Button,
+  Container,
+  Card,
+  DraggableCard,
+  FieldGroup,
+  Grid,
+  Image,
+  ImageControls,
+  ImageControlsButton,
+  TextArea
+} from "styled";
+
 import {
   SortableContainer,
   SortableElement,
@@ -28,43 +41,50 @@ export const ImageListItem = SortableElement(({
 }) => {
   const src = !content.url ? content.preview : content.url;
   const { aspectRatio, name, caption, audio, video } = content;
-  const imageAspectRatio = ImageAspectRatio[aspectRatio] ? ImageAspectRatio[aspectRatio].name : undefined;
+  const imageAspectRatio = ImageAspectRatio[aspectRatio]
+    ? ImageAspectRatio[aspectRatio].name
+    : undefined;
   const styles = classNames({
-    ImageListItem: true,
     [className]: !!className,
     [imageAspectRatio]: true
   });
 
   const resizeButton = (
-    <div className={`resizeButton ${imageAspectRatio ? `hasSize ${imageAspectRatio}` : null}`}>
-      {ImageAspectRatio.enumValues.map(i =>
+    <ImageControlsButton
+      className={
+        `resizeButton ${imageAspectRatio ? `hasSize ${imageAspectRatio}` : null}`
+      }
+    >
+      {ImageAspectRatio.enumValues.map(i => (
         <div
           key={index + i.name}
           className={`${i.name} ${imageAspectRatio === i.name ? "active" : ""}`}
           onClick={() => onImageSizeUpdate({ aspectRatio: i.name })}
-        />)}
-    </div>
+        />
+      ))}
+    </ImageControlsButton>
   );
 
   return (
-    <div className={styles} key={index}>
-      <div className="content">
-
+    <DraggableCard className={styles} key={index} active>
+      <Card>
         <ImageElement src={src} className="image">
-          <img src={src} alt={name} />
+          <Image src={src} alt={name} />
         </ImageElement>
 
         {reference &&
-          <TextArea
-            placeholder="Enter description..."
-            onChange={({ target }) =>
-              onCaptionUpdate({ caption: target.value })}
-            value={caption}
-            imageItem
-          />}
+          <FieldGroup>
+            <TextArea
+              placeholder="Enter description..."
+              onChange={({ target }) =>
+                onCaptionUpdate({ caption: target.value })}
+              value={caption}
+              imageItem
+            />
+          </FieldGroup>}
 
         {storyboard &&
-          <div>
+          <FieldGroup stacked>
             <TextArea
               icon="audio"
               placeholder="Audio"
@@ -81,15 +101,26 @@ export const ImageListItem = SortableElement(({
               value={video}
               imageItem
             />
-          </div>}
+          </FieldGroup>}
 
-        <div className="panelControls disableDnD">
+        <ImageControls className="disableDnD">
           {reference && resizeButton}
-          <Button icon="popout" onClick={handleClick} noPadding />
-          <Button icon="delete" noPadding onClick={onImageRemove} />
-        </div>
-      </div>
-    </div>
+          <Button
+            icon="popout"
+            onClick={handleClick}
+            iconStroke={4}
+            noBorder
+            iconSize={18}
+          />
+          <Button
+            icon="delete"
+            onClick={onImageRemove}
+            iconStroke={4}
+            noBorder
+          />
+        </ImageControls>
+      </Card>
+    </DraggableCard>
   );
 });
 
@@ -124,7 +155,7 @@ const ImageGrid = SortableContainer(({
       {children}
     </ImageListItem>
   ));
-  return <div className={className}>{listItems}</div>;
+  return <Grid className={className}>{listItems}</Grid>;
 });
 
 /*
@@ -218,7 +249,7 @@ export class ImageList extends Component {
 
     if (content) {
       return (
-        <div className="ImageListWrapper">
+        <Container>
           <ImageGrid
             helperClass={"dragHelper"}
             axis="xy"
@@ -236,7 +267,7 @@ export class ImageList extends Component {
             {children}
           </ImageGrid>
           {imageViewer}
-        </div>
+        </Container>
       );
     } else {
       return null;

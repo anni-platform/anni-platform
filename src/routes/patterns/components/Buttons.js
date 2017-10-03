@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button, ButtonGroup, Card } from 'components/baseline';
+import { Button, ButtonGroup, Card } from 'styled';
 
 const Buttons = () => (
   <Card className='Buttons'>

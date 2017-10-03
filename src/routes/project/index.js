@@ -3,7 +3,7 @@ import { withRouter } from "react-router";
 import constants from "constants";
 import ProjectManager from "containers/ProjectManager";
 import ProjectDetails from "./components/Details";
-import ProjectForm from "./components/CreateForm";
+import ProjectForm from "components/CreateForm";
 import AuthManager from "containers/AuthManager";
 
 class Project extends PureComponent {

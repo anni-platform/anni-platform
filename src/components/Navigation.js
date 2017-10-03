@@ -1,12 +1,23 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router';
-import { getAuthUrl, login, logoutSession } from 'adapters';
-import { addAuthToken, logout } from 'actions';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router";
+import { getAuthUrl, login, logoutSession } from "adapters";
+import { addAuthToken, logout } from "actions";
+import CreateForm from "components/CreateForm";
 
-import { Button, Icon } from 'components/baseline';
+import {
+  Avatar,
+  Button,
+  NavBar,
+  NavItem,
+  NavItemGroup,
+  OutlineIcon,
+  Subheading
+} from "styled";
 
 class Navigation extends Component {
+  state = { showOverlay: false };
+
   componentDidMount() {
     const { dispatch, auth } = this.props;
 
@@ -15,13 +26,16 @@ class Navigation extends Component {
     }
 
     if (!auth.toJS().isAuthenticated) {
-      login().then(token => {
-        if (!token) {
-          this.props.router.push("/");
-          return;
-        }
-        dispatch(addAuthToken(token));
-      }, (err) => console.log(err) );
+      login().then(
+        token => {
+          if (!token) {
+            this.props.router.push("/");
+            return;
+          }
+          dispatch(addAuthToken(token));
+        },
+        err => console.log(err)
+      );
     }
   }
 
@@ -31,34 +45,52 @@ class Navigation extends Component {
     this.props.router.push("/");
   }
 
+  handleClick = () => this.setState({ showOverlay: true });
+
   render() {
     const login = (
-      <nav className="NavigationItems">
-        <Button primary href={getAuthUrl()}>Sign in</Button>
-      </nav>);
+      <NavItem right>
+        <Button href={getAuthUrl()}>Sign in</Button>
+      </NavItem>
+    );
     const userInfo = this.props.auth.toJS().userInfo;
     const firstInitial = userInfo ? userInfo.name.given_name[0] : "I";
-    const lastInitial = userInfo ? userInfo.name.surname[0] : "C";
 
     const loggedInNav = (
-      <nav className="NavigationItems">
-        <Button to="/dashboard" link>Projects</Button>
-        {/* <Button to="/activity" link>Activity</Button> */}
-        <Button icon="notification" noPadding />
-        <Button user onClick={this.logout.bind(this)}>
-          <span className="userInitials">
-            {firstInitial + lastInitial}
-          </span>
-        </Button>
-      </nav>
+      <NavItemGroup right>
+        <NavItem>
+          <Button onClick={this.handleClick} stacked>
+            <OutlineIcon name="add" />
+            <Subheading mt={6} capitalize micro>Add Project</Subheading>
+          </Button>
+        </NavItem>
+        <NavItem>
+          <Button icon="notification" iconSize={32} noBorder />
+          <Avatar
+            initial={firstInitial}
+            mr={16}
+            onClick={this.logout.bind(this)}
+          />
+        </NavItem>
+      </NavItemGroup>
     );
+
+    const projectForm = this.state.showOverlay
+      ? <CreateForm
+          show={this.state.showOverlay}
+          onClose={() => {
+            this.setState({
+              showOverlay: false
+            });
+          }}
+        />
+      : null;
     return (
-      <div className="Navigation">
-        <Link to="/">
-          <Icon name='logo' width={48} height={48} />
-        </Link>
-        {(this.props.auth.toJS().isAuthenticated ? loggedInNav : login)}
-      </div>
+      <NavBar>
+        <Button icon="logo" to="/dashboard" noBorder noHover />
+        {this.props.auth.toJS().isAuthenticated ? loggedInNav : login}
+        {projectForm}
+      </NavBar>
     );
   }
 }

@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router";
+import { Content, Heading, Paragraph, Section } from "styled";
 
 class Login extends Component {
   componentDidMount() {
@@ -10,11 +11,15 @@ class Login extends Component {
   }
   render() {
     return (
-      <div className='Login'>
-        <h1>Start your first project</h1>
-        <p>Sign up using Dropbox and start using Anni to track your project's progress!</p>
-      </div>
+      <Section>
+      <Content>
+        <Heading>Start your first project</Heading>
+        <Paragraph>
+          Sign up using Dropbox and start using Anni to track your project's progress!
+        </Paragraph>
+      </Content>
+    </Section>
     );
   }
 }
-export default connect((state) => state)(withRouter(Login));
+export default connect(state => state)(withRouter(Login));

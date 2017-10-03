@@ -1,10 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import { Card } from 'components/baseline';
+import { Card } from "styled";
 
-const FormFields = () => (
-  <Card>
-  </Card>
-);
+const FormFields = () => <Card />;
 
 export default FormFields;

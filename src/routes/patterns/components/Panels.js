@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Card } from 'components/baseline';
+import { Card } from 'styled';
 
 const Panels = () => (
   <Card>

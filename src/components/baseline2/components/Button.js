@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 import classNames from "classnames";
 
-import { Icon } from "components/baseline";
+import { Icon } from "styled";
 
 export const Button = props => {
   const {

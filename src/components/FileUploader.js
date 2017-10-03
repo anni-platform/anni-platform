@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import Dropzone from 'react-dropzone';
-import FileManager from 'containers/FileManager';
+import React, { Component } from "react";
+import Dropzone from "react-dropzone";
+import FileManager from "containers/FileManager";
+import { Container, Content, Subheading, Paragraph } from "styled";
 
 class FileDrop extends Component {
-
   onDrop(files) {
     this.props.uploadFiles(files, this.props.path, this.props.collection);
   }
@@ -14,13 +14,15 @@ class FileDrop extends Component {
         onDrop={this.onDrop.bind(this)}
         className="FileUploader"
         activeClassName="active"
-        disableClick={true}>
+        disableClick={true}
+      >
         {this.props.children}
-        <div>
-          <h3 className="instructions">Drag your images here to upload</h3>
-          <span className="FileUploader-tooltip">Drop em while they're hot 🔥 </span>
-        </div>
-
+        <Container>
+          <Content>
+            <Subheading color center>Drag and Drop</Subheading>
+            <Paragraph strong center>Your images here or browse</Paragraph>
+          </Content>
+        </Container>
       </Dropzone>
     );
   }

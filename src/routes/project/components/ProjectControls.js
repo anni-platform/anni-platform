@@ -1,16 +1,21 @@
 import React from "react";
 import classNames from "classnames";
-import { Button } from "components/baseline";
-import { Link } from "react-router";
+import {
+  Content,
+  Label,
+  ProjectNav,
+  ProjectNavItem,
+  ProjectNavId,
+  Radio,
+} from "styled";
 
 export const ProjectControls = ({ children }) => {
   return (
-    <div className="ProjectControls">
-      <form className="content">
+    <ProjectNav>
+      <Content full>
         {children}
-        <Button icon="add" />
-      </form>
-    </div>
+      </Content>
+    </ProjectNav>
   );
 };
 
@@ -22,19 +27,18 @@ export const ProjectSectionNavItem = (
   });
 
   return (
-    <Link
-      className="ProjectSectionNavItem"
+    <ProjectNavItem
       to={{
         pathname: projectPath,
         query: { section: name }
       }}
       onClick={onClick}
     >
-      <label className={styles}>
-        <h5 className="ProjectSectionNavItem-name">{name}</h5>
-        {checked ? <div className="pip checked" /> : <div className="pip" />}
-        <input type="radio" checked={checked} readOnly value={name} />
-      </label>
-    </Link>
+      <Label className={styles} capitalize micro>
+        {name}
+        {checked ? <ProjectNavId checked /> : <ProjectNavId />}
+        <Radio checked={checked} readOnly value={name} hidden ml={8} />
+      </Label>
+    </ProjectNavItem>
   );
 };
