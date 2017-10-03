@@ -122,7 +122,7 @@ const getSections = (project, id) => [
 ];
 
 const getActiveSectionIndex = (props, Sections) => {
-  let activeSectionIndex = 1;
+  let activeSectionIndex = 0;
   const sectionQueryParam = props.location.query.section;
   if (sectionQueryParam) {
     const foundSection = Sections.findIndex(s => s.name === sectionQueryParam);
