@@ -10,6 +10,7 @@ import {
   EASE_OUT_EXPO
 } from "./Variables";
 import { TextArea as BaseTextArea } from "components/Forms";
+import { Above } from "./MediaTemplates";
 import { Utils } from "./Utils";
 
 export const Input = styled.input`
@@ -125,6 +126,13 @@ export const Label = styled.label`
   text-transform: ${props => props.capitalize ? "uppercase" : "default"};
   transform-origin: right;
   ${Utils.margin};
+
+  span {
+    display: ${props => props.hide ? 'none' : 'block'};
+    ${Above.lg`
+      display: block;
+    `}
+  }
 
   &:hover {
     transform: scale(1.05);
