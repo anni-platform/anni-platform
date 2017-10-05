@@ -1,9 +1,39 @@
 import React from "react";
-
-import { Card } from "styled";
+import { Card, Heading, Subheading, Paragraph, CodeBlock } from "styled";
 
 const Typography = () => (
-  <Card className="Typography">
+  <Card mb={24} padded>
+    <Subheading capitalize color micro mb={8}>Heading</Subheading>
+    <Heading>Heading</Heading>
+    <CodeBlock>
+{`import { Heading } from "styled";
+
+<Heading>Heading</Heading>`
+}
+    </CodeBlock>
+
+    <Subheading capitalize color micro mb={8}>Heading</Subheading>
+    <Subheading>Subheading</Subheading>
+    <CodeBlock mb={24}>{`<Subheading>Subheading</Subheading>`}</CodeBlock>
+
+    <Subheading capitalize color micro mb={8}>Heading</Subheading>
+    <Subheading tiny>Tiny Subheading</Subheading>
+    <CodeBlock mb={24}>
+{`import { Heading } from "styled";
+
+<Subheading tiny>Subheading</Subheading>`
+}
+    </CodeBlock>
+
+    <Subheading capitalize color micro mb={8}>Heading</Subheading>
+    <Subheading micro>Micro Subheading</Subheading>
+    <CodeBlock mb={24}>
+{`import { Heading } from "styled";
+
+<Subheading micro>Subheading</Subheading>`
+}
+    </CodeBlock>
+
     <ul>
       <li>
         <h4 className="legend">h1</h4><h1>Headline 1</h1>

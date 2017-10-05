@@ -1,7 +1,7 @@
 import styled, { injectGlobal } from "styled-components";
 import { Above } from "./MediaTemplates";
 import { Utils } from "./Utils";
-import { COPPER, CHARCOAL } from "./Variables";
+import { COPPER, CHARCOAL, FLINT, PEBBLE } from "./Variables";
 
 /*
  * Font Definitions
@@ -77,4 +77,14 @@ export const Paragraph = styled.p`
   text-align: ${props => props.center ? "center" : "left"};
   text-transform: ${props => props.capitalize ? "uppercase" : "default"};
   ${Utils.margin};
+`;
+
+export const CodeBlock = styled.pre`
+  background: ${PEBBLE};
+  border: 1px solid ${FLINT};
+  font-family: "Apercu Mono";
+  font-size: 12px;
+  line-height: 1.6;
+  margin: ${props => props.noMargin ? "0" : "16px 0 24px 0"};
+  padding: 24px;
 `;

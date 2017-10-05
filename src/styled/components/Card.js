@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { CONCRETE, PAPER, FLINT, EASE_OUT_BACK } from "./Variables";
+import { Utils } from "./Utils";
 
 
 export const CardControls = styled.div`
@@ -26,8 +27,9 @@ export const Card = styled.div`
   height: 100%;
   transition: 320ms ${EASE_OUT_BACK};
   overflow: visible;
+  padding: ${props => props.padded && "48px"};
   position: relative;
-  width: 100%;
+  ${Utils.margin};
 
   &:hover {
     box-shadow: ${props => props.active ? `4px 12px 24px 0 ${CONCRETE}` : "none"};

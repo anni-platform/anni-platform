@@ -28,10 +28,10 @@ export { Loader } from "./components/Loader";
 /* Media Template Definitions */
 export { Above } from "./components/MediaTemplates";
 
-/* Overlays */
-export { Heading, Subheading, Paragraph } from "./components/Typography";
-
 /* Typography */
+export { CodeBlock, Heading, Subheading, Paragraph } from "./components/Typography";
+
+/* Overlays */
 export { Backdrop, Dialog, Overlay, OverlayToolbar, OverlayControls, OverlayButton } from "./components/Overlays";
 
 /* Toolbars */
