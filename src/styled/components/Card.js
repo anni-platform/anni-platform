@@ -32,7 +32,7 @@ export const Card = styled.div`
   ${Utils.margin};
 
   &:hover {
-    box-shadow: ${props => props.active ? `4px 12px 24px 0 ${CONCRETE}` : "none"};
+    box-shadow: ${props => props.active && `4px 12px 24px 0 ${CONCRETE}`};
     transform: scale(${props => props.active ? 1.016 : 1});
 
     ${CardControls} {

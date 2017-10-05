@@ -86,5 +86,6 @@ export const CodeBlock = styled.pre`
   font-size: 12px;
   line-height: 1.6;
   margin: ${props => props.noMargin ? "0" : "16px 0 24px 0"};
+  overflow: scroll;
   padding: 24px;
 `;
