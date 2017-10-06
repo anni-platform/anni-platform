@@ -18,19 +18,19 @@ const items = [
   <SolidIcon name="share" />
 ];
 const Icons = () => (
-  <Card padded>
-    <Subheading mb={16}>Icons</Subheading>
+  <Card padded mb={24}>
+    <Subheading mb={24}>Icons</Subheading>
     <Grid>
       {items.map(function(item, index) {
         return (
           <GridItem stacked center key={index}>
             {item}
-            <Subheading capitalize color micro mt={32}>{item.props.name}</Subheading>
+            <Subheading capitalize micro mt={32}>{item.props.name}</Subheading>
           </GridItem>
         );
       })}
     </Grid>
-    <CodeBlock>
+    <CodeBlock noMargin>
 {`import { SolidIcon, OutlineIcon } from "styled";
 <SolidIcon name="String" />
 <OutlineIcon name="String" />

@@ -3,7 +3,7 @@ import { Button, ButtonGroup, Card, CodeBlock, Subheading } from "styled";
 
 const Buttons = () => (
   <Card mb={24} padded>
-    <Subheading mb={48}>Buttons</Subheading>
+    <Subheading mb={24}>Buttons</Subheading>
 
     <Subheading capitalize color micro mb={8}>Button</Subheading>
     <ButtonGroup>
@@ -46,7 +46,7 @@ const Buttons = () => (
       <Button>Foxtrot</Button>
       <Button>Gamma</Button>
     </ButtonGroup>
-    <CodeBlock>
+    <CodeBlock noMargin>
 {`import { Button, ButtonGroup } from "styled";
 <ButtonGroup>
   <Button>label</Button>

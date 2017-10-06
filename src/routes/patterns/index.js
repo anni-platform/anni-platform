@@ -17,6 +17,7 @@ export default class PatternLibrary extends Component {
           <Typography />
           <Buttons />
           <Icons />
+          <Loaders />
           {/* <ImageLists /> */}
           {/* <FormFields /> */}
           {/* <Panels /> */}

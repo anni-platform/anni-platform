@@ -3,7 +3,7 @@ import { Card, Heading, Subheading, Paragraph, CodeBlock } from "styled";
 
 const Typography = () => (
   <Card mb={24} padded>
-    <Subheading mb={48}>Typography</Subheading>
+    <Subheading mb={24}>Typography</Subheading>
 
     <Subheading capitalize color micro mb={8}>Heading</Subheading>
     <Heading>Echo Easy Foxtrot Fox</Heading>
@@ -45,7 +45,7 @@ const Typography = () => (
     </CodeBlock>
     <Subheading capitalize color micro mb={8}>Paragraph</Subheading>
     <Paragraph maxWidth={400}>Apples Butter Charlie Duff Edward Freddy George Harry Ink Johnnie King London Monkey Nuts Orange Pudding Queenie Robert Sugar Tommy Uncle Vinegar Willie Xerxes Yellow Zebra Nuts Orange Pudding.</Paragraph>
-    <CodeBlock mb={24}>
+    <CodeBlock mb={24} noMargin>
 {`import { Paragraph } from "styled";
 <Paragraph>Text here</Paragraph>
 
