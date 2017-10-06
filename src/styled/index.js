@@ -11,7 +11,7 @@ export { Card, CardDetails, CardControls, DraggableCard } from "./components/Car
 export { FieldGroup, FormGroup, Input, Label, Radio, TextArea } from "./components/Forms";
 
 /* Grid */
-export { Grid } from "./components/Grid";
+export { Grid, GridItem } from "./components/Grid";
 
 /* Icons */
 export { SolidIcon, OutlineIcon, Logo } from "./components/Icons";

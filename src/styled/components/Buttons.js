@@ -49,25 +49,6 @@ export const Button = styled(BaseButton)`
     width: ${props => props.iconSize ? `${props.iconSize}px` : "18px"};
   }
 
-  > #logo {
-    fill: none;
-    height: 50px;
-    stroke: ${COPPER};
-    padding: 0;
-    stroke-width: 1;
-    width: 50px;
-
-    > :nth-child(4){
-      fill: ${COPPER};
-      stroke: none;
-    }
-
-    > :nth-child(5){
-      fill: ${COPPER};
-      stroke: none;
-    }
-  }
-
   :hover {
     transform: ${props => props.noHover ? "scale(1)" : "scale(1.02)"};
 

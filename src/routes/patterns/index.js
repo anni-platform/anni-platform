@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Section, Content } from "styled";
 import Typography from "./components/Typography";
 import Buttons from './components/Buttons';
-// import Icons from './components/Icons';
+import Icons from './components/Icons';
 import Loaders from "./components/Loaders";
 // import ImageLists from './components/ImageLists'
 // import FormFields from './components/FormFields';
@@ -16,8 +16,7 @@ export default class PatternLibrary extends Component {
         <Content>
           <Typography />
           <Buttons />
-          <Loaders />
-          {/* <Icons /> */}
+          <Icons />
           {/* <ImageLists /> */}
           {/* <FormFields /> */}
           {/* <Panels /> */}

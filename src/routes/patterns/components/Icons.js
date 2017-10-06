@@ -1,23 +1,47 @@
 import React from "react";
 
-import { Card, Icon } from "styled";
+import { Card, CodeBlock, OutlineIcon, SolidIcon, Grid, GridItem, Subheading } from "styled";
 
 const items = [
-  <Icon name="logo" />,
-  <Icon name="notification" />,
-  <Icon name="confirm" />,
-  <Icon name="add" />,
-  <Icon name="cancel" />,
-  <Icon name="audio" />,
-  <Icon name="video" />
+  <OutlineIcon name="add" />,
+  <OutlineIcon name="arrow-back" />,
+  <OutlineIcon name="audio" />,
+  <OutlineIcon name="cancel" />,
+  <OutlineIcon name="confirm" />,
+  <OutlineIcon name="delete" />,
+  <OutlineIcon name="logo" />,
+  <OutlineIcon name="more" />,
+  <OutlineIcon name="popout" />,
+  <OutlineIcon name="video" />,
+  <OutlineIcon name="view" />,
+  <SolidIcon name="notification" />,
+  <SolidIcon name="share" />
 ];
 const Icons = () => (
-  <Card className="Icons">
-    <ul>
+  <Card padded>
+    <Subheading mb={16}>Icons</Subheading>
+    <Grid>
       {items.map(function(item, index) {
-        return <li key={index}>{item}<h4>{item.props.name}</h4></li>;
+        return (
+          <GridItem stacked center key={index}>
+            {item}
+            <Subheading capitalize color micro mt={32}>{item.props.name}</Subheading>
+          </GridItem>
+        );
       })}
-    </ul>
+    </Grid>
+    <CodeBlock>
+{`import { SolidIcon, OutlineIcon } from "styled";
+<SolidIcon name="String" />
+<OutlineIcon name="String" />
+
+// Props
+// color                 Display with accent color
+// name                  Name of desired icon
+// size                  Icon dimensions
+// strokeWidth={Number}  Stroke width
+`}
+    </CodeBlock>
   </Card>
 );
 

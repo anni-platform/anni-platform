@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Above } from "./MediaTemplates";
+import { FLINT } from "./Variables";
 
 export const Grid = styled.div`
   display: grid;
@@ -43,4 +44,12 @@ export const Grid = styled.div`
       grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
     `}
   }
+`;
+
+export const GridItem = styled.div`
+  align-items: ${props => props.center && "center"};
+  border: 1px solid ${FLINT};
+  display: flex;
+  flex-direction: ${props => props.stacked && "column"};
+  justify-content: ${props => props.center && "center"}
 `;
