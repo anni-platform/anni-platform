@@ -1,4 +1,5 @@
 import styled, { injectGlobal } from "styled-components";
+import Highlight from 'react-highlight';
 import { Above } from "./MediaTemplates";
 import { Utils } from "./Utils";
 import { COPPER, CHARCOAL, FLINT, PEBBLE } from "./Variables";
@@ -79,13 +80,30 @@ export const Paragraph = styled.p`
   ${Utils.margin};
 `;
 
-export const CodeBlock = styled.pre`
+export const CodeBlock = styled(Highlight)`
   background: ${PEBBLE};
   border: 1px solid ${FLINT};
+  display: block;
   font-family: "Apercu Mono";
   font-size: 12px;
-  line-height: 1.6;
+  line-height: 1.7;
   margin: ${props => props.noMargin ? "0" : "16px 0 24px 0"};
   overflow: scroll;
   padding: 24px;
+
+  .hljs-keyword {
+    color: #5560DD;
+  }
+
+  .hljs-string {
+    color: #EF5B6C;
+  }
+
+  .hljs-tag {
+    color: ${COPPER};
+  }
+
+  .hljs-comment {
+    color: #939393;
+  }
 `;

@@ -15,16 +15,15 @@ const Typography = () => (
     <Subheading>Kilo King Lima Love</Subheading>
     <CodeBlock mb={24}>
 {
-`import { Subheading } from "styled"
-<Subheading>Text here</Subheading>
+`import { Subheading } from "styled";
+<Subheading />Text here</Subheading>
 
-/* Props
-   capitalize  Transform to uppercase
-   center      Center horizontally
-   color       Display with accent color
-   tiny        Smaller font-size
-   micro       Smallest font-size
- */
+// Props
+// capitalize  Transform to uppercase
+// center      Center horizontally
+// color       Display with accent color
+// tiny        Smaller font-size
+// micro       Smallest font-size
 `
 }
     </CodeBlock>
