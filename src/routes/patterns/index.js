@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Section, Content } from "styled";
-import Typography from './components/Typography';
-// import Buttons from './components/Buttons';
+import Typography from "./components/Typography";
+import Buttons from './components/Buttons';
 // import Icons from './components/Icons';
 import Loaders from "./components/Loaders";
 // import ImageLists from './components/ImageLists'
@@ -14,14 +14,14 @@ export default class PatternLibrary extends Component {
     return (
       <Section>
         <Content>
-            <Typography />
-            {/* <Buttons /> */}
-            <Loaders />
-            {/* <Icons /> */}
-            {/* <ImageLists /> */}
-            {/* <FormFields /> */}
-            {/* <Panels /> */}
-            {/* <Alerts /> */}
+          <Typography />
+          <Buttons />
+          <Loaders />
+          {/* <Icons /> */}
+          {/* <ImageLists /> */}
+          {/* <FormFields /> */}
+          {/* <Panels /> */}
+          {/* <Alerts /> */}
         </Content>
       </Section>
     );

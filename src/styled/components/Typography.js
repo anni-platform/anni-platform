@@ -70,6 +70,7 @@ export const Subheading = styled.h2`
 `;
 
 export const Paragraph = styled.p`
+  color: ${props => props.color ? `${COPPER}` : `${CHARCOAL}`};
   font-family: ${props => props.strong ? "Apercu Medium" : "Apercu"}, sans-serif;
   font-size: 16px;
   font-size: ${props => props.tiny && "15px"};
@@ -85,7 +86,7 @@ export const CodeBlock = styled(Highlight)`
   border: 1px solid ${FLINT};
   display: block;
   font-family: "Apercu Mono";
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.7;
   margin: ${props => props.noMargin ? "0" : "16px 0 24px 0"};
   overflow: scroll;
@@ -97,6 +98,10 @@ export const CodeBlock = styled(Highlight)`
 
   .hljs-string {
     color: #EF5B6C;
+  }
+
+  .hljs-attr {
+    color: #E4715F;
   }
 
   .hljs-tag {
