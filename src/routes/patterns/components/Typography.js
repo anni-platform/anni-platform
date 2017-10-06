@@ -12,11 +12,14 @@ const Typography = () => (
 <Heading>Text here</Heading>
 
 // Props
-// capitalize   Transform to uppercase
-// mt={Number}  Margin top
-// mr={Number}  Margin right
-// mb={Number}  Margin bottom
-// ml={Number}  Margin left
+// capitalize         Transform to uppercase
+// center             Center horizontally
+// color              Display with accent color
+// maxWidth={Number}  Define a custom max-width
+// mt={Number}        Margin top
+// mr={Number}        Margin right
+// mb={Number}        Margin bottom
+// ml={Number}        Margin left
 `}
     </CodeBlock>
     <Subheading capitalize color micro mb={8}>Subheading</Subheading>
@@ -28,35 +31,37 @@ const Typography = () => (
 <Subheading />Text here</Subheading>
 
 // Props
-// capitalize   Transform to uppercase
-// center       Center horizontally
-// color        Display with accent color
-// tiny         Smaller font-size
-// micro        Smallest font-size
-// mt={Number}  Margin top
-// mr={Number}  Margin right
-// mb={Number}  Margin bottom
-// ml={Number}  Margin left
+// capitalize         Transform to uppercase
+// center             Center horizontally
+// color              Display with accent color
+// tiny               Smaller font-size
+// micro              Smallest font-size
+// maxWidth={Number}  Define a custom max-width
+// mt={Number}        Margin top
+// mr={Number}        Margin right
+// mb={Number}        Margin bottom
+// ml={Number}        Margin left
 `}
     </CodeBlock>
     <Subheading capitalize color micro mb={8}>Paragraph</Subheading>
-    <Paragraph>Apples Butter Charlie Duff Edward Freddy George Harry Ink Johnnie King London Monkey Nuts Orange Pudding Queenie Robert Sugar Tommy Uncle Vinegar Willie Xerxes Yellow Zebra Nuts Orange Pudding.</Paragraph>
+    <Paragraph maxWidth={400}>Apples Butter Charlie Duff Edward Freddy George Harry Ink Johnnie King London Monkey Nuts Orange Pudding Queenie Robert Sugar Tommy Uncle Vinegar Willie Xerxes Yellow Zebra Nuts Orange Pudding.</Paragraph>
     <CodeBlock mb={24}>
 {`import { Paragraph } from "styled";
 <Paragraph>Text here</Paragraph>
 
 
 // Props
-// capitalize   Transform to uppercase
-// center       Center horizontally
-// color        Display with accent color
-// tiny         Smaller font-size
-// micro        Smallest font-size
-// strong       Bold weight
-// mt={Number}  Margin top
-// mr={Number}  Margin right
-// mb={Number}  Margin bottom
-// ml={Number}  Margin left
+// capitalize         Transform to uppercase
+// center             Center horizontally
+// color              Display with accent color
+// tiny               Smaller font-size
+// micro              Smallest font-size
+// strong             Bold weight
+// maxWidth={Number}  Define a custom max-width
+// mt={Number}        Margin top
+// mr={Number}        Margin right
+// mb={Number}        Margin bottom
+// ml={Number}        Margin left
 `}
     </CodeBlock>
   </Card>

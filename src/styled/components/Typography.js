@@ -45,9 +45,12 @@ export const GlobalStyles = injectGlobal`
 */
 
 export const Heading = styled.h1`
+  color: ${props => props.color ? `${COPPER}` : `${CHARCOAL}`};
   font-family: 'Apercu Bold', sans-serif;
   font-size: 32px;
   margin: 0 0 4px 0;
+  max-width: ${props => props.maxWidth && `${props.maxWidth}px`};
+  text-align: ${props => props.center ? "center" : "left"};
   text-transform: ${props => props.capitalize ? "uppercase" : "default"};
   ${Utils.margin};
 
@@ -63,6 +66,7 @@ export const Subheading = styled.h2`
   font-size: ${props => props.tiny && "15px"};
   font-size: ${props => props.micro && "12px"};
   margin: 0;
+  max-width: ${props => props.maxWidth && `${props.maxWidth}px`};
   letter-spacing: .75px;
   text-align: ${props => props.center ? "center" : "left"};
   text-transform: ${props => props.capitalize ? "uppercase" : "default"};
@@ -76,6 +80,7 @@ export const Paragraph = styled.p`
   font-size: ${props => props.tiny && "15px"};
   font-size: ${props => props.micro && "12px"};
   line-height: 1.6;
+  max-width: ${props => props.maxWidth && `${props.maxWidth}px`};
   text-align: ${props => props.center ? "center" : "left"};
   text-transform: ${props => props.capitalize ? "uppercase" : "default"};
   ${Utils.margin};
