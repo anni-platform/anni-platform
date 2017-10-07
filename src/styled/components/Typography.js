@@ -77,10 +77,9 @@ export const Paragraph = styled.p`
   color: ${props => props.color ? `${COPPER}` : `${CHARCOAL}`};
   font-family: ${props => props.strong ? "Apercu Medium" : "Apercu"}, sans-serif;
   font-size: 16px;
-  font-size: ${props => props.tiny && "15px"};
-  font-size: ${props => props.micro && "12px"};
+  font-size: ${props => props.large && "18px"};
   line-height: 1.6;
-  max-width: ${props => props.maxWidth && `${props.maxWidth}px`};
+  max-width: ${props => props.width && `${props.width}px`};
   text-align: ${props => props.center ? "center" : "left"};
   text-transform: ${props => props.capitalize ? "uppercase" : "default"};
   ${Utils.margin};
@@ -96,6 +95,9 @@ export const CodeBlock = styled(Highlight)`
   margin: ${props => props.noMargin ? "0" : "16px 0 24px 0"};
   overflow: scroll;
   padding: 24px;
+  &.hljs {
+    color: #484444;
+  }
 
   .hljs-keyword {
     color: #5560DD;
@@ -110,7 +112,7 @@ export const CodeBlock = styled(Highlight)`
   }
 
   .hljs-tag {
-    color: ${COPPER};
+    color: #E2A480;
   }
 
   .hljs-comment {

@@ -14,14 +14,14 @@ const Buttons = () => (
 
     <Subheading capitalize color micro mb={8} mt={16}>Icon Button</Subheading>
     <ButtonGroup>
-      <Button icon="add" primary mb={8}>Primary</Button>
-      <Button icon="add" mb={8}>Default</Button>
-      <Button icon="add" link>Link</Button>
+      <Button icon="arrow-back" primary mb={8}>Primary</Button>
+      <Button icon="arrow-back" mb={8}>Default</Button>
+      <Button icon="arrow-back" link>Link</Button>
     </ButtonGroup>
 
     <Subheading capitalize color micro mb={8} mt={16}>Stacked Button</Subheading>
     <ButtonGroup>
-      <Button icon="add" stacked>Add Project</Button>
+      <Button icon="add" color stacked>Stacked</Button>
     </ButtonGroup>
 
     <CodeBlock>
@@ -42,9 +42,9 @@ const Buttons = () => (
 
     <Subheading capitalize color micro mb={8}>Button Group</Subheading>
     <ButtonGroup>
-      <Button>Echo</Button>
       <Button>Foxtrot</Button>
-      <Button>Gamma</Button>
+      <Button>Echo</Button>
+      <Button>Charlie</Button>
     </ButtonGroup>
     <CodeBlock noMargin>
 {`import { Button, ButtonGroup } from "styled";

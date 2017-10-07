@@ -33,7 +33,7 @@ export const Card = styled.div`
 
   &:hover {
     box-shadow: ${props => props.active && `4px 12px 24px 0 ${CONCRETE}`};
-    transform: scale(${props => props.active ? 1.016 : 1});
+    transform: ${props => props.active && "scale(1.016)"};
 
     ${CardControls} {
       height: auto;

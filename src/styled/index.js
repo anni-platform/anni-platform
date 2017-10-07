@@ -1,6 +1,9 @@
 /* Globals */
 export { GlobalStyles } from "./components/Base";
 
+/* Alert */
+export { Alert, AlertControls, AlertMessage } from "./components/Alert";
+
 /* Button */
 export { Avatar, Button, ButtonLink, ButtonGroup, Hyperlink } from "./components/Buttons";
 

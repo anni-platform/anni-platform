@@ -9,12 +9,12 @@ const items = [
   <OutlineIcon strokeWidth={3} name="cancel" />,
   <OutlineIcon strokeWidth={3} name="confirm" />,
   <OutlineIcon strokeWidth={3} name="delete" />,
-  <OutlineIcon strokeWidth={3} name="more" />,
-  <OutlineIcon strokeWidth={3} name="popout" />,
-  <OutlineIcon strokeWidth={3} name="video" />,
-  <OutlineIcon strokeWidth={3} name="view" />,
+  <OutlineIcon strokeWidth={3} solid name="more" />,
   <SolidIcon name="notification" />,
-  <SolidIcon name="share" />
+  <OutlineIcon strokeWidth={3} name="popout" />,
+  <SolidIcon name="share" />,
+  <OutlineIcon strokeWidth={3} name="video" />,
+  <OutlineIcon strokeWidth={3} name="view" />
 ];
 const Icons = () => (
   <Card padded mb={24}>
@@ -31,8 +31,8 @@ const Icons = () => (
     </Grid>
     <CodeBlock noMargin>
 {`import { Button, ButtonGroup } from "styled";
-<SolidIcon name="String" />
-<OutlineIcon name="String" />
+<SolidIcon name="String"/>
+<OutlineIcon name="String"/>
 
 // Props
 // color                 Display with accent color

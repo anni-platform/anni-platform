@@ -9,13 +9,13 @@ const Typography = () => (
     <Heading>Echo Easy Foxtrot Fox</Heading>
     <CodeBlock>
 {`import { Heading } from "styled";
-<Heading>Text here</Heading>
+<Heading>content</Heading>
 
 // Props
 // capitalize         Transform to uppercase
 // center             Center horizontally
 // color              Display with accent color
-// maxWidth={Number}  Define a custom max-width
+// width={Number}     Define a custom max-width
 // mt={Number}        Margin top
 // mr={Number}        Margin right
 // mb={Number}        Margin bottom
@@ -23,12 +23,10 @@ const Typography = () => (
 `}
     </CodeBlock>
     <Subheading capitalize color micro mb={8}>Subheading</Subheading>
-    <Subheading mb={16}>Kilo King Lima Love</Subheading>
-    <Subheading tiny mb={16}>India Item Juliet Jiggs</Subheading>
-    <Subheading capitalize micro>Sierra Tango Tare</Subheading>
+    <Subheading mb={4}>Kilo King Lima Love</Subheading>
     <CodeBlock mb={24}>
 {`import { Subheading } from "styled";
-<Subheading />Text here</Subheading>
+<Subheading>content</Subheading>
 
 // Props
 // capitalize         Transform to uppercase
@@ -36,7 +34,7 @@ const Typography = () => (
 // color              Display with accent color
 // tiny               Smaller font-size
 // micro              Smallest font-size
-// maxWidth={Number}  Define a custom max-width
+// width={Number}     Define a custom max-width
 // mt={Number}        Margin top
 // mr={Number}        Margin right
 // mb={Number}        Margin bottom
@@ -44,10 +42,10 @@ const Typography = () => (
 `}
     </CodeBlock>
     <Subheading capitalize color micro mb={8}>Paragraph</Subheading>
-    <Paragraph maxWidth={400}>Apples Butter Charlie Duff Edward Freddy George Harry Ink Johnnie King London Monkey Nuts Orange Pudding Queenie Robert Sugar Tommy Uncle Vinegar Willie Xerxes Yellow Zebra Nuts Orange Pudding.</Paragraph>
+    <Paragraph width={400}>Apples Butter Charlie Duff Edward Freddy George Harry Ink Johnnie King London Monkey Nuts Orange Pudding Queenie Robert Sugar Tommy Uncle Vinegar Willie Xerxes Yellow Zebra Nuts Orange Pudding.</Paragraph>
     <CodeBlock mb={24} noMargin>
 {`import { Paragraph } from "styled";
-<Paragraph>Text here</Paragraph>
+<Paragraph>content</Paragraph>
 
 
 // Props
@@ -57,7 +55,7 @@ const Typography = () => (
 // tiny               Smaller font-size
 // micro              Smallest font-size
 // strong             Bold weight
-// maxWidth={Number}  Define a custom max-width
+// width={Number}     Define a custom max-width
 // mt={Number}        Margin top
 // mr={Number}        Margin right
 // mb={Number}        Margin bottom

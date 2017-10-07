@@ -9,8 +9,10 @@ export const NavBar = styled.div`
   height: 72px;
   left: 0;
   min-width: 100vw;
+  overflow: ${props => props.scroll && "scroll"};
   position: fixed;
   top: 0;
+  width: 100%;
   z-index: 3;
 `;
 
@@ -18,6 +20,8 @@ export const NavItem = styled.div`
   align-items: center;
   border-left: 1px solid ${FLINT};
   display: flex;
+  flex-grow: ${props => props.fit && "1"};
+  justify-content: center;
   height: 100%;
   margin-left: ${props => props.right && "auto"};
   padding: 0 8px;

@@ -35,18 +35,18 @@ export const Button = styled(BaseButton)`
   ${Utils.margin};
 
   &:hover {
-    transform: scale(1.025);
+    transform: scale(1.02);
   }
 
   svg {
     fill: ${props => props.fill ? `${CHARCOAL}` : "transparent"};
     height: ${props => props.iconSize ? `${props.iconSize}px` : "18px"};
-    margin-right: 4px;
+    margin-right: 8px;
     margin-bottom: ${props => props.stacked && "6px"};
     stroke: ${props => props.fill ? "transparent" : `${CHARCOAL}`};
     stroke: ${props => props.stacked && `${CHARCOAL}`};
-    stroke-width: ${props => props.fill ? "0" : "6px"};
-    stroke-width: ${props => props.stacked && "6px"};
+    stroke-width: ${props => props.strokeWidth ? `${props.strokeWidth}px` : "6px"};
+    stroke-width: ${props => props.fill && "6px"};
     transition: 400ms ${EASE_OUT_EXPO};
     width: ${props => props.iconSize ? `${props.iconSize}px` : "18px"};
   }
