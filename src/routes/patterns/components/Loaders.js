@@ -6,7 +6,7 @@ const Loaders = () => (
   <Card padded mb={24}>
     <Subheading mb={24}>Loader</Subheading>
     <Loader center />
-    <Subheading capitalize center micro mt={16} mb={16}>Loader</Subheading>
+    <Subheading capitalize center micro mt={16} mb={16}></Subheading>
 
     <CodeBlock noMargin>
 {`import { Loader } from "styled";

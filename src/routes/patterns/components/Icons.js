@@ -31,7 +31,7 @@ const Icons = () => (
       })}
     </Grid>
     <CodeBlock noMargin>
-{`import { SolidIcon, OutlineIcon } from "styled";
+{`import { Button, ButtonGroup } from "styled";
 <SolidIcon name="String" />
 <OutlineIcon name="String" />
 

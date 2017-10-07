@@ -11,8 +11,6 @@ import {
   NavBar,
   NavItem,
   NavItemGroup,
-  OutlineIcon,
-  Subheading
 } from "styled";
 
 class Navigation extends Component {
@@ -59,13 +57,12 @@ class Navigation extends Component {
     const loggedInNav = (
       <NavItemGroup right>
         <NavItem>
-          <Button onClick={this.handleClick} stacked>
-            <OutlineIcon name="add" />
-            <Subheading mt={6} capitalize micro>Add Project</Subheading>
+          <Button icon="more" iconSize={28} onClick={this.handleClick} stacked>
+            Add Project
           </Button>
         </NavItem>
         <NavItem>
-          <Button icon="notification" iconSize={32} noBorder />
+          <Button icon="notification" fill iconSize={32} noBorder />
           <Avatar
             initial={firstInitial}
             mr={16}

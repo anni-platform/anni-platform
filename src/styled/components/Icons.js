@@ -13,16 +13,18 @@ export const OutlineIcon = styled(Icons)`
   stroke-width: ${props => props.strokeWidth ? `${props.strokeWidth}px` : "2px"};
 
   &#logo {
-    stroke: ${props => props.color ? `${COPPER}` : `${CHARCOAL}`};;
+    stroke: ${COPPER};
+    height: 50px;
     stroke-width: 1;
+    width: 50px;
 
     > :nth-child(4){
-      fill: ${props => props.color ? `${COPPER}` : `${CHARCOAL}`};
+      fill: ${COPPER};
       stroke: none;
     }
 
     > :nth-child(5){
-      fill: ${props => props.color ? `${COPPER}` : `${CHARCOAL}`};
+      fill: ${COPPER};
       stroke: none;
     }
   }
@@ -30,12 +32,20 @@ export const OutlineIcon = styled(Icons)`
   &#more {
     > :nth-child(2){
       stroke: ${COPPER};
+      stroke-width: 3;
+    }
+    > :nth-child(3),
+    > :nth-child(4)
+    {
+      stroke: ${CHARCOAL};
+      stroke-width: 3;
     }
   }
 
   &#view {
     > :nth-child(2){
-      fill: ${props => props.color ? `${COPPER}` : `${CHARCOAL}`};
+      stroke: ${CHARCOAL};
+      stroke-width: 3;
     }
   }
 

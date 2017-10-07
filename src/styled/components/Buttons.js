@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { BaseButton } from "components/Button";
 import { Utils } from "./Utils";
 
-import { CHARCOAL, COPPER, PAPER, EASE_OUT_EXPO, EASE_OUT_BACK } from "./Variables";
+import { CHARCOAL, COPPER, PAPER, EASE_OUT_EXPO } from "./Variables";
 
 export const ButtonGroup = styled.div`
   ${Utils.margin};
@@ -15,7 +15,6 @@ export const Button = styled(BaseButton)`
   align-items: center;
   background: ${props => !props.primary || props.link ? "none" : `${COPPER}`};
   border: ${props => props.noBorder || props.link ? "none" : `2px solid ${COPPER}`};
-  border: ${props => props.primary && "none"};
   border: ${props => props.stacked && "none"};
   border-radius: 80px;
   color: ${CHARCOAL};
@@ -23,7 +22,7 @@ export const Button = styled(BaseButton)`
   display: inline-flex;
   flex-direction: ${props => props.stacked && "column"};
   font-family: 'Apercu Bold', sans-serif;
-  font-size: 13px;
+  font-size: ${props => props.stacked ? "12px" : "13px"};
   justify-content: center;
   letter-spacing: 1px;
   line-height: 1;
@@ -35,6 +34,10 @@ export const Button = styled(BaseButton)`
   z-index: 2;
   ${Utils.margin};
 
+  &:hover {
+    transform: scale(1.025);
+  }
+
   svg {
     fill: ${props => props.fill ? `${CHARCOAL}` : "transparent"};
     height: ${props => props.iconSize ? `${props.iconSize}px` : "18px"};
@@ -45,16 +48,7 @@ export const Button = styled(BaseButton)`
     stroke-width: ${props => props.fill ? "0" : "6px"};
     stroke-width: ${props => props.stacked && "6px"};
     transition: 400ms ${EASE_OUT_EXPO};
-    transition: transform 400ms ${EASE_OUT_BACK};
     width: ${props => props.iconSize ? `${props.iconSize}px` : "18px"};
-  }
-
-  :hover {
-    transform: ${props => props.noHover ? "scale(1)" : "scale(1.02)"};
-
-    svg {
-      transform: ${props => props.noHover ? "scale(1)" : "scale(1.05)"};
-    }
   }
 `;
 
@@ -64,6 +58,7 @@ export const Avatar = Button.extend`
   font-size: 18px;
   height: 40px;
   text-align: center;
+  padding: 0;
   position: relative;
   width: 40px;
 
