@@ -13,7 +13,7 @@ const Loaders = () => (
 <Loader />
 
 // Props
-// center             Center horizontally
+// center    Display centered within container
 // fullPage  Display centered on full-screen
 `}
     </CodeBlock>

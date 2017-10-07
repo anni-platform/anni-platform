@@ -6,8 +6,8 @@ export const Grid = styled.div`
   display: grid;
   grid-gap: 24px;
   grid-auto-flow: row dense;
-  grid-auto-rows: 320px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-auto-rows: ${props => props.small ? "200px" : "320px"};
+  grid-template-columns: ${props => props.small ? "repeat(auto-fit, minmax(200px, 1fr))" : "repeat(auto-fit, minmax(280px, 1fr))"};
   width: 100%;
 
   .draggable {

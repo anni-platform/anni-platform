@@ -3,24 +3,23 @@ import React from "react";
 import { Card, CodeBlock, OutlineIcon, SolidIcon, Grid, GridItem, Subheading } from "styled";
 
 const items = [
-  <OutlineIcon name="add" />,
-  <OutlineIcon name="arrow-back" />,
-  <OutlineIcon name="audio" />,
-  <OutlineIcon name="cancel" />,
-  <OutlineIcon name="confirm" />,
-  <OutlineIcon name="delete" />,
-  <OutlineIcon name="logo" />,
-  <OutlineIcon name="more" />,
-  <OutlineIcon name="popout" />,
-  <OutlineIcon name="video" />,
-  <OutlineIcon name="view" />,
+  <OutlineIcon strokeWidth={3} name="add" />,
+  <OutlineIcon strokeWidth={3} name="arrow-back" />,
+  <OutlineIcon strokeWidth={3} name="audio" />,
+  <OutlineIcon strokeWidth={3} name="cancel" />,
+  <OutlineIcon strokeWidth={3} name="confirm" />,
+  <OutlineIcon strokeWidth={3} name="delete" />,
+  <OutlineIcon strokeWidth={3} name="more" />,
+  <OutlineIcon strokeWidth={3} name="popout" />,
+  <OutlineIcon strokeWidth={3} name="video" />,
+  <OutlineIcon strokeWidth={3} name="view" />,
   <SolidIcon name="notification" />,
   <SolidIcon name="share" />
 ];
 const Icons = () => (
   <Card padded mb={24}>
     <Subheading mb={24}>Icons</Subheading>
-    <Grid>
+    <Grid small>
       {items.map(function(item, index) {
         return (
           <GridItem stacked center key={index}>
