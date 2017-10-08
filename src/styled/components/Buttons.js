@@ -6,6 +6,8 @@ import { CHARCOAL, COPPER, PAPER, EASE_OUT_EXPO } from "./Variables";
 
 export const ButtonGroup = styled.div`
   ${Utils.margin};
+  margin: ${props => props.center && "0 auto"};
+  
   button {
     margin: 0 8px 8px 0;
   }

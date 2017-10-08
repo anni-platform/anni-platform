@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { CARMINE, CHARCOAL, FLINT, PAPER, EASE_OUT_EXPO } from "./Variables";
 
 export const Alert = styled.div`
-  animation: slideIn 400ms ${EASE_OUT_EXPO};
+  animation: slideDown 400ms ${EASE_OUT_EXPO};
   background: ${props => props.danger ? `${CARMINE}` : `${PAPER}`};
   border-bottom: 1px solid ${FLINT};
   align-items: center;
@@ -17,7 +17,7 @@ export const Alert = styled.div`
     color: ${props => props.danger ? `${PAPER}` : `${CHARCOAL}`};
   }
 
-  @keyframes slideIn {
+  @keyframes slideDown {
     0% {
       transform: translateY(-200px);
     }
