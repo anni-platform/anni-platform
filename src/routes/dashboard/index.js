@@ -9,7 +9,7 @@ import {
 } from "constants/file";
 
 import { Content, Heading, Paragraph, Section } from "styled";
-import Loader from "components/Loader";
+import { Loader } from "styled";
 
 class Dashboard extends Component {
   render() {
@@ -50,7 +50,7 @@ class Dashboard extends Component {
       <Section>
         <Content>
           <Heading>
-            Welcome Back {userInfo && userInfo.name.familiar_name}!
+            Welcome Back {userInfo && userInfo.name && userInfo.name.familiar_name}!
           </Heading>
           <Paragraph mb={32} strong>You have 12 unread notifications</Paragraph>
           <Paragraph mb={24} strong>Your Projects</Paragraph>
