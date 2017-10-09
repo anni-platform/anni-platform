@@ -24,7 +24,7 @@ export const NavItem = styled.div`
   justify-content: center;
   height: 100%;
   margin-left: ${props => props.right && "auto"};
-  padding: 0 8px;
+  padding: 0;
 `;
 
 export const NavItemGroup = styled.div`

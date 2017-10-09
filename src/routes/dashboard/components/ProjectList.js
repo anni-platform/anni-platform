@@ -65,19 +65,21 @@ export const ProjectListItem = (
       <CardControls>
         <Subheading micro>Due May 21</Subheading>
         <ButtonGroup mr={-16}>
-          <Button icon="share" noBorder />
+          <Button icon="share" noBorder fill full />
           <Button
             onClick={projectLink}
+            full
             icon="view"
-            iconStroke={4}
+            strokeWidth={4}
             noBorder
           />
           <Button
             onClick={() => {
               removeFolder(path).then(deleteProject());
             }}
+            full
             icon="delete"
-            iconStroke={4}
+            strokeWidth={4}
             noBorder
           />
         </ButtonGroup>

@@ -7,7 +7,7 @@ import { CHARCOAL, COPPER, PAPER, EASE_OUT_EXPO } from "./Variables";
 export const ButtonGroup = styled.div`
   ${Utils.margin};
   margin: ${props => props.center && "0 auto"};
-  
+
   button {
     margin: 0 8px 8px 0;
   }
@@ -29,7 +29,7 @@ export const Button = styled(BaseButton)`
   letter-spacing: 1px;
   line-height: 1;
   outline: none;
-  padding: 12px 24px;
+  padding: ${props => props.full ? "0" : "12px 24px"};
   text-decoration: none;
   text-transform: uppercase;
   transition: 400ms ${EASE_OUT_EXPO};
