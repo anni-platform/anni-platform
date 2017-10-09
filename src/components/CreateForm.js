@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { createFolder } from "adapters";
 import { addProject } from "actions";
+import ProjectManager from "containers/ProjectManager";
+import { withRouter } from "react-router";
 import {
   Button,
   Backdrop,
@@ -12,7 +14,7 @@ import {
   Paragraph
 } from "styled";
 
-export default class ProjectForm extends Component {
+class ProjectForm extends Component {
   constructor() {
     super();
     this.state = {
@@ -36,6 +38,7 @@ export default class ProjectForm extends Component {
     createFolder(`/${this.state.name}`)
       .then(project => {
         const { path_display } = project;
+        this.props.onClose();
         this.props.dispatch(addProject(project));
         this.props.router.push(`/project${path_display}`);
       })
@@ -122,3 +125,5 @@ export default class ProjectForm extends Component {
     }
   }
 }
+
+export default ProjectManager(withRouter(ProjectForm));
