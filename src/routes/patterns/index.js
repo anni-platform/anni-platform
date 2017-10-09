@@ -25,7 +25,7 @@ export default class PatternLibrary extends Component {
       <Section>
         <NavBar scroll>
           <NavItem>
-            <Button to="/dashboard" icon="arrow-back" pb={0} stacked />
+            <Button to="/dashboard" icon="arrow-back" pt={6} stacked />
           </NavItem>
           <NavItem fit>
             <Button href="#typography" link>Typography</Button>

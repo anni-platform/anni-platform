@@ -14,7 +14,6 @@ export const ButtonGroup = styled.div`
 `;
 
 export const Button = styled(BaseButton)`
-  ${Utils.padding};
   align-items: center;
   background: ${props => !props.primary || props.link ? "none" : `${COPPER}`};
   border: ${props => props.noBorder || props.link ? "none" : `2px solid ${COPPER}`};
@@ -42,11 +41,11 @@ export const Button = styled(BaseButton)`
   }
 
   svg {
+    ${Utils.padding};
     fill: ${props => props.fill ? `${CHARCOAL}` : "transparent"};
     height: ${props => props.iconSize ? `${props.iconSize}px` : "18px"};
     margin-right: ${props => props.stacked ? "0" : "6px"};
     margin-bottom: ${props => props.stacked ? "6px" : "0"};
-    margin-top: ${props => props.stacked ? "6px" : "0"};
     stroke: ${props => props.fill ? "transparent" : `${CHARCOAL}`};
     stroke: ${props => props.stacked && `${CHARCOAL}`};
     stroke-width: ${props => props.strokeWidth ? `${props.strokeWidth}px` : "6px"};
