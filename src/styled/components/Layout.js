@@ -49,3 +49,10 @@ export const Container = styled.div`
   flex-direction: ${props => props.stacked && "column"};
   justify-content: center;
 `;
+
+export const Anchor = styled.div`
+  display: block;
+  position: relative;
+  top: -120px;
+  visibility: hidden;
+`;

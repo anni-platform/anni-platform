@@ -23,7 +23,7 @@ export { SolidIcon, OutlineIcon, Logo } from "./components/Icons";
 export { Image, ImageControls, ImageControlsButton } from "./components/Images";
 
 /* Layout Components */
-export { Container, Content, Section, Wrapper } from "./components/Layout";
+export { Anchor, Container, Content, Section, Wrapper } from "./components/Layout";
 
 /* Loader */
 export { Loader } from "./components/Loader";

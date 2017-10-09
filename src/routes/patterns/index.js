@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {
+  Anchor,
   Button,
   Content,
   Heading,
@@ -23,28 +24,28 @@ export default class PatternLibrary extends Component {
       <Section>
         <NavBar scroll>
           <NavItem fit>
-            <Button link>Typography</Button>
+            <Button href="#typography" link>Typography</Button>
           </NavItem>
           <NavItem fit>
-            <Button link>Buttons</Button>
+            <Button href="#buttons" link>Buttons</Button>
+          </NavItem>
+          <NavItem  it>
+            <Button href="#forms" link>Forms</Button>
           </NavItem>
           <NavItem fit>
-            <Button link>Forms</Button>
+            <Button href="#layout" link>Layout</Button>
           </NavItem>
           <NavItem fit>
-            <Button link>Layout</Button>
+            <Button href="#images" link>Images</Button>
           </NavItem>
           <NavItem fit>
-            <Button link>Images</Button>
+            <Button href="#icons" link>Icons</Button>
           </NavItem>
           <NavItem fit>
-            <Button link>Icons</Button>
+            <Button href="#overlays" link>Overlays</Button>
           </NavItem>
           <NavItem fit>
-            <Button link>Overlays</Button>
-          </NavItem>
-          <NavItem fit>
-            <Button link>Loader</Button>
+            <Button href="#loader" link>Loader</Button>
           </NavItem>
         </NavBar>
 
@@ -53,12 +54,19 @@ export default class PatternLibrary extends Component {
           <Paragraph large mb={48}>
             These components are a collection of elements that can be reused across the Anni interface.
           </Paragraph>
+          <Anchor id="typography" />
           <Typography />
+          <Anchor id="buttons" />
           <Buttons />
+          <Anchor id="layout" />
           <Layout />
+          <Anchor id="images" />
           <Images />
+          <Anchor id="icons" />
           <Icons />
+          <Anchor id="overlays" />
           <Overlays />
+          <Anchor id="loader" />
           <Loaders />
           {/* <Panels /> */}
         </Content>

@@ -62,7 +62,6 @@ class Layout extends Component {
         <Subheading mb={24} />
         <CodeBlock noMargin>
 {`import { ImageList } from "components/ImageList";
-
 import { ImageAspectRatio } from "utils";
 
 const contentArray = [
@@ -79,8 +78,8 @@ const contentArray = [
 />
 
 // Props
-// center    Display centered within container
-// fullPage  Display centered on full-screen
+// reference     Display as a resizeable grid with description field
+// storyboard    Display with audio/video text fields
 `}
         </CodeBlock>
       </Card>

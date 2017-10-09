@@ -4,6 +4,7 @@ import { FLINT, PAPER } from "./Variables";
 export const NavBar = styled.div`
   background: ${PAPER};
   border-bottom: 1px solid ${FLINT};
+  bottom: ${props => props.bottom ? "0" : ""};
   align-items: center;
   display: flex;
   height: 72px;
@@ -11,7 +12,7 @@ export const NavBar = styled.div`
   min-width: 100vw;
   overflow: ${props => props.scroll && "scroll"};
   position: fixed;
-  top: 0;
+  top: ${props => props.bottom ? "" : "0"};
   width: 100%;
   z-index: 3;
 `;
