@@ -9,7 +9,7 @@ const items = [
   <OutlineIcon strokeWidth={3} name="cancel" />,
   <OutlineIcon strokeWidth={3} name="confirm" />,
   <OutlineIcon strokeWidth={3} name="delete" />,
-  <OutlineIcon strokeWidth={3} solid name="more" />,
+  <OutlineIcon strokeWidth={3} name="more" />,
   <SolidIcon name="notification" />,
   <OutlineIcon strokeWidth={3} name="popout" />,
   <SolidIcon name="share" />,

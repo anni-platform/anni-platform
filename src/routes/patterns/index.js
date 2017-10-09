@@ -12,6 +12,7 @@ import {
 
 import Buttons from "./components/Buttons";
 import Layout from "./components/Layout";
+import FormFields from "./components/FormFields";
 import Icons from "./components/Icons";
 import Images from "./components/Images";
 import Loaders from "./components/Loaders";
@@ -23,13 +24,16 @@ export default class PatternLibrary extends Component {
     return (
       <Section>
         <NavBar scroll>
+          <NavItem>
+            <Button to="/dashboard" icon="arrow-back" pb={0} stacked />
+          </NavItem>
           <NavItem fit>
             <Button href="#typography" link>Typography</Button>
           </NavItem>
           <NavItem fit>
             <Button href="#buttons" link>Buttons</Button>
           </NavItem>
-          <NavItem  it>
+          <NavItem  fit>
             <Button href="#forms" link>Forms</Button>
           </NavItem>
           <NavItem fit>
@@ -58,6 +62,8 @@ export default class PatternLibrary extends Component {
           <Typography />
           <Anchor id="buttons" />
           <Buttons />
+          <Anchor id="forms" />
+          <FormFields />
           <Anchor id="layout" />
           <Layout />
           <Anchor id="images" />
@@ -68,7 +74,6 @@ export default class PatternLibrary extends Component {
           <Overlays />
           <Anchor id="loader" />
           <Loaders />
-          {/* <Panels /> */}
         </Content>
       </Section>
     );

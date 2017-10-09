@@ -18,7 +18,7 @@ const references = [
     name: "3",
     aspectRatio: "" },
   {
-    url: require("./content/references/05.png"),
+    url: require("./content/references/06.png"),
     name: "5",
     aspectRatio: ""
   }

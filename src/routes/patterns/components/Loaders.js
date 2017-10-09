@@ -10,7 +10,7 @@ const Loaders = () => (
 
     <CodeBlock noMargin>
 {`import { Loader } from "styled";
-<Hello/>
+<Loader/>
 
 // Props
 // center    Display centered within container

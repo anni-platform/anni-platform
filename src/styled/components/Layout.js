@@ -53,6 +53,6 @@ export const Container = styled.div`
 export const Anchor = styled.div`
   display: block;
   position: relative;
-  top: -120px;
+  top: -90px;
   visibility: hidden;
 `;

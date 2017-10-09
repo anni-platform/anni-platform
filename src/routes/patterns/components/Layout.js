@@ -23,7 +23,7 @@ const Layout = () => (
 {children}
 </Section>
 
-// Section Props
+// Props
 // center       Center content
 // project      Allows for space for the project navigation bar
 // full         Displays section without padding
@@ -39,11 +39,23 @@ const Layout = () => (
 {children}
 </Content>
 
-// Content Props
+// Props
 // center       Center content
 // project      Allows for space for the project navigation bar
 // full         Displays section without padding
+`}
+    </CodeBlock>
 
+    <Subheading capitalize color micro>Anchor</Subheading>
+
+    <CodeBlock noMargin>
+{`import { Anchor } from "styled";
+
+<Anchor id="String"/>
+
+// Props
+// id           Id of the corresponding id to scroll towards
+// offset       Pixel offset
 `}
     </CodeBlock>
   </Card>
