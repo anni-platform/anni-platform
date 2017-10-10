@@ -35,15 +35,23 @@ export const Input = props => {
     className,
     onChange,
     placeholder,
-    value
+    value,
+    icon
   } = props;
 
+  const styles = classNames({
+    [className]: className
+  });
+
   return (
-    <input
-      className={className}
-      onChange={onChange}
-      placeholder={placeholder}
-      value={value}
-    />
+    <FieldGroup icon>
+      {icon && <OutlineIcon color name={icon} size={24} />}
+      <input
+        className={styles}
+        onChange={onChange}
+        placeholder={placeholder}
+        value={value}
+      />
+    </FieldGroup>
   );
 };
