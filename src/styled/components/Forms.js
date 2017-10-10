@@ -51,7 +51,7 @@ export const TextArea = styled(BaseTextArea)`
   color: ${CHARCOAL};
   font-family: ${props => props.subheading ? "Apercu Bold" : "Apercu"};
   font-size: ${props => props.subheading ? "24px" : "16px"};
-  height: 30px;
+  height: ${props => props.height ? `${props.height}px` : "30px"};
   line-height: 1.6;
   min-height: 0;
   position: relative;

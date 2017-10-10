@@ -9,7 +9,8 @@ export const TextArea = props => {
     placeholder,
     value,
     imageItem,
-    icon
+    icon,
+    readOnly
   } = props;
 
   const styles = classNames({
@@ -25,6 +26,7 @@ export const TextArea = props => {
         onChange={onChange}
         placeholder={placeholder}
         value={value}
+        readOnly={readOnly}
       />
     </FieldGroup>
   );
@@ -35,6 +37,7 @@ export const Input = props => {
     className,
     onChange,
     placeholder,
+    readOnly,
     value,
     icon
   } = props;
@@ -51,6 +54,7 @@ export const Input = props => {
         onChange={onChange}
         placeholder={placeholder}
         value={value}
+        readOnly={readOnly}
       />
     </FieldGroup>
   );
