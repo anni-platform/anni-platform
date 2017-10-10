@@ -31,15 +31,18 @@ const FormFields = () => (
     <CodeBlock>
 {`import { TextArea } from "styled";
 
-<TextArea placeholder={placeholder} value={value}/>
+<FormGroup>
+  <TextArea placeholder={placeholder} value={value} />
+</FormGroup>
 
 // Props
-// height={Number}  Set custom height for textarea
-// icon={name}      Display with icon
+// height={Number}  Displays with custom height
+// icon={name}      Displays with icon
 // mt={Number}      Margin top
 // mr={Number}      Margin right
 // mb={Number}      Margin bottom
-// ml={Number}      Margin left`}
+// ml={Number}      Margin left
+`}
     </CodeBlock>
 
     <Subheading capitalize color micro mb={8}>Input</Subheading>
@@ -47,11 +50,14 @@ const FormFields = () => (
 
     <CodeBlock>
 {`import { Input } from "styled";
+
+<FormGroup>
 <Input placeholder={placeholder} value={value} />
+</FormGroup>
 
 // Props
-// icon={name}  Display with icon
-// subheading   Display with bigger font size
+// icon={name}  Displays with icon
+// subheading   Displays with bigger font size
 // mt={Number}  Margin top
 // mr={Number}  Margin right
 // mb={Number}  Margin bottom

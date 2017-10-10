@@ -99,7 +99,8 @@ export const CodeBlock = styled(Highlight)`
     color: #484444;
   }
 
-  .hljs-keyword {
+  .hljs-keyword,
+  .hljs-class {
     color: #5560DD;
   }
 
@@ -111,7 +112,8 @@ export const CodeBlock = styled(Highlight)`
     color: #E4715F;
   }
 
-  .hljs-tag {
+  .hljs-tag,
+  .hljs-params {
     color: #E2A480;
   }
 
