@@ -12,7 +12,7 @@ export const Overlay = styled.div`
   position: fixed;
   top: 0;
   width: 100vw;
-  z-index: ${props => props.showNav ? 2 : 4};
+  z-index: 4;
 `;
 
 export const Backdrop = styled.div`
