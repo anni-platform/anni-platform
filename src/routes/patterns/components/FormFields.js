@@ -14,10 +14,11 @@ const FormFields = () => (
     <CodeBlock>
 {`import { Input } from "styled";
 
-<FormGroup>
-  <Input/>
-  <TextArea/>
-</FormGroup>
+const FormFields = () => (
+  <FormGroup>
+    {children}
+  </FormGroup>
+);
 
 // Props
 // readOnly     Turns field into read only
@@ -31,17 +32,19 @@ const FormFields = () => (
     <CodeBlock>
 {`import { TextArea } from "styled";
 
-<FormGroup>
-  <TextArea placeholder={placeholder} value={value} />
-</FormGroup>
+const FormFields = () => (
+  <TextArea/>
+)
 
 // Props
-// height={Number}  Displays with custom height
-// icon={name}      Displays with icon
-// mt={Number}      Margin top
-// mr={Number}      Margin right
-// mb={Number}      Margin bottom
-// ml={Number}      Margin left
+// height={Number}            Displays with custom height
+// icon={name}                Displays with icon
+// mt={Number}                Margin top
+// mr={Number}                Margin right
+// mb={Number}                Margin bottom
+// ml={Number}                Margin left
+// placeholder={String}       Sets placeholder text
+// value={String}             Stores value of the field
 `}
     </CodeBlock>
 
@@ -51,17 +54,19 @@ const FormFields = () => (
     <CodeBlock>
 {`import { Input } from "styled";
 
-<FormGroup>
-<Input placeholder={placeholder} value={value} />
-</FormGroup>
+const FormFields = () => (
+  <Input/>
+);
 
 // Props
-// icon={name}  Displays with icon
-// subheading   Displays with bigger font size
-// mt={Number}  Margin top
-// mr={Number}  Margin right
-// mb={Number}  Margin bottom
-// ml={Number}  Margin left
+// icon={name}                Displays with icon
+// subheading                 Displays with bigger font size
+// mt={Number}                Margin top
+// mr={Number}                Margin right
+// mb={Number}                Margin bottom
+// ml={Number}                Margin left
+// placeholder={String}       Sets placeholder text
+// value={String}             Stores value of the field
 `}
     </CodeBlock>
   </Card>

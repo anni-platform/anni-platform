@@ -66,7 +66,7 @@ export default class Alerts extends Component {
         <CodeBlock noMargin>
 {`import { Alert, AlertControls, AlertMessage, Button, Content, Subheading, Paragraph } from "styled";
 
-export default class Alerts extends Component {
+class Overlays extends Component {
   state = {
     isDefault: false,
     isDanger: false
@@ -145,7 +145,7 @@ export default class Alerts extends Component {
         <CodeBlock noMargin>
 {`import { Backdrop, ButtonGroup, Button, Content, Dialog, Heading, Overlay } from "styled";
 
-export default class Alerts extends Component {
+class Overlays extends Component {
   state = {
     isModal: false
   };

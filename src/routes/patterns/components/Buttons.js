@@ -25,8 +25,11 @@ const Buttons = () => (
     </ButtonGroup>
 
     <CodeBlock>
-{`import { Button } from "styled";
-<Button>label</Button>
+{`import { Button, ButtonGroup } from "styled";
+
+const Buttons = () => (
+  <Button primary>Primary</Button>
+);
 
 // Props
 // primary      Primary styles
@@ -48,9 +51,14 @@ const Buttons = () => (
     </ButtonGroup>
     <CodeBlock noMargin>
 {`import { Button, ButtonGroup } from "styled";
-<ButtonGroup>
-  <Button>label</Button>
-</ButtonGroup>
+
+const Buttons = () => (
+  <ButtonGroup>
+    <Button>Foxtrot</Button>
+    <Button>Echo</Button>
+    <Button>Charlie</Button>
+  </ButtonGroup>
+);
 
 // Props
 // mt={Number}  Margin top

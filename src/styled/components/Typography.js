@@ -113,6 +113,7 @@ export const CodeBlock = styled(Highlight)`
   }
 
   .hljs-tag,
+  .hljs-function,
   .hljs-params {
     color: #E2A480;
   }

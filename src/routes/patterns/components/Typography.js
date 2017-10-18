@@ -9,7 +9,10 @@ const Typography = () => (
     <Heading>Echo Easy Foxtrot Fox</Heading>
     <CodeBlock>
 {`import { Heading } from "styled";
-<Heading>content</Heading>
+
+const Typography = () => (
+  <Heading>Echo Easy Foxtrot Fox</Heading>
+);
 
 // Props
 // capitalize         Transform to uppercase
@@ -26,7 +29,10 @@ const Typography = () => (
     <Subheading mb={4}>Kilo King Lima Love</Subheading>
     <CodeBlock mb={24}>
 {`import { Subheading } from "styled";
-<Subheading>content</Subheading>
+
+const Typography = () => (
+  <Subheading>Kilo King Lima Love</Subheading>
+);
 
 // Props
 // capitalize         Transform to uppercase
@@ -45,7 +51,10 @@ const Typography = () => (
     <Paragraph width={400}>Apples Butter Charlie Duff Edward Freddy George Harry Ink Johnnie King London Monkey Nuts Orange Pudding Queenie Robert Sugar Tommy Uncle Vinegar Willie Xerxes Yellow Zebra Nuts Orange Pudding.</Paragraph>
     <CodeBlock mb={24} noMargin>
 {`import { Paragraph } from "styled";
-<Paragraph>content</Paragraph>
+
+const Typography = () => (
+  <Paragraph>Apples Butter Charlie...</Paragraph>
+);
 
 
 // Props

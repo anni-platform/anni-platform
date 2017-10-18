@@ -41,10 +41,13 @@ class Layout extends Component {
         <CodeBlock>
 {`import { Image } from "styled";
 
-<Image src={image} />
+const Images = () => (
+  <Image src={image} />
+);
 
 // Props
 // center             Center content
+// src={String}       Sets value of image
 // width={Number}     Define a custom max-width
 // mt={Number}        Margin top
 // mr={Number}        Margin right
@@ -64,18 +67,20 @@ class Layout extends Component {
 {`import { ImageList } from "components/ImageList";
 import { ImageAspectRatio } from "utils";
 
-const contentArray = [
-  {
-    url: require("path/to/image"),
-    name: "name",
-    aspectRatio: ImageAspectRatio.SIZE.name
-  }
-];
+const Images = () => (
+  const contentArray = [
+    {
+      url: require("path/to/image"),
+      name: "name",
+      aspectRatio: ImageAspectRatio.SIZE.name
+    }
+  ];
 
-<ImageList
-  content={contentArray}
-  onReorder={listName => this.setState({ listName })}
-/>
+  <ImageList
+    content={contentArray}
+    onReorder={listName => this.setState({ listName })}
+  />
+);
 
 // Props
 // reference     Display as a resizeable grid with description field

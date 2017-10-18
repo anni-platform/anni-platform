@@ -30,9 +30,12 @@ const Icons = () => (
       })}
     </Grid>
     <CodeBlock noMargin>
-{`import { Button, ButtonGroup } from "styled";
-<SolidIcon name="String"/>
-<OutlineIcon name="String"/>
+{`import { SolidIcon, OutlineIcon } from "styled";
+
+const Icons = () => (
+  <SolidIcon name="String"/>
+  <OutlineIcon name="String"/>
+);
 
 // Props
 // color                 Display with accent color

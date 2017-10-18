@@ -17,9 +17,12 @@ const Grids = () => (
     </Grid>
     <CodeBlock noMargin>
 {`import { Grid, GridItem } from "styled";
-<Grid>
-  <GridItem>content</GridItem>
-</Grid>
+
+const Grid = () => (
+  <Grid>
+    <GridItem>content</GridItem>
+  </Grid>
+);
 
 // Grid Props
 // small        Set width to smaller size
