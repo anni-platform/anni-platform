@@ -1,23 +1,28 @@
 import React, { Component, createElement } from "react";
-// import { removeFolder } from "adapters";
 import { removeProject, deleteFile, updateProject } from "actions";
 import filter from "lodash.filter";
-import { FileCollection } from "components/baseline";
-import constants from "constants/index";
+import { FileCollection } from "components/FileCollection";
+import constants from "constants";
 import classNames from "classnames";
+const { MOODBOARD, STORYBOARD, STYLEFRAMES } = constants.content;
+
+import { Container, Section } from "styled";
+
 import Headline from "./Headline";
 import TextEditor from "./TextEditor";
 import { ProjectControls, ProjectSectionNavItem } from "./ProjectControls";
 const { MOODBOARD, STORYBOARD, STYLEFRAMES } = constants.content;
 
-const ProjectSection = ({
-  isActive,
-  SectionType,
-  SectionProps,
-  key,
-  save,
-  className
-}) => {
+const ProjectSection = (
+  {
+    isActive,
+    SectionType,
+    SectionProps,
+    key,
+    save,
+    className
+  }
+) => {
   const sectionClass = classNames(className, {
     ProjectSection: true
   });
@@ -25,107 +30,108 @@ const ProjectSection = ({
   return isActive ? createElement(SectionType, props, null) : null;
 };
 
-const ProjectSectionNavigator = ({
-  name,
-  Sections,
-  activeSectionIndex,
-  activateSectionByIndex,
-  save,
-  projectPath
-}) => {
+const ProjectSectionNavigator = (
+  {
+    name,
+    Sections,
+    activeSectionIndex,
+    activateSectionByIndex,
+    save,
+    projectPath
+  }
+) => {
   return (
-    <div className="Project-sections">
+    <Container>
+      <Section project>
       {Sections.map((section, index) =>
         ProjectSection({
           ...section,
           save,
           key: `section${index}`,
           isActive: activeSectionIndex === index
-        })
-      )}
+        }))}
+      </Section>
       <ProjectControls>
-        {Sections.map(({ SectionType, name }, index) => (
+        {Sections.map(({ SectionType, name }, index) =>
           createElement(ProjectSectionNavItem, {
             key: `${name}sectionNavItem${index}`,
             name,
             checked: activeSectionIndex === index,
             onClick: () => activateSectionByIndex(index),
             projectPath
-          })
-        ))}
+          }))}
       </ProjectControls>
-    </div>
+    </Container>
   );
 };
 
-const getSections = (project, id) => 
-      [
-        {
-          name: "Introduction",
-          SectionType: Headline,
-          SectionProps: {
-            className: "",
-            name: project.name,
-            client: project.client 
-          }
-        },
-        {
-          name: "Script",
-          SectionType: TextEditor,
-          SectionProps: {
-            className: "",
-            content: project.editorContent
-          }
-        },
-        {
-          name: "Moodboard",
-          SectionType: FileCollection,
-          SectionProps: {
-            className: `MoodBoard`,
-            projectPath: id,
-            project,
-            collectionId: MOODBOARD,
-            title: `Moodboard`,
-            references: true
-          }
-        },
-        {
-          name: "Storyboard",
-          SectionType: FileCollection,
-          SectionProps: {
-            className: `Storyboard`,
-            projectPath: id,
-            project,
-            collectionId: STORYBOARD,
-            title: `Storyboard`,
-            storyboards: true
-          }
-        },
-        {
-          name: "Styleframes",
-          SectionType: FileCollection,
-          SectionProps: {
-            className: `Styleframes`,
-            projectPath: id,
-            project,
-            collectionId: STYLEFRAMES,
-            title: `Styleframes`,
-            styleframes: true
-          }
-        }
-      ]
+const getSections = (project, id) => [
+  {
+    name: "Introduction",
+    SectionType: Headline,
+    SectionProps: {
+      className: "",
+      name: project.name,
+      client: project.client
+    }
+  },
+  {
+    name: "Script",
+    SectionType: TextEditor,
+    SectionProps: {
+      className: "",
+      content: project.editorContent
+    }
+  },
+  {
+    name: "Moodboard",
+    SectionType: FileCollection,
+    SectionProps: {
+      className: `MoodBoard`,
+      projectPath: id,
+      project,
+      collectionId: MOODBOARD,
+      title: `MOODBOARD`,
+      references: true
+    }
+  },
+  {
+    name: "Storyboard",
+    SectionType: FileCollection,
+    SectionProps: {
+      className: `Storyboard`,
+      projectPath: id,
+      project,
+      collectionId: STORYBOARD,
+      title: `STORYBOARDS`,
+      storyboards: true
+    }
+  },
+  {
+    name: "Styleframes",
+    SectionType: FileCollection,
+    SectionProps: {
+      className: `Styleframes`,
+      projectPath: id,
+      project,
+      collectionId: STYLEFRAMES,
+      title: `STYLEFRAMES`,
+      styleframes: true
+    }
+  }
+];
 
 const getActiveSectionIndex = (props, Sections) => {
-    let activeSectionIndex = 0;
-    const sectionQueryParam = props.location.query.section;
-    if (sectionQueryParam) {
-      const foundSection = Sections.findIndex(s => s.name === sectionQueryParam);
-      if (foundSection > -1) {
-        activeSectionIndex = foundSection;
-      }
+  let activeSectionIndex = 0;
+  const sectionQueryParam = props.location.query.section;
+  if (sectionQueryParam) {
+    const foundSection = Sections.findIndex(s => s.name === sectionQueryParam);
+    if (foundSection > -1) {
+      activeSectionIndex = foundSection;
     }
-    return activeSectionIndex;
   }
+  return activeSectionIndex;
+};
 
 export default class ProjectDetail extends Component {
   constructor(props) {
@@ -137,7 +143,7 @@ export default class ProjectDetail extends Component {
     this.id = id;
     const Sections = getSections(project, id);
     let activeSectionIndex = getActiveSectionIndex(props, Sections);
-    
+
     this.state = {
       activeSectionIndex,
       Sections
@@ -153,8 +159,9 @@ export default class ProjectDetail extends Component {
 
   activateSectionByIndex = activeSectionIndex =>
     this.setState({ activeSectionIndex });
-  
-  save = update => this.props.dispatch(updateProject({ ...update, id: this.id }))
+
+  save = update =>
+    this.props.dispatch(updateProject({ ...update, id: this.id }));
 
   render() {
     const { id } = this.props.params;
@@ -167,7 +174,7 @@ export default class ProjectDetail extends Component {
     const { save, projectPath } = this;
 
     return (
-      <div className="ProjectDetail">
+      <Container>
         {createElement(ProjectSectionNavigator, {
           activeSectionIndex,
           activateSectionByIndex: this.activateSectionByIndex,
@@ -175,16 +182,7 @@ export default class ProjectDetail extends Component {
           save,
           projectPath
         })}
-        {/*<Button
-            onClick={() => {
-              removeFolder(project.path_display).then(
-                this._removeProject.bind(this)
-              );
-            }}
-          >
-            Delete Project
-          </Button>*/}
-      </div>
+      </Container>
     );
   }
 
@@ -196,8 +194,7 @@ export default class ProjectDetail extends Component {
     // remove all unused files from store
     Object.keys(this.props.files.archive).forEach(file => {
       const fileUsed = collectionKeys.map(collection =>
-        collection.indexOf(file)
-      );
+        collection.indexOf(file));
       if (!filter(fileUsed, i => i > -1).length) {
         this.props.dispatch(deleteFile(file));
       }

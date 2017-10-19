@@ -1,6 +1,17 @@
 import React, { Component } from "react";
 import classNames from "classnames";
 
+import {
+  Container,
+  Content,
+  ContextualToolbar,
+  EditorContainer,
+  Heading,
+  Toolbar,
+  ToolbarGroup,
+  ToolbarItem
+} from "styled";
+
 import Editor from "draft-js-plugins-editor";
 import {
   EditorState,
@@ -28,9 +39,9 @@ class StyleButton extends Component {
     });
 
     return (
-      <div className={toolbarItem} onClick={this.onToggle}>
+      <ToolbarItem className={toolbarItem} onClick={this.onToggle}>
         {this.props.label}
-      </div>
+      </ToolbarItem>
     );
   }
 }
@@ -47,7 +58,7 @@ const InlineStyleControls = props => {
   const { condensed } = props;
 
   return (
-    <div className="InlineStyleControls">
+    <ToolbarGroup noBorder={condensed}>
       {styleTypes.map(type => (
         <StyleButton
           key={type.label}
@@ -55,9 +66,10 @@ const InlineStyleControls = props => {
           label={condensed ? type.initial : type.label}
           onToggle={props.onToggle}
           style={type.style}
+          noBorder
         />
       ))}
-    </div>
+    </ToolbarGroup>
   );
 };
 
@@ -67,10 +79,10 @@ export default class TextEditor extends Component {
 
     const { content } = this.props;
     this.state = {
-      editorState: content 
+      editorState: content
         ? EditorState.createWithContent(convertFromRaw(content))
         : EditorState.createEmpty()
-    }
+    };
   }
 
   focus = () => this.refs.editor.focus();
@@ -104,10 +116,10 @@ export default class TextEditor extends Component {
 
   displayContextualMenu = () => {
     const selectedText = getVisibleSelectionRect(window);
-    const toolbar = this.refs.toolbar.getBoundingClientRect();
-    const toolbarParent = this.refs.toolbarParent.getBoundingClientRect();
+    const toolbar = this.toolbar.getBoundingClientRect();
+    const toolbarParent = this.toolbarParent.getBoundingClientRect();
 
-    if (selectedText !== null && selectedText.width > 2) {
+    if (selectedText !== null && selectedText.width > 1) {
       this.setState({
         styles: {
           opacity: 1,
@@ -140,50 +152,50 @@ export default class TextEditor extends Component {
   render() {
     const { editorState, styles } = this.state;
 
-    const Editorstyles = classNames({
-      TextEditor: true,
-      [this.props.className]: this.props.className
-    });
-
     return (
-      <div className={Editorstyles} ref="toolbarParent">
-        <div className="ContextualToolbar" style={styles} ref="toolbar">
+      <Container innerRef={ref => this.toolbarParent = ref}>
+        <ContextualToolbar style={styles} innerRef={ref => this.toolbar = ref}>
           <InlineStyleControls
             condensed
             editorState={editorState}
             onToggle={this.toggleInlineStyle}
           />
-        </div>
-        <div className="content" onMouseUp={this.displayContextualMenu}>
-          <h2>Script</h2>
-          <div className="Editor" onClick={this.focus}>
+        </ContextualToolbar>
+        <Content
+          project
+          onMouseUp={this.displayContextualMenu}
+          onClick={this.focus}
+        >
+          <Heading mb={16}>SCRIPT</Heading>
+          <EditorContainer>
             <Editor
               editorState={editorState}
               handleKeyCommand={this.handleKeyCommand}
               onChange={this.onChange}
+              onClick={this.focus}
               placeholder="Start writing here..."
               plugins={plugins}
               ref="editor"
               spellCheck={true}
             />
-          </div>
-        </div>
-        <div className="Toolbar">
+          </EditorContainer>
+        </Content>
+        <Toolbar>
           <InlineStyleControls
             editorState={editorState}
             onToggle={this.toggleInlineStyle}
           />
-          <div className="stats">
-            <div><CharCounter /> characters</div>
-            <div><WordCounter /> words</div>
-            <div>
+          <ToolbarGroup>
+            <ToolbarItem><CharCounter /> characters</ToolbarItem>
+            <ToolbarItem><WordCounter /> words</ToolbarItem>
+            <ToolbarItem noBorder>
               Reading time
               {" "}
               <CustomCounter countFunction={this.averageReadingTime} />
-            </div>
-          </div>
-        </div>
-      </div>
+            </ToolbarItem>
+          </ToolbarGroup>
+        </Toolbar>
+      </Container>
     );
   }
 }

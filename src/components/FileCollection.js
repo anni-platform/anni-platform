@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import FileUploader from "components/FileUploader";
 import FileManager from "containers/FileManager";
-import { Loader } from "components/baseline";
-import { ImageList } from "components/baseline";
+import Loader from "./Loader";
+import { ImageList } from "./ImageList";
+
+import { Content, Heading, Section, UploadArea } from "styled";
 
 class Collection extends Component {
   constructor(props) {
@@ -14,7 +16,6 @@ class Collection extends Component {
 
   render() {
     const {
-      className,
       collectionId,
       project,
       getCollectionFiles,
@@ -42,15 +43,17 @@ class Collection extends Component {
       : null;
 
     return (
-      <div className={className || title}>
-        <div className="content">
-          <h2>{title}</h2>
-          <FileUploader path={projectPath} collection={collectionId}>
-            {list}
-            {!project && <Loader />}
-          </FileUploader>
-        </div>
-      </div>
+      <Section>
+        <Content project>
+          <UploadArea>
+            <Heading mb={16}>{title}</Heading>
+            <FileUploader path={projectPath} collection={collectionId}>
+              {list}
+              {!project && <Loader />}
+            </FileUploader>
+          </UploadArea>
+        </Content>
+      </Section>
     );
   }
 

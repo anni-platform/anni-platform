@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Card, Icon } from "components/baseline";
+import { Card, Icon } from "styled";
 
 const items = [
   <Icon name="logo" />,

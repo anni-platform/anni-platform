@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import { Card, Loader } from 'components/baseline';
+import { Card, Loader } from "styled";
 
 const Loaders = () => (
   <Card className="Loaders">

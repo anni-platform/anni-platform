@@ -1,13 +1,20 @@
 import React, { Component } from "react";
-import classNames from "classnames";
-import { Button } from "./Button";
+import {
+  Backdrop,
+  Button,
+  Dialog,
+  Paragraph,
+  Overlay,
+  OverlayButton,
+  OverlayToolbar
+} from "styled";
 
 export class ImageViewer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       currentImage: props.content.indexOf(props.content[props.selection])
-    }
+    };
   }
 
   // Mount and dismount the Event Listener for keyboard events
@@ -31,14 +38,14 @@ export class ImageViewer extends Component {
   // Image Viewer controls
   nextImage = () => {
     const currentImage = this.state.currentImage < this.props.content.length - 1
-      ? this.state.currentImage + 1 
+      ? this.state.currentImage + 1
       : 0;
     this.setState({ currentImage });
   };
 
   prevImage = () => {
-    const currentImage = this.state.currentImage > 0 
-      ? this.state.currentImage - 1 
+    const currentImage = this.state.currentImage > 0
+      ? this.state.currentImage - 1
       : this.props.content.length - 1;
     this.setState({ currentImage });
   };
@@ -70,55 +77,44 @@ export class ImageViewer extends Component {
   };
 
   render() {
-    const { 
-      className, 
+    const {
       content,
-      show, 
-      children 
+      show,
+      children
     } = this.props;
 
     const {
       currentImage
     } = this.state;
 
-    const styles = classNames({
-      ImageViewer: true,
-      className
-    });
-
-    const nextArrow = (
-      <div className="nextImage" onClick={this.nextImage}>
-          <Button link> Next </Button>
-          <p className="hint">right-arrow</p>
-      </div>
-    );
-
-    const prevArrow = (
-      <div className="previousImage" onClick={this.prevImage}>
-        <Button link>Prev</Button>
-        <p className="hint">left-arrow</p>
-      </div>
-    );
-
     if (show) {
       return (
-        <div className={styles}>
-          <div className="ImageViewer-backdrop" onClick={this.closeViewer} />
-          <div className="container">
-            <img src={content[currentImage].url} alt={content[currentImage].name} />
-          </div>
-          <div className="toolbar">
+        <Overlay>
+          <Backdrop onClick={this.closeViewer} />
+          <Dialog>
+            <img
+              src={content[currentImage].url}
+              alt={content[currentImage].name}
+            />
+          </Dialog>
+
+          {/* This is an area for buttons and actions related to the specific item. */}
+          <OverlayToolbar>
             {children}
-          </div>
-          <div className="controls">
-            {nextArrow}
-            {prevArrow}
-            <div className="close" onClick={this.closeViewer}>
-              <Button link>Close</Button>
-              <p className="hint">esc</p>
-            </div>
-          </div>
-        </div>
+          </OverlayToolbar>
+          <OverlayButton right onClick={this.nextImage}>
+            <Button noBorder> Next </Button>
+            <Paragraph micro capitalize>right-arrow</Paragraph>
+          </OverlayButton>
+          <OverlayButton left onClick={this.prevImage}>
+            <Button noBorder>Prev</Button>
+            <Paragraph micro capitalize>left-arrow</Paragraph>
+          </OverlayButton>
+          <OverlayButton top onClick={this.closeViewer}>
+            <Button noBorder>Close</Button>
+            <Paragraph micro capitalize>esc</Paragraph>
+          </OverlayButton>
+        </Overlay>
       );
     } else {
       return null;
