@@ -2,16 +2,13 @@ import React, { Component, createElement } from "react";
 import { removeProject, deleteFile, updateProject } from "actions";
 import filter from "lodash.filter";
 import { FileCollection } from "components/FileCollection";
-import constants from "constants";
+import constants from "constants/index";
 import classNames from "classnames";
-const { MOODBOARD, STORYBOARD, STYLEFRAMES } = constants.content;
-
 import { Container, Section } from "styled";
-
 import Headline from "./Headline";
 import TextEditor from "./TextEditor";
 import { ProjectControls, ProjectSectionNavItem } from "./ProjectControls";
-const { MOODBOARD, STORYBOARD, STYLEFRAMES } = constants.content;
+const { MOODBOARD, STORYBOARD, STYLEFRAMES } = constants.content || {};
 
 const ProjectSection = (
   {
