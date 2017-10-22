@@ -7,6 +7,7 @@ import { getAccessTokenFromUrl, storeSessionToken } from "adapters";
 import { saveState } from "./utils/localStorage";
 import StaticJSONFileDatabase from "utils/fileStorage";
 import { Loader, Wrapper } from "styled";
+import GlobalStyles from 'styled/components/Base';
 
 let enhancer = null;
 let DevTools = null;
@@ -39,6 +40,9 @@ class App extends Component {
     });
   }
   render() {
+
+    GlobalStyles()
+
     const store = this.state.store;
     return store
       ? <Provider store={store}>

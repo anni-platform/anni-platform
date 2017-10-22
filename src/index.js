@@ -1,7 +1,5 @@
 import React from "react";
 import { render } from "react-dom";
-import "normalize.css";
-
 import Patterns from "routes/patterns";
 import { Router, Route, IndexRoute, browserHistory } from "react-router";
 import App from "./App";
