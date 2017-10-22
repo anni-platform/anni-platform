@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import { getAuthUrl, login, logoutSession } from "adapters";
-import { addAuthToken, logout } from "actions";
+import { getAuthUrl, login, logoutSession, getAccountInfo } from "adapters";
+import { addAuthToken, logout, addUserInfo } from "actions";
 import CreateForm from "components/CreateForm";
 
 import {
@@ -31,6 +31,11 @@ class Navigation extends Component {
             return;
           }
           dispatch(addAuthToken(token));
+          getAccountInfo()
+          .then(info => {
+            this.props.dispatch(addUserInfo(info));
+            this.props.router.push("/dashboard");
+          });
         },
         err => console.log(err)
       );
@@ -52,7 +57,7 @@ class Navigation extends Component {
       </NavItem>
     );
     const userInfo = this.props.auth.toJS().userInfo;
-    const firstInitial = userInfo ? userInfo.name.given_name[0] : "I";
+    const firstInitial = userInfo ? userInfo.name.given_name[0] : null;
 
     const loggedInNav = (
       <NavItemGroup right>
