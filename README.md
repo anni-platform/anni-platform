@@ -12,7 +12,7 @@ Here is an overview of the features built to date. For detailed information of p
 
 - [x] Text Editor
 - [x] Moodboard Builder
-- [ ] Storyboard Builder
+- [x] Storyboard Builder
 - [ ] Video Player
 - [ ] Styleframe Gallery Builder
 - [ ] Public share view
