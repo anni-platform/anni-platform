@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-// import constants from "constants";
 import ProjectManager from "containers/ProjectManager";
 import AuthManager from "containers/AuthManager";
 import { ProjectList, ProjectListItem } from "./components/ProjectList";
 import {
-  FILE_DATABASE_DIRECTORY,
-  FILE_DATABASE_HISTORY_DIRECTORY
+  FILE_DATABASE_DIRECTORY
 } from "constants/file";
 
 import { Content, Heading, Paragraph, Section } from "styled";
@@ -18,8 +16,7 @@ class Dashboard extends Component {
     const userInfo = auth.get("userInfo");
     const filteredProjects = projects.filter(
       p =>
-        p.get("name") !== FILE_DATABASE_DIRECTORY &&
-        p.get("name") !== FILE_DATABASE_HISTORY_DIRECTORY
+        p.get("name") !== FILE_DATABASE_DIRECTORY
     );
     const projectItems = filteredProjects.valueSeq().toJS().map(project => {
       return (

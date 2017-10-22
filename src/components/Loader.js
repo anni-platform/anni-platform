@@ -10,7 +10,7 @@ export const BaseLoader = ({ center, fullPage, size, className }) => {
 
   return (
     <div className={styles}>
-      <svg viewBox="0 0 48 48" id={name} width={size} height={size}>
+      <svg viewBox="0 0 48 48" width={size} height={size}>
         <circle className="loaderPath" cx={size} cy={size} r="21" />
       </svg>
     </div>

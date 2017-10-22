@@ -1,4 +1,5 @@
-import constants from "constants";
+import constants from "constants/index";
+import { getCollectionKey } from "utils";
 import Immutable, { List, Map } from "immutable";
 const {
   ADD_FILE,
@@ -10,8 +11,6 @@ const {
   REMOVE_COLLECTION_ITEM
 } = constants.file;
 const { REMOVE_PROJECT } = constants.project;
-
-import { getCollectionKey } from "utils";
 
 export const initialState = Map({
   archive: Map({}),

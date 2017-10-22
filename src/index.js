@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "react-dom";
 import { Router, Route, IndexRoute, browserHistory } from "react-router";
 import App from "./App";
-import Auth from "routes/auth";
+import Auth from "./routes/auth";
 import Dashboard from "routes/dashboard";
 import Project from "routes/project";
 import Login from "routes/login";

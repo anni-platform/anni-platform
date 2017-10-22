@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import FileUploader from "components/FileUploader";
 import FileManager from "containers/FileManager";
-import Loader from "./Loader";
+import { Loader } from "styled";
 import { ImageList } from "./ImageList";
 
 import { Content, Heading, Section, UploadArea } from "styled";

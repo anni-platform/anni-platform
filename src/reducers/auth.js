@@ -1,6 +1,6 @@
-import constants from 'constants';
-const { ADD_AUTH_TOKEN, LOG_OUT, ADD_USER_INFO } = constants.auth;
+import constants from 'constants/index';
 import Immutable, { Map } from 'immutable';
+const { ADD_AUTH_TOKEN, LOG_OUT, ADD_USER_INFO } = constants.auth;
 
 export const initialState = Map({ 
   authToken: null, 
