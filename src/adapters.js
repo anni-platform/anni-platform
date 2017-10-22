@@ -1,5 +1,5 @@
 import Dropbox from "dropbox";
-import env from "../.env.json";
+import env from "app-config.json";
 import { parseQueryString } from "utils";
 const DROPBOX_ACCESS_TOKEN = "DROPBOX_ACCESS_TOKEN";
 

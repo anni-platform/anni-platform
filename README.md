@@ -5,7 +5,7 @@ An open source project management platform for animators.
 
 1. `npm install`
 2. Create a config file:
-  - `touch .env.json`
+  - `touch src/app-config.json`
   - Add the following to it and save
   ```shell
   {

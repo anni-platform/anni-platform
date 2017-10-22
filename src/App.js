@@ -11,7 +11,7 @@ import { Loader, Wrapper } from "styled";
 let enhancer = null;
 let DevTools = null;
 if (process.env.NODE_ENV === "development") {
-  DevTools = require("DevTools");
+  DevTools = require("DevTools").default;
   enhancer = compose(DevTools.instrument());
 }
 
