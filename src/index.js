@@ -10,7 +10,7 @@ import Dashboard from "routes/dashboard";
 import Project from "routes/project";
 import Login from "routes/login";
 
-// // TODO: Add 404 component to replace this null
+// TODO: Add 404 component to replace this null
 const NoMatch = () => <div className="fourOhFour"><h1>404</h1></div>;
 let history = browserHistory;
 

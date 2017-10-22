@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { BaseButton } from "components/Button";
 import { Utils } from "./Utils";
 
-import { CHARCOAL, COPPER, PAPER, EASE_OUT_EXPO } from "./Variables";
+import { CHARCOAL, COPPER, HAZEL, PAPER, EASE_OUT_EXPO } from "./Variables";
 
 export const ButtonGroup = styled.div`
   ${Utils.margin};
@@ -15,6 +15,7 @@ export const ButtonGroup = styled.div`
 
 export const Button = styled(BaseButton)`
   align-items: center;
+  backface-visibility: hidden;
   background: ${props => !props.primary || props.link ? "none" : `${COPPER}`};
   border: ${props => props.noBorder || props.link ? "none" : `2px solid ${COPPER}`};
   border: ${props => props.stacked && "none"};
@@ -36,8 +37,13 @@ export const Button = styled(BaseButton)`
   z-index: 2;
   ${Utils.margin};
 
-  &:hover {
+  &:hover,
+  &:focus {
     transform: scale(1.02);
+  }
+
+  &:active {
+    transform: scale(.998);
   }
 
   svg {
