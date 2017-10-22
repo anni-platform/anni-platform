@@ -1,7 +1,8 @@
 import styled, { injectGlobal } from "styled-components";
+import Highlight from 'react-highlight';
 import { Above } from "./MediaTemplates";
 import { Utils } from "./Utils";
-import { COPPER, CHARCOAL } from "./Variables";
+import { COPPER, CHARCOAL, FLINT, PEBBLE } from "./Variables";
 
 /*
  * Font Definitions
@@ -44,9 +45,12 @@ export const GlobalStyles = injectGlobal`
 */
 
 export const Heading = styled.h1`
+  color: ${props => props.color ? `${COPPER}` : `${CHARCOAL}`};
   font-family: 'Apercu Bold', sans-serif;
   font-size: 32px;
   margin: 0 0 4px 0;
+  max-width: ${props => props.maxWidth && `${props.maxWidth}px`};
+  text-align: ${props => props.center ? "center" : "left"};
   text-transform: ${props => props.capitalize ? "uppercase" : "default"};
   ${Utils.margin};
 
@@ -62,6 +66,7 @@ export const Subheading = styled.h2`
   font-size: ${props => props.tiny && "15px"};
   font-size: ${props => props.micro && "12px"};
   margin: 0;
+  max-width: ${props => props.maxWidth && `${props.maxWidth}px`};
   letter-spacing: .75px;
   text-align: ${props => props.center ? "center" : "left"};
   text-transform: ${props => props.capitalize ? "uppercase" : "default"};
@@ -69,12 +74,51 @@ export const Subheading = styled.h2`
 `;
 
 export const Paragraph = styled.p`
+  color: ${props => props.color ? `${COPPER}` : `${CHARCOAL}`};
   font-family: ${props => props.strong ? "Apercu Medium" : "Apercu"}, sans-serif;
   font-size: 16px;
-  font-size: ${props => props.tiny && "15px"};
-  font-size: ${props => props.micro && "12px"};
+  font-size: ${props => props.large && "18px"};
   line-height: 1.6;
+  max-width: ${props => props.width && `${props.width}px`};
   text-align: ${props => props.center ? "center" : "left"};
   text-transform: ${props => props.capitalize ? "uppercase" : "default"};
   ${Utils.margin};
+`;
+
+export const CodeBlock = styled(Highlight)`
+  background: ${PEBBLE};
+  border: 1px solid ${FLINT};
+  display: block;
+  font-family: "Apercu Mono";
+  font-size: 13px;
+  line-height: 1.7;
+  margin: ${props => props.noMargin ? "0" : "16px 0 24px 0"};
+  overflow: scroll;
+  padding: 24px;
+  &.hljs {
+    color: #484444;
+  }
+
+  .hljs-keyword,
+  .hljs-class {
+    color: #5560DD;
+  }
+
+  .hljs-string {
+    color: #EF5B6C;
+  }
+
+  .hljs-attr {
+    color: #E4715F;
+  }
+
+  .hljs-tag,
+  .hljs-function,
+  .hljs-params {
+    color: #E2A480;
+  }
+
+  .hljs-comment {
+    color: #939393;
+  }
 `;

@@ -10,10 +10,12 @@ import {
   EASE_OUT_EXPO
 } from "./Variables";
 import { TextArea as BaseTextArea } from "components/Forms";
+
+import { Input as BaseInput } from "components/Forms";
 import { Above } from "./MediaTemplates";
 import { Utils } from "./Utils";
 
-export const Input = styled.input`
+export const Input = styled(BaseInput)`
   background: transparent;
   border: none;
   border-bottom: 1px solid ${FLINT};
@@ -21,6 +23,7 @@ export const Input = styled.input`
   font-family: ${props => props.subheading ? "Apercu Bold" : "Apercu"};
   font-size: ${props => props.subheading ? "24px" : "16px"};
   height: 30px;
+  padding: 4px 0;
   padding-left: ${props => props.icon && "56px"};
   position: relative;
   transition: 200ms ${EASE_OUT_EXPO};
@@ -48,10 +51,14 @@ export const TextArea = styled(BaseTextArea)`
   color: ${CHARCOAL};
   font-family: ${props => props.subheading ? "Apercu Bold" : "Apercu"};
   font-size: ${props => props.subheading ? "24px" : "16px"};
-  height: 30px;
+  height: ${props => props.height ? `${props.height}px` : "30px"};
+  line-height: 1.6;
+  min-height: 0;
   position: relative;
+  padding-left: ${props => props.icon && "56px"};
   resize: none;
   transition: 200ms ${EASE_OUT_EXPO};
+  transition: min-height 200ms ${EASE_OUT_BACK};
   width: 100%;
 
   &:hover {
@@ -70,20 +77,23 @@ export const TextArea = styled(BaseTextArea)`
   &.imageItem {
     background: ${PAPER};
     line-height: 2.2;
-    min-height: 0;
     max-height: 50px;
     padding: 12px 16px 16px 16px;
     padding-left: ${props => props.icon && "56px"};
     position: relative;
-    transition: min-height 200ms ${EASE_OUT_BACK};
     transform: translate3d(0, 0, 0);
+
+    &:focus,
+    &:hover {
+      line-height: 1.6;
+      padding: 16px;
+      padding-left: ${props => props.icon && "56px"};
+    }
   }
 
   &:focus,
   &:hover {
-    line-height: 1.6;
     min-height: 50px;
-    padding: 16px;
     padding-left: ${props => props.icon && "56px"};
   }
 `;
@@ -95,6 +105,7 @@ export const FormGroup = styled.form`
   flex-direction: ${props => props.stacked && "column"};
   justify-content: center;
   position: relative;
+  ${Utils.margin};
 `;
 
 export const FieldGroup = styled.div`

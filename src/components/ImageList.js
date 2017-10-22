@@ -108,14 +108,14 @@ export const ImageListItem = SortableElement(({
           <Button
             icon="popout"
             onClick={handleClick}
-            iconStroke={4}
+            strokeWidth={4}
             noBorder
             iconSize={18}
           />
           <Button
             icon="delete"
             onClick={onImageRemove}
-            iconStroke={4}
+            strokeWidth={4}
             noBorder
           />
         </ImageControls>

@@ -10,8 +10,6 @@ injectGlobal`
   ${styledNormalize}
 
   body {
-    background: red;
-
     .dragHelper {
       .content {
         transform: scale(2);

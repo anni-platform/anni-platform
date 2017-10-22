@@ -1,11 +1,14 @@
 import styled from "styled-components";
 import { CONCRETE, COPPER, CHARCOAL, PAPER, EASE_OUT_BACK } from "./Variables";
+import { Utils } from "./Utils";
 
 export const Image = styled.img`
   height: 100%;
   object-fit: cover;
   overflow: hidden;
-  width: 100%;
+  ${Utils.margin};
+  margin: ${props => props.center && "0 auto"};
+  width: ${props => props.width ? `${props.width}px` : "100%"};
 `;
 
 export const ImageControls = styled.div`

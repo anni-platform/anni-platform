@@ -1,11 +1,25 @@
 import React from "react";
 
-import { Card, Loader } from "styled";
+import { Card, CodeBlock, Loader, Subheading } from "styled";
 
 const Loaders = () => (
-  <Card className="Loaders">
+  <Card padded mb={24}>
+    <Subheading mb={24}>Loader</Subheading>
     <Loader center />
-    <h4>Loader</h4>
+    <Subheading capitalize center micro mt={16} mb={16}></Subheading>
+
+    <CodeBlock noMargin>
+{`import { Loader } from "styled";
+
+const Loader = () => (
+  <Loader/>
+);
+
+// Props
+// center    Display centered within container
+// fullPage  Display centered on full-screen
+`}
+    </CodeBlock>
   </Card>
 );
 

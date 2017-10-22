@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
-import { Icons } from "./Icons";
+import { OutlineIcon } from "styled";
 
 export const BaseButton = props => {
   const {
@@ -16,7 +16,7 @@ export const BaseButton = props => {
   if (to) {
     return (
       <Link to={to} className={className} onClick={onClick}>
-        {icon && <Icons name={icon} />}
+        {icon && <OutlineIcon name={icon} />}
         {initial && <span>{initial}</span>}
         {children}
       </Link>
@@ -24,7 +24,7 @@ export const BaseButton = props => {
   } else if (href) {
     return (
       <a href={href} className={className} onClick={onClick} >
-        {icon && <Icons name={icon} />}
+        {icon && <OutlineIcon name={icon} />}
         {initial && <span>{initial}</span>}
         {children}
       </a>
@@ -32,7 +32,7 @@ export const BaseButton = props => {
   } else {
     return (
       <button className={className} onClick={onClick}>
-        {icon && <Icons name={icon} />}
+        {icon && <OutlineIcon name={icon} />}
         {initial && <span>{initial}</span>}
         {children}
       </button>
