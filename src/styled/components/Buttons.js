@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { BaseButton } from "components/Button";
 import { Utils } from "./Utils";
 
-import { CHARCOAL, COPPER, HAZEL, PAPER, EASE_OUT_EXPO } from "./Variables";
+import { CHARCOAL, COPPER, PAPER, EASE_OUT_EXPO } from "./Variables";
 
 export const ButtonGroup = styled.div`
   ${Utils.margin};
