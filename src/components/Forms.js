@@ -10,7 +10,7 @@ export const TextArea = props => {
     value,
     imageItem,
     icon,
-    readOnly
+    readOnly,
   } = props;
 
   const styles = classNames({
