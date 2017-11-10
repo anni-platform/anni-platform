@@ -25,15 +25,17 @@ Styles are written in [Styled Components](https://www.styled-components.com/). S
 ## Instructions
 ### Setup
 1. `npm install`
-2. Create a config file:
-  - `touch src/app-config.json`
-  - Add the following to it and save
-  ```shell
-  {
-    "CLIENT_ID" : "<YOUR CLIENT ID>"
-  }
-  ```
-3. Add `http://localhost:3000/auth` to your Dropbox App's *Redirect URIs*
+2. Create or use your existing Dropbox account to make a [new app here](https://www.dropbox.com/developers/apps/create)
+3. Copy the Client Id for your Dropbox app.
+4. Create a config file:
+   - `touch src/app-config.json`
+   - Add the following JSON replacing `<YOUR CLIENT ID>` with the Client Id you copied in step 3.
+    ```shell
+    {
+      "CLIENT_ID" : "<YOUR CLIENT ID>"
+    }
+    ```
+5. Add `http://localhost:3000/auth` to your Dropbox App's *Redirect URIs*
 
 ### Usage
 After you clone this repo to your desktop, go to its root directory and run `npm install` to install its dependencies.
