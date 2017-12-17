@@ -33,13 +33,15 @@ export const TextArea = props => {
 };
 
 export const Input = props => {
+  
   const {
     className,
     onChange,
     placeholder,
     readOnly,
     value,
-    icon
+    icon,
+    ...rest,
   } = props;
 
   const styles = classNames({
@@ -50,6 +52,7 @@ export const Input = props => {
     <FieldGroup icon>
       {icon && <OutlineIcon color name={icon} size={24} />}
       <input
+        {...rest}
         className={styles}
         onChange={onChange}
         placeholder={placeholder}

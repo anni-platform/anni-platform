@@ -44,6 +44,7 @@
     "deploy": "gh-pages -d build -b master -o production"
   },
   "dependencies": {
+    "downshift": "^1.22.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-scripts": "^1.0.10"
