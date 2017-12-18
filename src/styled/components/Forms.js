@@ -64,8 +64,21 @@ export const Select = styled.div`
     border-style: solid;
     border-width: 8px 4px 0 4px;
     border-color: ${props => props.hasItems ? CHARCOAL : 'transparent'} transparent transparent transparent;
+    pointer-events: none;
   }
+`;
+
+export const SelectOptions = styled.div`
+  background-color: ${PAPER};
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 165px;
+  overflow-y: auto;
+  box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.5);
 `
+
 
 export const SelectOption = styled.div`
   background-color: ${props => props.active ? PEBBLE : PAPER};

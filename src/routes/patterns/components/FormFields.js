@@ -73,7 +73,7 @@ const FormFields = () => (
 
     <Subheading capitalize color micro mb={8}>Select</Subheading>
     <Select
-      items={['apple', 'orange', 'carrot']}
+      items={'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(l => `Item ${l}`)}
       onChange={selectedItem => console.log(selectedItem)}
     />
     <CodeBlock>

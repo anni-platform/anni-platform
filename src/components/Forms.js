@@ -41,18 +41,25 @@ export const Input = props => {
     readOnly,
     value,
     icon,
-    ...rest,
   } = props;
 
   const styles = classNames({
     [className]: className
   });
 
+  const allowedProps = Object.keys(props).reduce((acc, prop) => {
+    const filteredProps = {...acc};
+    if (!!['onKeyPress', 'onKeyDown', 'onKeyUp', 'onFocus'].find(p => p === prop)) {
+      filteredProps[prop] = props[prop];
+    }
+    return filteredProps;
+  }, {});
+  
   return (
     <FieldGroup icon>
       {icon && <OutlineIcon color name={icon} size={24} />}
       <input
-        {...rest}
+        {...allowedProps}
         className={styles}
         onChange={onChange}
         placeholder={placeholder}
