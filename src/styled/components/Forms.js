@@ -54,6 +54,7 @@ export const Select = styled.div`
   max-width: 300px;
 
   #chevron-down {
+    fill: ${props => props.rotateIcon ? COPPER : CONCRETE };
     position: absolute;
     right: 0;
     top: 8px;
