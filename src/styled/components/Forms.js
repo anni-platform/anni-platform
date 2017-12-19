@@ -59,7 +59,7 @@ export const Select = styled.div`
     right: 0;
     top: 8px;
     transform: ${props => props.rotateIcon && "rotate(180deg)"};
-    transition: 400ms ${EASE_OUT_EXPO};
+    transition: transform 400ms ${EASE_OUT_EXPO};
   }
 
 `;
