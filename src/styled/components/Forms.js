@@ -52,20 +52,15 @@ export const Input = styled(BaseInput)`
 export const Select = styled.div`
   position: relative;
   max-width: 300px;
-  
-  &::after {
-    content: '';
-    display: inline-block;
+
+  #chevron-down {
     position: absolute;
-    right: 11px;
-    top: 19px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 8px 4px 0 4px;
-    border-color: ${props => props.hasItems ? CHARCOAL : 'transparent'} transparent transparent transparent;
-    pointer-events: none;
+    right: 0;
+    top: 8px;
+    transform: ${props => props.rotateIcon && "rotate(180deg)"};
+    transition: 400ms ${EASE_OUT_EXPO};
   }
+
 `;
 
 export const SelectOptions = styled.div`
