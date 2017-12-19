@@ -12,9 +12,16 @@ const items = [
   <OutlineIcon strokeWidth={3} name="more" />,
   <SolidIcon name="notification" />,
   <OutlineIcon strokeWidth={3} name="popout" />,
-  <SolidIcon name="share" />,
   <OutlineIcon strokeWidth={3} name="video" />,
-  <OutlineIcon strokeWidth={3} name="view" />
+  <OutlineIcon strokeWidth={3} name="view" />,
+  <SolidIcon name="chevron-down" />,
+  <SolidIcon name="share" />,
+  <SolidIcon name="prev-frame" />,
+  <SolidIcon name="play" />,
+  <SolidIcon name="pause" />,
+  <SolidIcon name="next-frame" />,
+  <SolidIcon name="sound" />,
+
 ];
 const Icons = () => (
   <Card padded mb={24}>
