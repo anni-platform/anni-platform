@@ -41,7 +41,7 @@ class Login extends Component {
               to manage and present their entire workflow.
             </Heading>
             <Paragraph responsive strong>
-              Write a script, create a moodboard, annotate your storyboards, showcase your styleframes and collaborate with your client in a single space.
+              Write a script, create a moodboard, annotate your storyboards, showcase your styleframes, present your video and collaborate with your client in a single space.
               <br />
               <br />
               <Button href={getAuthUrl()}>Sign In</Button>
