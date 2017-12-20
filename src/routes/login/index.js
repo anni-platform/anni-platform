@@ -31,7 +31,7 @@ class Login extends Component {
         <Header>
           <Button icon="logo" to="/dashboard" noBorder noHover />
         </Header>
-        <Container>
+        <Container split={60} center>
           <Content>
             <Heading mb={16}>
               Finally, a single space for
@@ -48,7 +48,7 @@ class Login extends Component {
             </Paragraph>
           </Content>
         </Container>
-        <Container media>
+        <Container split={40} center media>
           <CoverImage src={screenLG} alt="dashboard" desktop />
           <CoverImage src={screenMD} alt="dashboard" tablet />
           <CoverImage src={screenSM} alt="dashboard" mobile />

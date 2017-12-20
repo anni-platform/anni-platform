@@ -51,24 +51,24 @@ export const Content = styled.div`
 export const Container = styled.div`
   align-items: center;
   background: ${props => props.media && HAZEL};
-  display: flex;
+  display: ${props => props.center ? "flex" : "auto"};
+  display: ${props => props.stacked ? "flex" : "auto"};
+  flex-direction: ${props => props.stacked && "column"};
   flex-grow: ${props => props.media && 1};
   flex-wrap: wrap;
   justify-content: center;
-  max-height: 100vh;
   max-width: none;
   min-height: 540px;
-  overflow:hidden;
-  width: 100vw;
+  overflow: ${props => props.media && "hidden"};
+  width: 100%;
 
   ${Above.sm`
     height: ${props => props.media ? "100vh" : "none"};
-    min-height: 740px;
   `}
 
   ${Above.md`
-    height: 100vh;
-    max-width: ${props => props.media ? "40vw" : "60vw"};
+    min-height: 100%;
+    max-width: ${props => props.split ? `${props.split}%` : "100%"};
   `}
 `;
 
