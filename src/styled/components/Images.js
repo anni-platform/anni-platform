@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { CONCRETE, COPPER, CHARCOAL, PAPER, EASE_OUT_BACK, EASE_OUT_EXPO } from "./Variables";
+import { CONCRETE, COPPER, CHARCOAL, PAPER, EASE_OUT_BACK } from "./Variables";
 import { Utils } from "./Utils";
 import { Above } from "./MediaTemplates";
 
