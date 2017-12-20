@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { CONCRETE, COPPER, CHARCOAL, PAPER, EASE_OUT_BACK } from "./Variables";
+import { CONCRETE, COPPER, CHARCOAL, PAPER, EASE_OUT_BACK, EASE_OUT_EXPO } from "./Variables";
 import { Utils } from "./Utils";
+import { Above } from "./MediaTemplates";
 
 export const Image = styled.img`
   height: 100%;
@@ -9,6 +10,38 @@ export const Image = styled.img`
   ${Utils.margin};
   margin: ${props => props.center && "0 auto"};
   width: ${props => props.width ? `${props.width}px` : "100%"};
+`;
+
+export const CoverImage = styled.img`
+  display: ${props => props.mobile ? "block" : "none"};
+  object-fit: contain;
+  margin: 36px;
+  width: calc(100% - 64px);
+
+  ${Above.sm`
+    display: ${props => props.tablet ? "block" : "none"};
+    height: calc(100vh - 96px);
+    margin: 0;
+    width: 100%;
+  `}
+
+  ${Above.md`
+    display: ${props => props.desktop ? "block" : "none"};
+    height: auto;
+    margin-right: -400px;
+    width: 720px;
+  `}
+
+  ${Above.lg`
+    margin-right: -360px;
+    max-width: 720px;
+    width: 130%;
+  `}
+
+  ${Above.xl`
+    margin-right: -260px;
+    max-height: 707px;
+  `}
 `;
 
 export const ImageControls = styled.div`

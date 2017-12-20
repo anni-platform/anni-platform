@@ -3794,6 +3794,10 @@ istanbul@^0.4.5:
     which "^1.1.1"
     wordwrap "^1.0.0"
 
+ityped@^0.0.10:
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/ityped/-/ityped-0.0.10.tgz#67beed63ea0bffbf440865b5271f0cf7cdd7a751"
+
 jasmine-check@^0.1.4:
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/jasmine-check/-/jasmine-check-0.1.5.tgz#dbad7eec56261c4b3d175ada55fe59b09ac9e415"

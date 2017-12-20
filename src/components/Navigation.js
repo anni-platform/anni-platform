@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import { getAuthUrl, login, logoutSession, getAccountInfo } from "adapters";
+import { login, logoutSession, getAccountInfo } from "adapters";
 import { addAuthToken, logout, addUserInfo } from "actions";
 import CreateForm from "components/CreateForm";
 
@@ -53,13 +53,16 @@ class Navigation extends Component {
   render() {
     const login = (
       <NavItem right>
-        <Button href={getAuthUrl()}>Sign in</Button>
+        {/* <Button href={getAuthUrl()}>Sign in</Button> */}
       </NavItem>
     );
     const userInfo = this.props.auth.toJS().userInfo;
     const firstInitial = userInfo ? userInfo.name.given_name[0] : null;
 
     const loggedInNav = (
+      <NavBar>
+        <Button icon="logo" to="/dashboard" noBorder noHover />
+
       <NavItemGroup right>
         <NavItem>
           <Button icon="more" iconSize={28} onClick={this.handleClick} stacked>
@@ -75,6 +78,7 @@ class Navigation extends Component {
           />
         </NavItem>
       </NavItemGroup>
+    </NavBar>
     );
 
     const projectForm = this.state.showOverlay
@@ -88,11 +92,10 @@ class Navigation extends Component {
         />
       : null;
     return (
-      <NavBar>
-        <Button icon="logo" to="/dashboard" noBorder noHover />
+      <div>
         {this.props.auth.toJS().isAuthenticated ? loggedInNav : login}
         {projectForm}
-      </NavBar>
+      </div>
     );
   }
 }

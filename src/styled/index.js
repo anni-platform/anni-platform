@@ -17,10 +17,10 @@ export { Grid, GridItem } from "./components/Grid";
 export { SolidIcon, OutlineIcon, Logo } from "./components/Icons";
 
 /* Images */
-export { Image, ImageControls, ImageControlsButton } from "./components/Images";
+export { Image, CoverImage, ImageControls, ImageControlsButton } from "./components/Images";
 
 /* Layout Components */
-export { Anchor, Container, Content, Section, Wrapper } from "./components/Layout";
+export { Anchor, Container, Content, Header, Section, Wrapper } from "./components/Layout";
 
 /* Loader */
 export { Loader } from "./components/Loader";

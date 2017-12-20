@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import { Above } from "./MediaTemplates";
-import { PEBBLE } from "./Variables";
+import { Utils } from "./Utils";
+
+import { HAZEL, PEBBLE } from "./Variables";
 
 
 export const Wrapper = styled.div`
   background: ${PEBBLE};
+  max-width: 100vw;
 `;
 
 export const Section = styled.div`
@@ -19,6 +22,10 @@ export const Section = styled.div`
     max-width: ${props => props.project ? "calc(100vw - 120px)" : "100vw"};
   `}
 
+  ${Above.md`
+    flex-direction: ${props => props.split ? "row" : "column"};
+  `}
+
   ${Above.lg`
     max-width: ${props => props.project ? "calc(100vw - 240px)" : "100vw"};
   `}
@@ -28,6 +35,7 @@ export const Content = styled.div`
   border: ${props => props.upload && `2px dashed black`};
   padding: ${props => props.full ? "0" : "100px 24px 24px 24px"};
   padding: ${props => props.project && "100px 0 24px 24px"};
+  ${Utils.margin};
 
   ${Above.sm`
     padding: ${props => props.full ? "0" : "120px 48px 48px 48px"};
@@ -40,14 +48,47 @@ export const Content = styled.div`
   `}
 `;
 
-// Remove this - looks like this can be achieved by Section
 export const Container = styled.div`
   align-items: center;
-  width: 100%;
-  display: ${props => props.center ? "flex" : "auto"};
-  display: ${props => props.stacked ? "flex" : "auto"};
-  flex-direction: ${props => props.stacked && "column"};
+  background: ${props => props.media && HAZEL};
+  display: flex;
+  flex-grow: ${props => props.media && 1};
+  flex-wrap: wrap;
   justify-content: center;
+  max-height: 100vh;
+  max-width: none;
+  min-height: 540px;
+  overflow:hidden;
+  width: 100vw;
+
+  ${Above.sm`
+    height: ${props => props.media ? "100vh" : "none"};
+    min-height: 740px;
+  `}
+
+  ${Above.md`
+    height: 100vh;
+    max-width: ${props => props.media ? "40vw" : "60vw"};
+  `}
+`;
+
+export const Header = styled.div`
+  left: 0;
+  position: absolute;
+  top: 24px;
+
+  ${Above.sm`
+    left: 24px;
+    top: 80px;
+  `}
+
+  ${Above.md`
+    left: 24px;
+  `}
+
+  ${Above.lg`
+    left: 96px;
+  `}
 `;
 
 export const Anchor = styled.div`
