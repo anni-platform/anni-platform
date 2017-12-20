@@ -40,7 +40,7 @@ class Login extends Component {
               {" "}
               to manage and present their entire workflow.
             </Heading>
-            <Paragraph responsive>
+            <Paragraph responsive strong>
               Write a script, create a moodboard, annotate your storyboards, showcase your styleframes and collaborate with your client in a single space.
               <br />
               <br />
