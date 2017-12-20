@@ -29,7 +29,7 @@ class Login extends Component {
     return (
       <Section split>
         <Header>
-          <Button icon="logo" to="/dashboard" noBorder noHover />
+          <Button icon="logo" to="/" noBorder noHover />
         </Header>
         <Container split={60} center>
           <Content>
