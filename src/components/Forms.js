@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import classNames from "classnames";
 import { FieldGroup, OutlineIcon } from "styled";
 
@@ -36,6 +37,7 @@ export const Input = props => {
   
   const {
     className,
+    onBlur,
     onChange,
     placeholder,
     readOnly,
@@ -54,6 +56,12 @@ export const Input = props => {
     }
     return filteredProps;
   }, {});
+
+  const handleBlur = e => {
+    if (onBlur) {
+      onBlur(e.target.value);
+    }
+  }
   
   return (
     <FieldGroup icon>
@@ -65,7 +73,12 @@ export const Input = props => {
         placeholder={placeholder}
         value={value}
         readOnly={readOnly}
+        onBlur={handleBlur}
       />
     </FieldGroup>
   );
+};
+
+Input.propTypes = {
+  onBlur: PropTypes.func,
 };

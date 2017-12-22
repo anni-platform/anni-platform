@@ -1,14 +1,18 @@
 import React, { Component, createElement } from "react";
 import { removeProject, deleteFile, updateProject } from "actions";
 import filter from "lodash.filter";
-import { FileCollection } from "components/FileCollection";
+import { 
+  FileCollection,
+  Animation,
+ } from "components";
+
 import constants from "constants/index";
 import classNames from "classnames";
 import { Container, Section } from "styled";
 import Headline from "./Headline";
 import TextEditor from "./TextEditor";
 import { ProjectControls, ProjectSectionNavItem } from "./ProjectControls";
-const { MOODBOARD, STORYBOARD, STYLEFRAMES } = constants.content || {};
+const { MOODBOARD, STORYBOARD, STYLEFRAMES, ANIMATION } = constants.content || {};
 
 const ProjectSection = (
   {
@@ -114,8 +118,19 @@ const getSections = (project, id) => [
       collectionId: STYLEFRAMES,
       title: `STYLEFRAMES`,
       styleframes: true
+    },
+  },
+  {
+    name: "Animation",
+    SectionType: Animation,
+    SectionProps: {
+      className: `Animation`,
+      projectPath: id,
+      project,
+      collectionId: ANIMATION,
+      title: `ANIMATION`,
     }
-  }
+  },
 ];
 
 const getActiveSectionIndex = (props, Sections) => {
@@ -175,6 +190,7 @@ export default class ProjectDetail extends Component {
         {createElement(ProjectSectionNavigator, {
           activeSectionIndex,
           activateSectionByIndex: this.activateSectionByIndex,
+          id,
           Sections,
           save,
           projectPath

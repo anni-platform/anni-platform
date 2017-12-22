@@ -77,7 +77,7 @@ const FormFields = () => (
       onChange={selectedItem => console.log(selectedItem)}
     />
     <CodeBlock>
-{`import { Select } from "styled";
+{`import { Select } from 'components';
 
 const FormFields = () => (
   <Select

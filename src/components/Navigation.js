@@ -23,6 +23,9 @@ class Navigation extends Component {
       return;
     }
 
+    // referencing window.location breaks HMR for some reason..
+    // const unAuthenticatedRoutes = ['/patterns'];
+    // const routeNeedsAuthentication = !unAuthenticatedRoutes.find(r => r === window.location.pathname);
     if (!auth.toJS().isAuthenticated) {
       login().then(
         token => {
