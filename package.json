@@ -44,9 +44,11 @@
     "deploy": "gh-pages -d build -b master -o production"
   },
   "dependencies": {
+    "canvas-image-scrubber": "^1.1.2",
     "downshift": "^1.22.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-scripts": "^1.0.10"
+    "react-scripts": "^1.0.10",
+    "reselect": "^3.0.1"
   }
 }

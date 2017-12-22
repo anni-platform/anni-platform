@@ -2,10 +2,11 @@ import React from 'react';
 import Downshift from 'downshift';
 import { Input, SelectOption, Select as StyledSelect, SelectOptions } from "styled";
 
-export function Select({items, onChange, placeholder = 'Select an option...'}) {
+export function Select({items, onChange, placeholder = 'Select an option...', defaultSelectedItem}) {
   return (
     <Downshift
       onChange={onChange}
+      defaultSelectedItem={defaultSelectedItem}
       render={({
         getInputProps,
         getItemProps,
@@ -14,6 +15,7 @@ export function Select({items, onChange, placeholder = 'Select an option...'}) {
         selectedItem,
         highlightedIndex,
         toggleMenu,
+        reset,
       }) => {
         const filteredItems = items.filter(i =>
           !inputValue || inputValue === selectedItem || i.toLowerCase().includes(inputValue.toLowerCase()));
@@ -22,7 +24,7 @@ export function Select({items, onChange, placeholder = 'Select an option...'}) {
             <StyledSelect hasItems={!!filteredItems.length}>
               <Input
                 select {...getInputProps({ placeholder })}
-                onFocus={toggleMenu}
+                onFocus={inputValue === selectedItem && toggleMenu}
               />
               {isOpen ? (
                 <SelectOptions>
