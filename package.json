@@ -48,6 +48,7 @@
     "ityped": "^0.0.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-picture-component": "^1.0.3",
     "react-scripts": "^1.0.10"
   }
 }

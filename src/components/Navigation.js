@@ -37,7 +37,9 @@ class Navigation extends Component {
             this.props.router.push("/dashboard");
           });
         },
-        err => console.log(err)
+        err => {
+          if (err) console.log(err);
+        }
       );
     }
   }
