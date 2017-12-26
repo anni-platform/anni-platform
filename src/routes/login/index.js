@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { getAuthUrl } from "adapters";
+import { CoverImage } from 'components/Image';
 import {
   Button,
   Content,
-  CoverImage,
   Container,
   Heading,
   Header,
@@ -13,6 +13,7 @@ import {
   Section
 } from "styled";
 import Typed from "components/Typed";
+import { breakpointSizes } from "constants/index";
 
 import screenLG from "media/dashboard.png";
 import screenMD from "media/dashboard-md.png";
@@ -49,9 +50,13 @@ class Login extends Component {
           </Content>
         </Container>
         <Container split={40} center media>
-          <CoverImage src={screenLG} alt="dashboard" desktop />
-          <CoverImage src={screenMD} alt="dashboard" tablet />
-          <CoverImage src={screenSM} alt="dashboard" mobile />
+          <CoverImage 
+            images={{
+              [breakpointSizes.md]: screenLG,
+              [breakpointSizes.sm]: screenMD,
+              0: screenSM,
+            }}
+          />
         </Container>
       </Section>
     );

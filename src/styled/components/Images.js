@@ -12,21 +12,19 @@ export const Image = styled.img`
   width: ${props => props.width ? `${props.width}px` : "100%"};
 `;
 
+var coverImageMargin = 36;
 export const CoverImage = styled.img`
-  display: ${props => props.mobile ? "block" : "none"};
   object-fit: contain;
-  margin: 36px;
-  width: calc(100% - 64px);
+  margin: ${coverImageMargin}px;
+  width: calc(100% - ${coverImageMargin * 2}px);
 
   ${Above.sm`
-    display: ${props => props.tablet ? "block" : "none"};
     height: calc(100vh - 96px);
     margin: 0;
     width: 100%;
   `}
 
   ${Above.md`
-    display: ${props => props.desktop ? "block" : "none"};
     height: auto;
     margin-right: -400px;
     width: 720px;

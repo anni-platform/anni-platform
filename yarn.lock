@@ -1302,12 +1302,12 @@ caniuse-api@^1.5.2:
     lodash.uniq "^4.5.0"
 
 caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
-  version "1.0.30000783"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000783.tgz#16b30d47266a4f515cc69ae0316b670c9603cdbe"
+  version "1.0.30000784"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000784.tgz#1be95012d9489c7719074f81aee57dbdffe6361b"
 
 caniuse-lite@^1.0.30000748, caniuse-lite@^1.0.30000780:
-  version "1.0.30000783"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000783.tgz#9b5499fb1b503d2345d12aa6b8612852f4276ffd"
+  version "1.0.30000784"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000784.tgz#129ced74e9a1280a441880b6cd2bce30ef59e6c0"
 
 capture-stack-trace@^1.0.0:
   version "1.0.0"
@@ -2106,8 +2106,8 @@ dotenv@4.0.0:
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-4.0.0.tgz#864ef1379aced55ce6f95debecdce179f7a0cd1d"
 
 downshift@^1.22.4:
-  version "1.22.4"
-  resolved "https://registry.yarnpkg.com/downshift/-/downshift-1.22.4.tgz#c78abc61c3658e694abe22f2be9ff80fdb5f1d97"
+  version "1.22.5"
+  resolved "https://registry.yarnpkg.com/downshift/-/downshift-1.22.5.tgz#48103b2f80259157b01b96d6bdc344c51ce0743e"
 
 draft-js-counter-plugin@^2.0.0-beta11:
   version "2.0.1"
@@ -2138,8 +2138,8 @@ draft-js@^0.10.1:
     object-assign "^4.1.0"
 
 dropbox@^2.1.0:
-  version "2.5.12"
-  resolved "https://registry.yarnpkg.com/dropbox/-/dropbox-2.5.12.tgz#9f00bb835d198c04106aa60bf262f5f24b3bef42"
+  version "2.5.13"
+  resolved "https://registry.yarnpkg.com/dropbox/-/dropbox-2.5.13.tgz#546c130e1d857f78035cdd2650854ad5206e9073"
   dependencies:
     es6-promise "^4.1.1"
     mime ">=2.0.3"
@@ -2166,9 +2166,15 @@ ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
 
+electron-releases@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/electron-releases/-/electron-releases-2.1.0.tgz#c5614bf811f176ce3c836e368a0625782341fd4e"
+
 electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.28:
-  version "1.3.28"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.28.tgz#8dd4e6458086644e9f9f0a1cf32e2a1f9dffd9ee"
+  version "1.3.30"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.30.tgz#9666f532a64586651fc56a72513692e820d06a80"
+  dependencies:
+    electron-releases "^2.1.0"
 
 elliptic@^6.0.0:
   version "6.4.0"
@@ -2274,8 +2280,8 @@ es6-map@^0.1.3:
     event-emitter "~0.3.5"
 
 es6-promise@^4.0.3, es6-promise@^4.0.5, es6-promise@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-4.1.1.tgz#8811e90915d9a0dba36274f0b242dbda78f9c92a"
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-4.2.2.tgz#f722d7769af88bd33bc13ec6605e1f92966b82d9"
 
 es6-promisify@^5.0.0:
   version "5.0.0"
@@ -3553,10 +3559,6 @@ is-fullwidth-code-point@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/is-fullwidth-code-point/-/is-fullwidth-code-point-2.0.0.tgz#a3b30a5c4f199183167aaab93beefae3ddfb654f"
 
-is-function@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/is-function/-/is-function-1.0.1.tgz#12cfb98b65b57dd3d193a3121f5f6e2f437602b5"
-
 is-glob@^2.0.0, is-glob@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/is-glob/-/is-glob-2.0.1.tgz#d096f926a3ded5600f3fdfd91198cb0888c2d863"
@@ -4772,8 +4774,8 @@ mime@1.4.1:
   resolved "https://registry.yarnpkg.com/mime/-/mime-1.4.1.tgz#121f9ebc49e3766f311a76e1fa1c8003c4b03aa6"
 
 mime@>=2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/mime/-/mime-2.0.3.tgz#4353337854747c48ea498330dc034f9f4bbbcc0b"
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/mime/-/mime-2.1.0.tgz#1022a5ada445aa30686e4059abaea83d0b4e8f9c"
 
 mime@^1.4.1, mime@^1.5.0:
   version "1.6.0"
@@ -4818,8 +4820,8 @@ mkdirp@0.5.1, mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdi
     minimist "0.0.8"
 
 moment@^2.18.1:
-  version "2.20.0"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.20.0.tgz#53396358994dd3a551e966a66af715ecb6c30ad0"
+  version "2.20.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.20.1.tgz#d6eb1a46cbcc14a2b2f9434112c1ff8907f313fd"
 
 ms@2.0.0:
   version "2.0.0"
@@ -5975,9 +5977,9 @@ react-json-tree@^0.11.0:
     prop-types "^15.5.8"
     react-base16-styling "^0.5.1"
 
-react-picture-component@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/react-picture-component/-/react-picture-component-1.0.3.tgz#0625784c57a3a0e93fad96633e3a0f7da79b1380"
+react-picture-component@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/react-picture-component/-/react-picture-component-1.0.5.tgz#06b52b5128536451224441a26ee811d2d2db1dab"
   dependencies:
     picturefill "^3.0.2"
 
@@ -6937,14 +6939,13 @@ style-loader@0.19.0:
     schema-utils "^0.3.0"
 
 styled-components@^2.2.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-2.3.0.tgz#d9cf4574e140fea6426e48632ed0ca4494537718"
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-2.4.0.tgz#086d0fd483d54638837fca3ea546a030b94adf75"
   dependencies:
     buffer "^5.0.3"
     css-to-react-native "^2.0.3"
     fbjs "^0.8.9"
     hoist-non-react-statics "^1.2.0"
-    is-function "^1.0.1"
     is-plain-object "^2.0.1"
     prop-types "^15.5.4"
     stylis "^3.4.0"

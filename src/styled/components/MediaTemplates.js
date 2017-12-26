@@ -1,11 +1,5 @@
 import { css } from "styled-components";
-
-const sizes = {
-  xl: 1600,
-  lg: 1200,
-  md: 960,
-  sm: 570
-};
+import { breakpointSizes as sizes } from "constants/index";
 
 // Media Templates
 export const Above = Object.keys(sizes).reduce(
