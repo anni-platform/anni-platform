@@ -4,7 +4,11 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "reselect": "^3.0.1",
     "classnames": "^2.2.5",
+    "canvas-image-scrubber": "^1.1.4",
+    "downshift": "^1.22.4",
+    "ityped": "^0.0.10",
     "draft-js": "^0.10.1",
     "draft-js-counter-plugin": "^2.0.0-beta11",
     "draft-js-plugins-editor": "^2.0.0-beta11",
@@ -44,9 +48,6 @@
     "deploy": "gh-pages -d build -b master -o production"
   },
   "dependencies": {
-    "canvas-image-scrubber": "^1.1.4",
-    "downshift": "^1.22.4",
-    "ityped": "^0.0.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-picture-component": "^1.0.5",
