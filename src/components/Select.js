@@ -1,6 +1,6 @@
 import React from 'react';
 import Downshift from 'downshift';
-import { Input, SelectOption, Select as StyledSelect, SelectOptions } from "styled";
+import { Input, SelectOption, Select as StyledSelect, SelectOptions, SolidIcon } from "styled";
 
 export function Select({items, onChange, placeholder = 'Select an option...', defaultSelectedItem}) {
   return (
@@ -21,16 +21,17 @@ export function Select({items, onChange, placeholder = 'Select an option...', de
           !inputValue || inputValue === selectedItem || i.toLowerCase().includes(inputValue.toLowerCase()));
         return (
           <div>
-            <StyledSelect hasItems={!!filteredItems.length}>
+            <StyledSelect hasItems={!!filteredItems.length} rotateIcon={isOpen}>
               <Input
                 select {...getInputProps({ placeholder })}
                 onFocus={inputValue === selectedItem && toggleMenu}
               />
+              <SolidIcon name="chevron-down" size={20} />
               {isOpen ? (
                 <SelectOptions>
                   {filteredItems
                     .map((item, index) => (
-                      
+
                         <SelectOption
                           active={highlightedIndex === index || selectedItem === item}
                           {...getItemProps({item})}

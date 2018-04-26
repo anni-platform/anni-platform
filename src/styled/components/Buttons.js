@@ -7,7 +7,6 @@ import { CHARCOAL, COPPER, PAPER, EASE_OUT_EXPO } from "./Variables";
 export const ButtonGroup = styled.div`
   ${Utils.margin};
   margin: ${props => props.center && "0 auto"};
-
   button {
     margin: 0 8px 8px 0;
   }
@@ -36,16 +35,13 @@ export const Button = styled(BaseButton)`
   transition: 400ms ${EASE_OUT_EXPO};
   z-index: 2;
   ${Utils.margin};
-
   &:hover,
   &:focus {
     transform: scale(1.02);
   }
-
   &:active {
     transform: scale(.998);
   }
-
   svg {
     ${Utils.padding};
     fill: ${props => props.fill ? `${CHARCOAL}` : "transparent"};
@@ -70,10 +66,8 @@ export const Avatar = Button.extend`
   padding: 0;
   position: relative;
   width: 40px;
-
   span {
     left: 50%;
     position: absolute;
     transform: translateX(-50%);
   }
-`

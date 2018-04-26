@@ -42,7 +42,7 @@ const ProjectSectionNavigator = (
   }
 ) => {
   return (
-    <Container>
+    <Section>
       <Section project>
       {Sections.map((section, index) =>
         ProjectSection({
@@ -62,7 +62,7 @@ const ProjectSectionNavigator = (
             projectPath
           }))}
       </ProjectControls>
-    </Container>
+    </Section>
   );
 };
 

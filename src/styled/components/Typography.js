@@ -55,8 +55,29 @@ export const Heading = styled.h1`
   ${Utils.margin};
 
   ${Above.sm`
-    font-size: 48px;
+    font-size: 40px;
   `}
+
+  ${'' /* Specific to the type animation within the Homepage */}
+  > .ityped-cursor {
+    color: #E2A480;
+    animation: blink 1100ms linear infinite;
+  }
+
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 1;
+    }
+    51% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
 `;
 
 export const Subheading = styled.h2`
@@ -83,6 +104,10 @@ export const Paragraph = styled.p`
   text-align: ${props => props.center ? "center" : "left"};
   text-transform: ${props => props.capitalize ? "uppercase" : "default"};
   ${Utils.margin};
+
+  ${Above.sm`
+    font-size: ${props => props.responsive && "18px"}
+  `}
 `;
 
 export const CodeBlock = styled(Highlight)`

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { preloadImage } from "utils";
 import PropTypes from "prop-types";
 import { Loader } from "styled";
+import Picture from 'react-picture-component';
+import { CoverImage as CoverImageStyledComponent } from 'styled';
 
 export class ImageElement extends Component {
   constructor() {
@@ -36,3 +38,14 @@ export class ImageElement extends Component {
 ImageElement.propTypes = {
   src: PropTypes.string.isRequired
 };
+
+export const CoverImage = (props) => (
+  <Picture 
+    {...props}
+    renderImage={renderProps => (
+      <CoverImageStyledComponent {...renderProps} />
+    )}
+  />
+);
+
+CoverImage.propTypes = Picture.propTypes;
