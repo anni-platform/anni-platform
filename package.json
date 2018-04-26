@@ -59,7 +59,7 @@
     "react-app-rewired": "^1.5.2",
     "react-dom": "^15.6.1",
     "react-scripts": "^1.0.10",
-    "reselect": "^3.0.1"
+    "reselect": "^3.0.1",
     "react-picture-component": "^1.0.5"
   }
 }
