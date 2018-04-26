@@ -1,7 +1,7 @@
 import React, { Component, createElement } from "react";
 import { removeProject, deleteFile, updateProject } from "actions";
 import filter from "lodash.filter";
-import { 
+import {
   FileCollection,
   Animation,
  } from "components";

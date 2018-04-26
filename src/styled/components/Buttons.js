@@ -62,7 +62,6 @@ export const Avatar = Button.extend`
   color: ${PAPER};
   font-size: 18px;
   height: 40px;
-  text-align: center;
   padding: 0;
   position: relative;
   width: 40px;
@@ -71,3 +70,4 @@ export const Avatar = Button.extend`
     position: absolute;
     transform: translateX(-50%);
   }
+`;
