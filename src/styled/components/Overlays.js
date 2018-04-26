@@ -3,7 +3,6 @@ import { PAPER, EASE_OUT_EXPO } from "./Variables";
 
 export const Overlay = styled.div`
   background: rgba(255,255,255,0.9);
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -13,6 +12,7 @@ export const Overlay = styled.div`
   top: 0;
   width: 100vw;
   z-index: 4;
+  display: flex;
 `;
 
 export const Backdrop = styled.div`
