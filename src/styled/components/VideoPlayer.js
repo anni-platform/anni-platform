@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { _PlayerButton } from "components/VideoPlayer";
+import { Select } from "components";
 
 import { CHARCOAL, FLINT, PAPER, EASE_OUT_EXPO } from "./Variables";
 
@@ -40,4 +41,8 @@ export const PlayerButton = styled(_PlayerButton)`
     transition: 400ms ${EASE_OUT_EXPO};
     width: 24px;
   }
+`;
+
+export const PlayerSelect = styled(Select)`
+  background: red;
 `;

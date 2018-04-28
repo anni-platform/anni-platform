@@ -1,6 +1,5 @@
 import React from "react";
-import { PlayerButton, PlayerControls } from "styled";
-import { Select } from "components";
+import { PlayerButton, PlayerControls, PlayerSelect } from "styled";
 
 export default function Controls(
   {
@@ -44,7 +43,7 @@ export default function Controls(
               onClick={() => eventSequence([pause, next])}
               action="next-frame"
             />
-            <Select
+            <PlayerSelect
               items={["12", "24", "30", "60"]}
               defaultSelectedItem={24}
               onChange={selectedItem => onFPSChange(selectedItem)}
