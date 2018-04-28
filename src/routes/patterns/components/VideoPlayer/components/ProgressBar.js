@@ -9,7 +9,6 @@ export default function ProgressBar(
   }
 ) {
   return (
-    <div>
       <input
         style={{ width: "100%" }}
         list="progress"
@@ -20,6 +19,5 @@ export default function ProgressBar(
         value={value}
         onChange={e => onChange(parseInt(e.target.value, 10))}
       />
-    </div>
   );
 }

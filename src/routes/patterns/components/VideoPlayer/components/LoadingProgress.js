@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Paragraph } from "styled";
 
 export default function LoadingProgress(
   {
@@ -9,7 +10,7 @@ export default function LoadingProgress(
   }
 ) {
   return !loadingComplete
-    ? <div>{totalLoaded} of {totalFramesToLoad} frames loaded...</div>
+    ? <Paragraph>{totalLoaded} of {totalFramesToLoad} frames loaded...</Paragraph>
     : null;
 }
 

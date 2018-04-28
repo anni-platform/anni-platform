@@ -1,4 +1,6 @@
 import React from "react";
+import { PlayerButton, PlayerControls } from "styled";
+import { Select } from "components";
 
 export default function Controls(
   {
@@ -22,50 +24,33 @@ export default function Controls(
   }
 ) {
   const eventSequence = sequence => sequence.forEach(event => event && event());
-  const playbackButtonLabel = isPlaying ? "Pause" : "Play";
+  const playbackToggle = isPlaying ? "pause" : "play";
 
   return (
-    <div style={{ padding: 20 }}>
+    <div>
       {loading
         ? "loading..."
-        : <div>
+        : <PlayerControls>
             <label>
               frame:
               <strong>{currentFrame}</strong>
             </label>
-            <button
+            <PlayerButton
               onClick={() => eventSequence([pause, prev])}
-              title="Previous Frame"
-            >
-              ←
-            </button>
-            <button onClick={togglePlay}>
-              {playbackButtonLabel}
-            </button>
-            <button
+              action="prev-frame"
+            />
+            <PlayerButton action={playbackToggle} onClick={togglePlay} />
+            <PlayerButton
               onClick={() => eventSequence([pause, next])}
-              title="Next Frame"
-            >
-              →
-            </button>
-            <label>Frames per second: ({fps})</label>
-            <input
-              min={1}
-              max={120}
-              value={fps}
-              step={1}
-              type="range"
-              onChange={e => onFPSChange(e.target.value)}
-              list="fpsList"
+              action="next-frame"
+            />
+            <Select
+              items={["12", "24", "30", "60"]}
+              defaultSelectedItem={24}
+              onChange={selectedItem => onFPSChange(selectedItem)}
             />
 
-            <datalist id="fpsList">
-              <option>24</option>
-              <option>30</option>
-              <option>60</option>
-            </datalist>
-
-          </div>}
+          </PlayerControls>}
     </div>
   );
 }
