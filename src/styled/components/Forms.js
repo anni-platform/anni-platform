@@ -51,13 +51,12 @@ export const Input = styled(BaseInput)`
 
 export const Select = styled.div`
   position: relative;
-  max-width: 300px;
 
   #chevron-down {
     fill: ${props => props.rotateIcon ? COPPER : CONCRETE };
     position: absolute;
-    right: 0;
-    top: 8px;
+    right: 12px;
+    top: calc(50% - 12px);
     transform: ${props => props.rotateIcon && "rotate(180deg)"};
     transition: transform 400ms ${EASE_OUT_EXPO};
   }
