@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CanvasImageScrubber from "canvas-image-scrubber";
+import { PlayerViewer } from "styled";
 import Controls from "./components/Controls";
 import LoadingProgress from "./components/LoadingProgress";
 import ProgressBar from "./components/ProgressBar";
@@ -30,10 +31,10 @@ export default class VideoPlayer extends Component {
         ) => {
           return (
             <div>
-              <div style={{ maxWidth: 300 }}>
+              <PlayerViewer>
                 {renderViewer}
                 <ProgressBar {...getViewerProgressProps()} />
-              </div>
+              </PlayerViewer>
               <LoadingProgress {...loadingProgress} />
               <Controls {...getViewerControlsProps()} />
             </div>
