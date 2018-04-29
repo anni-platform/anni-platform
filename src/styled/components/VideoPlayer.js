@@ -11,6 +11,11 @@ import {
   EASE_OUT_EXPO
 } from "./Variables";
 
+
+export const Player = styled.div`
+  position: relative;
+`;
+
 export const PlayerViewer = styled.div`
   position: relative;
 
@@ -18,6 +23,18 @@ export const PlayerViewer = styled.div`
   max-width: 100%;
   height: auto;
   }
+`;
+
+export const PlayerLoader = styled.div`
+  align-items: center;
+  background: rgba(255,255,255,0.9);
+  display: flex;
+  left: 0;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
 `;
 
 export const PlayerControls = styled.div`

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import CanvasImageScrubber from "canvas-image-scrubber";
-import { PlayerViewer } from "styled";
-import Controls from "./components/Controls";
-import LoadingProgress from "./components/LoadingProgress";
-import ProgressBar from "./components/ProgressBar";
+import { PlayerViewer, Player } from "styled";
+import Controls from "components/VideoPlayer/Controls";
+import LoadingProgress from "components/VideoPlayer/LoadingProgress";
+import ProgressBar from "components/VideoPlayer/ProgressBar";
 
 export function getFrames() {
   let i = 0;
@@ -30,14 +30,14 @@ export default class VideoPlayer extends Component {
           }
         ) => {
           return (
-            <div>
+            <Player>
               <PlayerViewer>
                 {renderViewer}
+                <LoadingProgress {...loadingProgress} />
                 <ProgressBar {...getViewerProgressProps()} />
               </PlayerViewer>
-              <LoadingProgress {...loadingProgress} />
-              <Controls {...getViewerControlsProps()} playback />
-            </div>
+              <Controls {...getViewerControlsProps()} />
+            </Player>
           );
         }}
         sprite

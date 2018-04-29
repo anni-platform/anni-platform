@@ -18,7 +18,7 @@ import Images from "./components/Images";
 import Loaders from "./components/Loaders";
 import Overlays from "./components/Overlays";
 import Typography from "./components/Typography";
-import VideoPlayer from "./components/VideoPlayer/index.js";
+import VideoPlayer from "./components/VideoPlayer";
 
 export default class PatternLibrary extends Component {
   render() {

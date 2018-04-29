@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Paragraph } from "styled";
+import { Container, Loader, Paragraph, PlayerLoader } from "styled";
 
 export default function LoadingProgress(
   {
@@ -10,9 +10,16 @@ export default function LoadingProgress(
   }
 ) {
   return !loadingComplete
-    ? <Paragraph>{totalLoaded} of {totalFramesToLoad} frames loaded...</Paragraph>
+    ? <PlayerLoader>
+        <Container stacked>
+          <Loader center />
+          <Paragraph>
+            {totalLoaded} of {totalFramesToLoad} frames loaded...
+          </Paragraph>
+        </Container>
+      </PlayerLoader>
     : null;
-}
+};
 
 LoadingProgress.propTypes = {
   loadingComplete: PropTypes.bool.isRequired,
