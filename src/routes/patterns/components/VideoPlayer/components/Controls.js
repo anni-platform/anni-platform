@@ -20,7 +20,7 @@ export default function Controls(
     toggleAudio,
     volume,
     onVolumeChange,
-    presentMode
+    playback
   }
 ) {
   const eventSequence = sequence => sequence.forEach(event => event && event());
@@ -40,10 +40,15 @@ export default function Controls(
               onClick={() => eventSequence([pause, next])}
               action="next-frame"
             />
-            {presentMode
+            {playback
               ? <PlayerSelect
                   label="NOW PLAYING"
                   defaultSelectedItem="GW_intro_R1"
+                  items={[
+                    "GW_intro_SFX_R1",
+                    "GW_intro_SFX_R2",
+                    "GW_intro_SFX_R3"
+                  ]}
                   disabled
                 />
               : <PlayerSelect
@@ -51,21 +56,26 @@ export default function Controls(
                   items={["GW_intro_R1", "GW_intro_R2", "GW_intro_R3"]}
                   defaultSelectedItem="GW_intro_R1"
                 />}
-            {!presentMode &&
+            {!playback &&
               <PlayerSelect
                 label="AUDIO TRACK"
-                items={["GW_intro_SFX_R1", "GW_intro_SFX_R2", "GW_intro_SFX_R3"]}
+                items={[
+                  "GW_intro_SFX_R1",
+                  "GW_intro_SFX_R2",
+                  "GW_intro_SFX_R3"
+                ]}
                 defaultSelectedItem="GW_intro_SFX_R1"
               />}
-            <PlayerSelect
-              label="FRAMERATE"
-              items={["12", "24", "30", "60"]}
-              maxWidth={160}
-              defaultSelectedItem={24}
-              onChange={selectedItem => onFPSChange(selectedItem)}
-            />
+            {!playback &&
+              <PlayerSelect
+                label="FRAMERATE"
+                items={["12", "24", "30", "60"]}
+                maxWidth={160}
+                defaultSelectedItem={24}
+                onChange={selectedItem => onFPSChange(selectedItem)}
+              />}
             <PlayerButton action="sound" />
-            <PlayerButton action="popout" />
+            <PlayerButton action="popout" noBorder />
 
           </PlayerControls>}
     </div>

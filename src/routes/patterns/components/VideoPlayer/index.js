@@ -6,9 +6,9 @@ import LoadingProgress from "./components/LoadingProgress";
 import ProgressBar from "./components/ProgressBar";
 
 export function getFrames() {
-  let i = 1;
+  let i = 0;
   const frames = [];
-  while (i < 120) {
+  while (i < 119) {
     frames.push(require(`media/animation/animation_${i}.jpg`));
     i++;
   }
@@ -36,7 +36,7 @@ export default class VideoPlayer extends Component {
                 <ProgressBar {...getViewerProgressProps()} />
               </PlayerViewer>
               <LoadingProgress {...loadingProgress} />
-              <Controls {...getViewerControlsProps()} />
+              <Controls {...getViewerControlsProps()} playback />
             </div>
           );
         }}

@@ -33,7 +33,7 @@ export const PlayerButton = styled(_PlayerButton)`
   backface-visibility: hidden;
   background: ${PAPER};
   border: none;
-  border-right  : 1px solid ${FLINT};
+  border-right: ${props => props.noBorder ? "none" : `1px solid ${FLINT}`};
   cursor: pointer;
   display: flex;
   height: 64px;
