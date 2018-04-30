@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CanvasImageScrubber from "canvas-image-scrubber";
 import { PlayerViewer, Player } from "styled";
+
 import Controls from "components/VideoPlayer/Controls";
 import LoadingProgress from "components/VideoPlayer/LoadingProgress";
 import ProgressBar from "components/VideoPlayer/ProgressBar";
