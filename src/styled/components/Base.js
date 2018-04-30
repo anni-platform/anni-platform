@@ -10,6 +10,7 @@ export default () => injectGlobal`
   ${styledNormalize}
 
   body {
+    -ms-overflow-style: -ms-autohiding-scrollbar;
     background-color: ${PAPER};
 
     .dragHelper {
