@@ -72,9 +72,6 @@ class Login extends Component {
   }
 
   render() {
-    const url =
-      "https://anni.us16.list-manage.com/subscribe/post?u=69e025bd975c0ddc0239262d1&amp;id=7059a598b1";
-
     return (
       <Section split>
         <Header>
@@ -96,7 +93,7 @@ class Login extends Component {
               Beta Program soon. Sign up below to join!
             </Paragraph>
             <MailchimpSubscribe
-              url={url}
+              url="https://anni.us16.list-manage.com/subscribe/post?u=69e025bd975c0ddc0239262d1&amp;id=7059a598b1"
               render={({ subscribe, status, message }) => (
                 <CustomForm
                   status={status}
