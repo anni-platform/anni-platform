@@ -42,7 +42,7 @@ export const Input = props => {
     value,
     icon,
     innerRef,
-    type
+    type,
   } = props;
 
   const styles = classNames({
