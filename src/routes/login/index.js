@@ -1,14 +1,15 @@
 import React, { Component } from "react";
+import MailchimpSubscribe from "react-mailchimp-subscribe";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import { getAuthUrl } from "adapters";
-import { CoverImage } from 'components/Image';
+import { CoverImage } from "components/Image";
 import {
   Button,
   Content,
   Container,
   Heading,
   Header,
+  Input,
   Paragraph,
   Section
 } from "styled";
@@ -19,6 +20,45 @@ import screenLG from "media/dashboard.png";
 import screenMD from "media/dashboard-md.png";
 import screenSM from "media/dashboard-sm.png";
 
+/*
+  Custom Signup Form
+*/
+
+const CustomForm = ({ status, message, onValidated }) => {
+  let email, name;
+
+  const submit = () =>
+    email &&
+    name &&
+    email.value.indexOf("@") > -1 &&
+    onValidated({
+      EMAIL: email.value,
+      NAME: name.value
+    });
+
+  return (
+    <Content full>
+      <Input
+        innerRef={val => (name = val)}
+        type="text"
+        placeholder="Your name"
+        mb={8}
+      />
+
+      <Input
+        innerRef={val => (email = val)}
+        type="email"
+        placeholder="Your email"
+        mb={16}
+      />
+      <Button onClick={submit}>Submit</Button>
+      {status === "sending" && <Paragraph mt={16}>sending...</Paragraph>}
+      {status === "error" && <Paragraph mt={16}>Error occurred...</Paragraph>}
+      {status === "success" && <Paragraph mt={16}>{message}</Paragraph>}
+    </Content>
+  );
+};
+
 class Login extends Component {
   componentDidMount() {
     if (this.props.auth.toJS().isAuthenticated) {
@@ -27,6 +67,9 @@ class Login extends Component {
   }
 
   render() {
+    const url =
+      "https://anni.us16.list-manage.com/subscribe/post?u=69e025bd975c0ddc0239262d1&amp;id=7059a598b1";
+
     return (
       <Section split>
         <Header>
@@ -35,26 +78,34 @@ class Login extends Component {
         <Container split={60} center>
           <Content>
             <Heading mb={16}>
-              Finally, a single space for
-              {" "}
-              <Typed data="hello" />
-              {" "}
-              to manage and present their entire workflow.
+              Finally, a single space for <Typed data="hello" /> to manage and
+              present their work.
             </Heading>
             <Paragraph responsive strong>
-              Write a script, create a moodboard, annotate your storyboards, showcase your styleframes, present your video and collaborate with your client in a single space.
+              Write a script, create a moodboard, annotate your storyboards,
+              showcase your styleframes, present your video and collaborate with
+              your client in a single space.
               <br />
               <br />
-              <Button href={getAuthUrl()}>Sign In</Button>
             </Paragraph>
+            <MailchimpSubscribe
+              url={url}
+              render={({ subscribe, status, message }) => (
+                <CustomForm
+                  status={status}
+                  message={message}
+                  onValidated={formData => subscribe(formData)}
+                />
+              )}
+            />
           </Content>
         </Container>
         <Container split={40} center media>
-          <CoverImage 
+          <CoverImage
             images={{
               [breakpointSizes.md]: screenLG,
               [breakpointSizes.sm]: screenMD,
-              0: screenSM,
+              0: screenSM
             }}
           />
         </Container>

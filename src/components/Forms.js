@@ -33,7 +33,7 @@ export const TextArea = props => {
 };
 
 export const Input = props => {
-  
+
   const {
     className,
     onChange,
@@ -41,6 +41,8 @@ export const Input = props => {
     readOnly,
     value,
     icon,
+    innerRef,
+    type
   } = props;
 
   const styles = classNames({
@@ -54,7 +56,7 @@ export const Input = props => {
     }
     return filteredProps;
   }, {});
-  
+
   return (
     <FieldGroup icon>
       {icon && <OutlineIcon color name={icon} size={24} />}
@@ -65,6 +67,8 @@ export const Input = props => {
         placeholder={placeholder}
         value={value}
         readOnly={readOnly}
+        innerRef={innerRef}
+        type={type}
       />
     </FieldGroup>
   );
