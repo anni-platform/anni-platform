@@ -81,13 +81,12 @@ class Login extends Component {
               Finally, a single space for <Typed data="hello" /> to manage and
               present their work.
             </Heading>
-            <Paragraph responsive strong>
+            <Paragraph responsive>
               Write a script, create a moodboard, annotate your storyboards,
               showcase your styleframes, present your video and collaborate with
               your client in a single space.
-              <br />
-              <br />
             </Paragraph>
+            <Paragraph responsive mt={32}>We haven't launched yet, but we will be admitting users into the Beta Program soon. Sign up below to join!</Paragraph>
             <MailchimpSubscribe
               url={url}
               render={({ subscribe, status, message }) => (
