@@ -15,7 +15,7 @@ export const TextArea = props => {
 
   const styles = classNames({
     imageItem: imageItem,
-    [className]: className
+    [className]: className,
   });
 
   return (
@@ -33,7 +33,6 @@ export const TextArea = props => {
 };
 
 export const Input = props => {
-
   const {
     className,
     onChange,
@@ -46,12 +45,14 @@ export const Input = props => {
   } = props;
 
   const styles = classNames({
-    [className]: className
+    [className]: className,
   });
 
   const allowedProps = Object.keys(props).reduce((acc, prop) => {
-    const filteredProps = {...acc};
-    if (!!['onKeyPress', 'onKeyDown', 'onKeyUp', 'onFocus'].find(p => p === prop)) {
+    const filteredProps = { ...acc };
+    if (
+      !!["onKeyPress", "onKeyDown", "onKeyUp", "onFocus"].find(p => p === prop)
+    ) {
       filteredProps[prop] = props[prop];
     }
     return filteredProps;
