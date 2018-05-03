@@ -72,6 +72,6 @@ export const Avatar = Button.extend`
   span {
     left: 50%;
     position: absolute;
-    tran: translateX(-50%);
+    transform: translateX(-50%);
   }
 `;
