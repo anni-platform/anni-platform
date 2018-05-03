@@ -7,6 +7,7 @@ import {
   Button,
   Content,
   Container,
+  FieldGroup,
   Heading,
   Header,
   Input,
@@ -38,20 +39,24 @@ const CustomForm = ({ status, message, onValidated }) => {
 
   return (
     <Content full>
-      <Input
-        innerRef={val => (name = val)}
-        type="text"
-        placeholder="Your name"
-        mb={8}
-      />
+      <FieldGroup mt={24}>
+        <Input
+          innerRef={val => (name = val)}
+          type="text"
+          placeholder="Your name"
+          mr={16}
+          mb={16}
+        />
 
-      <Input
-        innerRef={val => (email = val)}
-        type="email"
-        placeholder="Your email"
-        mb={16}
-      />
-      <Button onClick={submit}>Submit</Button>
+        <Input
+          innerRef={val => (email = val)}
+          type="email"
+          placeholder="Your email"
+          mr={16}
+          mb={16}
+        />
+        <Button onClick={submit}>Submit</Button>
+      </FieldGroup>
       {status === "sending" && <Paragraph mt={16}>sending...</Paragraph>}
       {status === "error" && <Paragraph mt={16}>Error occurred...</Paragraph>}
       {status === "success" && <Paragraph mt={16}>{message}</Paragraph>}

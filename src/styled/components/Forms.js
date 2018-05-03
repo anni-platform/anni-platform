@@ -15,18 +15,18 @@ import { Above } from "./MediaTemplates";
 import { Utils } from "./Utils";
 
 const inputPadding = `4px 0`;
-const inputHeight = '30px';
-const selectInputPadding = '4px';
+const inputHeight = "30px";
+const selectInputPadding = "4px";
 
 export const Input = styled.input`
   background: transparent;
   border: none;
   border-bottom: 1px solid ${FLINT};
   color: ${CHARCOAL};
-  font-family: ${props => props.subheading ? "Apercu Bold" : "Apercu"};
-  font-size: ${props => props.subheading ? "24px" : "16px"};
+  font-family: ${props => (props.subheading ? "Apercu Bold" : "Apercu")};
+  font-size: ${props => (props.subheading ? "24px" : "16px")};
   height: ${inputHeight};
-  padding: ${props => props.select ? selectInputPadding : inputPadding};
+  padding: ${props => (props.select ? selectInputPadding : inputPadding)};
   padding-left: ${props => props.icon && "56px"};
   position: relative;
   transition: 200ms ${EASE_OUT_EXPO};
@@ -43,7 +43,7 @@ export const Input = styled.input`
   }
 
   ::placeholder {
-    color: ${CONCRETE}
+    color: ${CONCRETE};
   }
 `;
 
@@ -52,14 +52,13 @@ export const Select = styled.div`
   max-width: 300px;
 
   #chevron-down {
-    fill: ${props => props.rotateIcon ? COPPER : CONCRETE };
+    fill: ${props => (props.rotateIcon ? COPPER : CONCRETE)};
     position: absolute;
     right: 0;
     top: 8px;
     transform: ${props => props.rotateIcon && "rotate(180deg)"};
     transition: transform 400ms ${EASE_OUT_EXPO};
   }
-
 `;
 
 export const SelectOptions = styled.div`
@@ -71,11 +70,10 @@ export const SelectOptions = styled.div`
   max-height: 165px;
   overflow-y: auto;
   box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.5);
-`
-
+`;
 
 export const SelectOption = styled.div`
-  background-color: ${props => props.active ? PEBBLE : PAPER};
+  background-color: ${props => (props.active ? PEBBLE : PAPER)};
   font-family: "Apercu";
   font-size: "16px";
   height: ${inputHeight};
@@ -89,9 +87,9 @@ export const TextArea = styled(BaseTextArea)`
   border: none;
   border-bottom: 1px solid ${FLINT};
   color: ${CHARCOAL};
-  font-family: ${props => props.subheading ? "Apercu Bold" : "Apercu"};
-  font-size: ${props => props.subheading ? "24px" : "16px"};
-  height: ${props => props.height ? `${props.height}px` : "30px"};
+  font-family: ${props => (props.subheading ? "Apercu Bold" : "Apercu")};
+  font-size: ${props => (props.subheading ? "24px" : "16px")};
+  height: ${props => (props.height ? `${props.height}px` : "30px")};
   line-height: 1.6;
   min-height: 0;
   position: relative;
@@ -111,7 +109,7 @@ export const TextArea = styled(BaseTextArea)`
   }
 
   ::placeholder {
-    color: ${CONCRETE}
+    color: ${CONCRETE};
   }
 
   &.imageItem {
@@ -149,15 +147,18 @@ export const FormGroup = styled.form`
 `;
 
 export const FieldGroup = styled.div`
-  align-items: center;
+  align-items: stretch;
   width: 100%;
   display: flex;
-  flex-direction: ${props => props.stacked && "column"};
+  flex-direction: column;
   justify-content: ${props => props.center && "center"};
   position: relative;
+  ${Utils.margin};
 
-  ${/* Styles for text areas with icons */ ""}
-  svg {
+  ${Above.sm`
+    align-items: center;
+    flex-direction: ${props => (props.stacked ? "column" : "row")};
+  `} ${/* Styles for text areas with icons */ ""} svg {
     left: 16px;
     position: absolute;
     z-index: 2;
@@ -174,15 +175,15 @@ export const Label = styled.label`
   justify-content: flex-end;
   letter-spacing: 1px;
   transition: 400ms ${EASE_OUT_EXPO};
-  text-transform: ${props => props.capitalize ? "uppercase" : "default"};
+  text-transform: ${props => (props.capitalize ? "uppercase" : "default")};
   transform-origin: right;
   ${Utils.margin};
 
   span {
-    display: ${props => props.hide ? 'none' : 'block'};
+    display: ${props => (props.hide ? "none" : "block")};
     ${Above.lg`
       display: block;
-    `}
+    `};
   }
 
   &:hover {
@@ -197,6 +198,6 @@ export const Label = styled.label`
 export const Radio = styled.input.attrs({
   type: "radio"
 })`
-  position: ${props => props.hide ? "hidden" : "inherit"};
+  position: ${props => (props.hide ? "hidden" : "inherit")};
   ${Utils.margin};
 `;

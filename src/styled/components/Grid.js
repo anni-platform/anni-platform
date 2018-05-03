@@ -7,6 +7,7 @@ export const Grid = styled.div`
   grid-gap: 24px;
   grid-auto-flow: row dense;
   grid-auto-rows: ${props => props.small ? "200px" : "320px"};
+  grid-auto-rows: ${props => props.noRow && "min-content"};
   grid-template-columns: ${props => props.small ? "repeat(auto-fit, minmax(200px, 1fr))" : "repeat(auto-fit, minmax(280px, 1fr))"};
   width: 100%;
 
