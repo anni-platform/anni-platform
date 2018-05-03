@@ -12,7 +12,7 @@ import {
   Header,
   Input,
   Paragraph,
-  Section
+  Section,
 } from "styled";
 import Typed from "components/Typed";
 import { breakpointSizes } from "constants/index";
@@ -34,7 +34,7 @@ const CustomForm = ({ status, message, onValidated }) => {
     email.value.indexOf("@") > -1 &&
     onValidated({
       EMAIL: email.value,
-      NAME: name.value
+      NAME: name.value,
     });
 
   return (
@@ -91,7 +91,10 @@ class Login extends Component {
               showcase your styleframes, present your video and collaborate with
               your client in a single space.
             </Paragraph>
-            <Paragraph responsive mt={32}>We haven't launched yet, but we will be admitting users into the Beta Program soon. Sign up below to join!</Paragraph>
+            <Paragraph responsive mt={32}>
+              We haven't launched yet, but we will be admitting users into the
+              Beta Program soon. Sign up below to join!
+            </Paragraph>
             <MailchimpSubscribe
               url={url}
               render={({ subscribe, status, message }) => (
@@ -109,7 +112,7 @@ class Login extends Component {
             images={{
               [breakpointSizes.md]: screenLG,
               [breakpointSizes.sm]: screenMD,
-              0: screenSM
+              0: screenSM,
             }}
           />
         </Container>

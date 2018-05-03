@@ -8,7 +8,7 @@ import {
   PEBBLE,
   PAPER,
   EASE_OUT_BACK,
-  EASE_OUT_EXPO
+  EASE_OUT_EXPO,
 } from "./Variables";
 import { TextArea as BaseTextArea } from "components/Forms";
 import { Above } from "./MediaTemplates";
@@ -196,7 +196,7 @@ export const Label = styled.label`
 `;
 
 export const Radio = styled.input.attrs({
-  type: "radio"
+  type: "radio",
 })`
   position: ${props => (props.hide ? "hidden" : "inherit")};
   ${Utils.margin};
