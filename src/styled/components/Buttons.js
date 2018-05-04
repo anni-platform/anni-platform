@@ -36,6 +36,16 @@ export const Button = styled(BaseButton)`
   transition: 400ms ${EASE_OUT_EXPO};
   z-index: 2;
   ${Utils.margin};
+
+  &:disabled,
+  &[disabled] {
+    cursor: default;
+    &:hover,
+    &:focus {
+      transform: scale(1);
+    }
+  }
+
   &:hover,
   &:focus {
     transform: scale(1.02);

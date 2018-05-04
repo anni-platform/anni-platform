@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {
+  CARMINE,
   HAZEL,
   COPPER,
   FLINT,
@@ -23,6 +24,7 @@ export const Input = styled(BaseInput)`
   background: transparent;
   border: none;
   border-bottom: 1px solid ${FLINT};
+  border-color: ${props => props.danger && CARMINE};
   color: ${CHARCOAL};
   font-family: ${props => (props.subheading ? "Apercu Bold" : "Apercu")};
   font-size: ${props => (props.subheading ? "24px" : "16px")};

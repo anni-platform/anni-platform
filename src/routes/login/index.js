@@ -31,42 +31,61 @@ class SignupForm extends Component {
     this.state = {
       name: "",
       email: "",
+      errorName: false,
+      errorEmail: false,
+      errorMessage: "* Both fields are required.",
     };
   }
 
   submit = () => {
     const { name, email } = this.state;
-    console.log(name);
-    if (email.indexOf("@") > -1) {
-      name &&
-        this.props.onValidated({
-          EMAIL: email,
-          NAME: name,
-        });
+
+    if (email.length === 0 && name.length === 0) {
+      this.setState({
+        errorName: true,
+        errorEmail: true,
+        errorMessage: "Please enter a valid name and email.",
+      });
+    } else if (name.length === 0) {
+      this.setState({
+        errorName: true,
+        errorMessage: "Please enter a valid name.",
+      });
+    } else if (email !== undefined && email.indexOf("@") > -1) {
+      this.props.onValidated({
+        EMAIL: email,
+        NAME: name,
+      });
     } else {
-      console.log("wrong email...");
+      this.setState({
+        errorEmail: true,
+        errorMessage: "Please enter a valid email address.",
+      });
     }
   };
 
   updateName = e => {
     this.setState({
       name: e.target.value,
+      errorName: false,
     });
   };
 
   updateEmail = e => {
     this.setState({
       email: e.target.value,
+      errorEmail: false,
     });
   };
 
   render() {
     const { status, message } = this.props;
-    const { name, email } = this.state;
+    const { errorName, errorEmail, errorMessage, email, name } = this.state;
     return (
       <Content full>
         <FieldGroup mt={24}>
           <Input
+            danger={errorName}
             type="text"
             placeholder="Your name"
             onChange={this.updateName}
@@ -76,6 +95,7 @@ class SignupForm extends Component {
           />
 
           <Input
+            danger={errorEmail}
             onChange={this.updateEmail}
             type="email"
             placeholder="Your email"
@@ -83,11 +103,13 @@ class SignupForm extends Component {
             mr={16}
             mb={16}
           />
-          <Button onClick={this.submit}>Submit</Button>
+          <Button onClick={this.submit} disabled={status}>Submit</Button>
         </FieldGroup>
-        {status === "sending" && <Paragraph mt={16}>sending...</Paragraph>}
-        {status === "error" && <Paragraph mt={16}>{message}</Paragraph>}
-        {status === "success" && <Paragraph mt={16}>{message}</Paragraph>}
+        <Paragraph tiny danger={errorName || errorEmail}>
+          {status === "error"
+            ? "An error occured please try again later."
+            : errorMessage}
+        </Paragraph>
       </Content>
     );
   }
