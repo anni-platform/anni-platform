@@ -24,45 +24,74 @@ import screenSM from "media/dashboard-sm.png";
 /*
   Custom Signup Form
 */
+class SignupForm extends Component {
+  constructor(props) {
+    super(props);
 
-const CustomForm = ({ status, message, onValidated }) => {
-  let email, name;
+    this.state = {
+      name: "",
+      email: "",
+    };
+  }
 
-  const submit = () =>
-    email &&
-    name &&
-    email.value.indexOf("@") > -1 &&
-    onValidated({
-      EMAIL: email.value,
-      NAME: name.value,
+  submit = () => {
+    const { name, email } = this.state;
+    console.log(name);
+    if (email.indexOf("@") > -1) {
+      name &&
+        this.props.onValidated({
+          EMAIL: email,
+          NAME: name,
+        });
+    } else {
+      console.log("wrong email...");
+    }
+  };
+
+  updateName = e => {
+    this.setState({
+      name: e.target.value,
     });
+  };
 
-  return (
-    <Content full>
-      <FieldGroup mt={24}>
-        <Input
-          innerRef={val => (name = val)}
-          type="text"
-          placeholder="Your name"
-          mr={16}
-          mb={16}
-        />
+  updateEmail = e => {
+    this.setState({
+      email: e.target.value,
+    });
+  };
 
-        <Input
-          innerRef={val => (email = val)}
-          type="email"
-          placeholder="Your email"
-          mr={16}
-          mb={16}
-        />
-        <Button onClick={submit}>Submit</Button>
-      </FieldGroup>
-      {status === "sending" && <Paragraph mt={16}>sending...</Paragraph>}
-      {status === "error" && <Paragraph mt={16}>Error occurred...</Paragraph>}
-      {status === "success" && <Paragraph mt={16}>{message}</Paragraph>}
-    </Content>
-  );
-};
+  render() {
+    const { status, message } = this.props;
+    const { name, email } = this.state;
+    return (
+      <Content full>
+        <FieldGroup mt={24}>
+          <Input
+            type="text"
+            placeholder="Your name"
+            onChange={this.updateName}
+            value={name}
+            mr={16}
+            mb={16}
+          />
+
+          <Input
+            onChange={this.updateEmail}
+            type="email"
+            placeholder="Your email"
+            value={email}
+            mr={16}
+            mb={16}
+          />
+          <Button onClick={this.submit}>Submit</Button>
+        </FieldGroup>
+        {status === "sending" && <Paragraph mt={16}>sending...</Paragraph>}
+        {status === "error" && <Paragraph mt={16}>{message}</Paragraph>}
+        {status === "success" && <Paragraph mt={16}>{message}</Paragraph>}
+      </Content>
+    );
+  }
+}
 
 class Login extends Component {
   componentDidMount() {
@@ -95,7 +124,7 @@ class Login extends Component {
             <MailchimpSubscribe
               url="https://anni.us16.list-manage.com/subscribe/post?u=69e025bd975c0ddc0239262d1&amp;id=7059a598b1"
               render={({ subscribe, status, message }) => (
-                <CustomForm
+                <SignupForm
                   status={status}
                   message={message}
                   onValidated={formData => subscribe(formData)}
