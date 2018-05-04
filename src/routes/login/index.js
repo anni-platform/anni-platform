@@ -105,7 +105,7 @@ class SignupForm extends Component {
           />
           <Button onClick={this.submit} disabled={status}>Submit</Button>
         </FieldGroup>
-        <Paragraph tiny danger={errorName || errorEmail}>
+        <Paragraph tiny danger={errorName || errorEmail} mt={8}>
           {status === "error"
             ? "An error occured please try again later."
             : errorMessage}
