@@ -40,7 +40,6 @@ export const Input = props => {
     readOnly,
     value,
     icon,
-    innerRef,
     type,
   } = props;
 
@@ -68,7 +67,6 @@ export const Input = props => {
         placeholder={placeholder}
         value={value}
         readOnly={readOnly}
-        innerRef={innerRef}
         type={type}
       />
     </FieldGroup>

@@ -11,6 +11,7 @@ import {
   EASE_OUT_EXPO,
 } from "./Variables";
 import { TextArea as BaseTextArea } from "components/Forms";
+import { Input as BaseInput } from "components/Forms";
 import { Above } from "./MediaTemplates";
 import { Utils } from "./Utils";
 
@@ -18,7 +19,7 @@ const inputPadding = `4px 0`;
 const inputHeight = "30px";
 const selectInputPadding = "4px";
 
-export const Input = styled.input`
+export const Input = styled(BaseInput)`
   background: transparent;
   border: none;
   border-bottom: 1px solid ${FLINT};
