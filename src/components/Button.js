@@ -6,6 +6,7 @@ export const BaseButton = props => {
   const {
     children,
     className,
+    disabled,
     href,
     icon,
     to,
@@ -31,7 +32,7 @@ export const BaseButton = props => {
     );
   } else {
     return (
-      <button className={className} onClick={onClick}>
+      <button className={className} disabled={disabled} onClick={onClick}>
         {icon && <OutlineIcon name={icon} />}
         {initial && <span>{initial}</span>}
         {children}

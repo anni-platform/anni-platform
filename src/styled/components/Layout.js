@@ -75,11 +75,11 @@ export const Container = styled.div`
 export const Header = styled.div`
   left: 0;
   position: absolute;
-  top: 24px;
+  top: 16px;
 
   ${Above.sm`
     left: 24px;
-    top: 80px;
+    top: 60px;
   `}
 
   ${Above.md`
