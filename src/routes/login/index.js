@@ -79,7 +79,7 @@ class SignupForm extends Component {
   };
 
   render() {
-    const { status, message } = this.props;
+    const { status } = this.props;
     const { errorName, errorEmail, errorMessage, email, name } = this.state;
     return (
       <Content full>
