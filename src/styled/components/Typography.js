@@ -1,8 +1,8 @@
 import styled, { injectGlobal } from "styled-components";
-import Highlight from 'react-highlight';
+import Highlight from "react-highlight";
 import { Above } from "./MediaTemplates";
 import { Utils } from "./Utils";
-import { COPPER, CHARCOAL, FLINT, PEBBLE } from "./Variables";
+import { CARMINE, COPPER, CHARCOAL, FLINT, PEBBLE } from "./Variables";
 
 /*
  * Font Definitions
@@ -45,22 +45,19 @@ export const GlobalStyles = injectGlobal`
 */
 
 export const Heading = styled.h1`
-  color: ${props => props.color ? `${COPPER}` : `${CHARCOAL}`};
-  font-family: 'Apercu Bold', sans-serif;
+  color: ${props => (props.color ? `${COPPER}` : `${CHARCOAL}`)};
+  font-family: "Apercu Bold", sans-serif;
   font-size: 32px;
   margin: 0 0 4px 0;
   max-width: ${props => props.maxWidth && `${props.maxWidth}px`};
-  text-align: ${props => props.center ? "center" : "left"};
-  text-transform: ${props => props.capitalize ? "uppercase" : "default"};
+  text-align: ${props => (props.center ? "center" : "left")};
+  text-transform: ${props => (props.capitalize ? "uppercase" : "default")};
   ${Utils.margin};
 
   ${Above.sm`
     font-size: 40px;
-  `}
-
-  ${'' /* Specific to the type animation within the Homepage */}
-  > .ityped-cursor {
-    color: #E2A480;
+  `} ${"" /* Specific to the type animation within the Homepage */} > .ityped-cursor {
+    color: #e2a480;
     animation: blink 1100ms linear infinite;
   }
 
@@ -81,33 +78,36 @@ export const Heading = styled.h1`
 `;
 
 export const Subheading = styled.h2`
-  color: ${props => props.color ? `${COPPER}` : `${CHARCOAL}`};
-  font-family: 'Apercu Bold', sans-serif;
+  color: ${props => (props.color ? `${COPPER}` : `${CHARCOAL}`)};
+  font-family: "Apercu Bold", sans-serif;
   font-size: 24px;
   font-size: ${props => props.tiny && "15px"};
   font-size: ${props => props.micro && "12px"};
   margin: 0;
   max-width: ${props => props.maxWidth && `${props.maxWidth}px`};
-  letter-spacing: .75px;
-  text-align: ${props => props.center ? "center" : "left"};
-  text-transform: ${props => props.capitalize ? "uppercase" : "default"};
+  letter-spacing: 0.75px;
+  text-align: ${props => (props.center ? "center" : "left")};
+  text-transform: ${props => (props.capitalize ? "uppercase" : "default")};
   ${Utils.margin};
 `;
 
 export const Paragraph = styled.p`
-  color: ${props => props.color ? `${COPPER}` : `${CHARCOAL}`};
-  font-family: ${props => props.strong ? "Apercu Medium" : "Apercu"}, sans-serif;
+  color: ${props => (props.color ? `${COPPER}` : `${CHARCOAL}`)};
+  color: ${props => props.danger && CARMINE};
+  font-family: ${props => (props.strong ? "Apercu Medium" : "Apercu")},
+    sans-serif;
   font-size: 16px;
+  font-size: ${props => props.tiny && "14px"};
   font-size: ${props => props.large && "18px"};
   line-height: 1.6;
   max-width: ${props => props.width && `${props.width}px`};
-  text-align: ${props => props.center ? "center" : "left"};
-  text-transform: ${props => props.capitalize ? "uppercase" : "default"};
+  text-align: ${props => (props.center ? "center" : "left")};
+  text-transform: ${props => (props.capitalize ? "uppercase" : "default")};
   ${Utils.margin};
 
   ${Above.sm`
     font-size: ${props => props.responsive && "18px"}
-  `}
+  `};
 `;
 
 export const CodeBlock = styled(Highlight)`
@@ -117,7 +117,7 @@ export const CodeBlock = styled(Highlight)`
   font-family: "Apercu Mono";
   font-size: 13px;
   line-height: 1.7;
-  margin: ${props => props.noMargin ? "0" : "16px 0 24px 0"};
+  margin: ${props => (props.noMargin ? "0" : "16px 0 24px 0")};
   overflow: scroll;
   padding: 24px;
   &.hljs {
@@ -126,21 +126,21 @@ export const CodeBlock = styled(Highlight)`
 
   .hljs-keyword,
   .hljs-class {
-    color: #5560DD;
+    color: #5560dd;
   }
 
   .hljs-string {
-    color: #EF5B6C;
+    color: #ef5b6c;
   }
 
   .hljs-attr {
-    color: #E4715F;
+    color: #e4715f;
   }
 
   .hljs-tag,
   .hljs-function,
   .hljs-params {
-    color: #E2A480;
+    color: #e2a480;
   }
 
   .hljs-comment {

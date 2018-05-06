@@ -32,7 +32,7 @@
     "redux-devtools-log-monitor": "^1.1.1",
     "resolve-url-loader": "^1.6.0",
     "rimraf": "2.5.4",
-    "styled-components": "^2.2.0",
+    "styled-components": "3.2.6",
     "styled-normalize": "^2.0.1",
     "stylelint": "^9.2.0",
     "stylelint-config-recommended": "^2.1.0",
@@ -58,8 +58,9 @@
     "react-app-rewire-styled-components": "^3.0.2",
     "react-app-rewired": "^1.5.2",
     "react-dom": "^15.6.1",
-    "react-scripts": "^1.0.10",
     "reselect": "^3.0.1",
-    "react-picture-component": "^1.0.5"
+    "react-mailchimp-subscribe": "^2.0.1",
+    "react-picture-component": "^1.0.5",
+    "react-scripts": "^1.0.10"
   }
 }
