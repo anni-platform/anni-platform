@@ -109,7 +109,7 @@ export function createProjectScaffold(path) {
     "Styleframes",
     "Videos",
     "Scripts"
-  ].map(name => {
+  ].forEach(name => {
     return createFolder(`${`/${path}`}/${name}`).catch(e => console.log(e));
   });
 }

@@ -9,9 +9,11 @@ import StaticJSONFileDatabase from "utils/fileStorage";
 import { Loader, Wrapper } from "styled";
 import GlobalStyles from 'styled/components/Base';
 
+const PRE_PROD = process.env.NODE_ENV === "development";
+
 let enhancer = null;
 let DevTools = null;
-if (process.env.NODE_ENV === "development") {
+if (PRE_PROD) {
   DevTools = require("DevTools").default;
   enhancer = compose(DevTools.instrument());
 }
@@ -23,16 +25,14 @@ class App extends Component {
   }
   componentDidMount() {
     const token = getAccessTokenFromUrl();
-    if (token) {
-      storeSessionToken(token);
-    }
+
+    if (token) storeSessionToken(token);
+
     StaticJSONFileDatabase.hydrateStoreFromFileDatabase().then(data => {
-      let store;
-      if (process.env.NODE_ENV === "development") {
-        store = createStore(reducer, data, enhancer);
-      } else {
-        store = createStore(reducer, data);
-      }
+      const store = PRE_PROD
+        ? createStore(reducer, data, enhancer)
+        : createStore(reducer, data);
+
       store.subscribe(() => {
         saveState(store.getState());
       });
