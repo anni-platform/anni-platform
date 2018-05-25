@@ -18,6 +18,7 @@ import Images from "./components/Images";
 import Loaders from "./components/Loaders";
 import Overlays from "./components/Overlays";
 import Typography from "./components/Typography";
+import VideoPlayer from "./components/VideoPlayer";
 
 export default class PatternLibrary extends Component {
   render() {
@@ -51,6 +52,9 @@ export default class PatternLibrary extends Component {
           <NavItem fit>
             <Button href="#loader" link>Loader</Button>
           </NavItem>
+          <NavItem fit>
+            <Button href="#video-player" link>Video Player</Button>
+          </NavItem>
         </NavBar>
 
         <Content>
@@ -74,6 +78,8 @@ export default class PatternLibrary extends Component {
           <Overlays />
           <Anchor id="loader" />
           <Loaders />
+          <Anchor id="video-player" />
+          <VideoPlayer />
         </Content>
       </Section>
     );

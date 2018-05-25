@@ -19,6 +19,7 @@ class Dashboard extends Component {
         p.get("name") !== FILE_DATABASE_DIRECTORY
     );
     const projectItems = filteredProjects.valueSeq().toJS().map(project => {
+      console.log(project.name);
       return (
         <ProjectListItem
           id={project.id}

@@ -1,8 +1,8 @@
 import React from 'react';
 import Downshift from 'downshift';
-import { Input, SelectOption, Select as StyledSelect, SelectOptions, SolidIcon } from "styled";
+import { Input, SelectOption, Select as StyledSelect, SelectOptions, SolidIcon, Subheading } from "styled";
 
-export function Select({items, onChange, placeholder = 'Select an option...', defaultSelectedItem}) {
+export function Select({className, items, label, onChange, placeholder = 'Select an option...', defaultSelectedItem}) {
   return (
     <Downshift
       onChange={onChange}
@@ -21,7 +21,8 @@ export function Select({items, onChange, placeholder = 'Select an option...', de
           !inputValue || inputValue === selectedItem || i.toLowerCase().includes(inputValue.toLowerCase()));
         return (
           <div>
-            <StyledSelect hasItems={!!filteredItems.length} rotateIcon={isOpen}>
+            <StyledSelect hasItems={!!filteredItems.length} rotateIcon={isOpen} className={className}>
+              {label && <Subheading micro color>{label}</Subheading>}
               <Input
                 select {...getInputProps({ placeholder })}
                 onFocus={inputValue === selectedItem && toggleMenu}

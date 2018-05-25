@@ -1,13 +1,13 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
-import { getFilesInFolder } from 'adapters';
-import { updateProject } from 'actions';
-import { Select } from 'components';
-import CanvasImageScrubber from 'canvas-image-scrubber';
-
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { createSelector } from "reselect";
+import { getFilesInFolder } from "adapters";
+import { updateProject } from "actions";
+import { Select } from "components";
+import CanvasImageScrubber from "canvas-image-scrubber";
 import { Content, Heading, Section } from "styled";
+
 class AnimationComponent extends PureComponent {
   constructor(props) {
     super(props);
@@ -38,7 +38,7 @@ class AnimationComponent extends PureComponent {
     const project = folders.find(f => f.name === folder);
     if (!project) return;
     this.getProjectFolder(project.path_lower, folder);
-  }
+  };
   render() {
     const { folders, imageSequence, selectedFolder } = this.state;
     console.log(imageSequence);

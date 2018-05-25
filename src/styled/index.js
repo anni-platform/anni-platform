@@ -37,6 +37,10 @@ export { Backdrop, Dialog, Overlay, OverlayToolbar, OverlayControls, OverlayButt
 /* Toolbars */
 export { ContextualToolbar, Toolbar, ToolbarGroup, ToolbarItem } from "./components/Toolbars";
 
+/* Media Template Definitions */
+export { Player, PlayerButton, PlayerControls, PlayerLoader, PlayerSelect, PlayerTrack, PlayerViewer } from "./components/VideoPlayer";
+
+
 /* Component Specific */
 export { ProjectList } from "./components/Dashboard";
 export { ProjectNav, ProjectNavItem, ProjectNavId } from "./components/ProjectDetails";
