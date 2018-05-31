@@ -16,6 +16,11 @@ if (process.env.NODE_ENV === 'development') {
   enhancer = compose(DevTools.instrument());
 }
 
+const test = {
+  a: 1,
+  b: 2,
+};
+
 class App extends Component {
   constructor() {
     super();
