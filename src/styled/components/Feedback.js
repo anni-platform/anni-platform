@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import _FeedbackItem from "components/FeedbackItem";
-import { FLINT, PAPER, PEBBLE, SHADE } from "./Variables";
+import styled from 'styled-components';
+import _FeedbackItem from 'components/FeedbackItem';
+import { FLINT, PAPER, PEBBLE, SHADE } from './Variables';
 
 export const FeedbackItem = styled(_FeedbackItem)`
   border: ${props => !props.contextual && `1px solid ${FLINT}`};
@@ -63,6 +63,4 @@ export const FeedbackList = styled.div`
   right: 0;
   top: 72px;
   width: auto;
-
-  
-`
+`;

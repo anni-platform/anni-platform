@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from "classnames";
-import { FieldGroup, OutlineIcon } from "styled";
+import classNames from 'classnames';
+import { FieldGroup, OutlineIcon } from 'styled';
 
 export const TextArea = props => {
   const {
@@ -52,7 +52,7 @@ export const Input = props => {
   const allowedProps = Object.keys(props).reduce((acc, prop) => {
     const filteredProps = { ...acc };
     if (
-      !!["onKeyPress", "onKeyDown", "onKeyUp", "onFocus"].find(p => p === prop)
+      !!['onKeyPress', 'onKeyDown', 'onKeyUp', 'onFocus'].find(p => p === prop)
     ) {
       filteredProps[prop] = props[prop];
     }

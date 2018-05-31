@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import classNames from "classnames";
+import React, { Component } from 'react';
+import classNames from 'classnames';
 
 import {
   Container,
@@ -9,18 +9,18 @@ import {
   Heading,
   Toolbar,
   ToolbarGroup,
-  ToolbarItem
-} from "styled";
+  ToolbarItem,
+} from 'styled';
 
-import Editor from "draft-js-plugins-editor";
+import Editor from 'draft-js-plugins-editor';
 import {
   EditorState,
   RichUtils,
   getVisibleSelectionRect,
   convertToRaw,
-  convertFromRaw
-} from "draft-js";
-import createCounterPlugin from "draft-js-counter-plugin";
+  convertFromRaw,
+} from 'draft-js';
+import createCounterPlugin from 'draft-js-counter-plugin';
 
 const counterPlugin = createCounterPlugin();
 const { CharCounter, WordCounter, CustomCounter } = counterPlugin;
@@ -35,7 +35,7 @@ class StyleButton extends Component {
   render() {
     const toolbarItem = classNames({
       toolbarItem: true,
-      active: this.props.active
+      active: this.props.active,
     });
 
     return (
@@ -47,10 +47,10 @@ class StyleButton extends Component {
 }
 
 const styleTypes = [
-  { initial: "B", label: "Bold", style: "BOLD" },
-  { initial: "I", label: "Italic", style: "ITALIC" },
-  { initial: "U", label: "Underline", style: "UNDERLINE" },
-  { initial: "S", label: "Strikethrough", style: "STRIKETHROUGH" }
+  { initial: 'B', label: 'Bold', style: 'BOLD' },
+  { initial: 'I', label: 'Italic', style: 'ITALIC' },
+  { initial: 'U', label: 'Underline', style: 'UNDERLINE' },
+  { initial: 'S', label: 'Strikethrough', style: 'STRIKETHROUGH' },
 ];
 
 const InlineStyleControls = props => {
@@ -81,7 +81,7 @@ export default class TextEditor extends Component {
     this.state = {
       editorState: content
         ? EditorState.createWithContent(convertFromRaw(content))
-        : EditorState.createEmpty()
+        : EditorState.createEmpty(),
     };
   }
 
@@ -123,13 +123,14 @@ export default class TextEditor extends Component {
       this.setState({
         styles: {
           opacity: 1,
-          left: selectedText.left -
+          left:
+            selectedText.left -
             toolbarParent.left -
-            toolbar["width"] / 2 +
+            toolbar['width'] / 2 +
             selectedText.width / 2,
-          top: selectedText.top - toolbarParent.top - toolbar["height"] * 1.25,
-          visibility: "visible"
-        }
+          top: selectedText.top - toolbarParent.top - toolbar['height'] * 1.25,
+          visibility: 'visible',
+        },
       });
     } else {
       this.hideContextualMenu();
@@ -137,24 +138,27 @@ export default class TextEditor extends Component {
   };
 
   hideContextualMenu = () => {
-    this.setState({ styles: { opacity: 0, visibility: "hidden" } });
+    this.setState({ styles: { opacity: 0, visibility: 'hidden' } });
   };
 
   averageReadingTime(str) {
     const wordArray = str.match(/\S+/g); // matches words according to whitespace
     return wordArray
-      ? new Date(wordArray.length / 3 * 1000)
+      ? new Date((wordArray.length / 3) * 1000)
           .toUTCString()
           .match(/(\d\d:\d\d:\d\d)/)[0]
-      : "00:00:00";
+      : '00:00:00';
   }
 
   render() {
     const { editorState, styles } = this.state;
 
     return (
-      <Container innerRef={ref => this.toolbarParent = ref}>
-        <ContextualToolbar style={styles} innerRef={ref => this.toolbar = ref}>
+      <Container innerRef={ref => (this.toolbarParent = ref)}>
+        <ContextualToolbar
+          style={styles}
+          innerRef={ref => (this.toolbar = ref)}
+        >
           <InlineStyleControls
             condensed
             editorState={editorState}
@@ -186,11 +190,14 @@ export default class TextEditor extends Component {
             onToggle={this.toggleInlineStyle}
           />
           <ToolbarGroup>
-            <ToolbarItem><CharCounter /> characters</ToolbarItem>
-            <ToolbarItem><WordCounter /> words</ToolbarItem>
+            <ToolbarItem>
+              <CharCounter /> characters
+            </ToolbarItem>
+            <ToolbarItem>
+              <WordCounter /> words
+            </ToolbarItem>
             <ToolbarItem noBorder>
-              Reading time
-              {" "}
+              Reading time{' '}
               <CustomCounter countFunction={this.averageReadingTime} />
             </ToolbarItem>
           </ToolbarGroup>

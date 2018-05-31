@@ -21,15 +21,19 @@ export const loadState = () => {
 
 let saving = false;
 let oldState = null;
-export const saveState = (newState) => {
+export const saveState = newState => {
   if (!oldState) {
     oldState = newState;
   }
   if (newState === DEFAULT_STATE) {
     return;
   }
-  const oldProjects = oldState.projects.toJS ? oldState.projects.toJS() : oldState.projects;
-  const newProjects = newState.projects.toJS ? newState.projects.toJS() : newState.projects;
+  const oldProjects = oldState.projects.toJS
+    ? oldState.projects.toJS()
+    : oldState.projects;
+  const newProjects = newState.projects.toJS
+    ? newState.projects.toJS()
+    : newState.projects;
   const oldFiles = oldState.files.toJS ? oldState.files.toJS() : oldState.files;
   const newFiles = newState.files.toJS ? newState.files.toJS() : newState.files;
   try {
@@ -42,10 +46,14 @@ export const saveState = (newState) => {
       const serializedNewState = JSON.stringify(newState);
       localStorage.setItem(STATE, serializedNewState);
       saving = true;
-      uploadFile(FILE_DATABASE_DIRECTORY, stateToJsonFile(newState, 'state.json')).then(() => { saving = false });
+      uploadFile(
+        FILE_DATABASE_DIRECTORY,
+        stateToJsonFile(newState, 'state.json')
+      ).then(() => {
+        saving = false;
+      });
       return;
     }
-
   } catch (err) {
     console.log(err);
     // Ignore write errors.

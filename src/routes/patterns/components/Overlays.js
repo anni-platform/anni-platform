@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 import {
   Alert,
@@ -13,33 +13,33 @@ import {
   Heading,
   Overlay,
   Paragraph,
-  Subheading
-} from "styled";
+  Subheading,
+} from 'styled';
 
 export default class Alerts extends Component {
   state = {
     isDefault: false,
     isDanger: false,
-    isModal: false
+    isModal: false,
   };
 
   showDefault = () => {
     this.setState({
       isDefault: !this.state.isDefault,
-      isDanger: false
+      isDanger: false,
     });
   };
 
   showDanger = () => {
     this.setState({
       isDanger: !this.state.isDanger,
-      isDefault: false
+      isDefault: false,
     });
   };
 
   showModal = () => {
     this.setState({
-      isModal: !this.state.isModal
+      isModal: !this.state.isModal,
     });
   };
 
@@ -47,7 +47,7 @@ export default class Alerts extends Component {
     this.setState({
       isDefault: false,
       isDanger: false,
-      isModal: false
+      isModal: false,
     });
   };
 
@@ -57,14 +57,16 @@ export default class Alerts extends Component {
     return (
       <Card padded mb={24}>
         <Subheading mb={24}>Overlays</Subheading>
-        <Subheading capitalize color micro mb={16}>Alerts</Subheading>
+        <Subheading capitalize color micro mb={16}>
+          Alerts
+        </Subheading>
         <ButtonGroup>
           <Button onClick={this.showDefault}>Show Regular Alert</Button>
           <Button onClick={this.showDanger}>Show Danger Alert</Button>
         </ButtonGroup>
 
         <CodeBlock noMargin>
-{`import { Alert, AlertControls, AlertMessage, Button, Content, Subheading, Paragraph } from "styled";
+          {`import { Alert, AlertControls, AlertMessage, Button, Content, Subheading, Paragraph } from "styled";
 
 class Overlays extends Component {
   state = {
@@ -137,13 +139,15 @@ class Overlays extends Component {
 `}
         </CodeBlock>
 
-        <Subheading capitalize color micro mb={16} mt={24}>Modal</Subheading>
+        <Subheading capitalize color micro mb={16} mt={24}>
+          Modal
+        </Subheading>
         <ButtonGroup>
           <Button onClick={this.showModal}>Show Modal</Button>
         </ButtonGroup>
 
         <CodeBlock noMargin>
-{`import { Backdrop, ButtonGroup, Button, Content, Dialog, Heading, Overlay } from "styled";
+          {`import { Backdrop, ButtonGroup, Button, Content, Dialog, Heading, Overlay } from "styled";
 
 class Overlays extends Component {
   state = {
@@ -183,9 +187,9 @@ class Overlays extends Component {
     );
   }
 }`}
-          </CodeBlock>
+        </CodeBlock>
 
-        {isModal &&
+        {isModal && (
           <Overlay>
             <Backdrop onClick={this.closeOverlay} />
             <Dialog>
@@ -196,9 +200,10 @@ class Overlays extends Component {
                 </Button>
               </ButtonGroup>
             </Dialog>
-          </Overlay>}
+          </Overlay>
+        )}
 
-        {isDefault &&
+        {isDefault && (
           <Alert>
             <AlertMessage>
               <Subheading>Success!</Subheading>
@@ -211,9 +216,10 @@ class Overlays extends Component {
                 Dismiss
               </Button>
             </AlertControls>
-          </Alert>}
+          </Alert>
+        )}
 
-        {isDanger &&
+        {isDanger && (
           <Alert danger>
             <AlertMessage>
               <Subheading>Oh Oh..</Subheading>
@@ -226,7 +232,8 @@ class Overlays extends Component {
                 Dismiss
               </Button>
             </AlertControls>
-          </Alert>}
+          </Alert>
+        )}
       </Card>
     );
   }

@@ -1,11 +1,11 @@
-import React from "react";
-import classNames from "classnames";
+import React from 'react';
+import classNames from 'classnames';
 
 export const BaseLoader = ({ center, fullPage, size, className }) => {
   const styles = classNames({
     center: center,
     fullPage: fullPage,
-    [className]: className
+    [className]: className,
   });
 
   return (
@@ -21,5 +21,5 @@ BaseLoader.defaultProps = {
   center: false,
   fullPage: false,
   size: 24,
-  style: {}
+  style: {},
 };

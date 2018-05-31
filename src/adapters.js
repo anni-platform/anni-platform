@@ -1,7 +1,7 @@
-import Dropbox from "dropbox";
-import env from "app-config.json";
-import { parseQueryString } from "utils";
-const DROPBOX_ACCESS_TOKEN = "DROPBOX_ACCESS_TOKEN";
+import Dropbox from 'dropbox';
+import env from 'app-config.json';
+import { parseQueryString } from 'utils';
+const DROPBOX_ACCESS_TOKEN = 'DROPBOX_ACCESS_TOKEN';
 
 let client = null;
 let _token = null;
@@ -66,9 +66,9 @@ export function getAccessTokenFromUrl() {
 export function uploadFile(path, file) {
   return client
     .filesUpload({
-      path: "/" + path + "/" + file.name,
+      path: '/' + path + '/' + file.name,
       contents: file,
-      mode: "overwrite"
+      mode: 'overwrite',
     })
     .catch(e => console.log(e));
 }
@@ -103,15 +103,11 @@ export function getAuthUrl() {
 export function createProjectScaffold(path) {
   const mainFolderPath = `/${path}`;
   createFolder(mainFolderPath);
-  [
-    "References",
-    "Storyboards",
-    "Styleframes",
-    "Videos",
-    "Scripts"
-  ].forEach(name => {
-    return createFolder(`${`/${path}`}/${name}`).catch(e => console.log(e));
-  });
+  ['References', 'Storyboards', 'Styleframes', 'Videos', 'Scripts'].map(
+    name => {
+      return createFolder(`${`/${path}`}/${name}`).catch(e => console.log(e));
+    }
+  );
 }
 
 export function getFilesInFolder(path) {
@@ -123,13 +119,15 @@ export function getFilesInFolder(path) {
       const getLinks = response.entries.map(entry => {
         return new Promise((res, er) => {
           getLink(entry.path_display).then(metadata => {
-            const src = metadata.url.replace(/.$/, "1");
+            const src = metadata.url.replace(/.$/, '1');
             entry.src = src;
             res();
           });
         });
       });
-      Promise.all(getLinks).then(() => resolve(response.entries)).catch(reject);
+      Promise.all(getLinks)
+        .then(() => resolve(response.entries))
+        .catch(reject);
     });
   });
 }

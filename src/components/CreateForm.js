@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { createFolder } from "adapters";
-import { addProject } from "actions";
-import ProjectManager from "containers/ProjectManager";
-import { withRouter } from "react-router";
+import React, { Component } from 'react';
+import { createFolder } from 'adapters';
+import { addProject } from 'actions';
+import ProjectManager from 'containers/ProjectManager';
+import { withRouter } from 'react-router';
 import {
   Button,
   Backdrop,
@@ -11,16 +11,16 @@ import {
   FormGroup,
   Input,
   Overlay,
-  Paragraph
-} from "styled";
+  Paragraph,
+} from 'styled';
 
 class ProjectForm extends Component {
   constructor() {
     super();
     this.state = {
-      name: "",
-      client: "",
-      validationMessage: ""
+      name: '',
+      client: '',
+      validationMessage: '',
     };
     this.submit = this.submit.bind(this);
   }
@@ -28,10 +28,10 @@ class ProjectForm extends Component {
   submit(e) {
     e.preventDefault();
     const { name } = this.state;
-    this.setState({ validationMessage: "" });
+    this.setState({ validationMessage: '' });
     if (!this.validateForm()) {
       this.setState({
-        validationMessage: `Sorry, "${name}" is already in use`
+        validationMessage: `Sorry, "${name}" is already in use`,
       });
       return;
     }
@@ -62,11 +62,11 @@ class ProjectForm extends Component {
 
   // Mount and dismount the Event Listener for keyboard events
   componentWillMount() {
-    window.addEventListener("keyup", this.handleKeyDown);
+    window.addEventListener('keyup', this.handleKeyDown);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("keyup", this.handleKeyDown);
+    window.removeEventListener('keyup', this.handleKeyDown);
   }
 
   closeViewer = () => {
@@ -78,7 +78,7 @@ class ProjectForm extends Component {
     // TODO these should be keycodes
     // or at least use constants
     switch (e.key) {
-      case "Escape":
+      case 'Escape':
         this.closeViewer();
         break;
 
@@ -107,14 +107,15 @@ class ProjectForm extends Component {
               <Input
                 placeholder="Enter your client name"
                 onChange={({ target }) =>
-                  this.setState({ client: target.value })}
+                  this.setState({ client: target.value })
+                }
                 mb={24}
               />
-              {validationMessage
-                ? <Paragraph className="ValidationErrorMessage">
-                    {validationMessage}
-                  </Paragraph>
-                : null}
+              {validationMessage ? (
+                <Paragraph className="ValidationErrorMessage">
+                  {validationMessage}
+                </Paragraph>
+              ) : null}
               <Button>Add Project</Button>
             </FormGroup>
           </Dialog>

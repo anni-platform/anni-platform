@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 // import { Above } from "./MediaTemplates";
 
-import { CONCRETE, COPPER, EASE_OUT_EXPO } from "./Variables";
+import { CONCRETE, COPPER, EASE_OUT_EXPO } from './Variables';
 
 export const UploadArea = styled.div`
   .FileUploader {
@@ -18,7 +18,7 @@ export const UploadArea = styled.div`
 
     .ImageList {
       transition: 300ms ${EASE_OUT_EXPO};
-      opacity: .3
+      opacity: 0.3;
     }
   }
 `;

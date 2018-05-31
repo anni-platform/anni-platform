@@ -1,15 +1,15 @@
-import styled from "styled-components";
-import { CONCRETE, COPPER, CHARCOAL, PAPER, EASE_OUT_BACK } from "./Variables";
-import { Utils } from "./Utils";
-import { Above } from "./MediaTemplates";
+import styled from 'styled-components';
+import { CONCRETE, COPPER, CHARCOAL, PAPER, EASE_OUT_BACK } from './Variables';
+import { Utils } from './Utils';
+import { Above } from './MediaTemplates';
 
 export const Image = styled.img`
   height: 100%;
   object-fit: cover;
   overflow: hidden;
   ${Utils.margin};
-  margin: ${props => props.center && "0 auto"};
-  width: ${props => props.width ? `${props.width}px` : "100%"};
+  margin: ${props => props.center && '0 auto'};
+  width: ${props => (props.width ? `${props.width}px` : '100%')};
 `;
 
 var coverImageMargin = 36;
@@ -51,10 +51,10 @@ export const ImageControls = styled.div`
   position: absolute;
   right: 16px;
   top: 16px;
-  transform: scale(.9);
+  transform: scale(0.9);
   transition: 240ms ${EASE_OUT_BACK};
   overflow: hidden;
-  opacity: .25;
+  opacity: 0.25;
   z-index: 2;
 
   button {
@@ -139,4 +139,4 @@ export const ImageControlsButton = styled.div`
     display: none;
   }
   }
-`
+`;

@@ -8,16 +8,12 @@ class Auth extends Component {
     this.props.router.push('/dashboard');
   }
   render() {
-    return (
-      <div>
-        Awesome!
-      </div>
-    );
+    return <div>Awesome!</div>;
   }
 }
 
 const mapStateToProps = ({ auth }) => ({
-  auth
+  auth,
 });
 
 export default connect(mapStateToProps)(withRouter(AuthManager(Auth)));

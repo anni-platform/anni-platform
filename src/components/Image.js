@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { preloadImage } from "utils";
-import PropTypes from "prop-types";
-import { Loader } from "styled";
+import React, { Component } from 'react';
+import { preloadImage } from 'utils';
+import PropTypes from 'prop-types';
+import { Loader } from 'styled';
 import Picture from 'react-picture-component';
 import { CoverImage as CoverImageStyledComponent } from 'styled';
 
@@ -10,7 +10,7 @@ export class ImageElement extends Component {
     super();
     this.state = {
       loaded: false,
-      error: ""
+      error: '',
     };
   }
   componentDidMount() {
@@ -19,7 +19,7 @@ export class ImageElement extends Component {
         this.setState({ loaded: true });
       })
       .catch(e => {
-        this.setState({ error: "Error loading image" });
+        this.setState({ error: 'Error loading image' });
       });
   }
   render() {
@@ -36,15 +36,13 @@ export class ImageElement extends Component {
   }
 }
 ImageElement.propTypes = {
-  src: PropTypes.string.isRequired
+  src: PropTypes.string.isRequired,
 };
 
-export const CoverImage = (props) => (
-  <Picture 
+export const CoverImage = props => (
+  <Picture
     {...props}
-    renderImage={renderProps => (
-      <CoverImageStyledComponent {...renderProps} />
-    )}
+    renderImage={renderProps => <CoverImageStyledComponent {...renderProps} />}
   />
 );
 

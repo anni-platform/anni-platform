@@ -1,4 +1,4 @@
-import pick from "lodash/pick";
+import pick from 'lodash/pick';
 import {
   getAccessTokenFromSessionStorage,
   hasClient,
@@ -6,10 +6,10 @@ import {
   downloadFile,
   createFolder,
   searchFiles,
-  uploadFile
-} from "adapters";
-import { FILE_DATABASE_DIRECTORY } from "constants/file";
-import constants from "constants/index";
+  uploadFile,
+} from 'adapters';
+import { FILE_DATABASE_DIRECTORY } from 'constants/file';
+import constants from 'constants/index';
 const { DEFAULT_STATE } = constants;
 
 export function stateToJsonFile(
@@ -17,9 +17,9 @@ export function stateToJsonFile(
   fileName = `state_${new Date().getTime()}.json`
 ) {
   return new File(
-    [JSON.stringify(pick(state, ["projects", "files"]), null, 2)],
+    [JSON.stringify(pick(state, ['projects', 'files']), null, 2)],
     fileName,
-    { type: "text/json", lastModified: new Date().getTime() }
+    { type: 'text/json', lastModified: new Date().getTime() }
   );
 }
 
@@ -34,31 +34,31 @@ const StaticJSONFileDatabase = {
       const writeDefaultStateToJsonFile = () => {
         uploadFile(
           FILE_DATABASE_DIRECTORY,
-          stateToJsonFile(JSON.stringify(DEFAULT_STATE, null, 2), "state.json")
+          stateToJsonFile(JSON.stringify(DEFAULT_STATE, null, 2), 'state.json')
         ).then(() => {
           resolve(DEFAULT_STATE);
         });
       };
       // first search for the file database directory
-      searchFiles("", FILE_DATABASE_DIRECTORY).then(({ matches }) => {
+      searchFiles('', FILE_DATABASE_DIRECTORY).then(({ matches }) => {
         if (matches.length) {
           // file database is found so now search for the state.json file
-          searchFiles(`/${FILE_DATABASE_DIRECTORY}/`, "state.json").then(({
-            matches
-          }) => {
-            if (matches.length) {
-              // state.json is found so let's get the json content
-              this.fetchJSONFromFile(`/${FILE_DATABASE_DIRECTORY}/`)
-                .then(data => {
-                  resolve(data);
-                })
-                .catch(reject);
-              return;
-            } else {
-              //state.json is not found so let's create it with default state and return that data
-              writeDefaultStateToJsonFile();
+          searchFiles(`/${FILE_DATABASE_DIRECTORY}/`, 'state.json').then(
+            ({ matches }) => {
+              if (matches.length) {
+                // state.json is found so let's get the json content
+                this.fetchJSONFromFile(`/${FILE_DATABASE_DIRECTORY}/`)
+                  .then(data => {
+                    resolve(data);
+                  })
+                  .catch(reject);
+                return;
+              } else {
+                //state.json is not found so let's create it with default state and return that data
+                writeDefaultStateToJsonFile();
+              }
             }
-          });
+          );
         } else {
           // file database directory is not found so create it
           createFolder(`/${FILE_DATABASE_DIRECTORY}`).then(r => {
@@ -85,7 +85,7 @@ const StaticJSONFileDatabase = {
         })
         .catch(reject);
     });
-  }
+  },
 };
 
 export default StaticJSONFileDatabase;

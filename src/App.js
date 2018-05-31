@@ -1,22 +1,27 @@
-import React, { Component } from "react";
-import { createStore, compose } from "redux";
-import Navigation from "components/Navigation";
-import { Provider } from "react-redux";
-import reducer from "reducers";
-import { getAccessTokenFromUrl, storeSessionToken } from "adapters";
-import { saveState } from "./utils/localStorage";
-import StaticJSONFileDatabase from "utils/fileStorage";
-import { Loader, Wrapper } from "styled";
+import React, { Component } from 'react';
+import { createStore, compose } from 'redux';
+import Navigation from 'components/Navigation';
+import { Provider } from 'react-redux';
+import reducer from 'reducers';
+import { getAccessTokenFromUrl, storeSessionToken, getAuthUrl } from 'adapters';
+import { saveState } from './utils/localStorage';
+import StaticJSONFileDatabase from 'utils/fileStorage';
+import { Loader, Wrapper } from 'styled';
 import GlobalStyles from 'styled/components/Base';
 
-const PRE_PROD = process.env.NODE_ENV === "development";
+const PRE_PROD = process.env.NODE_ENV === 'development';
 
 let enhancer = null;
 let DevTools = null;
 if (PRE_PROD) {
-  DevTools = require("DevTools").default;
+  DevTools = require('DevTools').default;
   enhancer = compose(DevTools.instrument());
 }
+
+const test = {
+  a: 1,
+  b: 2,
+};
 
 class App extends Component {
   constructor() {
@@ -40,19 +45,20 @@ class App extends Component {
     });
   }
   render() {
-
-    GlobalStyles()
+    GlobalStyles();
 
     const store = this.state.store;
-    return store
-      ? <Provider store={store}>
-          <Wrapper>
-            <Navigation />
-            {this.props.children}
-            {DevTools ? <DevTools /> : null}
-          </Wrapper>
-        </Provider>
-      : <Loader fullPage />;
+    return store ? (
+      <Provider store={store}>
+        <Wrapper>
+          <Navigation />
+          {this.props.children}
+          {DevTools ? <DevTools /> : null}
+        </Wrapper>
+      </Provider>
+    ) : (
+      <Loader fullPage />
+    );
   }
 }
 

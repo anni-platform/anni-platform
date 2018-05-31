@@ -1,56 +1,49 @@
-import React, { Component, createElement } from "react";
-import { removeProject, deleteFile, updateProject } from "actions";
-import filter from "lodash.filter";
-import {
-  FileCollection,
-  Animation,
- } from "components";
-
-import constants from "constants/index";
-import classNames from "classnames";
-import { Container, Section } from "styled";
-import Headline from "./Headline";
-import TextEditor from "./TextEditor";
-import { ProjectControls, ProjectSectionNavItem } from "./ProjectControls";
+import React, { Component, createElement } from 'react';
+import { removeProject, deleteFile, updateProject } from 'actions';
+import filter from 'lodash.filter';
+import { FileCollection, Animation } from 'components';
+import constants from 'constants/index';
+import classNames from 'classnames';
+import { Container, Section } from 'styled';
+import Headline from './Headline';
+import TextEditor from './TextEditor';
+import { ProjectControls, ProjectSectionNavItem } from './ProjectControls';
 const { MOODBOARD, STORYBOARD, STYLEFRAMES, ANIMATION } = constants.content || {};
 
-const ProjectSection = (
-  {
-    isActive,
-    SectionType,
-    SectionProps,
-    key,
-    save,
-    className
-  }
-) => {
+const ProjectSection = ({
+  isActive,
+  SectionType,
+  SectionProps,
+  key,
+  save,
+  className,
+}) => {
   const sectionClass = classNames(className, {
-    ProjectSection: true
+    ProjectSection: true,
   });
   const props = { ...SectionProps, className: sectionClass, key, save };
   return isActive ? createElement(SectionType, props, null) : null;
 };
 
-const ProjectSectionNavigator = (
-  {
-    name,
-    Sections,
-    activeSectionIndex,
-    activateSectionByIndex,
-    save,
-    projectPath
-  }
-) => {
+const ProjectSectionNavigator = ({
+  name,
+  Sections,
+  activeSectionIndex,
+  activateSectionByIndex,
+  save,
+  projectPath,
+}) => {
   return (
     <Section>
       <Section project>
-      {Sections.map((section, index) =>
-        ProjectSection({
-          ...section,
-          save,
-          key: `section${index}`,
-          isActive: activeSectionIndex === index
-        }))}
+        {Sections.map((section, index) =>
+          ProjectSection({
+            ...section,
+            save,
+            key: `section${index}`,
+            isActive: activeSectionIndex === index,
+          })
+        )}
       </Section>
       <ProjectControls>
         {Sections.map(({ SectionType, name }, index) =>
@@ -59,8 +52,9 @@ const ProjectSectionNavigator = (
             name,
             checked: activeSectionIndex === index,
             onClick: () => activateSectionByIndex(index),
-            projectPath
-          }))}
+            projectPath,
+          })
+        )}
       </ProjectControls>
     </Section>
   );
@@ -68,24 +62,24 @@ const ProjectSectionNavigator = (
 
 const getSections = (project, id) => [
   {
-    name: "Introduction",
+    name: 'Introduction',
     SectionType: Headline,
     SectionProps: {
-      className: "",
+      className: '',
       name: project.name,
-      client: project.client
-    }
+      client: project.client,
+    },
   },
   {
-    name: "Script",
+    name: 'Script',
     SectionType: TextEditor,
     SectionProps: {
-      className: "",
-      content: project.editorContent
-    }
+      className: '',
+      content: project.editorContent,
+    },
   },
   {
-    name: "Moodboard",
+    name: 'Moodboard',
     SectionType: FileCollection,
     SectionProps: {
       className: `MoodBoard`,
@@ -93,11 +87,11 @@ const getSections = (project, id) => [
       project,
       collectionId: MOODBOARD,
       title: `MOODBOARD`,
-      references: true
-    }
+      references: true,
+    },
   },
   {
-    name: "Storyboard",
+    name: 'Storyboard',
     SectionType: FileCollection,
     SectionProps: {
       className: `Storyboard`,
@@ -105,11 +99,11 @@ const getSections = (project, id) => [
       project,
       collectionId: STORYBOARD,
       title: `STORYBOARDS`,
-      storyboards: true
-    }
+      storyboards: true,
+    },
   },
   {
-    name: "Styleframes",
+    name: 'Styleframes',
     SectionType: FileCollection,
     SectionProps: {
       className: `Styleframes`,
@@ -117,7 +111,7 @@ const getSections = (project, id) => [
       project,
       collectionId: STYLEFRAMES,
       title: `STYLEFRAMES`,
-      styleframes: true
+      styleframes: true,
     },
   },
   {
@@ -158,14 +152,14 @@ export default class ProjectDetail extends Component {
 
     this.state = {
       activeSectionIndex,
-      Sections
+      Sections,
     };
   }
   componentDidMount() {
     const { id } = this.props.params;
     const project = this.props.getProjectByName(id);
     if (!project) {
-      this.props.router.push("/dashboard");
+      this.props.router.push('/dashboard');
     }
   }
 
@@ -179,7 +173,7 @@ export default class ProjectDetail extends Component {
     const { id } = this.props.params;
     const project = this.props.getProjectByName(id);
     if (!project) {
-      this.props.router.push("/dashboard");
+      this.props.router.push('/dashboard');
     }
 
     const { Sections, activeSectionIndex } = this.state;
@@ -193,7 +187,7 @@ export default class ProjectDetail extends Component {
           id,
           Sections,
           save,
-          projectPath
+          projectPath,
         })}
       </Container>
     );
@@ -207,11 +201,12 @@ export default class ProjectDetail extends Component {
     // remove all unused files from store
     Object.keys(this.props.files.archive).forEach(file => {
       const fileUsed = collectionKeys.map(collection =>
-        collection.indexOf(file));
+        collection.indexOf(file)
+      );
       if (!filter(fileUsed, i => i > -1).length) {
         this.props.dispatch(deleteFile(file));
       }
     });
-    this.props.router.push("/dashboard");
+    this.props.router.push('/dashboard');
   }
 }

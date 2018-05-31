@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import Dropzone from "react-dropzone";
-import FileManager from "containers/FileManager";
-import { Container, Content, Subheading, Paragraph } from "styled";
+import React, { Component } from 'react';
+import Dropzone from 'react-dropzone';
+import FileManager from 'containers/FileManager';
+import { Container, Content, Subheading, Paragraph } from 'styled';
 
 class FileDrop extends Component {
   onDrop(files) {
@@ -19,8 +19,12 @@ class FileDrop extends Component {
         {this.props.children}
         <Container>
           <Content>
-            <Subheading color center>Drag and Drop</Subheading>
-            <Paragraph strong center>Your images here or browse</Paragraph>
+            <Subheading color center>
+              Drag and Drop
+            </Subheading>
+            <Paragraph strong center>
+              Your images here or browse
+            </Paragraph>
           </Content>
         </Container>
       </Dropzone>

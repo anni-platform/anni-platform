@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import MailchimpSubscribe from "react-mailchimp-subscribe";
-import { connect } from "react-redux";
-import { withRouter } from "react-router";
-import { CoverImage } from "components/Image";
+import React, { Component } from 'react';
+import MailchimpSubscribe from 'react-mailchimp-subscribe';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { CoverImage } from 'components/Image';
 import {
   Button,
   Content,
@@ -13,13 +13,13 @@ import {
   Input,
   Paragraph,
   Section,
-} from "styled";
-import Typed from "components/Typed";
-import { breakpointSizes } from "constants/index";
+} from 'styled';
+import Typed from 'components/Typed';
+import { breakpointSizes } from 'constants/index';
 
-import screenLG from "media/dashboard.png";
-import screenMD from "media/dashboard-md.png";
-import screenSM from "media/dashboard-sm.png";
+import screenLG from 'media/dashboard.png';
+import screenMD from 'media/dashboard-md.png';
+import screenSM from 'media/dashboard-sm.png';
 
 /*
   Custom Signup Form
@@ -29,11 +29,11 @@ class SignupForm extends Component {
     super(props);
 
     this.state = {
-      name: "",
-      email: "",
+      name: '',
+      email: '',
       errorName: false,
       errorEmail: false,
-      errorMessage: "* Both fields are required.",
+      errorMessage: '* Both fields are required.',
     };
   }
 
@@ -44,14 +44,14 @@ class SignupForm extends Component {
       this.setState({
         errorName: true,
         errorEmail: true,
-        errorMessage: "Please enter a valid name and email.",
+        errorMessage: 'Please enter a valid name and email.',
       });
     } else if (name.length === 0) {
       this.setState({
         errorName: true,
-        errorMessage: "Please enter a valid name.",
+        errorMessage: 'Please enter a valid name.',
       });
-    } else if (email !== undefined && email.indexOf("@") > -1) {
+    } else if (email !== undefined && email.indexOf('@') > -1) {
       this.props.onValidated({
         EMAIL: email,
         NAME: name,
@@ -59,7 +59,7 @@ class SignupForm extends Component {
     } else {
       this.setState({
         errorEmail: true,
-        errorMessage: "Please enter a valid email address.",
+        errorMessage: 'Please enter a valid email address.',
       });
     }
   };
@@ -103,11 +103,13 @@ class SignupForm extends Component {
             mr={16}
             mb={16}
           />
-          <Button onClick={this.submit} disabled={status}>Submit</Button>
+          <Button onClick={this.submit} disabled={status}>
+            Submit
+          </Button>
         </FieldGroup>
         <Paragraph tiny danger={errorName || errorEmail} mt={8}>
-          {status === "error"
-            ? "An error occured please try again later."
+          {status === 'error'
+            ? 'An error occured please try again later.'
             : errorMessage}
         </Paragraph>
       </Content>
@@ -118,7 +120,7 @@ class SignupForm extends Component {
 class Login extends Component {
   componentDidMount() {
     if (this.props.auth.toJS().isAuthenticated) {
-      this.props.router.push("/dashboard");
+      this.props.router.push('/dashboard');
     }
   }
 

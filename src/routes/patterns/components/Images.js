@@ -1,27 +1,29 @@
-import React, { Component } from "react";
-import { Card, CodeBlock, Subheading, Image } from "styled";
-import { ImageList } from "components/ImageList";
+import React, { Component } from 'react';
+import { Card, CodeBlock, Subheading, Image } from 'styled';
+import { ImageList } from 'components/ImageList';
 import demoImage from 'media/04.png';
 
 const references = [
   {
-    url: require("./content/references/01.png"),
-    name: "1",
-    aspectRatio: ""
+    url: require('./content/references/01.png'),
+    name: '1',
+    aspectRatio: '',
   },
   {
-    url: require("./content/references/02.png"),
-    name: "2",
-    aspectRatio: ""
+    url: require('./content/references/02.png'),
+    name: '2',
+    aspectRatio: '',
   },
-  { url: require("./content/references/03.png"),
-    name: "3",
-    aspectRatio: "" },
   {
-    url: require("./content/references/06.png"),
-    name: "5",
-    aspectRatio: ""
-  }
+    url: require('./content/references/03.png'),
+    name: '3',
+    aspectRatio: '',
+  },
+  {
+    url: require('./content/references/06.png'),
+    name: '5',
+    aspectRatio: '',
+  },
 ];
 
 class Layout extends Component {
@@ -36,10 +38,12 @@ class Layout extends Component {
     return (
       <Card mb={24} padded>
         <Subheading mb={24}>Images</Subheading>
-        <Subheading capitalize color micro mb={24}>Image</Subheading>
+        <Subheading capitalize color micro mb={24}>
+          Image
+        </Subheading>
         <Image src={demoImage} />
         <CodeBlock>
-{`import { Image } from "styled";
+          {`import { Image } from "styled";
 
 const Images = () => (
   <Image src={image} />
@@ -56,7 +60,9 @@ const Images = () => (
 `}
         </CodeBlock>
 
-        <Subheading micro color capitalize mb={24} mt={24}>Sortable Image Grid</Subheading>
+        <Subheading micro color capitalize mb={24} mt={24}>
+          Sortable Image Grid
+        </Subheading>
         <ImageList
           content={list1}
           references
@@ -64,7 +70,7 @@ const Images = () => (
         />
         <Subheading mb={24} />
         <CodeBlock noMargin>
-{`import { ImageList } from "components/ImageList";
+          {`import { ImageList } from "components/ImageList";
 import { ImageAspectRatio } from "utils";
 
 const Images = () => (

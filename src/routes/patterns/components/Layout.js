@@ -1,13 +1,15 @@
-import React from "react";
+import React from 'react';
 
-import { Card, CodeBlock, Subheading, Grid, GridItem } from "styled";
+import { Card, CodeBlock, Subheading, Grid, GridItem } from 'styled';
 
 const Layout = () => (
   <Card padded mb={24}>
     <Subheading mb={24}>Layout</Subheading>
-    <Subheading capitalize color micro>Wrapper</Subheading>
+    <Subheading capitalize color micro>
+      Wrapper
+    </Subheading>
     <CodeBlock noMargin>
-{`import { Wrapper } from "styled";
+      {`import { Wrapper } from "styled";
 
 const Layout = () => (
   <Wrapper>
@@ -16,10 +18,12 @@ const Layout = () => (
 );
 `}
     </CodeBlock>
-    <Subheading capitalize color micro>Section</Subheading>
+    <Subheading capitalize color micro>
+      Section
+    </Subheading>
 
     <CodeBlock noMargin>
-{`import { Section } from "styled";
+      {`import { Section } from "styled";
 
 const Layout = () => (
   <Section>
@@ -34,10 +38,12 @@ const Layout = () => (
 `}
     </CodeBlock>
 
-    <Subheading capitalize color micro>Content</Subheading>
+    <Subheading capitalize color micro>
+      Content
+    </Subheading>
 
     <CodeBlock noMargin>
-{`import { Content } from "styled";
+      {`import { Content } from "styled";
 
 const Layout = () => (
   <Content>
@@ -52,10 +58,12 @@ const Layout = () => (
 `}
     </CodeBlock>
 
-    <Subheading capitalize color micro>Anchor</Subheading>
+    <Subheading capitalize color micro>
+      Anchor
+    </Subheading>
 
     <CodeBlock noMargin>
-{`import { Anchor } from "styled";
+      {`import { Anchor } from "styled";
 
 const Layout = () => (
   <Anchor id="String"/>
@@ -67,7 +75,9 @@ const Layout = () => (
 `}
     </CodeBlock>
 
-    <Subheading capitalize color micro mb={16}>Grid</Subheading>
+    <Subheading capitalize color micro mb={16}>
+      Grid
+    </Subheading>
     <Grid small>
       <GridItem full solid />
       <GridItem solid />
@@ -78,7 +88,7 @@ const Layout = () => (
       <GridItem solid />
     </Grid>
     <CodeBlock noMargin>
-{`import { Grid, GridItem } from "styled";
+      {`import { Grid, GridItem } from "styled";
 
 const Layout = () => (
   <Grid>
