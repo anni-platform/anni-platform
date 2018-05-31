@@ -1,14 +1,16 @@
-import React from "react";
-import { Card, Heading, Subheading, Paragraph, CodeBlock } from "styled";
+import React from 'react';
+import { Card, Heading, Subheading, Paragraph, CodeBlock } from 'styled';
 
 const Typography = () => (
   <Card mb={24} padded>
     <Subheading mb={24}>Typography</Subheading>
 
-    <Subheading capitalize color micro mb={8}>Heading</Subheading>
+    <Subheading capitalize color micro mb={8}>
+      Heading
+    </Subheading>
     <Heading>Echo Easy Foxtrot Fox</Heading>
     <CodeBlock>
-{`import { Heading } from "styled";
+      {`import { Heading } from "styled";
 
 const Typography = () => (
   <Heading>Echo Easy Foxtrot Fox</Heading>
@@ -25,10 +27,12 @@ const Typography = () => (
 // ml={Number}        Margin left
 `}
     </CodeBlock>
-    <Subheading capitalize color micro mb={8}>Subheading</Subheading>
+    <Subheading capitalize color micro mb={8}>
+      Subheading
+    </Subheading>
     <Subheading mb={4}>Kilo King Lima Love</Subheading>
     <CodeBlock mb={24}>
-{`import { Subheading } from "styled";
+      {`import { Subheading } from "styled";
 
 const Typography = () => (
   <Subheading>Kilo King Lima Love</Subheading>
@@ -47,10 +51,16 @@ const Typography = () => (
 // ml={Number}        Margin left
 `}
     </CodeBlock>
-    <Subheading capitalize color micro mb={8}>Paragraph</Subheading>
-    <Paragraph width={400}>Apples Butter Charlie Duff Edward Freddy George Harry Ink Johnnie King London Monkey Nuts Orange Pudding Queenie Robert Sugar Tommy Uncle Vinegar Willie Xerxes Yellow Zebra Nuts Orange Pudding.</Paragraph>
+    <Subheading capitalize color micro mb={8}>
+      Paragraph
+    </Subheading>
+    <Paragraph width={400}>
+      Apples Butter Charlie Duff Edward Freddy George Harry Ink Johnnie King
+      London Monkey Nuts Orange Pudding Queenie Robert Sugar Tommy Uncle Vinegar
+      Willie Xerxes Yellow Zebra Nuts Orange Pudding.
+    </Paragraph>
     <CodeBlock mb={24} noMargin>
-{`import { Paragraph } from "styled";
+      {`import { Paragraph } from "styled";
 
 const Typography = () => (
   <Paragraph>Apples Butter Charlie...</Paragraph>

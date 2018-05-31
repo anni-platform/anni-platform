@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { COPPER, FLINT, PAPER } from "./Variables";
+import styled from 'styled-components';
+import { COPPER, FLINT, PAPER } from './Variables';
 
 export const Toolbar = styled.div`
   align-items: center;
@@ -12,17 +12,17 @@ export const Toolbar = styled.div`
 
 export const ToolbarGroup = styled.div`
   align-items: center;
-  border-top: ${props => props.noBorder ? "none" : `1px solid ${FLINT}`};
+  border-top: ${props => (props.noBorder ? 'none' : `1px solid ${FLINT}`)};
   display: flex;
   flex-grow: 1;
 
   > div {
-    border-right: ${props => props.noBorder ? "none" : `1px solid ${FLINT}`};
+    border-right: ${props => (props.noBorder ? 'none' : `1px solid ${FLINT}`)};
   }
 `;
 
 export const ToolbarItem = styled.div`
-  border-right: ${props => props.noBorder ? "none" : `1px solid ${FLINT}`};
+  border-right: ${props => (props.noBorder ? 'none' : `1px solid ${FLINT}`)};
   cursor: pointer;
   font-family: 'Apercu Bold', sans-serif;
   font-size: 12px;
@@ -47,8 +47,8 @@ export const ContextualToolbar = styled.div`
   z-index: 2;
 
   .active {
-  background: ${PAPER};
-  color: ${COPPER};
+    background: ${PAPER};
+    color: ${COPPER};
   }
 
   ::after {

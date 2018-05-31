@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react';
 
-import { Card, CodeBlock, Loader, Subheading } from "styled";
+import { Card, CodeBlock, Loader, Subheading } from 'styled';
 
 const Loaders = () => (
   <Card padded mb={24}>
     <Subheading mb={24}>Loader</Subheading>
     <Loader center />
-    <Subheading capitalize center micro mt={16} mb={16}></Subheading>
+    <Subheading capitalize center micro mt={16} mb={16} />
 
     <CodeBlock noMargin>
-{`import { Loader } from "styled";
+      {`import { Loader } from "styled";
 
 const Loader = () => (
   <Loader/>

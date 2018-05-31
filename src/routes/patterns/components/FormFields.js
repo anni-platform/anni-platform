@@ -1,19 +1,32 @@
-import React from "react";
-import { Card, CodeBlock, FormGroup, TextArea, Input, Subheading } from "styled";
+import React from 'react';
+import {
+  Card,
+  CodeBlock,
+  FormGroup,
+  TextArea,
+  Input,
+  Subheading,
+} from 'styled';
 import { Select } from 'components';
 
 const FormFields = () => (
   <Card mb={24} padded>
     <Subheading mb={24}>Form Fields</Subheading>
 
-    <Subheading capitalize color micro mb={8}>Form Group</Subheading>
+    <Subheading capitalize color micro mb={8}>
+      Form Group
+    </Subheading>
     <FormGroup stacked>
       <Input value="Echo Foxtrot" mb={16} readOnly />
-      <TextArea value="Orange Pudding Queenie Robert Sugar Tommy Uncle Vinegar Willie Xerxes Yellow Zebra Nuts Orange Pudding. Charlie Duff Edward Freddy George Harry Ink Johnnie King London Monkey Nuts." readOnly height={77} />
+      <TextArea
+        value="Orange Pudding Queenie Robert Sugar Tommy Uncle Vinegar Willie Xerxes Yellow Zebra Nuts Orange Pudding. Charlie Duff Edward Freddy George Harry Ink Johnnie King London Monkey Nuts."
+        readOnly
+        height={77}
+      />
     </FormGroup>
 
     <CodeBlock>
-{`import { Input } from "styled";
+      {`import { Input } from "styled";
 
 const FormFields = () => (
   <FormGroup>
@@ -27,11 +40,13 @@ const FormFields = () => (
 `}
     </CodeBlock>
 
-    <Subheading capitalize color micro mb={8}>Text Area</Subheading>
+    <Subheading capitalize color micro mb={8}>
+      Text Area
+    </Subheading>
     <TextArea placeholder="Enter text" />
 
     <CodeBlock>
-{`import { TextArea } from "styled";
+      {`import { TextArea } from "styled";
 
 const FormFields = () => (
   <TextArea/>
@@ -49,11 +64,13 @@ const FormFields = () => (
 `}
     </CodeBlock>
 
-    <Subheading capitalize color micro mb={8}>Input</Subheading>
+    <Subheading capitalize color micro mb={8}>
+      Input
+    </Subheading>
     <Input placeholder="Enter text" />
 
     <CodeBlock>
-{`import { Input } from "styled";
+      {`import { Input } from "styled";
 
 const FormFields = () => (
   <Input/>
@@ -71,13 +88,15 @@ const FormFields = () => (
 `}
     </CodeBlock>
 
-    <Subheading capitalize color micro mb={8}>Select</Subheading>
+    <Subheading capitalize color micro mb={8}>
+      Select
+    </Subheading>
     <Select
       items={'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(l => `Item ${l}`)}
       onChange={selectedItem => console.log(selectedItem)}
     />
     <CodeBlock>
-{`import { Select } from "styled";
+      {`import { Select } from "styled";
 
 const FormFields = () => (
   <Select

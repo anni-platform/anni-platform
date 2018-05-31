@@ -1,5 +1,5 @@
-import React from "react";
-import classNames from "classnames";
+import React from 'react';
+import classNames from 'classnames';
 import {
   Content,
   Label,
@@ -7,30 +7,31 @@ import {
   ProjectNavItem,
   ProjectNavId,
   Radio,
-} from "styled";
+} from 'styled';
 
 export const ProjectControls = ({ children }) => {
   return (
     <ProjectNav>
-      <Content full>
-        {children}
-      </Content>
+      <Content full>{children}</Content>
     </ProjectNav>
   );
 };
 
-export const ProjectSectionNavItem = (
-  { name, checked, onClick, projectPath }
-) => {
+export const ProjectSectionNavItem = ({
+  name,
+  checked,
+  onClick,
+  projectPath,
+}) => {
   const styles = classNames({
-    checked
+    checked,
   });
 
   return (
     <ProjectNavItem
       to={{
         pathname: projectPath,
-        query: { section: name }
+        query: { section: name },
       }}
       onClick={onClick}
     >

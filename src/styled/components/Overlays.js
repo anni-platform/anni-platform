@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import { PAPER, EASE_OUT_EXPO } from "./Variables";
+import styled from 'styled-components';
+import { PAPER, EASE_OUT_EXPO } from './Variables';
 
 export const Overlay = styled.div`
-  background: rgba(255,255,255,0.9);
+  background: rgba(255, 255, 255, 0.9);
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -73,12 +73,15 @@ export const OverlayButton = styled.div`
   display: inline-flex;
   flex-direction: column;
   font-size: 14px;
-  position: ${props => props.top || props.right || props.bottom || props.left ? "absolute" : "relative"};
-  bottom: ${props => props.bottom && "24px"};
-  left: ${props => props.left && "24px"};
-  right: ${props => props.right && "24px"};
-  top: ${props => props.left || props.right ? "50%" : ""};
-  top: ${props => props.top && "24px"};
-  transform: ${props => props.top || props.bottom ? "translateX(-50%)" : ""};
-  transform: ${props => props.left || props.right ? "translateY(-50%)" : ""};
+  position: ${props =>
+    props.top || props.right || props.bottom || props.left
+      ? 'absolute'
+      : 'relative'};
+  bottom: ${props => props.bottom && '24px'};
+  left: ${props => props.left && '24px'};
+  right: ${props => props.right && '24px'};
+  top: ${props => (props.left || props.right ? '50%' : '')};
+  top: ${props => props.top && '24px'};
+  transform: ${props => (props.top || props.bottom ? 'translateX(-50%)' : '')};
+  transform: ${props => (props.left || props.right ? 'translateY(-50%)' : '')};
 `;

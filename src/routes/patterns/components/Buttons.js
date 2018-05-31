@@ -1,31 +1,47 @@
-import React from "react";
-import { Button, ButtonGroup, Card, CodeBlock, Subheading } from "styled";
+import React from 'react';
+import { Button, ButtonGroup, Card, CodeBlock, Subheading } from 'styled';
 
 const Buttons = () => (
   <Card mb={24} padded>
     <Subheading mb={24}>Buttons</Subheading>
 
-    <Subheading capitalize color micro mb={8}>Button</Subheading>
+    <Subheading capitalize color micro mb={8}>
+      Button
+    </Subheading>
     <ButtonGroup>
-      <Button primary mb={8}>Primary</Button>
+      <Button primary mb={8}>
+        Primary
+      </Button>
       <Button mb={8}>Default</Button>
       <Button link>Link</Button>
     </ButtonGroup>
 
-    <Subheading capitalize color micro mb={8} mt={16}>Icon Button</Subheading>
+    <Subheading capitalize color micro mb={8} mt={16}>
+      Icon Button
+    </Subheading>
     <ButtonGroup>
-      <Button icon="arrow-back" primary mb={8}>Primary</Button>
-      <Button icon="arrow-back" mb={8}>Default</Button>
-      <Button icon="arrow-back" link>Link</Button>
+      <Button icon="arrow-back" primary mb={8}>
+        Primary
+      </Button>
+      <Button icon="arrow-back" mb={8}>
+        Default
+      </Button>
+      <Button icon="arrow-back" link>
+        Link
+      </Button>
     </ButtonGroup>
 
-    <Subheading capitalize color micro mb={8} mt={16}>Stacked Button</Subheading>
+    <Subheading capitalize color micro mb={8} mt={16}>
+      Stacked Button
+    </Subheading>
     <ButtonGroup>
-      <Button icon="add" color stacked>Stacked</Button>
+      <Button icon="add" color stacked>
+        Stacked
+      </Button>
     </ButtonGroup>
 
     <CodeBlock>
-{`import { Button, ButtonGroup } from "styled";
+      {`import { Button, ButtonGroup } from "styled";
 
 const Buttons = () => (
   <Button primary>Primary</Button>
@@ -43,14 +59,16 @@ const Buttons = () => (
 `}
     </CodeBlock>
 
-    <Subheading capitalize color micro mb={8}>Button Group</Subheading>
+    <Subheading capitalize color micro mb={8}>
+      Button Group
+    </Subheading>
     <ButtonGroup>
       <Button>Foxtrot</Button>
       <Button>Echo</Button>
       <Button>Charlie</Button>
     </ButtonGroup>
     <CodeBlock noMargin>
-{`import { Button, ButtonGroup } from "styled";
+      {`import { Button, ButtonGroup } from "styled";
 
 const Buttons = () => (
   <ButtonGroup>

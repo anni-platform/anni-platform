@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { Above } from "./MediaTemplates";
+import styled from 'styled-components';
+import { Above } from './MediaTemplates';
 
-import { COPPER, EASE_OUT_EXPO } from "./Variables";
+import { COPPER, EASE_OUT_EXPO } from './Variables';
 
 export const ProjectNav = styled.div`
   align-items: center;
@@ -23,11 +23,9 @@ export const ProjectNav = styled.div`
   ${Above.sm`
     padding-right: 48px;
     width: 120px;
-  `}
-
-  ${Above.lg`
+  `} ${Above.lg`
     width: 240px;
-  `}
+  `};
 `;
 
 export const ProjectNavItem = styled.div`
@@ -41,12 +39,12 @@ export const ProjectNavItem = styled.div`
     ${Above.lg`
       display: inline-block;
       margin-right: 16px;
-    `}
+    `};
   }
 `;
 
 export const ProjectNavId = styled.div`
-  background: ${props => props.checked ? `${COPPER}` : "transparent"};
+  background: ${props => (props.checked ? `${COPPER}` : 'transparent')};
   border: 2px solid ${COPPER};
   border-radius: 10px;
   height: 8px;

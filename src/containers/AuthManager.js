@@ -7,9 +7,10 @@ import { addUserInfo } from 'actions';
 export default function AuthManager(Component) {
   class Manager extends Component {
     componentDidMount() {
-        getAccountInfo().then(info => this.props.dispatch(addUserInfo(info)))
+      getAccountInfo()
+        .then(info => this.props.dispatch(addUserInfo(info)))
         .catch(() => {
-            this.props.router.push('/');
+          this.props.router.push('/');
         });
     }
     validateAuthentication() {
@@ -19,7 +20,7 @@ export default function AuthManager(Component) {
     }
     render() {
       const validateAuthentication = this.validateAuthentication.bind(this);
-      return <Component {...this.props} {...{validateAuthentication}} />;
+      return <Component {...this.props} {...{ validateAuthentication }} />;
     }
   }
   return connect(({ auth }) => auth.toJS())(withRouter(Manager));

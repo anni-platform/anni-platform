@@ -1,5 +1,5 @@
-import React from "react";
-import { browserHistory } from "react-router";
+import React from 'react';
+import { browserHistory } from 'react-router';
 
 import {
   ButtonGroup,
@@ -10,26 +10,28 @@ import {
   Grid,
   Image,
   Subheading,
-  Paragraph
-} from "styled";
+  Paragraph,
+} from 'styled';
 
-import tempImage from "media/placeholder.png";
+import tempImage from 'media/placeholder.png';
 
-import { removeProject, deleteFile } from "actions";
-import { removeFolder } from "adapters";
-import filter from "lodash.filter";
+import { removeProject, deleteFile } from 'actions';
+import { removeFolder } from 'adapters';
+import filter from 'lodash.filter';
 
 export const ProjectList = ({ children }) => {
-  return (
-    <Grid>
-      {children}
-    </Grid>
-  );
+  return <Grid>{children}</Grid>;
 };
 
-export const ProjectListItem = (
-  { path, name, client, image, link, id, files }
-) => {
+export const ProjectListItem = ({
+  path,
+  name,
+  client,
+  image,
+  link,
+  id,
+  files,
+}) => {
   // TODO: @hudakdidit
   // This needs work to get it to work
   function deleteProject() {
@@ -39,12 +41,13 @@ export const ProjectListItem = (
     // remove all unused files from store
     Object.keys(this.props.files.archive).forEach(file => {
       const fileUsed = collectionKeys.map(collection =>
-        collection.indexOf(file));
+        collection.indexOf(file)
+      );
       if (!filter(fileUsed, i => i > -1).length) {
         this.props.dispatch(deleteFile(file));
       }
     });
-    this.props.router.push("/dashboard");
+    this.props.router.push('/dashboard');
   }
 
   const projectLink = () => {
@@ -53,14 +56,10 @@ export const ProjectListItem = (
 
   return (
     <Card active>
-      <Image
-        src={image ? image : tempImage}
-        alt={name}
-        onClick={projectLink}
-      />
+      <Image src={image ? image : tempImage} alt={name} onClick={projectLink} />
       <CardDetails onClick={projectLink}>
         <Paragraph strong>{name}</Paragraph>
-        <Paragraph>{client ? client : "Client Name"}</Paragraph>
+        <Paragraph>{client ? client : 'Client Name'}</Paragraph>
       </CardDetails>
       <CardControls>
         <Subheading micro>Due May 21</Subheading>

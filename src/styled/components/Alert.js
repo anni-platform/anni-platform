@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import { CARMINE, CHARCOAL, FLINT, PAPER, EASE_OUT_EXPO } from "./Variables";
+import styled from 'styled-components';
+import { CARMINE, CHARCOAL, FLINT, PAPER, EASE_OUT_EXPO } from './Variables';
 
 export const Alert = styled.div`
   animation: slideDown 400ms ${EASE_OUT_EXPO};
-  background: ${props => props.danger ? `${CARMINE}` : `${PAPER}`};
+  background: ${props => (props.danger ? `${CARMINE}` : `${PAPER}`)};
   border-bottom: 1px solid ${FLINT};
   align-items: center;
   display: flex;
@@ -13,8 +13,10 @@ export const Alert = styled.div`
   width: 100%;
   z-index: 2;
 
-  p, h1,h2 {
-    color: ${props => props.danger ? `${PAPER}` : `${CHARCOAL}`};
+  p,
+  h1,
+  h2 {
+    color: ${props => (props.danger ? `${PAPER}` : `${CHARCOAL}`)};
   }
 
   @keyframes slideDown {
@@ -38,5 +40,5 @@ export const AlertControls = styled.div`
   align-items: center;
   display: flex;
   height: 100%;
-  padding:  0 16px;
+  padding: 0 16px;
 `;
