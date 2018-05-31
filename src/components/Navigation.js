@@ -13,7 +13,7 @@ class Navigation extends Component {
   componentDidMount() {
     const { dispatch, auth } = this.props;
 
-    window.loginAnni = () => window.location.href = getAuthUrl();
+    window.loginAnni = () => (window.location.href = getAuthUrl());
 
     if (!window.sessionStorage) {
       return;

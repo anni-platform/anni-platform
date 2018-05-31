@@ -88,8 +88,15 @@ export {
 } from './components/Toolbars';
 
 /* Media Template Definitions */
-export { Player, PlayerButton, PlayerControls, PlayerLoader, PlayerSelect, PlayerTrack, PlayerViewer } from "./components/VideoPlayer";
-
+export {
+  Player,
+  PlayerButton,
+  PlayerControls,
+  PlayerLoader,
+  PlayerSelect,
+  PlayerTrack,
+  PlayerViewer,
+} from './components/VideoPlayer';
 
 /* Component Specific */
 export { ProjectList } from './components/Dashboard';

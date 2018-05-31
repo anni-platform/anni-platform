@@ -61,7 +61,7 @@
     "precommit": "lint-staged",
     "deploy": "gh-pages -d build -b master -o production",
     "lint:css": "stylelint './src/styled/components/*.js'",
-    "format": "prettier-eslint \"src/**/*.js\""
+    "format": "prettier-eslint --write \"src/**/*.js\""
   },
   "dependencies": {
     "canvas-image-scrubber": "1.1.7",
@@ -71,7 +71,6 @@
     "react-app-rewire-styled-components": "^3.0.2",
     "react-app-rewired": "^1.5.2",
     "react-dom": "^15.6.1",
-    "reselect": "^3.0.1",
     "react-mailchimp-subscribe": "^2.0.1",
     "react-picture-component": "^1.0.5",
     "react-scripts": "^1.0.10"

@@ -10,17 +10,6 @@ import {
   Paragraph,
 } from 'styled';
 
-<<<<<<< HEAD
-import Buttons from "./components/Buttons";
-import Layout from "./components/Layout";
-import FormFields from "./components/FormFields";
-import Icons from "./components/Icons";
-import Images from "./components/Images";
-import Loaders from "./components/Loaders";
-import Overlays from "./components/Overlays";
-import Typography from "./components/Typography";
-import VideoPlayer from "./components/VideoPlayer";
-=======
 import Buttons from './components/Buttons';
 import Layout from './components/Layout';
 import FormFields from './components/FormFields';
@@ -29,7 +18,7 @@ import Images from './components/Images';
 import Loaders from './components/Loaders';
 import Overlays from './components/Overlays';
 import Typography from './components/Typography';
->>>>>>> eslint-prettier
+import VideoPlayer from './components/VideoPlayer';
 
 export default class PatternLibrary extends Component {
   render() {
@@ -80,7 +69,9 @@ export default class PatternLibrary extends Component {
             </Button>
           </NavItem>
           <NavItem fit>
-            <Button href="#video-player" link>Video Player</Button>
+            <Button href="#video-player" link>
+              Video Player
+            </Button>
           </NavItem>
         </NavBar>
 

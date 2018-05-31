@@ -6,6 +6,7 @@ import {
   Select as StyledSelect,
   SelectOptions,
   SolidIcon,
+  Subheading,
 } from 'styled';
 
 export function Select({
@@ -38,8 +39,16 @@ export function Select({
         );
         return (
           <div>
-            <StyledSelect hasItems={!!filteredItems.length} rotateIcon={isOpen} className={className}>
-              {label && <Subheading micro color>{label}</Subheading>}
+            <StyledSelect
+              hasItems={!!filteredItems.length}
+              rotateIcon={isOpen}
+              className={className}
+            >
+              {label && (
+                <Subheading micro color>
+                  {label}
+                </Subheading>
+              )}
               <Input
                 select
                 {...getInputProps({ placeholder })}

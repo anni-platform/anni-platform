@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import CanvasImageScrubber from "canvas-image-scrubber";
-import { PlayerViewer, Player } from "styled";
+import React, { Component } from 'react';
+import CanvasImageScrubber from 'canvas-image-scrubber';
+import { PlayerViewer, Player } from 'styled';
 
-import Controls from "components/VideoPlayer/Controls";
-import LoadingProgress from "components/VideoPlayer/LoadingProgress";
-import ProgressBar from "components/VideoPlayer/ProgressBar";
+import Controls from 'components/VideoPlayer/Controls';
+import LoadingProgress from 'components/VideoPlayer/LoadingProgress';
+import ProgressBar from 'components/VideoPlayer/ProgressBar';
 
 export function getFrames() {
   let i = 0;
@@ -22,14 +22,12 @@ export default class VideoPlayer extends Component {
     return (
       <CanvasImageScrubber
         frames={frames}
-        render={(
-          {
-            getViewerControlsProps,
-            getViewerProgressProps,
-            loadingProgress,
-            renderViewer
-          }
-        ) => {
+        render={({
+          getViewerControlsProps,
+          getViewerProgressProps,
+          loadingProgress,
+          renderViewer,
+        }) => {
           return (
             <Player>
               <PlayerViewer>
@@ -44,7 +42,7 @@ export default class VideoPlayer extends Component {
         sprite
         spriteKey="huzzahSprite"
         spriteLoadCallback={img => {
-          console.log("Upload file blob somewhere: ", img);
+          console.log('Upload file blob somewhere: ', img);
         }}
       />
     );

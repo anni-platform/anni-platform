@@ -63,8 +63,8 @@ export const Input = props => {
     if (onBlur) {
       onBlur(e.target.value);
     }
-  }
-  
+  };
+
   return (
     <FieldGroup icon>
       {icon && <OutlineIcon color name={icon} size={24} />}

@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { _PlayerButton } from "components/VideoPlayer";
-import { Select } from "components";
+import styled from 'styled-components';
+import { _PlayerButton } from 'components/VideoPlayer';
+import { Select } from 'components';
 
 import {
   CHARCOAL,
@@ -8,9 +8,8 @@ import {
   HAZEL,
   FLINT,
   PAPER,
-  EASE_OUT_EXPO
-} from "./Variables";
-
+  EASE_OUT_EXPO,
+} from './Variables';
 
 export const Player = styled.div`
   position: relative;
@@ -20,14 +19,14 @@ export const PlayerViewer = styled.div`
   position: relative;
 
   canvas {
-  max-width: 100%;
-  height: auto;
+    max-width: 100%;
+    height: auto;
   }
 `;
 
 export const PlayerLoader = styled.div`
   align-items: center;
-  background: rgba(255,255,255,0.9);
+  background: rgba(255, 255, 255, 0.9);
   display: flex;
   left: 0;
   justify-content: center;
@@ -50,7 +49,7 @@ export const PlayerButton = styled(_PlayerButton)`
   backface-visibility: hidden;
   background: ${PAPER};
   border: none;
-  border-right: ${props => props.noBorder ? "none" : `1px solid ${FLINT}`};
+  border-right: ${props => (props.noBorder ? 'none' : `1px solid ${FLINT}`)};
   cursor: pointer;
   display: flex;
   height: 64px;
@@ -68,7 +67,7 @@ export const PlayerButton = styled(_PlayerButton)`
   }
   &:active {
     svg {
-      transform: scale(.95);
+      transform: scale(0.95);
     }
   }
   svg {
@@ -111,9 +110,9 @@ export const PlayerSelect = styled(Select)`
   }
 `;
 
-const trackSize = "8px";
-const thumbSize = "12px";
-const thumbRadius = "100px";
+const trackSize = '8px';
+const thumbSize = '12px';
+const thumbRadius = '100px';
 const progressBar = `-999px 0px 0px 999px ${COPPER}`;
 
 export const PlayerTrack = styled.input`
@@ -156,7 +155,7 @@ export const PlayerTrack = styled.input`
     box-shadow: 0;
     background: ${HAZEL};
     border-radius: 0px;
-    border:none;
+    border: none;
   }
   &::-moz-range-thumb {
     background: ${COPPER};
@@ -178,13 +177,13 @@ export const PlayerTrack = styled.input`
   }
   &::-ms-fill-lower {
     background: ${HAZEL};
-    border:none;
+    border: none;
     border-radius: 0px;
     box-shadow: 0;
   }
   &::-ms-fill-upper {
     background: ${HAZEL};
-    border:none;
+    border: none;
     border-radius: 0px;
     box-shadow: 0;
   }

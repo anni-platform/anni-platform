@@ -8,7 +8,8 @@ import { Container, Section } from 'styled';
 import Headline from './Headline';
 import TextEditor from './TextEditor';
 import { ProjectControls, ProjectSectionNavItem } from './ProjectControls';
-const { MOODBOARD, STORYBOARD, STYLEFRAMES, ANIMATION } = constants.content || {};
+const { MOODBOARD, STORYBOARD, STYLEFRAMES, ANIMATION } =
+  constants.content || {};
 
 const ProjectSection = ({
   isActive,
@@ -115,7 +116,7 @@ const getSections = (project, id) => [
     },
   },
   {
-    name: "Animation",
+    name: 'Animation',
     SectionType: Animation,
     SectionProps: {
       className: `Animation`,
@@ -123,7 +124,7 @@ const getSections = (project, id) => [
       project,
       collectionId: ANIMATION,
       title: `ANIMATION`,
-    }
+    },
   },
 ];
 

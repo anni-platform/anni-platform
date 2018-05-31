@@ -1,17 +1,10 @@
-import React from "react";
-import { PlayerTrack } from "styled";
+import React from 'react';
+import { PlayerTrack } from 'styled';
 
-export default function ProgressBar(
-  {
-    min,
-    max,
-    value,
-    onChange
-  }
-) {
+export default function ProgressBar({ min, max, value, onChange }) {
   return (
     <PlayerTrack
-      style={{ width: "100%" }}
+      style={{ width: '100%' }}
       list="progress"
       step={1}
       type="range"
