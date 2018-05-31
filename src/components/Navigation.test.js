@@ -5,7 +5,11 @@ import renderer from 'react-test-renderer';
 
 describe('Navigation Component', () => {
   it('renders without crashing', () => {
-    const component = renderer.create(<App><Navigation /></App>);
+    const component = renderer.create(
+      <App>
+        <Navigation />
+      </App>
+    );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

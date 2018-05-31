@@ -1,7 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { Card, CodeBlock, Grid, GridItem, Subheading } from "styled";
-
+import { Card, CodeBlock, Grid, GridItem, Subheading } from 'styled';
 
 const Grids = () => (
   <Card padded mb={24}>
@@ -16,7 +15,7 @@ const Grids = () => (
       <GridItem solid />
     </Grid>
     <CodeBlock noMargin>
-{`import { Grid, GridItem } from "styled";
+      {`import { Grid, GridItem } from "styled";
 
 const Grid = () => (
   <Grid>

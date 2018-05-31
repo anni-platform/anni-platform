@@ -1,15 +1,19 @@
-import React from "react";
-import Patterns from "routes/patterns";
-import { Router, Route, IndexRoute, browserHistory } from "react-router";
-import App from "./App";
-import Auth from "./routes/auth";
-import Dashboard from "routes/dashboard";
-import Project from "routes/project";
-import Login from "routes/login";
-const NoMatch = () => <div className="fourOhFour"><h1>404</h1></div>;
+import React from 'react';
+import Patterns from 'routes/patterns';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import App from './App';
+import Auth from './routes/auth';
+import Dashboard from 'routes/dashboard';
+import Project from 'routes/project';
+import Login from 'routes/login';
+const NoMatch = () => (
+  <div className="fourOhFour">
+    <h1>404</h1>
+  </div>
+);
 let history = browserHistory;
 
-export default function AppContainer() { 
+export default function AppContainer() {
   return (
     <Router history={history}>
       <Route path="/" component={App}>

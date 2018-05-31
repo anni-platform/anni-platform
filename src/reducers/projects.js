@@ -29,14 +29,15 @@ const projects = (state = initialState, action) => {
       }
       return state;
     case UPDATE_PROJECT:
-      return state.set(action.project.id, project(state.get(action.project.id), action));
+      return state.set(
+        action.project.id,
+        project(state.get(action.project.id), action)
+      );
     case REMOVE_PROJECT:
       return state.delete(action.id);
     default:
-      return state
+      return state;
   }
 };
-
-
 
 export default projects;

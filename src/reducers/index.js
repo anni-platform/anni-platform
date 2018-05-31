@@ -6,7 +6,7 @@ import files from './files';
 const anniApp = combineReducers({
   auth,
   projects,
-  files
+  files,
 });
 
-export default anniApp
+export default anniApp;

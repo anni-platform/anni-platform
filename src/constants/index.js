@@ -9,12 +9,12 @@ export default {
   file,
   content,
   REORDER_ITEM: 'REORDER_ITEM',
-  DEFAULT_STATE: { auth: {}, projects: {}, files: {} }
+  DEFAULT_STATE: { auth: {}, projects: {}, files: {} },
 };
 
-export const breakpointSizes  = {
+export const breakpointSizes = {
   xl: 1600,
   lg: 1200,
   md: 960,
-  sm: 570
+  sm: 570,
 };

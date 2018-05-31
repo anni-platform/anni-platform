@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import FileUploader from "components/FileUploader";
-import FileManager from "containers/FileManager";
-import { Loader } from "styled";
-import { ImageList } from "./ImageList";
+import React, { Component } from 'react';
+import FileUploader from 'components/FileUploader';
+import FileManager from 'containers/FileManager';
+import { Loader } from 'styled';
+import { ImageList } from './ImageList';
 
-import { Content, Heading, Section, UploadArea } from "styled";
+import { Content, Heading, Section, UploadArea } from 'styled';
 
 class Collection extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true
+      loading: true,
     };
   }
 
@@ -23,13 +23,14 @@ class Collection extends Component {
       references,
       storyboards,
       styleframes,
-      title
+      title,
     } = this.props;
 
     const images = getCollectionFiles(this.collectionKeyOptions);
 
-    const list = images && images.length
-      ? <ImageList
+    const list =
+      images && images.length ? (
+        <ImageList
           containerClass="ImageList"
           content={images}
           itemClass="ImageListItem"
@@ -40,7 +41,7 @@ class Collection extends Component {
           updateCollectionItem={this.updateCollectionItem}
           removeCollectionItem={this.removeCollectionItem}
         />
-      : null;
+      ) : null;
 
     return (
       <Section>
@@ -61,7 +62,7 @@ class Collection extends Component {
     const { collectionId, projectPath } = this.props;
     return {
       path: projectPath,
-      collectionId
+      collectionId,
     };
   }
 
@@ -71,7 +72,7 @@ class Collection extends Component {
       items.map(({ id, caption, aspectRatio }) => ({
         id,
         caption,
-        aspectRatio
+        aspectRatio,
       }))
     );
   };

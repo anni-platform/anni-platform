@@ -1,19 +1,19 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 export class Loader extends Component {
   static propTypes = {
     center: PropTypes.bool,
     fullPage: PropTypes.bool,
-    size: PropTypes.number
+    size: PropTypes.number,
   };
 
   static defaultProps = {
     center: false,
     fullPage: false,
     size: 24,
-    style: {}
+    style: {},
   };
 
   render() {
@@ -22,7 +22,7 @@ export class Loader extends Component {
     const styles = classNames({
       Loader: Loader,
       center: center,
-      fullPage: fullPage
+      fullPage: fullPage,
     });
 
     return (

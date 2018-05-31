@@ -1,6 +1,6 @@
-import styledNormalize from "styled-normalize";
-import { injectGlobal } from "styled-components";
-import { PAPER } from "./Variables";
+import styledNormalize from 'styled-normalize';
+import { injectGlobal } from 'styled-components';
+import { PAPER } from './Variables';
 
 /*
  * Globals

@@ -1,4 +1,4 @@
-import constants from "constants/index";
+import constants from 'constants/index';
 
 const { ADD_PROJECT, REMOVE_PROJECT, UPDATE_PROJECT } = constants.project;
 const { ADD_AUTH_TOKEN, ADD_USER_INFO, LOG_OUT } = constants.auth;
@@ -10,27 +10,27 @@ const {
   UPDATE_COLLECTION_ORDER,
   UPDATE_COLLECTION,
   UPDATE_COLLECTION_ITEM,
-  REMOVE_COLLECTION_ITEM
+  REMOVE_COLLECTION_ITEM,
 } = constants.file;
 
 // Project Actions
 export const addProject = project => {
   return {
     type: ADD_PROJECT,
-    project
+    project,
   };
 };
 export const removeProject = id => {
   return {
     type: REMOVE_PROJECT,
-    id
+    id,
   };
 };
 
 export const updateProject = project => {
   return {
     type: UPDATE_PROJECT,
-    project
+    project,
   };
 };
 
@@ -38,20 +38,20 @@ export const updateProject = project => {
 export const addAuthToken = token => {
   return {
     type: ADD_AUTH_TOKEN,
-    token
+    token,
   };
 };
 
 export const addUserInfo = info => {
   return {
     type: ADD_USER_INFO,
-    info
+    info,
   };
 };
 
 export const logout = () => {
   return {
-    type: LOG_OUT
+    type: LOG_OUT,
   };
 };
 
@@ -60,13 +60,13 @@ export const addFile = (file, path) => {
   return {
     type: ADD_FILE,
     file,
-    path
+    path,
   };
 };
 export const deleteFile = name => {
   return {
     type: DELETE_FILE,
-    name
+    name,
   };
 };
 export const addFileToCollection = (id, path, collectionId) => {
@@ -74,28 +74,28 @@ export const addFileToCollection = (id, path, collectionId) => {
     type: ADD_FILE_TO_COLLECTION,
     id,
     path,
-    collectionId
+    collectionId,
   };
 };
 export const removeFileFromCollection = (id, collectionKey) => {
   return {
     type: REMOVE_FILE_FROM_COLLECTION,
     id,
-    collectionKey
+    collectionKey,
   };
 };
 export const updateCollection = (collectionKey, collection) => {
   return {
     type: UPDATE_COLLECTION,
     collectionKey,
-    collection
+    collection,
   };
 };
 export const updateCollectionOrder = (collectionKey, collection) => {
   return {
     type: UPDATE_COLLECTION_ORDER,
     collectionKey,
-    collection
+    collection,
   };
 };
 
@@ -104,7 +104,7 @@ export const updateCollectionItem = (collectionKey, index, content) => {
     type: UPDATE_COLLECTION_ITEM,
     collectionKey,
     index,
-    content
+    content,
   };
 };
 
@@ -112,6 +112,6 @@ export const removeCollectionItem = (collectionKey, index) => {
   return {
     type: REMOVE_COLLECTION_ITEM,
     collectionKey,
-    index
+    index,
   };
 };

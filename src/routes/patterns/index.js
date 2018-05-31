@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Anchor,
   Button,
@@ -7,17 +7,17 @@ import {
   NavBar,
   NavItem,
   Section,
-  Paragraph
-} from "styled";
+  Paragraph,
+} from 'styled';
 
-import Buttons from "./components/Buttons";
-import Layout from "./components/Layout";
-import FormFields from "./components/FormFields";
-import Icons from "./components/Icons";
-import Images from "./components/Images";
-import Loaders from "./components/Loaders";
-import Overlays from "./components/Overlays";
-import Typography from "./components/Typography";
+import Buttons from './components/Buttons';
+import Layout from './components/Layout';
+import FormFields from './components/FormFields';
+import Icons from './components/Icons';
+import Images from './components/Images';
+import Loaders from './components/Loaders';
+import Overlays from './components/Overlays';
+import Typography from './components/Typography';
 
 export default class PatternLibrary extends Component {
   render() {
@@ -28,35 +28,52 @@ export default class PatternLibrary extends Component {
             <Button to="/dashboard" icon="arrow-back" pt={6} stacked />
           </NavItem>
           <NavItem fit>
-            <Button href="#typography" link>Typography</Button>
+            <Button href="#typography" link>
+              Typography
+            </Button>
           </NavItem>
           <NavItem fit>
-            <Button href="#buttons" link>Buttons</Button>
-          </NavItem>
-          <NavItem  fit>
-            <Button href="#forms" link>Forms</Button>
-          </NavItem>
-          <NavItem fit>
-            <Button href="#layout" link>Layout</Button>
+            <Button href="#buttons" link>
+              Buttons
+            </Button>
           </NavItem>
           <NavItem fit>
-            <Button href="#images" link>Images</Button>
+            <Button href="#forms" link>
+              Forms
+            </Button>
           </NavItem>
           <NavItem fit>
-            <Button href="#icons" link>Icons</Button>
+            <Button href="#layout" link>
+              Layout
+            </Button>
           </NavItem>
           <NavItem fit>
-            <Button href="#overlays" link>Overlays</Button>
+            <Button href="#images" link>
+              Images
+            </Button>
           </NavItem>
           <NavItem fit>
-            <Button href="#loader" link>Loader</Button>
+            <Button href="#icons" link>
+              Icons
+            </Button>
+          </NavItem>
+          <NavItem fit>
+            <Button href="#overlays" link>
+              Overlays
+            </Button>
+          </NavItem>
+          <NavItem fit>
+            <Button href="#loader" link>
+              Loader
+            </Button>
           </NavItem>
         </NavBar>
 
         <Content>
           <Heading mb={6}>Pattern Library</Heading>
           <Paragraph large mb={48}>
-            These components are a collection of elements that can be reused across the Anni interface.
+            These components are a collection of elements that can be reused
+            across the Anni interface.
           </Paragraph>
           <Anchor id="typography" />
           <Typography />

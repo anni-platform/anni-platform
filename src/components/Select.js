@@ -1,8 +1,18 @@
 import React from 'react';
 import Downshift from 'downshift';
-import { Input, SelectOption, Select as StyledSelect, SelectOptions, SolidIcon } from "styled";
+import {
+  Input,
+  SelectOption,
+  Select as StyledSelect,
+  SelectOptions,
+  SolidIcon,
+} from 'styled';
 
-export function Select({items, onChange, placeholder = 'Select an option...'}) {
+export function Select({
+  items,
+  onChange,
+  placeholder = 'Select an option...',
+}) {
   return (
     <Downshift
       onChange={onChange}
@@ -15,29 +25,34 @@ export function Select({items, onChange, placeholder = 'Select an option...'}) {
         highlightedIndex,
         toggleMenu,
       }) => {
-        const filteredItems = items.filter(i =>
-          !inputValue || inputValue === selectedItem || i.toLowerCase().includes(inputValue.toLowerCase()));
+        const filteredItems = items.filter(
+          i =>
+            !inputValue ||
+            inputValue === selectedItem ||
+            i.toLowerCase().includes(inputValue.toLowerCase())
+        );
         return (
           <div>
             <StyledSelect hasItems={!!filteredItems.length} rotateIcon={isOpen}>
               <Input
-                select {...getInputProps({ placeholder })}
+                select
+                {...getInputProps({ placeholder })}
                 onFocus={toggleMenu}
               />
               <SolidIcon name="chevron-down" size={20} />
               {isOpen ? (
                 <SelectOptions>
-                  {filteredItems
-                    .map((item, index) => (
-
-                        <SelectOption
-                          active={highlightedIndex === index || selectedItem === item}
-                          {...getItemProps({item})}
-                          key={item}
-                        >
-                          {item}
-                        </SelectOption>
-                    ))}
+                  {filteredItems.map((item, index) => (
+                    <SelectOption
+                      active={
+                        highlightedIndex === index || selectedItem === item
+                      }
+                      {...getItemProps({ item })}
+                      key={item}
+                    >
+                      {item}
+                    </SelectOption>
+                  ))}
                 </SelectOptions>
               ) : null}
             </StyledSelect>
@@ -45,5 +60,5 @@ export function Select({items, onChange, placeholder = 'Select an option...'}) {
         );
       }}
     />
-  )
+  );
 }

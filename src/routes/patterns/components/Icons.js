@@ -1,6 +1,14 @@
-import React from "react";
+import React from 'react';
 
-import { Card, CodeBlock, OutlineIcon, SolidIcon, Grid, GridItem, Subheading } from "styled";
+import {
+  Card,
+  CodeBlock,
+  OutlineIcon,
+  SolidIcon,
+  Grid,
+  GridItem,
+  Subheading,
+} from 'styled';
 
 const items = [
   <OutlineIcon strokeWidth={3} name="add" />,
@@ -21,7 +29,6 @@ const items = [
   <SolidIcon name="pause" />,
   <SolidIcon name="next-frame" />,
   <SolidIcon name="sound" />,
-
 ];
 const Icons = () => (
   <Card padded mb={24}>
@@ -31,13 +38,15 @@ const Icons = () => (
         return (
           <GridItem stacked center key={index}>
             {item}
-            <Subheading capitalize micro mt={32}>{item.props.name}</Subheading>
+            <Subheading capitalize micro mt={32}>
+              {item.props.name}
+            </Subheading>
           </GridItem>
         );
       })}
     </Grid>
     <CodeBlock noMargin>
-{`import { SolidIcon, OutlineIcon } from "styled";
+      {`import { SolidIcon, OutlineIcon } from "styled";
 
 const Icons = () => (
   <SolidIcon name="String"/>

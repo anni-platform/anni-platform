@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { BaseLoader } from "components/Loader";
-import { COPPER } from "./Variables";
+import styled from 'styled-components';
+import { BaseLoader } from 'components/Loader';
+import { COPPER } from './Variables';
 
 export const Loader = styled(BaseLoader)`
   svg {
