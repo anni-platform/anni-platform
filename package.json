@@ -10,15 +10,21 @@
     "draft-js-plugins-editor": "^2.0.0-beta11",
     "dropbox": "^2.1.0",
     "enumify": "^1.0.4",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
     "gh-pages": "^1.0.0",
     "history": "^4.5.1",
+    "husky": "^0.14.3",
     "immutable": "^3.8.1",
     "jest": "15.1.1",
     "jest-styled-components": "^5.0.1",
     "json-loader": "0.5.4",
+    "lint-staged": "^7.1.2",
     "lodash.filter": "^4.6.0",
     "moment": "^2.18.1",
     "npm-run-all": "^3.1.0",
+    "prettier": "^1.13.3",
     "prop-types": "^15.5.10",
     "react-contenteditable": "^2.0.2",
     "react-dropzone": "^3.6.0",
@@ -47,10 +53,13 @@
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
+    "precommit": "lint-staged",
     "deploy": "gh-pages -d build -b master -o production",
-    "lint:css": "stylelint './src/styled/components/*.js'"
+    "lint:css": "stylelint './src/styled/components/*.js'",
+    "format": "prettier-eslint \"src/**/*.js\""
   },
   "dependencies": {
+    "canvas-image-scrubber": "1.1.7",
     "downshift": "^1.22.4",
     "ityped": "^0.0.10",
     "react": "^15.6.1",
@@ -60,5 +69,11 @@
     "react-mailchimp-subscribe": "^2.0.1",
     "react-picture-component": "^1.0.5",
     "react-scripts": "^1.0.10"
+  },
+  "lint-staged": {
+    "src/*.{js,json}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
