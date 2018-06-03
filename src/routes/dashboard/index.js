@@ -8,6 +8,9 @@ import { Content, Heading, Paragraph, Section } from 'styled';
 import { Loader } from 'styled';
 
 class Dashboard extends Component {
+  componentWillMount() {
+    this.props.refreshProjects();
+  }
   render() {
     const { projects, auth } = this.props;
     const loading = !auth.toJS().isAuthenticated;

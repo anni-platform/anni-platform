@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CanvasImageScrubber from 'canvas-image-scrubber';
+import CanvasImageScrubber from 'lib/canvas-image-scrubber';
 import { PlayerViewer, Player } from 'styled';
 
 import Controls from 'components/VideoPlayer/Controls';
@@ -23,6 +23,7 @@ export default class VideoPlayer extends Component {
       <CanvasImageScrubber
         frames={frames}
         render={({
+          getCanvasRef,
           getViewerControlsProps,
           getViewerProgressProps,
           loadingProgress,
@@ -32,17 +33,13 @@ export default class VideoPlayer extends Component {
             <Player>
               <PlayerViewer>
                 {renderViewer}
+                <canvas ref={getCanvasRef} />
                 <LoadingProgress {...loadingProgress} />
                 <ProgressBar {...getViewerProgressProps()} />
               </PlayerViewer>
               <Controls {...getViewerControlsProps()} />
             </Player>
           );
-        }}
-        sprite
-        spriteKey="huzzahSprite"
-        spriteLoadCallback={img => {
-          console.log('Upload file blob somewhere: ', img);
         }}
       />
     );

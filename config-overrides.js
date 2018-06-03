@@ -1,5 +1,5 @@
 /* config-overrides.js */
-const rewireStyledComponents = require("react-app-rewire-styled-components");
+const rewireStyledComponents = require('react-app-rewire-styled-components');
 
 module.exports = function override(config, env) {
   config = rewireStyledComponents(config, env, {
@@ -9,11 +9,11 @@ module.exports = function override(config, env) {
       rules: [
         {
           test: /\.jsx?/,
-          use: ["babel-loader", "stylelint-custom-processor-loader"],
-          exclude: /node_modules/
-        }
-      ]
-    }
+          use: ['babel-loader', 'stylelint-custom-processor-loader'],
+          exclude: /node_modules/,
+        },
+      ],
+    },
   });
   return config;
 };

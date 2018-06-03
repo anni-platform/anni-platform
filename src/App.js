@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { createStore, compose } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import { createStore, compose, applyMiddleware } from 'redux';
 import Navigation from 'components/Navigation';
 import { Provider } from 'react-redux';
 import reducer from 'reducers';
@@ -8,20 +9,20 @@ import { saveState } from './utils/localStorage';
 import StaticJSONFileDatabase from 'utils/fileStorage';
 import { Loader, Wrapper } from 'styled';
 import GlobalStyles from 'styled/components/Base';
+import sagas from 'sagas';
+
+const sagaMiddleware = createSagaMiddleware();
 
 const PRE_PROD = process.env.NODE_ENV === 'development';
 
-let enhancer = null;
-let DevTools = null;
-if (PRE_PROD) {
-  DevTools = require('DevTools').default;
-  enhancer = compose(DevTools.instrument());
-}
+let enhancer = compose(applyMiddleware(sagaMiddleware));
 
-const test = {
-  a: 1,
-  b: 2,
-};
+if (PRE_PROD) {
+  enhancer = compose(
+    applyMiddleware(sagaMiddleware),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  );
+}
 
 class App extends Component {
   constructor() {
@@ -31,12 +32,15 @@ class App extends Component {
   componentDidMount() {
     const token = getAccessTokenFromUrl();
 
+    window.loginDB = function() {
+      window.location.href = getAuthUrl();
+    };
+
     if (token) storeSessionToken(token);
 
     StaticJSONFileDatabase.hydrateStoreFromFileDatabase().then(data => {
-      const store = PRE_PROD
-        ? createStore(reducer, data, enhancer)
-        : createStore(reducer, data);
+      const store = createStore(reducer, data, enhancer);
+      sagaMiddleware.run(sagas);
 
       store.subscribe(() => {
         saveState(store.getState());
@@ -53,7 +57,6 @@ class App extends Component {
         <Wrapper>
           <Navigation />
           {this.props.children}
-          {DevTools ? <DevTools /> : null}
         </Wrapper>
       </Provider>
     ) : (

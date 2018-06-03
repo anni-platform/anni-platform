@@ -55,6 +55,10 @@ export function getAccountInfo() {
   return client.usersGetCurrentAccount();
 }
 
+export function getSharedLinks(path) {
+  return client.sharingGetSharedLinks({ path }).catch(e => console.error(e));
+}
+
 export function searchFiles(path, query) {
   return client.filesSearch({ path, query }).catch(e => console.log(e));
 }
@@ -81,8 +85,20 @@ export function getFolder(path) {
   return client.filesListFolder({ path }).catch(e => console.log(e));
 }
 
+export function getFolderMeta(files) {
+  return client
+    .sharingGetFileMetadataBatch({ files })
+    .catch(e => console.error(e));
+}
+
 export function getLink(path) {
   return client.sharingCreateSharedLink({ path }).catch(e => console.log(e));
+}
+
+export function getFilesMeta(files) {
+  return client
+    .sharingGetFileMetadataBatch(files)
+    .catch(e => console.log('error getFilesMeta', e));
 }
 
 export function createFolder(path) {

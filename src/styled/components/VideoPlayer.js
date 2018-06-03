@@ -120,6 +120,7 @@ export const PlayerTrack = styled.input`
   bottom: 0;
   width: 100%;
   position: absolute;
+  left: 0;
 
   &:focus {
     outline: none;

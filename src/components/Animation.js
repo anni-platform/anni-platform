@@ -43,7 +43,6 @@ class AnimationComponent extends PureComponent {
   };
   render() {
     const { folders, imageSequence, selectedFolder } = this.state;
-    console.log(imageSequence);
     return (
       <Section>
         <Content>

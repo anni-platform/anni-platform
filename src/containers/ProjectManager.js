@@ -5,6 +5,7 @@ import {
   removeProject,
   deleteFile,
   removeFileFromCollection,
+  getFilesInProject,
 } from 'actions';
 import { getFolder, removeFolder } from 'adapters';
 import filter from 'lodash.filter';
@@ -12,6 +13,9 @@ import { FILE_DATABASE_DIRECTORY } from 'constants/file';
 
 export default function ProjectManager(Component) {
   class Manager extends Component {
+    fetchCurrentProjectFiles = () => {
+      this.props.fetchProject(this.props.project.path_display);
+    };
     refreshProjects() {
       return new Promise(resolve => {
         getFolder('').then(({ entries }) => {
@@ -89,13 +93,36 @@ export default function ProjectManager(Component) {
       const refreshProjects = this.refreshProjects.bind(this);
       const getProjectByName = this.getProjectByName.bind(this);
       const removeProject = this.removeProject.bind(this);
-      return (
-        <Component
-          {...this.props}
-          {...{ refreshProjects, getProjectByName, removeProject }}
-        />
-      );
+      const props = {
+        ...this.props,
+        refreshProjects,
+        getProjectByName,
+        removeProject,
+        fetchCurrentProjectFiles: this.fetchCurrentProjectFiles,
+      };
+      return <Component {...props} />;
     }
   }
-  return connect(state => state)(Manager);
+  function mapDispatchToProps(dispatch, props, state) {
+    return {
+      fetchProject: path => dispatch(getFilesInProject(path)),
+    };
+  }
+
+  function mergeProps(stateProps, dispatchProps, ownProps) {
+    const { id: projectId } = ownProps.params || {};
+    const projects = Object.values(stateProps.projects.toJS());
+
+    return {
+      ...stateProps,
+      ...ownProps,
+      ...dispatchProps,
+      project: projects.find(p => p.name === projectId),
+    };
+  }
+  return connect(
+    state => state,
+    mapDispatchToProps,
+    mergeProps
+  )(Manager);
 }

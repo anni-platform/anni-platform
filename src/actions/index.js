@@ -1,4 +1,5 @@
 import constants from 'constants/index';
+import { FOLDER_FILES_FETCH_REQUESTED } from 'constants/folders';
 
 const { ADD_PROJECT, REMOVE_PROJECT, UPDATE_PROJECT } = constants.project;
 const { ADD_AUTH_TOKEN, ADD_USER_INFO, LOG_OUT } = constants.auth;
@@ -20,6 +21,14 @@ export const addProject = project => {
     project,
   };
 };
+
+export const getFilesInProject = path => {
+  return {
+    type: FOLDER_FILES_FETCH_REQUESTED,
+    path,
+  };
+};
+
 export const removeProject = id => {
   return {
     type: REMOVE_PROJECT,

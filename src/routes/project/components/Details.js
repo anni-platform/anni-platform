@@ -157,10 +157,11 @@ export default class ProjectDetail extends Component {
     };
   }
   componentDidMount() {
-    const { id } = this.props.params;
-    const project = this.props.getProjectByName(id);
+    const { project, fetchProject } = this.props;
     if (!project) {
       this.props.router.push('/dashboard');
+    } else {
+      fetchProject(project.path_display);
     }
   }
 

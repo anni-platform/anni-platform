@@ -32,7 +32,7 @@ class Navigation extends Component {
           dispatch(addAuthToken(token));
           getAccountInfo().then(info => {
             this.props.dispatch(addUserInfo(info));
-            this.props.router.push('/dashboard');
+            // this.props.router.push('/dashboard');
           });
         },
         err => {

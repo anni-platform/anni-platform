@@ -1,6 +1,7 @@
 import constants from 'constants/index';
 import { getCollectionKey } from 'utils';
 import Immutable, { List, Map } from 'immutable';
+import { FOLDER_FILES_FETCH_SUCCEEDED } from 'constants/folders';
 const {
   ADD_FILE,
   ADD_FILE_TO_COLLECTION,
@@ -15,6 +16,7 @@ const { REMOVE_PROJECT } = constants.project;
 export const initialState = Map({
   archive: Map({}),
   collections: Map({}),
+  projects: Map({}),
 });
 
 const archive = (state = initialState.get('archive'), action) => {
@@ -89,6 +91,15 @@ const collections = (state = initialState.get('collections'), action) => {
   }
 };
 
+const projects = (state = initialState.get('projects'), action) => {
+  switch (action.type) {
+    case FOLDER_FILES_FETCH_SUCCEEDED:
+      return state.setIn([action.projectPath], action.folder);
+    default:
+      return state;
+  }
+};
+
 const files = (state = initialState, action) => {
   if (!state.isMap || !state.isMap()) {
     state = Immutable.fromJS(state);
@@ -98,6 +109,7 @@ const files = (state = initialState, action) => {
       return Map({
         archive: archive(state.get('archive'), action),
         collections: collections(state.get('collections'), action),
+        projects: projects(state.get('projects'), action),
       });
   }
 };

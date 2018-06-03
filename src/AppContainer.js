@@ -20,7 +20,6 @@ export default function AppContainer() {
         <IndexRoute component={Login} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/auth" component={Auth} />
-        <Route path="/edit/projects/:action" component={Project} />
         <Route path="/project/:id" component={Project} />
         <Route path="/patterns" component={Patterns} />
         <Route path="*" component={NoMatch} />
