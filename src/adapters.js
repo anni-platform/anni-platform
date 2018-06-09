@@ -126,19 +126,33 @@ export function createProjectScaffold(path) {
   );
 }
 
-export function getFilesInFolder(path) {
+export function getFilesInFolder(path, filesCache) {
   if (!getAccessTokenFromSessionStorage()) {
     return;
   }
   return new Promise((resolve, reject) => {
     client.filesListFolder({ path }).then(response => {
+      // client
+      //   .sharingGetFileMetadataBatch({ files: response.entries.map(e => e.id) })
+      //   .then(data => {
+      //     console.log('sharingGetFileMetadataBatch', data);
+      //     resolve(data);
+      //   })
+      //   .catch(e => console.error(e));
       const getLinks = response.entries.map(entry => {
+        const { path_display } = entry;
         return new Promise((res, er) => {
-          getLink(entry.path_display).then(metadata => {
-            const src = metadata.url.replace(/.$/, '1');
-            entry.src = src;
-            res();
-          });
+          if (filesCache[path_display]) {
+            entry.src = filesCache[path_display];
+            console.log(filesCache[path_display]);
+            res(entry);
+          } else {
+            getLink(path_display).then(metadata => {
+              const src = metadata.url.replace(/.$/, '1');
+              entry.src = src;
+              res();
+            });
+          }
         });
       });
       Promise.all(getLinks)
@@ -146,4 +160,37 @@ export function getFilesInFolder(path) {
         .catch(reject);
     });
   });
+}
+
+export async function getFolderFiles(path) {
+  const folder = await client.filesListFolder({ path });
+  const { has_more, cursor, entries } = folder;
+  let files;
+  if (has_more) {
+    files = await client.filesListFolderContinue({ cursor });
+  }
+
+  let filesMeta;
+  if (entries) {
+    filesMeta = await client.filesAlphaGetMetadata({
+      path: entries[0].path_display,
+    });
+  }
+
+  const subFolders = entries.filter(e => e['.tag'] === 'folder');
+
+  console.log('subFolders', subFolders, entries);
+
+  const folderEntries = await Promise.all(
+    subFolders.map(({ path_display }) => getFolderFiles(path_display))
+  );
+
+  return {
+    folder: {
+      ...folder,
+      folderEntries,
+    },
+    files,
+    filesMeta,
+  };
 }

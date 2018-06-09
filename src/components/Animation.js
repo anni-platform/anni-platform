@@ -5,27 +5,43 @@ import { createSelector } from 'reselect';
 import { getFilesInFolder } from 'adapters';
 import { updateProject } from 'actions';
 import { Select } from 'components';
-import CanvasImageScrubber from 'canvas-image-scrubber';
+import CanvasImageScrubber from 'lib/canvas-image-scrubber';
 import { Content, Heading, Section } from 'styled';
+
+import {
+  getProject,
+  getProjectFolders,
+  getImageSequence,
+  getSelectedFolder,
+} from 'selectors/project';
 
 class AnimationComponent extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
+      fetchingFolder: false,
       folders: props.folders || [],
       selectedFolder: props.selectedFolder,
       imageSequence: props.imageSequence || [],
     };
   }
   getProjectFolder(path, selectedFolder) {
-    const { projectPath: id, updateProject } = this.props;
-    return getFilesInFolder(path).then(response => {
-      if (!response) return;
-      const imageSequence = response.map(i => i.src);
-      updateProject({ imageSequence, selectedFolder, id });
-      this.setState({ selectedFolder, imageSequence });
+    const { files, updateProject, project } = this.props;
+    const { id } = project;
+
+    console.log('project', project);
+
+    this.setState({ fetchingFolder: true }, () => {
+      getFilesInFolder(path, files.toJS().shareLinks).then(response => {
+        if (!response) return;
+        const imageSequence = response.map(i => i.src);
+        console.log(imageSequence);
+        updateProject({ imageSequence, selectedFolder, id });
+        this.setState({ selectedFolder, imageSequence, fetchingFolder: false });
+      });
     });
   }
+
   componentWillReceiveProps({ folders }) {
     if (
       Array.isArray(folders) &&
@@ -36,26 +52,25 @@ class AnimationComponent extends PureComponent {
     }
   }
   onSelectFolder = folder => {
-    const { folders } = this.state;
-    const project = folders.find(f => f.name === folder);
-    if (!project) return;
-    this.getProjectFolder(project.path_lower, folder);
+    const { project }  = this.props;
+    this.getProjectFolder(folder, project.name);
   };
   render() {
-    const { folders, imageSequence, selectedFolder } = this.state;
+    const { folders, imageSequence, selectedFolder, fetchingFolder } = this.state;
+
     return (
       <Section>
         <Content>
           <Heading>Animation</Heading>
-          {folders &&
-            folders.length && (
+          {(folders && folders.length) ? (
               <Select
                 defaultSelectedItem={selectedFolder}
-                items={folders.map(f => f.name)}
+                items={folders.map(f => f.path_display)}
                 onChange={this.onSelectFolder}
               />
-            )}
-          {imageSequence.length && (
+            ) : 'no folders to select'}
+          {fetchingFolder && 'Fetching folder....'}
+          {imageSequence.length > 0 && (
             <CanvasImageScrubber
               frames={imageSequence}
               render={({ renderViewer }) => {
@@ -74,49 +89,25 @@ AnimationComponent.propTypes = {
   imageSequence: PropTypes.arrayOf(PropTypes.string),
 };
 
-const getProject = createSelector(
-  (state, { id }) => id,
-  state => state.projects.toJS(),
-  (id, projects) => {
-    return projects && projects[id];
-  }
-);
-
-const getProjectFiles = createSelector(getProject, project => {
-  return (project && project.entries && project.entries) || [];
-});
-
-const getImageSequence = createSelector(getProject, project => {
-  if (Array.isArray(project.imageSequence)) {
-    return project.imageSequence;
-  }
-  return [];
-});
-
-const getProjectFolders = createSelector(getProjectFiles, files =>
-  files.filter(f => f['.tag'] === 'folder')
-);
-
-const getSelectedFolder = createSelector(
-  getProject,
-  project => project.selectedFolder
-);
-
 const getProps = createSelector(
   getProject,
   getProjectFolders,
   getImageSequence,
   getSelectedFolder,
-  (project, folders, imageSequence, selectedFolder) => ({
-    project,
-    folders,
-    imageSequence,
-    selectedFolder,
-  })
+  state => state.files,
+  (project, folders, imageSequence, selectedFolder, files) => {
+    return ({
+      project,
+      folders,
+      imageSequence,
+      selectedFolder,
+      files,
+    });
+  }
 );
 
-const mapStateToProps = (state, { projectPath }) => {
-  return getProps(state, { id: projectPath });
+const mapStateToProps = (state, { params }) => {
+  return getProps(state, { id: params.id });
 };
 
 function mapDispatchToProps(dispatch) {
@@ -125,7 +116,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export const Animation = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(AnimationComponent);

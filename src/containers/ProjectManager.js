@@ -6,8 +6,14 @@ import {
   deleteFile,
   removeFileFromCollection,
   getFilesInProject,
+  requestSharedLinks,
 } from 'actions';
-import { getFolder, removeFolder } from 'adapters';
+import {
+  getFolder,
+  removeFolder,
+  // getFilesInFolder,
+  // getFolderFiles,
+} from 'adapters';
 import filter from 'lodash.filter';
 import { FILE_DATABASE_DIRECTORY } from 'constants/file';
 
@@ -16,6 +22,14 @@ export default function ProjectManager(Component) {
     fetchCurrentProjectFiles = () => {
       this.props.fetchProject(this.props.project.path_display);
     };
+    // componentWillMount() {
+    //   // console.log('ProjectManager.componentWillMount');
+    //   const { path_display } = this.props.project || {};
+    //   // getFilesInFolder(path_display);
+    //   getFolderFiles(path_display).then(d => console.log('getFolderFiles', d))
+    //   // this.props.requestSharedLinks(path_display);
+    //   // this.props.fetchProject(path_display);
+    // }
     refreshProjects() {
       return new Promise(resolve => {
         getFolder('').then(({ entries }) => {
@@ -28,7 +42,7 @@ export default function ProjectManager(Component) {
               p => p.id === entry.id
             ).length;
             if (isNewProject) {
-              this.props.dispatch(addProject(entry));
+              this.props.addProject(entry);
             }
           });
           const ids = entries.map(e => e.id);
@@ -105,7 +119,9 @@ export default function ProjectManager(Component) {
   }
   function mapDispatchToProps(dispatch, props, state) {
     return {
+      addProject: project => dispatch(addProject(project)),
       fetchProject: path => dispatch(getFilesInProject(path)),
+      requestSharedLinks: path => dispatch(requestSharedLinks(path)),
     };
   }
 

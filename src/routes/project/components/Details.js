@@ -27,6 +27,7 @@ const ProjectSection = ({
 };
 
 const ProjectSectionNavigator = ({
+  children,
   name,
   Sections,
   activeSectionIndex,
@@ -191,6 +192,7 @@ export default class ProjectDetail extends Component {
           save,
           projectPath,
         })}
+        {this.props.children}
       </Container>
     );
   }

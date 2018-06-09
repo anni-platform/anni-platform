@@ -24,11 +24,13 @@ const projects = (state = initialState, action) => {
 
   switch (action.type) {
     case ADD_PROJECT:
+      console.log('action', action);
       if (!state.has(action.project.id)) {
         return state.set(action.project.id, project(action.project, action));
       }
       return state;
     case UPDATE_PROJECT:
+      console.log(action);
       return state.set(
         action.project.id,
         project(state.get(action.project.id), action)

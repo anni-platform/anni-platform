@@ -1,9 +1,9 @@
 import { call, put, takeLatest, all } from 'redux-saga/effects';
 
-import { getFolder, getLink, getFolderMeta, getSharedLinks } from 'adapters';
+import { getFolder, getSharedLinks } from 'adapters';
 import * as actionTypes from 'constants/folders';
 
-const TOTAL_FILES_LIMIT = 100;
+// const TOTAL_FILES_LIMIT = 100;
 
 function* fetchFilesInFolder(action) {
   try {
@@ -11,10 +11,8 @@ function* fetchFilesInFolder(action) {
     const files = yield all(
       folder.entries.map(e => call(getFolder, e.path_display))
     );
-    const [first] = folder.entries;
-    console.log('files', files, first.path_display);
-    const firstSharingLinks = yield call(getSharedLinks);
-    console.log(firstSharingLinks);
+    // const sharedLinks = yield call(getSharedLinks);
+    
     
     // const entries = files.reduce((acc, { entries }) => [...acc, ...entries.map(e => e)], []);
     // const paths = entries.map(({ path_display }) => path_display);
@@ -45,6 +43,21 @@ function* fetchFilesInFolder(action) {
   }
 }
 
+function* fetchSharedLinks(action) {
+  try {
+    const sharedLinks = yield call(getSharedLinks);
+    yield put({
+      type: actionTypes.SHARED_LINKS_FETCH_SUCCEEDED,
+      sharedLinks,
+    });
+  } catch (e) {
+    yield put({
+      type: actionTypes.SHARED_LINKS_FETCH_FAILED,
+      message: e.message,
+    });
+  }
+}
+
 function* folder() {
   yield takeLatest(
     actionTypes.FOLDER_FILES_FETCH_REQUESTED,
@@ -52,8 +65,18 @@ function* folder() {
   );
 }
 
+function* sharedLinks() {
+  yield takeLatest(
+    actionTypes.SHARED_LINKS_REQUESTED,
+    fetchSharedLinks,
+  );
+}
+
 function* rootSaga() {
-  yield all([...folder()]);
+  yield all([
+    ...folder(),
+    ...sharedLinks(),
+  ]);
 }
 
 export default rootSaga;

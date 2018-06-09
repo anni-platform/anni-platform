@@ -1,7 +1,7 @@
 import constants from 'constants/index';
 import { getCollectionKey } from 'utils';
 import Immutable, { List, Map } from 'immutable';
-import { FOLDER_FILES_FETCH_SUCCEEDED } from 'constants/folders';
+import { FOLDER_FILES_FETCH_SUCCEEDED, SHARED_LINKS_FETCH_SUCCEEDED } from 'constants/folders';
 const {
   ADD_FILE,
   ADD_FILE_TO_COLLECTION,
@@ -17,6 +17,7 @@ export const initialState = Map({
   archive: Map({}),
   collections: Map({}),
   projects: Map({}),
+  shareLinks: Map({}),
 });
 
 const archive = (state = initialState.get('archive'), action) => {
@@ -91,6 +92,20 @@ const collections = (state = initialState.get('collections'), action) => {
   }
 };
 
+const shareLinks = (state = initialState.get('shareLinks'), action) => {
+  switch (action.type) {
+    case SHARED_LINKS_FETCH_SUCCEEDED:
+      const { links } = action.sharedLinks || {};
+      const linkDictionary = links.reduce((acc, { url, path }) => ({
+        ...acc,
+        [path]: url,
+      }), {});
+      return Map(linkDictionary);
+    default:
+      return state;
+  }
+};
+
 const projects = (state = initialState.get('projects'), action) => {
   switch (action.type) {
     case FOLDER_FILES_FETCH_SUCCEEDED:
@@ -110,6 +125,7 @@ const files = (state = initialState, action) => {
         archive: archive(state.get('archive'), action),
         collections: collections(state.get('collections'), action),
         projects: projects(state.get('projects'), action),
+        shareLinks: shareLinks(state.get('shareLinks'), action),
       });
   }
 };
