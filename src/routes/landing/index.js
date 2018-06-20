@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import MailchimpSubscribe from 'react-mailchimp-subscribe';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
 import { CoverImage } from 'components/Image';
+import { navigate } from '@reach/router';
 import {
   Button,
   Content,
@@ -117,10 +117,10 @@ class SignupForm extends Component {
   }
 }
 
-class Login extends Component {
-  componentDidMount() {
-    if (this.props.auth.toJS().isAuthenticated) {
-      this.props.router.push('/dashboard');
+class LandingScreen extends Component {
+  static getDerivedStateFromProps(props) {
+    if (props.auth.toJS().isAuthenticated) {
+      navigate('dashboard');
     }
   }
 
@@ -170,4 +170,4 @@ class Login extends Component {
     );
   }
 }
-export default connect(state => state)(withRouter(Login));
+export default connect(state => state)(LandingScreen);

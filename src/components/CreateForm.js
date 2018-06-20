@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { createFolder } from 'adapters';
 import { addProject } from 'actions';
 import ProjectManager from 'containers/ProjectManager';
-import { withRouter } from 'react-router';
+import { navigate } from '@reach/router';
 import {
   Button,
   Backdrop,
@@ -40,7 +40,7 @@ class ProjectForm extends Component {
         const { path_display } = project;
         this.props.onClose();
         this.props.dispatch(addProject(project));
-        this.props.router.push(`/project${path_display}`);
+        navigate(`/project${path_display}`);
       })
       .catch(err => console.log(err));
   }
@@ -127,4 +127,4 @@ class ProjectForm extends Component {
   }
 }
 
-export default ProjectManager(withRouter(ProjectForm));
+export default ProjectManager(ProjectForm);

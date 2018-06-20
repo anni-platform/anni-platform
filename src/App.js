@@ -7,9 +7,14 @@ import reducer from 'reducers';
 import { getAccessTokenFromUrl, storeSessionToken, getAuthUrl } from 'adapters';
 import { saveState } from './utils/localStorage';
 import StaticJSONFileDatabase from 'utils/fileStorage';
-import { Loader, Wrapper } from 'styled';
+import { Loader, Wrapper, Container } from 'styled';
 import GlobalStyles from 'styled/components/Base';
 import sagas from 'sagas';
+import { Router } from '@reach/router';
+import Dashboard from 'routes/dashboard';
+import LandingScreen from 'routes/landing';
+import Project from 'routes/project';
+import Patterns from 'routes/patterns';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -23,6 +28,13 @@ if (PRE_PROD) {
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
 }
+
+const Layout = ({ children }) => (
+  <Container>
+    <Navigation />
+    {children}
+  </Container>
+);
 
 class App extends Component {
   constructor() {
@@ -50,13 +62,18 @@ class App extends Component {
   }
   render() {
     GlobalStyles();
-
-    const store = this.state.store;
+    const { store } = this.state;
     return store ? (
       <Provider store={store}>
         <Wrapper>
-          <Navigation />
-          {this.props.children}
+          <Router>
+            <Layout path="/">
+              <LandingScreen default />
+              <Dashboard path="dashboard" />
+              <Patterns path="patterns" />
+              <Project path="project/:projectId/*" />
+            </Layout>
+          </Router>
         </Wrapper>
       </Provider>
     ) : (

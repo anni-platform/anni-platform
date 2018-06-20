@@ -19,9 +19,7 @@ class FileDrop extends Component {
         {this.props.children}
         <Container>
           <Content>
-            <Subheading color center>
-              Drag and Drop
-            </Subheading>
+            <Subheading center>Drag and Drop</Subheading>
             <Paragraph strong center>
               Your images here or browse
             </Paragraph>

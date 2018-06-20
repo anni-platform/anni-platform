@@ -1,12 +1,13 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { Container, Section } from 'styled';
 import TextEditor from '../components/TextEditor';
 
-export default function Script() {
+export default function Script(props) {
   return (
-    <Container>
-      script
-      <TextEditor />
-    </Container>
-  )
+    <Section project center>
+      <Container>
+        <TextEditor save={() => null} />
+      </Container>
+    </Section>
+  );
 }

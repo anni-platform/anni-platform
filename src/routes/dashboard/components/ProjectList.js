@@ -1,5 +1,5 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
+import { navigate } from '@reach/router';
 
 import {
   ButtonGroup,
@@ -23,15 +23,7 @@ export const ProjectList = ({ children }) => {
   return <Grid>{children}</Grid>;
 };
 
-export const ProjectListItem = ({
-  path,
-  name,
-  client,
-  image,
-  link,
-  id,
-  files,
-}) => {
+export const ProjectListItem = ({ path, name, client, image, id, files }) => {
   // TODO: @hudakdidit
   // This needs work to get it to work
   function deleteProject() {
@@ -47,11 +39,11 @@ export const ProjectListItem = ({
         this.props.dispatch(deleteFile(file));
       }
     });
-    this.props.router.push('/dashboard');
+    // this.props.router.push('/dashboard');
   }
 
   const projectLink = () => {
-    browserHistory.push(link);
+    navigate(`project/${name}`);
   };
 
   return (

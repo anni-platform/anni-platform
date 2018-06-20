@@ -1,13 +1,8 @@
 import React from 'react';
+import { Link } from '@reach/router';
+
 import classNames from 'classnames';
-import {
-  Content,
-  Label,
-  ProjectNav,
-  ProjectNavItem,
-  ProjectNavId,
-  Radio,
-} from 'styled';
+import { Content, Label, ProjectNav, ProjectNavId, Radio } from 'styled';
 
 export const ProjectControls = ({ children }) => {
   return (
@@ -19,27 +14,26 @@ export const ProjectControls = ({ children }) => {
 
 export const ProjectSectionNavItem = ({
   name,
-  checked,
   onClick,
   projectPath,
-}) => {
-  const styles = classNames({
-    checked,
-  });
-
-  return (
-    <ProjectNavItem
-      to={{
-        pathname: projectPath,
-        query: { section: name },
-      }}
-      onClick={onClick}
-    >
-      <Label className={styles} capitalize micro hide>
-        <span>{name}</span>
-        {checked ? <ProjectNavId checked /> : <ProjectNavId />}
-        <Radio checked={checked} readOnly value={name} hidden ml={8} />
-      </Label>
-    </ProjectNavItem>
-  );
-};
+  to,
+  location,
+}) => (
+  <Link
+    to={to}
+    getProps={({ isCurrent }) => ({
+      children: (
+        <Label
+          className={classNames({ checked: isCurrent })}
+          capitalize
+          micro
+          hide
+        >
+          {name}
+          <ProjectNavId checked={isCurrent} />
+          <Radio checked={isCurrent} readOnly value={name} hidden ml={8} />
+        </Label>
+      ),
+    })}
+  />
+);

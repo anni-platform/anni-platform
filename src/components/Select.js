@@ -21,6 +21,7 @@ export function Select({
     <Downshift
       onChange={onChange}
       defaultSelectedItem={defaultSelectedItem}
+      itemToString={item => (item ? item.label : '')}
       render={({
         getInputProps,
         getItemProps,
@@ -31,11 +32,12 @@ export function Select({
         toggleMenu,
         reset,
       }) => {
+        const currentFilter = (inputValue && inputValue.toLowerCase()) || '';
         const filteredItems = items.filter(
-          i =>
-            !inputValue ||
-            inputValue === selectedItem ||
-            i.toLowerCase().includes(inputValue.toLowerCase())
+          ({ value }) =>
+            !value ||
+            value === selectedItem ||
+            value.toLowerCase().includes(currentFilter)
         );
         return (
           <div>
@@ -44,11 +46,7 @@ export function Select({
               rotateIcon={isOpen}
               className={className}
             >
-              {label && (
-                <Subheading micro color>
-                  {label}
-                </Subheading>
-              )}
+              {label && <Subheading micro>{label}</Subheading>}
               <Input
                 select
                 {...getInputProps({ placeholder })}
@@ -63,9 +61,9 @@ export function Select({
                         highlightedIndex === index || selectedItem === item
                       }
                       {...getItemProps({ item })}
-                      key={item}
+                      key={item.value}
                     >
-                      {item}
+                      {item.label}
                     </SelectOption>
                   ))}
                 </SelectOptions>

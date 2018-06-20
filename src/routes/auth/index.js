@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
 import AuthManager from 'containers/AuthManager';
+import { navigate } from '@reach/router';
 
 class Auth extends Component {
   componentDidMount() {
-    this.props.router.push('/dashboard');
+    navigate('dashboard');
   }
   render() {
     return <div>Awesome!</div>;
@@ -16,4 +16,4 @@ const mapStateToProps = ({ auth }) => ({
   auth,
 });
 
-export default connect(mapStateToProps)(withRouter(AuthManager(Auth)));
+export default connect(mapStateToProps)(AuthManager(Auth));

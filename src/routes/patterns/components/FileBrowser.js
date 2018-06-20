@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  Card,
-  CodeBlock,
-  Subheading,
-} from 'styled';
+import { Card, CodeBlock, Subheading } from 'styled';
 import { FileBrowser } from 'components';
 
 const FileBrowserSection = () => (

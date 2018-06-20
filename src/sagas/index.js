@@ -1,9 +1,20 @@
-import { call, put, takeLatest, all } from 'redux-saga/effects';
+import {
+  call,
+  put,
+  takeLatest,
+  all,
+  takeEvery,
+  select,
+} from 'redux-saga/effects';
 
 import { getFolder, getSharedLinks } from 'adapters';
 import * as actionTypes from 'constants/folders';
 
-// const TOTAL_FILES_LIMIT = 100;
+// 1. getFolderFiles
+// 2. get each file path as array
+// 3. pull file from shared links cache if available
+// 4. fetch share link for new files
+// 5. combine list into single
 
 function* fetchFilesInFolder(action) {
   try {
@@ -11,31 +22,17 @@ function* fetchFilesInFolder(action) {
     const files = yield all(
       folder.entries.map(e => call(getFolder, e.path_display))
     );
-    // const sharedLinks = yield call(getSharedLinks);
-    
-    
-    // const entries = files.reduce((acc, { entries }) => [...acc, ...entries.map(e => e)], []);
-    // const paths = entries.map(({ path_display }) => path_display);
-    // console.log(paths);
-    // const getEntryLinks = paths.map(p => call(getLink, p))
-    // console.log(getEntryLinks);
-    // const fileLinks = yield all(getEntryLinks);
-    // console.log(fileLinks);
-    
-    // const filesMeta = yield call(getFolderMeta, entries.map(({ id }) => id).slice(0, TOTAL_FILES_LIMIT));
-    // console.log(filesMeta);
     yield put({
       type: actionTypes.FOLDER_FILES_FETCH_SUCCEEDED,
       folder: {
         ...folder,
-        files: folder.entries.map(({ name }, index) =>
-          ({ [name]: files[index].entries })
-        ),
+        files: folder.entries.map(({ name }, index) => ({
+          [name]: files[index].entries,
+        })),
       },
       projectPath: action.path,
     });
   } catch (e) {
-    console.log(e);
     yield put({
       type: actionTypes.FOLDER_FILES_FETCH_FAILED,
       message: e.message,
@@ -45,10 +42,10 @@ function* fetchFilesInFolder(action) {
 
 function* fetchSharedLinks(action) {
   try {
-    const sharedLinks = yield call(getSharedLinks);
+    const { links } = yield call(getSharedLinks);
     yield put({
       type: actionTypes.SHARED_LINKS_FETCH_SUCCEEDED,
-      sharedLinks,
+      links,
     });
   } catch (e) {
     yield put({
@@ -66,17 +63,20 @@ function* folder() {
 }
 
 function* sharedLinks() {
-  yield takeLatest(
-    actionTypes.SHARED_LINKS_REQUESTED,
-    fetchSharedLinks,
-  );
+  yield takeLatest(actionTypes.SHARED_LINKS_REQUESTED, fetchSharedLinks);
+}
+
+function* watchAndLog() {
+  yield takeEvery('*', function* logger(action) {
+    const state = yield select();
+
+    console.log('action', action);
+    console.log('state after', state);
+  });
 }
 
 function* rootSaga() {
-  yield all([
-    ...folder(),
-    ...sharedLinks(),
-  ]);
+  yield all([...folder(), ...sharedLinks(), ...watchAndLog()]);
 }
 
 export default rootSaga;

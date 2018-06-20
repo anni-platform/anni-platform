@@ -11,56 +11,56 @@ import { ProjectControls, ProjectSectionNavItem } from './ProjectControls';
 const { MOODBOARD, STORYBOARD, STYLEFRAMES, ANIMATION } =
   constants.content || {};
 
-const ProjectSection = ({
-  isActive,
-  SectionType,
-  SectionProps,
-  key,
-  save,
-  className,
-}) => {
-  const sectionClass = classNames(className, {
-    ProjectSection: true,
-  });
-  const props = { ...SectionProps, className: sectionClass, key, save };
-  return isActive ? createElement(SectionType, props, null) : null;
-};
+// const ProjectSection = ({
+//   isActive,
+//   SectionType,
+//   SectionProps,
+//   key,
+//   save,
+//   className,
+// }) => {
+//   const sectionClass = classNames(className, {
+//     ProjectSection: true,
+//   });
+//   const props = { ...SectionProps, className: sectionClass, key, save };
+//   return isActive ? createElement(SectionType, props, null) : null;
+// };
 
-const ProjectSectionNavigator = ({
-  children,
-  name,
-  Sections,
-  activeSectionIndex,
-  activateSectionByIndex,
-  save,
-  projectPath,
-}) => {
-  return (
-    <Section>
-      <Section project>
-        {Sections.map((section, index) =>
-          ProjectSection({
-            ...section,
-            save,
-            key: `section${index}`,
-            isActive: activeSectionIndex === index,
-          })
-        )}
-      </Section>
-      <ProjectControls>
-        {Sections.map(({ SectionType, name }, index) =>
-          createElement(ProjectSectionNavItem, {
-            key: `${name}sectionNavItem${index}`,
-            name,
-            checked: activeSectionIndex === index,
-            onClick: () => activateSectionByIndex(index),
-            projectPath,
-          })
-        )}
-      </ProjectControls>
-    </Section>
-  );
-};
+// const ProjectSectionNavigator = ({
+//   children,
+//   name,
+//   Sections,
+//   activeSectionIndex,
+//   activateSectionByIndex,
+//   save,
+//   projectPath,
+// }) => {
+//   return (
+//     <Section>
+//       <Section project>
+//         {Sections.map((section, index) =>
+//           ProjectSection({
+//             ...section,
+//             save,
+//             key: `section${index}`,
+//             isActive: activeSectionIndex === index,
+//           })
+//         )}
+//       </Section>
+//       <ProjectControls>
+//         {Sections.map(({ SectionType, name }, index) =>
+//           createElement(ProjectSectionNavItem, {
+//             key: `${name}sectionNavItem${index}`,
+//             name,
+//             checked: activeSectionIndex === index,
+//             onClick: () => activateSectionByIndex(index),
+//             projectPath,
+//           })
+//         )}
+//       </ProjectControls>
+//     </Section>
+//   );
+// };
 
 const getSections = (project, id) => [
   {
@@ -129,88 +129,98 @@ const getSections = (project, id) => [
   },
 ];
 
-const getActiveSectionIndex = (props, Sections) => {
-  let activeSectionIndex = 0;
-  const sectionQueryParam = props.location.query.section;
-  if (sectionQueryParam) {
-    const foundSection = Sections.findIndex(s => s.name === sectionQueryParam);
-    if (foundSection > -1) {
-      activeSectionIndex = foundSection;
-    }
-  }
-  return activeSectionIndex;
-};
+// const getActiveSectionIndex = (props, Sections) => {
+//   let activeSectionIndex = 0;
+//   const sectionQueryParam = props.location.query.section;
+//   if (sectionQueryParam) {
+//     const foundSection = Sections.findIndex(s => s.name === sectionQueryParam);
+//     if (foundSection > -1) {
+//       activeSectionIndex = foundSection;
+//     }
+//   }
+//   return activeSectionIndex;
+// };
 
-export default class ProjectDetail extends Component {
-  constructor(props) {
-    super(props);
-    const name = props.params.id;
-    this.projectPath = props.location.pathname;
-    const project = props.getProjectByName(name);
-    const id = project.id;
-    this.id = id;
-    const Sections = getSections(project, id);
-    let activeSectionIndex = getActiveSectionIndex(props, Sections);
-
-    this.state = {
-      activeSectionIndex,
-      Sections,
-    };
-  }
-  componentDidMount() {
-    const { project, fetchProject } = this.props;
-    if (!project) {
-      this.props.router.push('/dashboard');
-    } else {
-      fetchProject(project.path_display);
-    }
-  }
-
-  activateSectionByIndex = activeSectionIndex =>
-    this.setState({ activeSectionIndex });
-
-  save = update =>
-    this.props.dispatch(updateProject({ ...update, id: this.id }));
-
-  render() {
-    const { id } = this.props.params;
-    const project = this.props.getProjectByName(id);
-    if (!project) {
-      this.props.router.push('/dashboard');
-    }
-
-    const { Sections, activeSectionIndex } = this.state;
-    const { save, projectPath } = this;
-
-    return (
-      <Container>
-        {createElement(ProjectSectionNavigator, {
-          activeSectionIndex,
-          activateSectionByIndex: this.activateSectionByIndex,
-          id,
-          Sections,
-          save,
-          projectPath,
-        })}
-        {this.props.children}
-      </Container>
-    );
-  }
-
-  _removeProject() {
-    const { id } = this.props.params;
-    const project = this.props.getProjectByName(id);
-    this.props.dispatch(removeProject(project.id, id));
-    const collectionKeys = Object.keys(this.props.files.collections);
-    // remove all unused files from store
-    Object.keys(this.props.files.archive).forEach(file => {
-      const fileUsed = collectionKeys.map(collection =>
-        collection.indexOf(file)
-      );
-      if (!filter(fileUsed, i => i > -1).length) {
-        this.props.dispatch(deleteFile(file));
-      }
-    });
-    this.props.router.push('/dashboard');
-  }
+export default function Project({ children, props }) {
+  console.log(props);
+  return <Container>{children}</Container>;
 }
+
+// export default class ProjectDetail extends Component {
+//   constructor(props) {
+//     super(props);
+//     const name = props.id;
+//     this.projectPath = props.location.pathname;
+//     const project = props.getProjectByName(name);
+//     const id = project.id;
+//     this.id = id;
+//     const Sections = getSections(project, id);
+//     let activeSectionIndex = getActiveSectionIndex(props, Sections);
+
+//     this.state = {
+//       activeSectionIndex,
+//       Sections,
+//     };
+//   }
+//   componentDidMount() {
+//     const { project, fetchProject } = this.props;
+//     if (!project) {
+//       this.props.router.push('/dashboard');
+//     } else {
+//       fetchProject(project.path_display);
+//     }
+//   }
+
+//   activateSectionByIndex = activeSectionIndex =>
+//     this.setState({ activeSectionIndex });
+
+//   save = update =>
+//     this.props.dispatch(updateProject({ ...update, id: this.id }));
+
+//   render() {
+//     const { id } = this.props;
+//     const project = this.props.getProjectByName(id);
+//     if (!project) {
+//       this.props.router.push('/dashboard');
+//     }
+
+//     const { Sections, activeSectionIndex } = this.state;
+//     const { save, projectPath } = this;
+
+//     // return (
+//     //   <Container>
+//     //     {createElement(ProjectSectionNavigator, {
+//     //       activeSectionIndex,
+//     //       activateSectionByIndex: this.activateSectionByIndex,
+//     //       id,
+//     //       Sections,
+//     //       save,
+//     //       projectPath,
+//     //     })}
+//     //     {this.props.children}
+//     //   </Container>
+//     // );
+//     return (
+//       <Container>
+//         {id}
+//       </Container>
+//     );
+//   }
+
+//   _removeProject() {
+//     const { id } = this.props.params;
+//     const project = this.props.getProjectByName(id);
+//     this.props.dispatch(removeProject(project.id, id));
+//     const collectionKeys = Object.keys(this.props.files.collections);
+//     // remove all unused files from store
+//     Object.keys(this.props.files.archive).forEach(file => {
+//       const fileUsed = collectionKeys.map(collection =>
+//         collection.indexOf(file)
+//       );
+//       if (!filter(fileUsed, i => i > -1).length) {
+//         this.props.dispatch(deleteFile(file));
+//       }
+//     });
+//     this.props.router.push('/dashboard');
+//   }
+// }

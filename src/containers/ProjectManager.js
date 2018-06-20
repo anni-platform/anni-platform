@@ -19,17 +19,12 @@ import { FILE_DATABASE_DIRECTORY } from 'constants/file';
 
 export default function ProjectManager(Component) {
   class Manager extends Component {
+    componentDidMount() {
+      this.refreshProjects();
+    }
     fetchCurrentProjectFiles = () => {
       this.props.fetchProject(this.props.project.path_display);
     };
-    // componentWillMount() {
-    //   // console.log('ProjectManager.componentWillMount');
-    //   const { path_display } = this.props.project || {};
-    //   // getFilesInFolder(path_display);
-    //   getFolderFiles(path_display).then(d => console.log('getFolderFiles', d))
-    //   // this.props.requestSharedLinks(path_display);
-    //   // this.props.fetchProject(path_display);
-    // }
     refreshProjects() {
       return new Promise(resolve => {
         getFolder('').then(({ entries }) => {
@@ -107,6 +102,7 @@ export default function ProjectManager(Component) {
       const refreshProjects = this.refreshProjects.bind(this);
       const getProjectByName = this.getProjectByName.bind(this);
       const removeProject = this.removeProject.bind(this);
+
       const props = {
         ...this.props,
         refreshProjects,
@@ -114,6 +110,7 @@ export default function ProjectManager(Component) {
         removeProject,
         fetchCurrentProjectFiles: this.fetchCurrentProjectFiles,
       };
+
       return <Component {...props} />;
     }
   }

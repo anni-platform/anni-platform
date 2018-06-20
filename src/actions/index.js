@@ -68,11 +68,12 @@ export const logout = () => {
 };
 
 // File Actions
-export const addFile = (file, path) => {
+export const addFile = (file, path, collectionKey) => {
   return {
     type: ADD_FILE,
     file,
     path,
+    collectionKey,
   };
 };
 export const deleteFile = name => {
@@ -128,9 +129,9 @@ export const removeCollectionItem = (collectionKey, index) => {
   };
 };
 
-export const requestSharedLinks = (path) => {
+export const requestSharedLinks = path => {
   return {
     type: SHARED_LINKS_REQUESTED,
     path,
   };
-}
+};

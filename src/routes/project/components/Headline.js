@@ -1,12 +1,12 @@
 import React from 'react';
 import { Content, Heading, Input, Section } from 'styled';
 
-const Headline = ({ name, client, date, save }) => {
+const Headline = ({ title, client, date, save }) => {
   return (
     <Section project center>
       <Content>
         <Heading mb={24} capitalize>
-          {name}
+          {title}
         </Heading>
         <Input
           value={client}

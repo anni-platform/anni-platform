@@ -30,7 +30,7 @@ const projects = (state = initialState, action) => {
       }
       return state;
     case UPDATE_PROJECT:
-      console.log(action);
+      console.log(action.project.id);
       return state.set(
         action.project.id,
         project(state.get(action.project.id), action)

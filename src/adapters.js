@@ -82,7 +82,9 @@ export function downloadFile(path) {
 }
 
 export function getFolder(path) {
-  return client.filesListFolder({ path }).catch(e => console.log(e));
+  return client
+    .filesListFolder({ path })
+    .catch(e => console.log('getFolder', e));
 }
 
 export function getFolderMeta(files) {
@@ -93,6 +95,17 @@ export function getFolderMeta(files) {
 
 export function getLink(path) {
   return client.sharingCreateSharedLink({ path }).catch(e => console.log(e));
+}
+
+export async function shareFilesInFolder(path) {
+  const filesResult = await getFolder(path);
+  const files =
+    filesResult.entries &&
+    filesResult.entries.filter(f => f['.tag'] === 'file');
+  const fileLinks = await Promise.all(files.map(f => getLink(f.path_display)));
+  const filesWithLinks = files.map((f, i) => ({ ...f, ...fileLinks[i] }));
+  console.log(fileLinks, 'filesWLinks', filesWithLinks);
+  return filesWithLinks;
 }
 
 export function getFilesMeta(files) {

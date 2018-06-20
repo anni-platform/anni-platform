@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import FileUploader from 'components/FileUploader';
 import FileManager from 'containers/FileManager';
-import { Loader } from 'styled';
+import { Loader, Container } from 'styled';
 import { ImageList } from './ImageList';
 
 import { Content, Heading, Section, UploadArea } from 'styled';
@@ -44,16 +44,18 @@ class Collection extends Component {
       ) : null;
 
     return (
-      <Section>
-        <Content project>
-          <UploadArea>
-            <Heading mb={16}>{title}</Heading>
-            <FileUploader path={projectPath} collection={collectionId}>
-              {list}
-              {!project && <Loader />}
-            </FileUploader>
-          </UploadArea>
-        </Content>
+      <Section project center>
+        <Container>
+          <Content project>
+            <UploadArea>
+              <Heading mb={16}>{title}</Heading>
+              <FileUploader path={projectPath} collection={collectionId}>
+                {list}
+                {!project && <Loader />}
+              </FileUploader>
+            </UploadArea>
+          </Content>
+        </Container>
       </Section>
     );
   }

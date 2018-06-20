@@ -1,39 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import ProjectManager from 'containers/ProjectManager';
-import AuthManager from 'containers/AuthManager';
 import { ProjectList, ProjectListItem } from './components/ProjectList';
-import { FILE_DATABASE_DIRECTORY } from 'constants/file';
-
 import { Content, Heading, Paragraph, Section } from 'styled';
-import { Loader } from 'styled';
 
 class Dashboard extends Component {
-  componentWillMount() {
-    this.props.refreshProjects();
-  }
   render() {
     const { projects, auth } = this.props;
-    const loading = !auth.toJS().isAuthenticated;
     const userInfo = auth.get('userInfo');
-    const filteredProjects = projects.filter(
-      p => p.get('name') !== FILE_DATABASE_DIRECTORY
-    );
-    const projectItems = filteredProjects
-      .valueSeq()
-      .toJS()
-      .map(project => {
-        return (
-          <ProjectListItem
-            id={project.id}
-            name={project.name}
-            path={project.path_display}
-            key={project.name}
-            link={`/project/${project.name}`}
-          />
-        );
-      });
-
-    const projectsList = <ProjectList>{projectItems}</ProjectList>;
+    const projectItems = projects.map(project => {
+      return (
+        <ProjectListItem
+          id={project.id}
+          name={project.name}
+          path={project.path_display}
+          key={project.name}
+        />
+      );
+    });
 
     const empty = (
       <Section>
@@ -41,7 +25,8 @@ class Dashboard extends Component {
       </Section>
     );
 
-    const renderProjects = projectItems.length ? projectsList : empty;
+    const projectsList = <ProjectList>{projectItems}</ProjectList>;
+
     return (
       <Section>
         <Content>
@@ -55,13 +40,17 @@ class Dashboard extends Component {
           <Paragraph mb={24} strong>
             Your Projects
           </Paragraph>
-          <Content full>
-            {loading ? <Loader fullPage /> : renderProjects}
-          </Content>
+          <Content full>{projectItems.length ? projectsList : empty}</Content>
         </Content>
       </Section>
     );
   }
 }
 
-export default ProjectManager(AuthManager(Dashboard));
+function mapStateToProps(state) {
+  return {
+    projects: Object.values(state.projects.toJS()),
+  };
+}
+
+export default connect(mapStateToProps)(ProjectManager(Dashboard));

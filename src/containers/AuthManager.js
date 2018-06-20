@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import { navigate } from '@reach/router';
 import { getAccountInfo } from 'adapters';
 import { addUserInfo } from 'actions';
 
@@ -10,7 +10,7 @@ export default function AuthManager(Component) {
       getAccountInfo()
         .then(info => this.props.dispatch(addUserInfo(info)))
         .catch(() => {
-          this.props.router.push('/');
+          navigate('/');
         });
     }
     validateAuthentication() {
@@ -23,5 +23,5 @@ export default function AuthManager(Component) {
       return <Component {...this.props} {...{ validateAuthentication }} />;
     }
   }
-  return connect(({ auth }) => auth.toJS())(withRouter(Manager));
+  return connect(({ auth }) => auth.toJS())(Manager);
 }

@@ -1,7 +1,10 @@
 import constants from 'constants/index';
 import { getCollectionKey } from 'utils';
 import Immutable, { List, Map } from 'immutable';
-import { FOLDER_FILES_FETCH_SUCCEEDED, SHARED_LINKS_FETCH_SUCCEEDED } from 'constants/folders';
+import {
+  FOLDER_FILES_FETCH_SUCCEEDED,
+  SHARED_LINKS_FETCH_SUCCEEDED,
+} from 'constants/folders';
 const {
   ADD_FILE,
   ADD_FILE_TO_COLLECTION,
@@ -23,7 +26,15 @@ export const initialState = Map({
 const archive = (state = initialState.get('archive'), action) => {
   switch (action.type) {
     case ADD_FILE:
-      return state.update(action.file.name, value => (value = action.file));
+      return state.update(action.file.id, value => (value = action.file));
+    case SHARED_LINKS_FETCH_SUCCEEDED:
+      action.links.forEach(({ path, url }) => {
+        const fileInArchive = state.find(a => a.path_display === path);
+        if (fileInArchive) {
+          fileInArchive.set('url', url);
+        }
+      });
+      return state;
     case DELETE_FILE:
       return state.delete(action.name);
     default:
@@ -35,9 +46,10 @@ const collection = (state = List([]), action) => {
   if (!List.isList(state)) {
     state = List(state.map(i => Map(i)));
   }
-  const { id } = action;
+  const { id } = action.file;
   const collectionEntry = Map({ id });
   switch (action.type) {
+    case ADD_FILE:
     case ADD_FILE_TO_COLLECTION:
       if (state.filter(item => item.get('id') === id).size > 0) {
         // file is a duplicate
@@ -61,6 +73,7 @@ const collection = (state = List([]), action) => {
 const collections = (state = initialState.get('collections'), action) => {
   const collectionKey = getCollectionKey(action);
   switch (action.type) {
+    case ADD_FILE:
     case ADD_FILE_TO_COLLECTION:
       return state.setIn(
         [collectionKey],
@@ -95,11 +108,14 @@ const collections = (state = initialState.get('collections'), action) => {
 const shareLinks = (state = initialState.get('shareLinks'), action) => {
   switch (action.type) {
     case SHARED_LINKS_FETCH_SUCCEEDED:
-      const { links } = action.sharedLinks || {};
-      const linkDictionary = links.reduce((acc, { url, path }) => ({
-        ...acc,
-        [path]: url,
-      }), {});
+      const { links } = action || {};
+      const linkDictionary = links.reduce(
+        (acc, { url, path }) => ({
+          ...acc,
+          [path]: url.replace(/.$/, '1'),
+        }),
+        {}
+      );
       return Map(linkDictionary);
     default:
       return state;
@@ -109,12 +125,17 @@ const shareLinks = (state = initialState.get('shareLinks'), action) => {
 const projects = (state = initialState.get('projects'), action) => {
   switch (action.type) {
     case FOLDER_FILES_FETCH_SUCCEEDED:
-      return state.setIn([action.projectPath], action.folder);
+      return Map(state).setIn([action.projectPath], action.folder);
     default:
       return state;
   }
 };
 
+/**
+ * archive: { id: file } hash map of all known files
+ * collections: { id: []file.id } has map of arrays of file ids
+ * shareLinks
+ */
 const files = (state = initialState, action) => {
   if (!state.isMap || !state.isMap()) {
     state = Immutable.fromJS(state);

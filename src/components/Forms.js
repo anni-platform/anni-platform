@@ -20,7 +20,7 @@ export const TextArea = props => {
   });
 
   return (
-    <FieldGroup icon>
+    <FieldGroup>
       {icon && <OutlineIcon color name={icon} size={24} />}
       <textarea
         className={styles}
@@ -66,7 +66,7 @@ export const Input = props => {
   };
 
   return (
-    <FieldGroup icon>
+    <FieldGroup>
       {icon && <OutlineIcon color name={icon} size={24} />}
       <input
         {...allowedProps}

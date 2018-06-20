@@ -1,12 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
-import AppContainer from './AppContainer';
+import App from './App';
 
-render(<AppContainer />, root);
+render(<App />, root);
 
 if (module.hot) {
-  module.hot.accept('./AppContainer', () => {
-    const NextApp = require('./AppContainer').default;
+  module.hot.accept('./App', () => {
+    const NextApp = require('./App').default;
     render(<NextApp />, root);
   });
 }

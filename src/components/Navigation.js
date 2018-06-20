@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
 import { login, logoutSession, getAccountInfo, getAuthUrl } from 'adapters';
 import { addAuthToken, logout, addUserInfo } from 'actions';
 import CreateForm from 'components/CreateForm';
+import { navigate } from '@reach/router';
 
 import { Avatar, Button, NavBar, NavItem, NavItemGroup } from 'styled';
 
@@ -22,11 +22,11 @@ class Navigation extends Component {
     // referencing window.location breaks HMR for some reason..
     // const unAuthenticatedRoutes = ['/patterns'];
     // const routeNeedsAuthentication = !unAuthenticatedRoutes.find(r => r === window.location.pathname);
-    if (!auth.toJS().isAuthenticated) {
+    if (!auth.isAuthenticated) {
       login().then(
         token => {
           if (!token) {
-            this.props.router.push('/');
+            navigate('/');
             return;
           }
           dispatch(addAuthToken(token));
@@ -45,7 +45,7 @@ class Navigation extends Component {
   logout() {
     logoutSession();
     this.props.dispatch(logout());
-    this.props.router.push('/');
+    navigate('/');
   }
 
   handleClick = () => this.setState({ showOverlay: true });
@@ -56,7 +56,8 @@ class Navigation extends Component {
         {/* <Button href={getAuthUrl()}>Sign in</Button> */}
       </NavItem>
     );
-    const userInfo = this.props.auth.toJS().userInfo;
+    // console.log(this.props.auth);
+    const userInfo = this.props.auth.userInfo;
     const firstInitial = userInfo ? userInfo.name.given_name[0] : null;
 
     const loggedInNav = (
@@ -98,7 +99,7 @@ class Navigation extends Component {
     ) : null;
     return (
       <div>
-        {this.props.auth.toJS().isAuthenticated ? loggedInNav : login}
+        {this.props.auth.isAuthenticated ? loggedInNav : login}
         {projectForm}
       </div>
     );
@@ -106,7 +107,7 @@ class Navigation extends Component {
 }
 
 const mapStateToProps = ({ auth }) => ({
-  auth,
+  auth: auth.toJS(),
 });
 
-export default connect(mapStateToProps)(withRouter(Navigation));
+export default connect(mapStateToProps)(Navigation);

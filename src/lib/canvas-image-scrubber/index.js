@@ -7,6 +7,7 @@ const DEFAULT_FPS = 24;
 const preloadImage = (src, callback) => {
   const img = new Image();
   img.onload = () => callback(img);
+  img.onerror = e => console.error(e);
   img.src = src;
 };
 
@@ -54,6 +55,7 @@ export default class Viewer extends Component {
     const htmlImageElements = [];
     frames.forEach((frame, index) => {
       preloadImage(frame, img => {
+        console.log('preload', img);
         this.setState({
           loadingProgress: {
             ...this.state.loadingProgress,
@@ -70,6 +72,7 @@ export default class Viewer extends Component {
 
         // ensure order is correct
         htmlImageElements.splice(index, 0, img);
+
         if (htmlImageElements.length === frames.length) {
           this.setState(
             {

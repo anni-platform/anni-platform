@@ -4,7 +4,7 @@ const ListItem = styled.li`
   cursor: pointer;
   list-style: none;
   padding-left: 4px;
-  background: ${({ selected }) => selected ? 'limegreen': ''}
+  background: ${({ selected }) => (selected ? 'limegreen' : '')};
 `;
 
 export default ListItem;
