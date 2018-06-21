@@ -1,3 +1,4 @@
+import { createAction } from 'redux-actions';
 import constants from 'constants/index';
 import {
   FOLDER_FILES_FETCH_REQUESTED,
@@ -6,6 +7,7 @@ import {
 
 const { ADD_PROJECT, REMOVE_PROJECT, UPDATE_PROJECT } = constants.project;
 const { ADD_AUTH_TOKEN, ADD_USER_INFO, LOG_OUT } = constants.auth;
+
 const {
   ADD_FILE,
   DELETE_FILE,
@@ -135,3 +137,6 @@ export const requestSharedLinks = path => {
     path,
   };
 };
+
+export const deletFile = createAction('DELETE_FILE');
+export const requestFolderFiles = createAction('REQUEST_FOLDER_FILES');

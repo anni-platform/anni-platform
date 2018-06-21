@@ -4,7 +4,7 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import Navigation from 'components/Navigation';
 import { Provider } from 'react-redux';
 import reducer from 'reducers';
-import { getAccessTokenFromUrl, storeSessionToken, getAuthUrl } from 'adapters';
+import { getAccessTokenFromUrl, storeSessionToken } from 'adapters';
 import { saveState } from './utils/localStorage';
 import StaticJSONFileDatabase from 'utils/fileStorage';
 import { Loader, Wrapper, Container } from 'styled';
@@ -36,17 +36,13 @@ const Layout = ({ children }) => (
   </Container>
 );
 
-class App extends Component {
-  constructor() {
-    super();
+export default class App extends Component {
+  constructor(props) {
+    super(props);
     this.state = { store: null };
   }
   componentDidMount() {
     const token = getAccessTokenFromUrl();
-
-    window.loginDB = function() {
-      window.location.href = getAuthUrl();
-    };
 
     if (token) storeSessionToken(token);
 
@@ -55,6 +51,7 @@ class App extends Component {
       sagaMiddleware.run(sagas);
 
       store.subscribe(() => {
+        console.log('store update');
         saveState(store.getState());
       });
       this.setState({ store });
@@ -81,5 +78,3 @@ class App extends Component {
     );
   }
 }
-
-export default App;

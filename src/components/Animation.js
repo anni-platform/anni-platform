@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { shareFilesInFolder } from 'adapters';
-import { updateProject } from 'actions';
+import { updateProject, requestFolderFiles } from 'actions';
 import { Select } from 'components';
 import { addFile } from 'actions';
 import CanvasImageScrubber from 'lib/canvas-image-scrubber';
@@ -16,7 +15,7 @@ function AnimationComponent({
   project,
   imageSequence,
 }) {
-  const { folders, selectedFolder } = project;
+  const { folders, animationFolder } = project;
   const folderSelectItems = folders.map(f => ({
     value: f.path_display,
     label: f.name,
@@ -29,7 +28,7 @@ function AnimationComponent({
         {folders && folders.length ? (
           <Select
             defaultSelectedItem={folderSelectItems.find(
-              f => f.value === selectedFolder
+              f => f.value === animationFolder
             )}
             items={folderSelectItems}
             onChange={onSelectFolder}
@@ -58,20 +57,35 @@ AnimationComponent.propTypes = {
   imageSequence: PropTypes.arrayOf(PropTypes.string),
 };
 
+function mapStateToProps(state, props) {
+  return {
+    imageSequence: getAnimationFolderImages(state, props),
+  };
+}
+
+function mapDispatchToProps(dispatch, { id }) {
+  return {
+    requestFolder: value => dispatch(requestFolderFiles({ path: value })),
+    addFileToCollection: (file, projectPath, collectionKey) =>
+      dispatch(addFile(file, projectPath, collectionKey)),
+    updateProject: project => dispatch(updateProject(project)),
+  };
+}
+
 export const Animation = compose(
   connect(
-    (state, props) => ({
-      imageSequence: getAnimationFolderImages(state, props),
-    }),
-    (dispatch, { id }) => ({
-      addFileToCollection: (file, projectPath, collectionKey) =>
-        dispatch(addFile(file, projectPath, collectionKey)),
-      updateProject: project => dispatch(updateProject(project)),
-    })
+    mapStateToProps,
+    mapDispatchToProps
   ),
   withState('fetchingFolder', 'setFetchingFolder', false),
   withProps(
-    ({ addFileToCollection, project, setFetchingFolder, updateProject }) => ({
+    ({
+      addFileToCollection,
+      project,
+      setFetchingFolder,
+      updateProject,
+      requestFolder,
+    }) => ({
       onSelectFolder(folder) {
         const { id } = project;
 
@@ -80,12 +94,13 @@ export const Animation = compose(
           id,
           animationFolder: folder.value,
         });
-        shareFilesInFolder(folder.value).then(files => {
-          files.forEach(file =>
-            addFileToCollection(file, project.path_display, folder.value)
-          );
-          setFetchingFolder(false);
-        });
+        requestFolder(folder.value);
+        // shareFilesInFolder(folder.value).then(files => {
+        //   files.forEach(file =>
+        //     addFileToCollection(file, project.path_display, folder.value)
+        //   );
+        //   setFetchingFolder(false);
+        // });
       },
     })
   )

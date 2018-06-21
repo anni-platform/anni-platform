@@ -42,6 +42,7 @@ export const saveState = newState => {
     const stateHasChanged = !saving && (projectsChanged || filesChanged);
 
     if (stateHasChanged) {
+      console.log('state has changed');
       oldState = newState;
       const serializedNewState = JSON.stringify(newState);
       localStorage.setItem(STATE, serializedNewState);

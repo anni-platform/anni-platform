@@ -43,14 +43,19 @@ export const getCollectionIds = createSelector(
     project &&
     project.animationFolder &&
     state.files.toJS().collections[project.animationFolder],
-  collectionItems => collectionItems.map(({ id }) => id).filter(id => !!id)
+  collectionItems =>
+    collectionItems
+      ? collectionItems.map(({ id }) => id).filter(id => !!id)
+      : []
 );
 
 export const getAnimationFolderImages = createSelector(
   getCollectionIds,
   state => state.files.toJS().archive,
-  (ids, archive) =>
-    ids && Object.values(pick(archive, ids)).map(({ url }) => url)
+  (ids, archive) => {
+    console.log(ids);
+    return ids && Object.values(pick(archive, ids)).map(({ url }) => url);
+  }
 );
 
 export const getImageSequence = createSelector(getProject, project => {

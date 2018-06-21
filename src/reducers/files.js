@@ -1,4 +1,5 @@
 import constants from 'constants/index';
+import { createActions, handleActions, combineActions } from 'redux-actions';
 import { getCollectionKey } from 'utils';
 import Immutable, { List, Map } from 'immutable';
 import {
@@ -23,24 +24,105 @@ export const initialState = Map({
   shareLinks: Map({}),
 });
 
-const archive = (state = initialState.get('archive'), action) => {
-  switch (action.type) {
-    case ADD_FILE:
-      return state.update(action.file.id, value => (value = action.file));
-    case SHARED_LINKS_FETCH_SUCCEEDED:
-      action.links.forEach(({ path, url }) => {
-        const fileInArchive = state.find(a => a.path_display === path);
-        if (fileInArchive) {
-          fileInArchive.set('url', url);
-        }
-      });
-      return state;
-    case DELETE_FILE:
-      return state.delete(action.name);
-    default:
-      return state;
-  }
+export const initialStateNative = {
+  archive: {},
+  collections: {},
+  projects: {},
+  shareLinks: {},
 };
+
+export const { addFile, deleteFile } = createActions({
+  ADD_FILE: file => ({ file }),
+  DELETE_FILE: file => ({ file }),
+});
+
+export const archive = handleActions(
+  {
+    [addFile]: (state, { payload }) => {
+      const { file } = payload;
+      return {
+        ...state,
+        [file.id]: {
+          ...state[file.id],
+          ...file,
+        },
+      };
+    },
+    [deleteFile]: (state, { payload }) => {
+      const { file } = payload;
+      const { id } = file || {};
+      if (state[id]) {
+        return Object.keys(state)
+          .filter(k => k !== id)
+          .reduce(
+            (acc, k) => ({
+              ...acc,
+              [k]: state[k],
+            }),
+            {}
+          );
+      }
+      return state;
+    },
+  },
+  // new Map([
+  //   [
+  //     addFile,
+  //     (state, { file }) => ({
+  //       ...state,
+  //       [file.id]: {
+  //         ...state[file.id],
+  //         ...file,
+  //       },
+  //     }),
+  //   ],
+  //   [
+  //     deleteFile,
+  //     (state, { file }) => {
+  //       const { id } = file || {};
+  //       if (state[id]) {
+  //         return Object.keys(state)
+  //           .filter(k => k !== id)
+  //           .reduce(
+  //             (acc, k) => ({
+  //               ...acc,
+  //               [k]: state[k],
+  //             }),
+  //             {}
+  //           );
+  //       }
+  //       return state;
+  //     },
+  //   ],
+  // ]),
+  initialStateNative.archive
+);
+
+// const archive = (state = initialStateNative.archive, action) => {
+//   const { file } = action;
+//   const { id } = file || {};
+//   switch (action.type) {
+//     case ADD_FILE:
+//       return {
+//         ...state,
+//         [id]: {
+//           ...state[id],
+//           ...file,
+//         },
+//       };
+//       // return state.update(action.file.id, value => (value = action.file));
+//     case SHARED_LINKS_FETCH_SUCCEEDED:
+//       return state.withMutations(m =>
+//         action.links.forEach(({ path, url }) => {
+//           m.set([path, 'url'], url.replace(/.$/, '1'));
+//         })
+//       );
+//     case DELETE_FILE:
+//       return state;
+//     default:
+//       return state;
+//   }
+// };
 
 const collection = (state = List([]), action) => {
   if (!List.isList(state)) {
@@ -73,7 +155,7 @@ const collection = (state = List([]), action) => {
 const collections = (state = initialState.get('collections'), action) => {
   const collectionKey = getCollectionKey(action);
   switch (action.type) {
-    case ADD_FILE:
+    // case ADD_FILE:
     case ADD_FILE_TO_COLLECTION:
       return state.setIn(
         [collectionKey],
@@ -136,18 +218,15 @@ const projects = (state = initialState.get('projects'), action) => {
  * collections: { id: []file.id } has map of arrays of file ids
  * shareLinks
  */
-const files = (state = initialState, action) => {
-  if (!state.isMap || !state.isMap()) {
-    state = Immutable.fromJS(state);
-  }
+const files = (state = initialStateNative, action) => {
   switch (action.type) {
     default:
-      return Map({
-        archive: archive(state.get('archive'), action),
-        collections: collections(state.get('collections'), action),
-        projects: projects(state.get('projects'), action),
-        shareLinks: shareLinks(state.get('shareLinks'), action),
-      });
+      return {
+        archive: archive(state.archive, action),
+        collections: collections(state.collections, action),
+        projects: projects(state.projects, action),
+        shareLinks: shareLinks(state.shareLinks, action),
+      };
   }
 };
 

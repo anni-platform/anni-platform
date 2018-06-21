@@ -23,52 +23,58 @@ export function stateToJsonFile(
   );
 }
 
-const StaticJSONFileDatabase = {
-  hydrateStoreFromFileDatabase() {
-    getAccessTokenFromSessionStorage();
-    return new Promise((resolve, reject) => {
-      if (!hasClient()) {
-        // user is not authenticated send default state
+function hydrateStoreFromFileDatabase() {
+  getAccessTokenFromSessionStorage();
+  return new Promise((resolve, reject) => {
+    if (!hasClient()) {
+      // user is not authenticated send default state
+      resolve(DEFAULT_STATE);
+    }
+    const writeDefaultStateToJsonFile = () => {
+      uploadFile(
+        FILE_DATABASE_DIRECTORY,
+        stateToJsonFile(JSON.stringify(DEFAULT_STATE, null, 2), 'state.json')
+      ).then(() => {
         resolve(DEFAULT_STATE);
-      }
-      const writeDefaultStateToJsonFile = () => {
-        uploadFile(
-          FILE_DATABASE_DIRECTORY,
-          stateToJsonFile(JSON.stringify(DEFAULT_STATE, null, 2), 'state.json')
-        ).then(() => {
-          resolve(DEFAULT_STATE);
-        });
-      };
-      // first search for the file database directory
-      searchFiles('', FILE_DATABASE_DIRECTORY).then(({ matches }) => {
-        if (matches.length) {
-          // file database is found so now search for the state.json file
-          searchFiles(`/${FILE_DATABASE_DIRECTORY}/`, 'state.json').then(
-            ({ matches }) => {
-              if (matches.length) {
-                // state.json is found so let's get the json content
-                this.fetchJSONFromFile(`/${FILE_DATABASE_DIRECTORY}/`)
-                  .then(data => {
-                    resolve(data);
-                  })
-                  .catch(reject);
-                return;
-              } else {
-                //state.json is not found so let's create it with default state and return that data
-                writeDefaultStateToJsonFile();
-              }
-            }
-          );
-        } else {
-          // file database directory is not found so create it
-          createFolder(`/${FILE_DATABASE_DIRECTORY}`).then(r => {
-            // create json db file with default state and return that data
-            writeDefaultStateToJsonFile();
-          });
-        }
       });
+    };
+    // first search for the file database directory
+    searchFiles('', FILE_DATABASE_DIRECTORY).then(({ matches }) => {
+      if (matches.length) {
+        // file database is found so now search for the state.json file
+        searchFiles(`/${FILE_DATABASE_DIRECTORY}/`, 'state.json').then(
+          ({ matches }) => {
+            if (matches.length) {
+              // state.json is found so let's get the json content
+              this.fetchJSONFromFile(`/${FILE_DATABASE_DIRECTORY}/`)
+                .then(data => {
+                  resolve(data);
+                })
+                .catch(reject);
+              return;
+            } else {
+              //state.json is not found so let's create it with default state and return that data
+              writeDefaultStateToJsonFile();
+            }
+          }
+        );
+      } else {
+        // file database directory is not found so create it
+        createFolder(`/${FILE_DATABASE_DIRECTORY}`).then(r => {
+          // create json db file with default state and return that data
+          writeDefaultStateToJsonFile();
+        });
+      }
     });
-  },
+  });
+}
+
+export async function hydrateStoreFromFileDatabaseAsync() {
+  return await hydrateStoreFromFileDatabase();
+}
+
+const StaticJSONFileDatabase = {
+  hydrateStoreFromFileDatabase,
   fetchJSONFromFile(filePath) {
     return new Promise((resolve, reject) => {
       getFolder(filePath)
