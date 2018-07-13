@@ -50,10 +50,7 @@ export default class App extends Component {
       const store = createStore(reducer, data, enhancer);
       sagaMiddleware.run(sagas);
 
-      store.subscribe(() => {
-        console.log('store update');
-        saveState(store.getState());
-      });
+      store.subscribe(() => saveState(store.getState()));
       this.setState({ store });
     });
   }

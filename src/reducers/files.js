@@ -31,9 +31,12 @@ export const initialStateNative = {
   shareLinks: {},
 };
 
-export const { addFile, deleteFile } = createActions({
-  ADD_FILE: file => ({ file }),
-  DELETE_FILE: file => ({ file }),
+const fileSignature = ({ collectionId, ...file }) => ({ collectionId, file });
+
+export const { addFile, deleteFile, removeFileFromCollection } = createActions({
+  ADD_FILE: fileSignature,
+  DELETE_FILE: fileSignature,
+  REMOVE_FILE_FROM_COLLECTION: fileSignature,
 });
 
 export const archive = handleActions(
@@ -65,37 +68,42 @@ export const archive = handleActions(
       return state;
     },
   },
-  // new Map([
-  //   [
-  //     addFile,
-  //     (state, { file }) => ({
-  //       ...state,
-  //       [file.id]: {
-  //         ...state[file.id],
-  //         ...file,
-  //       },
-  //     }),
-  //   ],
-  //   [
-  //     deleteFile,
-  //     (state, { file }) => {
-  //       const { id } = file || {};
-  //       if (state[id]) {
-  //         return Object.keys(state)
-  //           .filter(k => k !== id)
-  //           .reduce(
-  //             (acc, k) => ({
-  //               ...acc,
-  //               [k]: state[k],
-  //             }),
-  //             {}
-  //           );
-  //       }
-  //       return state;
-  //     },
-  //   ],
-  // ]),
   initialStateNative.archive
+);
+
+const collections = handleActions(
+  {
+    [addFile]: (state, { payload }) => {
+      const { file, collectionId } = payload;
+      const { id } = file || {};
+      if (!collectionId) {
+        return state;
+      }
+      if (!state[collectionId]) {
+        return {
+          ...state,
+          [collectionId]: [{ id }],
+        };
+      }
+      return {
+        ...state,
+        [collectionId]: [...state[collectionId], { id }],
+      };
+    },
+    [removeFileFromCollection]: (state, { payload }) => {
+      const { file, collectionId } = payload;
+      const collection = state[collectionId];
+      if (!collectionId || !collection) {
+        return state;
+      }
+
+      return {
+        ...state,
+        [collectionId]: collection.filter(({ id }) => id !== file.id),
+      };
+    },
+  },
+  initialStateNative.collections
 );
 
 // const archive = (state = initialStateNative.archive, action) => {
@@ -152,40 +160,40 @@ const collection = (state = List([]), action) => {
   }
 };
 
-const collections = (state = initialState.get('collections'), action) => {
-  const collectionKey = getCollectionKey(action);
-  switch (action.type) {
-    // case ADD_FILE:
-    case ADD_FILE_TO_COLLECTION:
-      return state.setIn(
-        [collectionKey],
-        collection(state.get(collectionKey), action)
-      );
-    case UPDATE_COLLECTION_ITEM:
-      return state.setIn(
-        [action.collectionKey],
-        collection(state.get(action.collectionKey), action)
-      );
-    case REMOVE_FILE_FROM_COLLECTION:
-      return state.setIn(
-        [action.collectionKey],
-        collection(state.get(action.collectionKey), action)
-      );
-    case REMOVE_PROJECT:
-      return state.filter((v, k) => {
-        return k.indexOf(action.path) === -1;
-      });
-    case UPDATE_COLLECTION:
-      return state.setIn([action.collectionKey], action.collection);
-    case REMOVE_COLLECTION_ITEM:
-      return state.setIn(
-        [action.collectionKey],
-        collection(state.get(action.collectionKey), action)
-      );
-    default:
-      return state;
-  }
-};
+// const collections = (state = initialState.get('collections'), action) => {
+//   const collectionKey = getCollectionKey(action);
+//   switch (action.type) {
+//     // case ADD_FILE:
+//     case ADD_FILE_TO_COLLECTION:
+//       return state.setIn(
+//         [collectionKey],
+//         collection(state.get(collectionKey), action)
+//       );
+//     case UPDATE_COLLECTION_ITEM:
+//       return state.setIn(
+//         [action.collectionKey],
+//         collection(state.get(action.collectionKey), action)
+//       );
+//     case REMOVE_FILE_FROM_COLLECTION:
+//       return state.setIn(
+//         [action.collectionKey],
+//         collection(state.get(action.collectionKey), action)
+//       );
+//     case REMOVE_PROJECT:
+//       return state.filter((v, k) => {
+//         return k.indexOf(action.path) === -1;
+//       });
+//     case UPDATE_COLLECTION:
+//       return state.setIn([action.collectionKey], action.collection);
+//     case REMOVE_COLLECTION_ITEM:
+//       return state.setIn(
+//         [action.collectionKey],
+//         collection(state.get(action.collectionKey), action)
+//       );
+//     default:
+//       return state;
+//   }
+// };
 
 const shareLinks = (state = initialState.get('shareLinks'), action) => {
   switch (action.type) {

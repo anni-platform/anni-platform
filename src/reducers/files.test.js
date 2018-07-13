@@ -1,8 +1,10 @@
+import _ from 'lodash';
 import reducer, {
   initialState,
   initialStateNative,
   addFile,
   deleteFile,
+  removeFileFromCollection,
   archive,
 } from './files';
 import { getCollectionKey } from 'utils';
@@ -15,23 +17,23 @@ describe('files reducer', () => {
     expect(reducer(undefined, {})).toEqual(initialStateNative);
   });
 
-  describe('archive', () => {
-    const fileA = {
-      id: '1a',
-      path_display: '/blah.jpg',
-    };
-    const fileB = {
-      id: '1b',
-      path_display: '/blah2.jpg',
-    };
+  const fileA = {
+    id: '1a',
+    path_display: '/blah.jpg',
+  };
+  const fileB = {
+    id: '1b',
+    path_display: '/blah2.jpg',
+  };
 
+  describe('archive', () => {
     it('stores files by their id', () => {
       const result = reducer(undefined, addFile(fileA));
 
       expect(result.archive[fileA.id]).toEqual(fileA);
     });
 
-    it('updates an existing file if it is already known', () => {
+    it('updates an existing file', () => {
       const fileWithURL = {
         ...fileA,
         url: 'url-to-file',
@@ -62,6 +64,52 @@ describe('files reducer', () => {
       expect(result.archive).toEqual({
         [fileB.id]: fileB,
       });
+    });
+  });
+
+  describe('collections', () => {
+    it('does nothing if no collectionId is provided', () => {
+      const result = reducer(undefined, addFile({ ...fileA }));
+      expect(result.collections).toEqual({});
+    });
+
+    it('stores collection items as objects', () => {
+      const collectionId = 'pizza';
+      const result = reducer(undefined, addFile({ ...fileA, collectionId }));
+      const item = result.collections[collectionId][0];
+      expect(_.isPlainObject(item)).toBeTruthy();
+      expect(item).toHaveProperty('id', fileA.id);
+    });
+
+    it('creates a new collection if the collectionId is not known', () => {
+      const collectionId = 'pizza';
+      const result = reducer(undefined, addFile({ ...fileA, collectionId }));
+      expect(result.collections[collectionId]).toEqual([{ id: fileA.id }]);
+    });
+
+    it('adds a file to an existing collection', () => {
+      const collectionId = 'pizza';
+      const result = reducer(
+        { collections: { [collectionId]: [{ id: fileA.id }] } },
+        addFile({ ...fileB, collectionId })
+      );
+      expect(result.collections[collectionId]).toEqual([
+        { id: fileA.id },
+        { id: fileB.id },
+      ]);
+    });
+
+    it('removes a file from a collection', () => {
+      const collectionId = 'pizza';
+      const result = reducer(
+        {
+          collections: {
+            [collectionId]: [{ id: fileA.id }, { id: fileB.id }],
+          },
+        },
+        removeFileFromCollection({ ...fileA, collectionId })
+      );
+      expect(result.collections[collectionId]).toEqual([{ id: fileB.id }]);
     });
   });
 
