@@ -26,6 +26,7 @@ export const NavItem = styled.div`
   height: 100%;
   margin-left: ${props => props.right && "auto"};
   padding: 0;
+  position: relative;
 `;
 
 export const NavItemGroup = styled.div`

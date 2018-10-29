@@ -1,9 +1,11 @@
 import React from "react";
+import classNames from "classnames";
 import { Link } from "react-router";
 import { OutlineIcon } from "styled";
 
 export const BaseButton = props => {
   const {
+    active,
     children,
     className,
     disabled,
@@ -14,9 +16,14 @@ export const BaseButton = props => {
     initial
   } = props;
 
+  const styles = classNames({
+    active: active,
+    [className]: className,
+  });
+
   if (to) {
     return (
-      <Link to={to} className={className} onClick={onClick}>
+      <Link to={to} className={styles} onClick={onClick}>
         {icon && <OutlineIcon name={icon} />}
         {initial && <span>{initial}</span>}
         {children}
@@ -24,7 +31,7 @@ export const BaseButton = props => {
     );
   } else if (href) {
     return (
-      <a href={href} className={className} onClick={onClick} >
+      <a href={href} className={styles} onClick={onClick} >
         {icon && <OutlineIcon name={icon} />}
         {initial && <span>{initial}</span>}
         {children}
@@ -32,18 +39,11 @@ export const BaseButton = props => {
     );
   } else {
     return (
-      <button className={className} disabled={disabled} onClick={onClick}>
+      <button className={styles} disabled={disabled} onClick={onClick}>
         {icon && <OutlineIcon name={icon} />}
         {initial && <span>{initial}</span>}
         {children}
       </button>
     );
   }
-};
-
-BaseButton.defaultProps = {
-  children: null,
-  href: null,
-  Icons: null,
-  to: null
 };

@@ -33,6 +33,7 @@ export const Section = styled.div`
 
 export const Content = styled.div`
   border: ${props => props.upload && `2px dashed black`};
+  display: ${props => props.flex && "flex"};
   padding: ${props => props.full ? "0" : "100px 24px 24px 24px"};
   padding: ${props => props.project && "100px 0 24px 24px"};
   ${Utils.margin};
@@ -51,6 +52,7 @@ export const Content = styled.div`
 export const Container = styled.div`
   align-items: center;
   background: ${props => props.media && HAZEL};
+  display: ${props => props.flex && "flex"};
   display: ${props => props.center ? "flex" : "auto"};
   display: ${props => props.stacked ? "flex" : "auto"};
   flex-direction: ${props => props.stacked && "column"};
@@ -79,7 +81,7 @@ export const Header = styled.div`
 
   ${Above.sm`
     left: 24px;
-    top: 60px;
+    top: 24px;
   `}
 
   ${Above.md`

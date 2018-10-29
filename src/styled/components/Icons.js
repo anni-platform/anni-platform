@@ -31,7 +31,7 @@ export const OutlineIcon = styled(Icons)`
 
   &#more {
     > :nth-child(2){
-      stroke: ${props => props.color ? `${COPPER}` : `${CHARCOAL}`};
+      stroke: ${COPPER};
       stroke-width: 3;
     }
     > :nth-child(3),

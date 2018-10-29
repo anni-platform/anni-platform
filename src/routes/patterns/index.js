@@ -19,6 +19,7 @@ import Loaders from "./components/Loaders";
 import Overlays from "./components/Overlays";
 import Typography from "./components/Typography";
 import VideoPlayer from "./components/VideoPlayer";
+import Feedback from "./components/Feedback";
 
 export default class PatternLibrary extends Component {
   render() {
@@ -80,6 +81,8 @@ export default class PatternLibrary extends Component {
           <Loaders />
           <Anchor id="video-player" />
           <VideoPlayer />
+          <Anchor id="feedback" />
+          <Feedback />
         </Content>
       </Section>
     );

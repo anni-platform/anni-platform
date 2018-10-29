@@ -21,6 +21,7 @@ const items = [
   <SolidIcon name="pause" />,
   <SolidIcon name="next-frame" />,
   <SolidIcon name="sound" />,
+  <SolidIcon name="todo" />,
 
 ];
 const Icons = () => (

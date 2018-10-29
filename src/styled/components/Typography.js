@@ -94,6 +94,8 @@ export const Subheading = styled.h2`
 export const Paragraph = styled.p`
   color: ${props => (props.color ? `${COPPER}` : `${CHARCOAL}`)};
   color: ${props => props.danger && CARMINE};
+  display: ${props => props.inline && "inline-block"};
+  font-family: ${props => props.strong ? "Apercu Medium" : "Apercu"}, sans-serif;
   font-family: ${props => (props.strong ? "Apercu Medium" : "Apercu")},
     sans-serif;
   font-size: 16px;
@@ -101,8 +103,10 @@ export const Paragraph = styled.p`
   font-size: ${props => props.large && "18px"};
   line-height: 1.6;
   max-width: ${props => props.width && `${props.width}px`};
-  text-align: ${props => (props.center ? "center" : "left")};
-  text-transform: ${props => (props.capitalize ? "uppercase" : "default")};
+  opacity: ${props => props.subtle && `.5`};
+  padding: ${props => props.padded && "24px"};
+  text-align: ${props => props.center ? "center" : "left"};
+  text-transform: ${props => props.capitalize ? "uppercase" : "default"};
   ${Utils.margin};
 
   ${Above.sm`

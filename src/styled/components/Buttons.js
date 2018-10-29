@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { BaseButton } from "components/Button";
 import { Utils } from "./Utils";
 
-import { CHARCOAL, COPPER, PAPER, EASE_OUT_EXPO } from "./Variables";
+import { CHARCOAL, COPPER, EASE_OUT_EXPO } from "./Variables";
 
 export const ButtonGroup = styled.div`
   ${Utils.margin};
@@ -53,34 +53,42 @@ export const Button = styled(BaseButton)`
   &:active {
     transform: scale(0.998);
   }
+
+  &.active {
+    svg {
+      animation: pop 300ms linear;
+      fill: ${props => (props.fill ? COPPER : "transparent")};
+      stroke: ${props => (props.fill ? "transparent" : COPPER)};
+    }
+  }
   svg {
     ${Utils.padding};
-    fill: ${props => (props.fill ? `${CHARCOAL}` : "transparent")};
+    fill: ${props => (props.fill ? CHARCOAL : "transparent")};
     height: ${props => (props.iconSize ? `${props.iconSize}px` : "18px")};
     margin-right: ${props => (props.stacked ? "0" : "6px")};
     margin-bottom: ${props => (props.stacked ? "6px" : "0")};
     stroke: ${props => (props.fill ? "transparent" : `${CHARCOAL}`)};
-    stroke: ${props => props.stacked && `${CHARCOAL}`};
     stroke-width: ${props =>
       props.strokeWidth ? `${props.strokeWidth}px` : "6px"};
-    stroke-width: ${props => props.fill && "6px"};
     transition: 400ms ${EASE_OUT_EXPO};
     width: ${props => (props.iconSize ? `${props.iconSize}px` : "18px")};
   }
-`;
 
-export const Avatar = Button.extend`
-  background: ${COPPER};
-  color: ${PAPER};
-  font-size: 18px;
-  height: 40px;
-  padding: 0;
-  position: relative;
-  width: 40px;
+  @keyframes pop {
+    0% {
+      transform: scale(1);
+    }
 
-  span {
-    left: 50%;
-    position: absolute;
-    transform: translateX(-50%);
+    20% {
+      transform: scale(0.8);
+    }
+
+    60% {
+      transform: scale(1.2);
+    }
+
+    100% {
+      transform: scale(1);
+    }
   }
 `;
